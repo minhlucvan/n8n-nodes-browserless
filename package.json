@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-browserless",
   "version": "0.1.0",
   "description": "",
   "keywords": [
@@ -13,16 +13,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/minhlucvan/n8n-nodes-browserless"
   },
   "main": "index.js",
   "scripts": {
+    "tsc": "npm run tsc",
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "tslint -p tsconfig.json -c tslint.json && eslint nodes credentials package.json",
     "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "postinstall": "npm run build",
+    "gen:types": "ts-node ./scripts/gen-types.ts"
   },
   "files": [
     "dist"
@@ -30,12 +33,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/BrowserlessApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Browserless/Browserless.node.js"
     ]
   },
   "devDependencies": {
@@ -44,10 +45,15 @@
     "@typescript-eslint/parser": "^5.29.0",
     "eslint-plugin-n8n-nodes-base": "^1.5.4",
     "gulp": "^4.0.2",
+    "joi-to-typescript": "^4.0.7",
     "n8n-core": "^0.125.0",
     "n8n-workflow": "^0.107.0",
     "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
     "tslint": "^6.1.2",
-    "typescript": "~4.6.0"
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "joi": "^17.7.0"
   }
 }

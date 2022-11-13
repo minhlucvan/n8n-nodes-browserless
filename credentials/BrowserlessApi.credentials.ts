@@ -5,22 +5,24 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class ExampleCredentialsApi implements ICredentialType {
-	name = 'exampleCredentialsApi';
-	displayName = 'Example Credentials API';
+export class BrowserlessApi implements ICredentialType {
+	displayName = 'Browserless Credentials API';
+	name = 'browserlessApi';
+	documentationUrl = 'https://docs.browserless.io/docs/token.html#docsNav';
+
 	properties: INodeProperties[] = [
 		// The credentials to get from user and save encrypted.
 		// Properties can be defined exactly in the same way
 		// as node properties.
 		{
-			displayName: 'User Name',
-			name: 'username',
+			displayName: 'Browserless URL',
+			name: 'url',
 			type: 'string',
 			default: '',
 		},
 		{
-			displayName: 'Password',
-			name: 'password',
+			displayName: 'Token',
+			name: 'token',
 			type: 'string',
 			typeOptions: {
 				password: true,
@@ -35,13 +37,9 @@ export class ExampleCredentialsApi implements ICredentialType {
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-			auth: {
-				username: '={{ $credentials.username }}',
-				password: '={{ $credentials.password }}',
-			},
 			qs: {
 				// Send this as part of the query string
-				n8n: 'rocks',
+				token: '={{ $credentials.token }}',
 			},
 		},
 	};
@@ -49,8 +47,17 @@ export class ExampleCredentialsApi implements ICredentialType {
 	// The block below tells how this credential can be tested
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://example.com/',
-			url: '',
+			baseURL: '={{ $credentials.url }}',
+			encoding: "json",
+			url: '/bearer',
+			method: 'POST',
+			qs: {
+				// Send this as part of the query string
+				token: '={{ $credentials.token }}',
+			},
+			body: {
+				"url": "https://example.com/"
+			},
 		},
 	};
 }
