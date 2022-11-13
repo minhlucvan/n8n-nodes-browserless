@@ -9,8 +9,8 @@ import {
 	NodeApiError,
 } from 'n8n-workflow';
 
-import { browserlessApiRequestContentOptions, BrowserlessCredentials } from './types';
-import { content } from './interfaces';
+import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessCredentials } from './types';
+import { content, fn, pdf, scrape, screenshot } from './interfaces';
 
 /**
  * Make a request to Browserless API.
@@ -56,7 +56,7 @@ export async function browserlessApiRequest(
  */
 export async function browserlessApiRequestContent(
 	this: IExecuteFunctions | ILoadOptionsFunctions,
-	options: browserlessApiRequestContentOptions,
+	options: BrowserlessApiRequestContentOptions,
 ) {
 	const body: content = {
 		...options.options,
@@ -69,13 +69,61 @@ export async function browserlessApiRequestContent(
  * Make a content request to Browserless API.
  * @see: https://docs.browserless.io/docs/scrape.html
  */
-export async function browserlessApiRequesScrape(
+export async function browserlessApiRequestScrape(
 	this: IExecuteFunctions | ILoadOptionsFunctions,
-	options: browserlessApiRequestContentOptions,
+	options: BrowserlessApiRequestScrapeOptions,
 ) {
-	const body: content = {
+	const body: scrape = {
 		...options.options,
 	};
 	const response = await browserlessApiRequest.call(this, 'POST', '/scrape', body);
 	return response;
 }
+
+/**
+ * Make a content request to Browserless API.
+ * @see: https://docs.browserless.io/docs/function.html
+ */
+ export async function browserlessApiRequestFuction(
+	this: IExecuteFunctions | ILoadOptionsFunctions,
+	options: BrowserlessApiRequestFnOptions,
+) {
+	const body: fn = {
+		...options.options,
+	};
+	const response = await browserlessApiRequest.call(this, 'POST', '/function', body);
+	return response;
+}
+
+
+/**
+ * Make a content request to Browserless API.
+ * @see: https://docs.browserless.io/docs/pdf.html
+ */
+ export async function browserlessApiRequestPdf(
+	this: IExecuteFunctions | ILoadOptionsFunctions,
+	options: BrowserlessApiRequestPdfOptions,
+) {
+	const body: pdf = {
+		...options.options,
+	};
+	const response = await browserlessApiRequest.call(this, 'POST', '/pdf', body);
+	return response;
+}
+
+/**
+ * Make a content request to Browserless API.
+ * @see: https://docs.browserless.io/docs/pdf.html
+ */
+ export async function browserlessApiRequestScreenshot(
+	this: IExecuteFunctions | ILoadOptionsFunctions,
+	options: BrowserlessApiRequestScreenshotOptions,
+) {
+	const body: screenshot = {
+		...options.options,
+	};
+	const response = await browserlessApiRequest.call(this, 'POST', '/screenshot', body);
+	return response;
+}
+
+

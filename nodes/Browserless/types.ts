@@ -11,12 +11,12 @@ export type browserlessApiRequestOptions<T> = {
 	options: T;
 }
 
-export type browserlessApiRequestContentOptions = browserlessApiRequestOptions<content>;
+export type BrowserlessApiRequestContentOptions = browserlessApiRequestOptions<content>;
 
-export type browserlessApiRequestContentScrape = browserlessApiRequestOptions<scrape>;
+export type BrowserlessApiRequestScrapeOptions = browserlessApiRequestOptions<scrape>;
 
-export type browserlessApiRequestContentFn = browserlessApiRequestOptions<fn>;
+export type BrowserlessApiRequestFnOptions = browserlessApiRequestOptions<fn>;
 
-export type browserlessApiRequestContentScreenshot = browserlessApiRequestOptions<screenshot>;
+export type BrowserlessApiRequestScreenshotOptions = browserlessApiRequestOptions<screenshot>;
 
-export type browserlessApiRequestContentPdf = browserlessApiRequestOptions<pdf>;
+export type BrowserlessApiRequestPdfOptions = browserlessApiRequestOptions<pdf>;
