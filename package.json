@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-browserless",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n mode integrate with Browserless platform",
   "keywords": [
     "n8n-community-node-package",
     "n8n",
@@ -11,7 +11,7 @@
     "automation"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/minhlucvan/n8n-nodes-browserless",
   "author": {
     "name": "Minh Luc",
     "email": "luk.mink@gmail.com"
