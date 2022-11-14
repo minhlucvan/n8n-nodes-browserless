@@ -1,3 +1,8 @@
+
+
+<table>
+<tr><td><img src="./assets/n8n-logo.png" /></td><td><img width="200" src="./assets/browserless_logo_screen_gradient.png" /></td></tr>
+<table>
 # n8n-nodes-browserless
 
 This is an n8n community node. It lets you use browserless in your n8n workflows.
