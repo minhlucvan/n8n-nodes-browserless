@@ -48,7 +48,7 @@ export const browserlessOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['scrape'],
+				resource: ['json'],
 			},
 		},
 		options: [
@@ -112,7 +112,7 @@ export const browserlessFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: ['get', 'render', 'capture', 'scrape'],
-				resource: ['content', 'scrape', 'pdf', 'screenshot'],
+				resource: ['content', 'json', 'pdf', 'screenshot'],
 			},
 		},
 		default: '',
@@ -134,8 +134,8 @@ export const browserlessFields: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'element',
-				displayName: 'Element',
+				name: 'elements',
+				displayName: 'Elements',
 				values: [
 					{
 						displayName: 'Selector',
@@ -156,6 +156,18 @@ export const browserlessFields: INodeProperties[] = [
 		default: [],
 		placeholder: 'Add element',
 		description: 'Elements to scrap',
+	},
+	{
+		displayName: 'Flattened Output',
+		name: 'flattenedOutput',
+		type: 'boolean',
+		noDataExpression: true,
+		displayOptions: {
+			show: {
+				resource: ['json'],
+			},
+		},
+		default: true,
 	},
 	{
 		displayName: 'Manipulate',
@@ -293,21 +305,6 @@ export const browserlessFields: INodeProperties[] = [
 	//   quality?: number;
 	//   type?: 'jpeg' | 'png';
 	// };
-	{
-		displayName: 'Output Field',
-		name: 'outputField',
-		type: 'string',
-		required: true,
-		displayOptions: {
-			show: {
-				operation: ['get', 'render', 'capture', 'scrape', 'execute'],
-				resource: ['content', 'scrape', 'pdf', 'screenshot', 'function'],
-			},
-		},
-		default: 'html',
-		placeholder: 'html',
-		description: 'Specify data output field',
-	},
 	{
 		displayName: 'Additional Options',
 		name: 'addition',
@@ -798,7 +795,7 @@ export const browserlessFields: INodeProperties[] = [
 			// the resources and operations to display this element with
 			show: {
 				operation: ['get', 'render', 'capture', 'scrape'],
-				resource: ['content', 'scrape', 'pdf', 'screenshot'],
+				resource: ['content', 'json', 'pdf', 'screenshot'],
 			},
 		},
 	},

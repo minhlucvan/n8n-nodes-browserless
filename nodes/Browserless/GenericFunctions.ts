@@ -1,6 +1,7 @@
 import { OptionsWithUri } from 'request';
 
 import {
+	IAllExecuteFunctions,
 	IDataObject,
 	IExecuteFunctions,
 	IHttpRequestMethods,
@@ -11,21 +12,20 @@ import {
 	NodeApiError,
 } from 'n8n-workflow';
 
-import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessCredentials } from './types';
+import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessApiResponseScrape, BrowserlessApiResponseScrapeData, BrowserlessApiResponseScrapeDataFlat, BrowserlessApiResponseScrapeResultFlat, BrowserlessCredentials } from './types';
 import { content, fn, pdf, scrape, screenshot } from './interfaces';
 
 /**
  * Make a request to Browserless API.
  */
 export async function browserlessApiRequest(
-	this: IExecuteFunctions | ILoadOptionsFunctions,
+	this: IAllExecuteFunctions,
 	method: IHttpRequestMethods,
 	endpoint: string,
 	body: any = {},
 	qs: IDataObject = {},
 ): Promise<any> {
 	const credentials = (await this.getCredentials('browserlessApi')) as BrowserlessCredentials;
-
 	const options: IHttpRequestOptions = {
 		method,
 		body,
@@ -47,7 +47,7 @@ export async function browserlessApiRequest(
 	}
 
 	try {
-		return await this.helpers.httpRequest(options);
+		return await this.helpers.httpRequestWithAuthentication.call(this, 'browserlessApi', options);
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}
@@ -64,7 +64,7 @@ export async function browserlessApiRequestContent(
 	const body: content = {
 		...options.options,
 	};
-	const response = await browserlessApiRequest.call(this, 'POST', '/content', body);
+	const response = await browserlessApiRequest.call(this, 'POST', '/content', body) as string;
 	return response;
 }
 
@@ -80,7 +80,7 @@ export async function browserlessApiRequestScrape(
 		...options.options,
 	};
 	const response = await browserlessApiRequest.call(this, 'POST', '/scrape', body);
-	return response;
+	return response as BrowserlessApiResponseScrape;
 }
 
 /**
@@ -133,8 +133,26 @@ export async function browserlessApiRequestScrape(
  * Get common node inputs
  */
 export function getCommonOptions(this: IExecuteFunctions, i: number) {
-	const options = {} as any;
-	options.outputField = this.getNodeParameter('outputField', i) as any;
+	const options = {} as any
 	options.addition = this.getNodeParameter('addition', i) as any;
 	return options
+}
+
+
+/**
+ * flaterned scrape results
+ */
+ export function flaternScrapedResults(this: IExecuteFunctions, options: BrowserlessApiRequestScrapeOptions, data: BrowserlessApiResponseScrapeData): BrowserlessApiResponseScrapeDataFlat {
+	const results = [] as BrowserlessApiResponseScrapeDataFlat;
+	for (const dat of data) {
+		for (const res of dat.results) {
+			const resFlat: BrowserlessApiResponseScrapeResultFlat = {
+				selector: dat.selector,
+				url: options.options.url,
+				...res
+			};
+			results.push(resFlat);
+		}
+	}
+	return results;
 }

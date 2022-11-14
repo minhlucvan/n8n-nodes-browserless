@@ -5,7 +5,17 @@ export type BrowserlessCredentials = {
 	url?: string;
 }
 
-export type BrowserlessResource = 'content' | 'function' | 'scrape' | 'pdf' | 'screenshot' | 'download';
+export type ElementInput = {
+	selector: string;
+	timeout: number;
+}
+
+export type ElementGroupInputs = {
+	elements: ElementInput[]
+}
+
+
+export type BrowserlessResource = 'content' | 'function' | 'json' | 'pdf' | 'screenshot' | 'download';
 
 export type browserlessApiRequestOptions<T> = {
 	options: T;
@@ -20,3 +30,36 @@ export type BrowserlessApiRequestFnOptions = browserlessApiRequestOptions<fn>;
 export type BrowserlessApiRequestScreenshotOptions = browserlessApiRequestOptions<screenshot>;
 
 export type BrowserlessApiRequestPdfOptions = browserlessApiRequestOptions<pdf>;
+
+export type BrowserlessApiResponseScrapeResult = {
+	html: string;
+	text: string;
+	attributes: object[];
+}
+
+export type BrowserlessApiResponseScrapeSelection = {
+	selector: string;
+	results: BrowserlessApiResponseScrapeResult[];
+}
+
+export type BrowserlessApiResponseScrapeData = BrowserlessApiResponseScrapeSelection[];
+
+export type BrowserlessApiResponseScrapeResultFlat = BrowserlessApiResponseScrapeResult & {
+	selector: string;
+	url: string;
+}
+
+export type BrowserlessApiResponseScrapeDataFlat = BrowserlessApiResponseScrapeResultFlat[]
+
+export type BrowserlessApiResponseScrapeDebug = {
+	screenshot?: any,
+	console?: any,
+	network?: any,
+	cookies?: any,
+	html?: any
+};
+
+export type BrowserlessApiResponseScrape = {
+	data: BrowserlessApiResponseScrapeData;
+	debug?: BrowserlessApiResponseScrapeDebug;
+}

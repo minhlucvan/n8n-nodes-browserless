@@ -9,8 +9,24 @@ import {
 	INodeTypeDescription,
 } from 'n8n-workflow';
 
-import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessResource } from './types';
-import { browserlessApiRequestContent, browserlessApiRequestFuction, browserlessApiRequestPdf, browserlessApiRequestScrape, browserlessApiRequestScreenshot, getCommonOptions } from './GenericFunctions';
+import {
+	BrowserlessApiRequestContentOptions,
+	BrowserlessApiRequestFnOptions,
+	BrowserlessApiRequestPdfOptions,
+	BrowserlessApiRequestScrapeOptions,
+	BrowserlessApiRequestScreenshotOptions,
+	BrowserlessResource,
+	ElementGroupInputs,
+} from './types';
+import {
+	browserlessApiRequestContent,
+	browserlessApiRequestFuction,
+	browserlessApiRequestPdf,
+	browserlessApiRequestScrape,
+	browserlessApiRequestScreenshot,
+	flaternScrapedResults,
+	getCommonOptions,
+} from './GenericFunctions';
 import { browserlessFields, browserlessOperations } from './BrowserlessDescriptions';
 
 export class Browserless implements INodeType {
@@ -54,7 +70,7 @@ export class Browserless implements INodeType {
 		 */
 		properties: [
 			{
-				displayName: '',
+				displayName: 'Import CURL',
 				name: 'curlImport',
 				type: 'curlImport' as any,
 				default: '',
@@ -74,12 +90,12 @@ export class Browserless implements INodeType {
 						value: 'function',
 					},
 					{
-						name: 'Pdf',
-						value: 'pdf',
+						name: 'JSON',
+						value: 'json',
 					},
 					{
-						name: 'Scrape',
-						value: 'scrape',
+						name: 'Pdf',
+						value: 'pdf',
 					},
 					{
 						name: 'Screenshot',
@@ -90,7 +106,7 @@ export class Browserless implements INodeType {
 				description: 'Browserless resource',
 			},
 			...browserlessOperations,
-			...browserlessFields
+			...browserlessFields,
 		],
 	};
 
@@ -107,34 +123,47 @@ export class Browserless implements INodeType {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestContentOptions = {
 						options: {
-							url
-						}
+							url,
+						},
 					};
-					responseData = await browserlessApiRequestContent.call(this, options);
-					console.log(responseData, options);
-					responseData = responseData.data.data;
+					const responseContent = await browserlessApiRequestContent.call(this, options);
+					responseData = [{
+						data: responseContent,
+					}];
 				}
 
-				if (resource === 'scrape') {
+				if (resource === 'json') {
 					const url = this.getNodeParameter('url', i) as string;
+					const elementInputs = this.getNodeParameter('elements', i) as ElementGroupInputs;
+					const flattenedOutput = this.getNodeParameter('flattenedOutput', i) as boolean;
+
+					const elements = elementInputs.elements;
+
 					const options: BrowserlessApiRequestScrapeOptions = {
 						options: {
 							url,
-							elements: []
-						}
+							elements,
+						},
 					};
-					responseData = await browserlessApiRequestScrape.call(this, options);
-					responseData = responseData.data.data;
+					const responseJson = await browserlessApiRequestScrape.call(this, options);
+
+					if (flattenedOutput) {
+						responseData = flaternScrapedResults.call(this, options, responseJson.data)
+					} else {
+						responseData = [{
+							data: responseJson
+						}];
+					}
 				}
 
 				if (resource === 'function') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestFnOptions = {
 						options: {
-							code: "",
+							code: '',
 							context: {},
 							detached: false,
-						}
+						},
 					};
 					responseData = await browserlessApiRequestFuction.call(this, options);
 					responseData = responseData.data.data;
@@ -144,8 +173,8 @@ export class Browserless implements INodeType {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestScreenshotOptions = {
 						options: {
-							url: "",
-						}
+							url: '',
+						},
 					};
 					responseData = await browserlessApiRequestScreenshot.call(this, options);
 					responseData = responseData.data.data;
@@ -155,19 +184,15 @@ export class Browserless implements INodeType {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestPdfOptions = {
 						options: {
-							url
-						}
+							url,
+						},
 					};
 					responseData = await browserlessApiRequestPdf.call(this, options);
 					responseData = responseData.data.data;
 				}
 
-				const outputData = {
-					[inputs.outputField]: responseData
-				}
-
 				const executionData = this.helpers.constructExecutionMetaData(
-					this.helpers.returnJsonArray(outputData),
+					this.helpers.returnJsonArray(responseData),
 					{ itemData: { item: i } },
 				);
 
