@@ -306,6 +306,42 @@ export const browserlessFields: INodeProperties[] = [
 	//   type?: 'jpeg' | 'png';
 	// };
 	{
+		displayName: 'Code',
+		name: 'code',
+		type: 'string',
+		noDataExpression: false,
+		displayOptions: {
+			show: {
+				resource: ['function'],
+			},
+		},
+		default: '',
+	},
+	{
+		displayName: 'Context',
+		name: 'context',
+		type: 'json',
+		noDataExpression: false,
+		displayOptions: {
+			show: {
+				resource: ['function'],
+			},
+		},
+		default: '',
+	},
+	{
+		displayName: 'Detached',
+		name: 'detached',
+		type: 'boolean',
+		noDataExpression: false,
+		displayOptions: {
+			show: {
+				resource: ['function'],
+			},
+		},
+		default: false,
+	},
+	{
 		displayName: 'Additional Options',
 		name: 'addition',
 		type: 'collection',

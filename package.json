@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "description": "",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "n8n",
+    "n8n-node",
+    "browserless",
+    "scrape",
+    "automation"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Minh Luc",
+    "email": "luk.mink@gmail.com"
   },
   "repository": {
     "type": "git",
