@@ -1,4 +1,6 @@
 import {
+	IAuthenticate,
+	IAuthenticateBase,
 	IAuthenticateGeneric,
 	ICredentialTestRequest,
 	ICredentialType,
@@ -49,7 +51,7 @@ export class BrowserlessApi implements ICredentialType {
 		request: {
 			baseURL: '={{ $credentials.url }}',
 			encoding: "json",
-			url: '/bearer',
+			url: '/content',
 			method: 'POST',
 			qs: {
 				// Send this as part of the query string

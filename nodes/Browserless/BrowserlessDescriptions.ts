@@ -280,129 +280,6 @@ export const browserlessFields: INodeProperties[] = [
 		placeholder: '',
 		description: 'Elements to scrap',
 	},
-	{
-		displayName: 'Manipulate',
-		name: 'manipulate',
-		type: 'fixedCollection',
-		required: true,
-		typeOptions: {
-			multipleValues: false,
-		},
-		displayOptions: {
-			show: {
-				operation: ['capture'],
-			},
-		},
-		options: [
-			{
-				name: 'resize',
-				displayName: 'Resize',
-				values: [
-					{
-						displayName: 'Flip',
-						name: 'flip',
-						type:  "boolean",
-						default: false,
-					},
-					{
-						displayName: 'Flop',
-						name: 'flop',
-						type:  "boolean",
-						default: false,
-					},
-					{
-						displayName: 'Rotate',
-						name: 'rotate',
-						type:  "number",
-						default: 0,
-					},
-					{
-						displayName: 'Fit',
-						name: 'fit',
-						type: 'options',
-						options: [
-							{
-								name: 'Contain',
-								value: 'contain',
-							},
-							{
-								name: 'Cover',
-								value: 'cover',
-							},
-							{
-								name: 'Fill',
-								value: 'fill',
-							},
-							{
-								name: 'Inside',
-								value: 'inside',
-							},
-							{
-								name: 'Outside',
-								value: 'outside',
-							},
-						],
-						default: 'cover',
-					},
-					{
-						displayName: 'Height',
-						name: 'height',
-						type: 'number',
-						default: 1900,
-					},
-					{
-						displayName: 'Width',
-						name: 'width',
-						type: 'number',
-						default: 1280,
-					},
-					{
-						displayName: 'Position',
-						name: 'position',
-						type: 'options',
-						options: [
-							{
-								name: 'Bottom',
-								value: 'bottom',
-							},
-							{
-								name: 'Left',
-								value: 'left',
-							},
-							{
-								name: 'Left Bottom',
-								value: 'left bottom',
-							},
-							{
-								name: 'Left Top',
-								value: 'left top',
-							},
-							{
-								name: 'Right',
-								value: 'right',
-							},
-							{
-								name: 'Right Bottom',
-								value: 'right bottom',
-							},
-							{
-								name: 'Right Top',
-								value: 'right top',
-							},
-							{
-								name: 'Top',
-								value: 'top',
-							},
-						],
-						default: 'top',
-					},
-				],
-			},
-		],
-		default: [],
-		placeholder: '',
-		description: 'Elements to scrap',
-	},
 	// options?: {
 	//   clip?: {
 	//     height?: number;
@@ -417,8 +294,23 @@ export const browserlessFields: INodeProperties[] = [
 	//   type?: 'jpeg' | 'png';
 	// };
 	{
+		displayName: 'Output Field',
+		name: 'outputField',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				operation: ['get', 'render', 'capture', 'scrape', 'execute'],
+				resource: ['content', 'scrape', 'pdf', 'screenshot', 'function'],
+			},
+		},
+		default: 'html',
+		placeholder: 'html',
+		description: 'Specify data output field',
+	},
+	{
 		displayName: 'Additional Options',
-		name: 'options',
+		name: 'addition',
 		type: 'collection',
 		placeholder: 'Add options',
 		default: {},

@@ -9,8 +9,8 @@ import {
 	INodeTypeDescription,
 } from 'n8n-workflow';
 
-import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessOperation } from './types';
-import { browserlessApiRequestContent, browserlessApiRequestFuction, browserlessApiRequestPdf, browserlessApiRequestScrape, browserlessApiRequestScreenshot } from './GenericFunctions';
+import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessResource } from './types';
+import { browserlessApiRequestContent, browserlessApiRequestFuction, browserlessApiRequestPdf, browserlessApiRequestScrape, browserlessApiRequestScreenshot, getCommonOptions } from './GenericFunctions';
 import { browserlessFields, browserlessOperations } from './BrowserlessDescriptions';
 
 export class Browserless implements INodeType {
@@ -54,6 +54,12 @@ export class Browserless implements INodeType {
 		 */
 		properties: [
 			{
+				displayName: '',
+				name: 'curlImport',
+				type: 'curlImport' as any,
+				default: '',
+			},
+			{
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
@@ -93,10 +99,11 @@ export class Browserless implements INodeType {
 		const returnData: INodeExecutionData[] = [];
 		const length = items.length;
 		let responseData;
-		const operation = this.getNodeParameter('operation', 0) as BrowserlessOperation;
+		const resource = this.getNodeParameter('resource', 0) as BrowserlessResource;
 		for (let i = 0; i < length; i++) {
 			try {
-				if (operation === 'content') {
+				const inputs = getCommonOptions.call(this, i);
+				if (resource === 'content') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestContentOptions = {
 						options: {
@@ -104,10 +111,11 @@ export class Browserless implements INodeType {
 						}
 					};
 					responseData = await browserlessApiRequestContent.call(this, options);
+					console.log(responseData, options);
 					responseData = responseData.data.data;
 				}
 
-				if (operation === 'scrape') {
+				if (resource === 'scrape') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestScrapeOptions = {
 						options: {
@@ -119,7 +127,7 @@ export class Browserless implements INodeType {
 					responseData = responseData.data.data;
 				}
 
-				if (operation === 'function') {
+				if (resource === 'function') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestFnOptions = {
 						options: {
@@ -132,7 +140,7 @@ export class Browserless implements INodeType {
 					responseData = responseData.data.data;
 				}
 
-				if (operation === 'screenshot') {
+				if (resource === 'screenshot') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestScreenshotOptions = {
 						options: {
@@ -143,7 +151,7 @@ export class Browserless implements INodeType {
 					responseData = responseData.data.data;
 				}
 
-				if (operation === 'pdf') {
+				if (resource === 'pdf') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestPdfOptions = {
 						options: {
@@ -154,8 +162,12 @@ export class Browserless implements INodeType {
 					responseData = responseData.data.data;
 				}
 
+				const outputData = {
+					[inputs.outputField]: responseData
+				}
+
 				const executionData = this.helpers.constructExecutionMetaData(
-					this.helpers.returnJsonArray(responseData),
+					this.helpers.returnJsonArray(outputData),
 					{ itemData: { item: i } },
 				);
 
@@ -173,12 +185,5 @@ export class Browserless implements INodeType {
 			}
 		}
 		return this.prepareOutputData(returnData);
-	}
-
-	getCommonOptions(this: IExecuteFunctions, i: number) {
-		const options = {} as any;
-		options.url = this.getNodeParameter('url', i) as string;
-		options.elements = this.getNodeParameter('elements', i) as any;
-		return options
 	}
 }

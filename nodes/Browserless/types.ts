@@ -5,7 +5,7 @@ export type BrowserlessCredentials = {
 	url?: string;
 }
 
-export type BrowserlessOperation = 'content' | 'function' | 'scrape' | 'pdf' | 'screenshot' | 'download';
+export type BrowserlessResource = 'content' | 'function' | 'scrape' | 'pdf' | 'screenshot' | 'download';
 
 export type browserlessApiRequestOptions<T> = {
 	options: T;

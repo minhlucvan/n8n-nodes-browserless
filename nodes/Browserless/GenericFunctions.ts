@@ -3,6 +3,8 @@ import { OptionsWithUri } from 'request';
 import {
 	IDataObject,
 	IExecuteFunctions,
+	IHttpRequestMethods,
+	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	IN8nHttpFullResponse,
 	IN8nHttpResponse,
@@ -17,21 +19,22 @@ import { content, fn, pdf, scrape, screenshot } from './interfaces';
  */
 export async function browserlessApiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions,
-	method: string,
+	method: IHttpRequestMethods,
 	endpoint: string,
 	body: any = {},
 	qs: IDataObject = {},
 ): Promise<any> {
 	const credentials = (await this.getCredentials('browserlessApi')) as BrowserlessCredentials;
 
-	const options: OptionsWithUri = {
+	const options: IHttpRequestOptions = {
 		method,
 		body,
 		qs: {
 			...qs,
 			token: credentials.token,
 		},
-		uri: `${credentials.url}${endpoint}`,
+		baseURL: credentials.url,
+		url: `${endpoint}`,
 		json: true,
 	};
 
@@ -44,7 +47,7 @@ export async function browserlessApiRequest(
 	}
 
 	try {
-		return await this.helpers.request!(options);
+		return await this.helpers.httpRequest(options);
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}
@@ -126,4 +129,12 @@ export async function browserlessApiRequestScrape(
 	return response;
 }
 
-
+/**
+ * Get common node inputs
+ */
+export function getCommonOptions(this: IExecuteFunctions, i: number) {
+	const options = {} as any;
+	options.outputField = this.getNodeParameter('outputField', i) as any;
+	options.addition = this.getNodeParameter('addition', i) as any;
+	return options
+}
