@@ -58,7 +58,7 @@ export class BrowserlessApi implements ICredentialType {
 				token: '={{ $credentials.token }}',
 			},
 			body: {
-				"url": "https://example.com/"
+				"url": "https://example.com/",
 			},
 		},
 	};

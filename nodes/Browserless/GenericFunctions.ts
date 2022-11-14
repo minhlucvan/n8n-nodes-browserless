@@ -25,7 +25,7 @@ export async function browserlessApiRequest(
 	endpoint: string,
 	body: any = {},
 	qs: IDataObject = {},
-	extradOptions: Partial<IHttpRequestOptions> = {}
+	extradOptions: Partial<IHttpRequestOptions> = {},
 ): Promise<IN8nHttpFullResponse | IN8nHttpResponse> {
 	const credentials = (await this.getCredentials('browserlessApi')) as BrowserlessCredentials;
 	const options: IHttpRequestOptions = {
@@ -167,7 +167,7 @@ export async function browserlessApiRequestScrape(
  * Get common node inputs
  */
 export function getCommonOptions(this: IExecuteFunctions, i: number) {
-	const options = {} as any
+	const options = {} as any;
 	options.addition = this.getNodeParameter('addition', i) as any;
 	options.parsed = parseFixedCollectionOptions(options.addition);
 
@@ -175,14 +175,14 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 		options.parsed['setExtraHTTPHeaders'] = composeArrayToMap(options.parsed['setExtraHTTPHeaders'], 'name', 'value');
 	}
 
-	return options
+	return options;
 }
 
 /**
  * compose key - value to object
  */
  export function composeArrayToMap(array: any[], key: string, value: string) {
-	const options = {} as any
+	const options = {} as any;
 	for(const item of array) {
 		options[item[key]] = item[value];
 	}
@@ -194,7 +194,7 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
  */
  export async function prepareBinaryResponse(this: IExecuteFunctions, res: IN8nHttpFullResponse, key: string) {
 	const binaryData = await this.helpers.prepareBinaryData(
-		res.body as unknown as ArrayBuffer
+		res.body as unknown as ArrayBuffer,
 	);
 	return binaryData;
 }
@@ -221,7 +221,7 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 			const resFlat: BrowserlessApiResponseScrapeResultFlat = {
 				selector: dat.selector,
 				url: options.options.url,
-				...res
+				...res,
 			};
 			results.push(resFlat);
 		}
