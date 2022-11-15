@@ -52,9 +52,9 @@ const rejectResourceTypes = Joi.array()
 const addScriptTag = Joi.array()
 	.items(
 		Joi.object().keys({
-			url: Joi.string(),
-			content: Joi.string(),
-			type: Joi.string(),
+			url: Joi.string().optional(),
+			content: Joi.string().optional(),
+			type: Joi.string().optional,
 		}),
 	)
 	.default([]);

@@ -10,5 +10,6 @@ convertFromDirectory({
   schemaDirectory: './nodes/Browserless/chemas',
   typeOutputDirectory: './nodes/Browserless/interfaces',
 	schemaFileSuffix: '.schema',
+	defaultToRequired: false,
   debug: true
 });
