@@ -229,7 +229,7 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
  export function parseFixedCollectionOptions(rawOption: object) {
 	const option = {} as any;
 	for(const [key, value] of Object.entries(rawOption)) {
-		if(Array.isArray(value)) {
+		if(typeof value === 'object') {
 			const [subValue] = Object.values(value);
 			option[key] = subValue;
 		} else {
