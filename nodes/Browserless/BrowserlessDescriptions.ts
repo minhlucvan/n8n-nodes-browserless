@@ -410,7 +410,7 @@ export const browserlessFields: INodeProperties[] = [
 								displayName: 'Type',
 								name: 'type',
 								type: 'string',
-								default: 'text/javascript',
+								default: 'application/javascript',
 							},
 						],
 					},
