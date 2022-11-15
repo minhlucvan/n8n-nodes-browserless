@@ -233,7 +233,7 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 			const [subValue] = Object.values(value);
 			option[key] = subValue;
 		} else {
-			option.key = value;
+			option[key] = value;
 		}
 
 	}
