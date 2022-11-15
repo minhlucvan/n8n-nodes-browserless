@@ -48,7 +48,7 @@ export async function browserlessApiRequest(
 	if (Object.keys(body).length === 0) {
 		delete options.body;
 	}
-
+	console.log(options)
 	try {
 		return await this.helpers.httpRequestWithAuthentication.call(this, 'browserlessApi', options) as IN8nHttpFullResponse;
 	} catch (error) {
@@ -170,11 +170,15 @@ export async function browserlessApiRequestScrape(
  */
 export function getCommonOptions(this: IExecuteFunctions, i: number) {
 	const options = {} as any;
-	options.addition = this.getNodeParameter('addition', i) as any;
-	options.parsed = parseFixedCollectionOptions(options.addition);
+	try {
+		options.addition = this.getNodeParameter('addition', i) as any;
+		options.parsed = parseFixedCollectionOptions(options.addition);
 
-	if(options.parsed['setExtraHTTPHeaders']) {
-		options.parsed['setExtraHTTPHeaders'] = composeArrayToMap(options.parsed['setExtraHTTPHeaders'], 'name', 'value');
+		if(options.parsed['setExtraHTTPHeaders']) {
+			options.parsed['setExtraHTTPHeaders'] = composeArrayToMap(options.parsed['setExtraHTTPHeaders'], 'name', 'value');
+		}
+	} catch(e) {
+		// do nothing
 	}
 
 	return options;

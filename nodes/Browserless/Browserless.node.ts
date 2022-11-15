@@ -142,7 +142,6 @@ export class Browserless implements INodeType {
 						},
 					};
 					const responseJson = await browserlessApiRequestScrape.call(this, options);
-
 					if (flattenedOutput) {
 						responseData = flaternScrapedResults.call(this, options, responseJson.data);
 					} else {
