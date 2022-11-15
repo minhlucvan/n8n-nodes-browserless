@@ -48,7 +48,7 @@ export async function browserlessApiRequest(
 	if (Object.keys(body).length === 0) {
 		delete options.body;
 	}
-	console.log(options)
+	console.log(options);
 	try {
 		return await this.helpers.httpRequestWithAuthentication.call(this, 'browserlessApi', options) as IN8nHttpFullResponse;
 	} catch (error) {
