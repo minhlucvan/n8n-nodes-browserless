@@ -138,7 +138,7 @@ export class Browserless implements INodeType {
 						options: {
 							url,
 							elements,
-							...inputs.parsed
+							...inputs.parsed,
 						},
 					};
 					const responseJson = await browserlessApiRequestScrape.call(this, options);
