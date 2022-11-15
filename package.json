@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-browserless",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "n8n mode integrate with Browserless platform",
   "keywords": [
     "n8n-community-node-package",

@@ -182,6 +182,10 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 			options.parsed['addScriptTag'] = Array.from(options.parsed['addScriptTag']).map(tag => omitEmptyProps(tag));
 		}
 
+		if(options.parsed['waitFor']) {
+			options.parsed['waitFor'] = Number.isNaN(+options.parsed['waitFor']) ? options.parsed['waitFor'] :+options.parsed['waitFor'];
+		}
+
 	} catch(e) {
 		// do nothing
 	}
