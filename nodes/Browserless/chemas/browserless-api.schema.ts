@@ -52,9 +52,9 @@ const rejectResourceTypes = Joi.array()
 const addScriptTag = Joi.array()
 	.items(
 		Joi.object().keys({
-			url: Joi.string().optional(),
-			content: Joi.string().optional(),
-			type: Joi.string().optional,
+			url: Joi.string().allow('').optional(),
+			content: Joi.string().allow('').optional(),
+			type: Joi.string().allow('').optional(),
 		}),
 	)
 	.default([]);
@@ -62,8 +62,8 @@ const addScriptTag = Joi.array()
 const addStyleTag = Joi.array()
 	.items(
 		Joi.object().keys({
-			url: Joi.string(),
-			content: Joi.string(),
+			url: Joi.string().allow('').optional(),
+			content: Joi.string().allow('').optional(),
 		}),
 	)
 	.default([]);
