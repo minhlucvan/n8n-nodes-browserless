@@ -177,6 +177,11 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 		if(options.parsed['setExtraHTTPHeaders']) {
 			options.parsed['setExtraHTTPHeaders'] = composeArrayToMap(options.parsed['setExtraHTTPHeaders'], 'name', 'value');
 		}
+
+		if(options.parsed['addScriptTag']) {
+			options.parsed['addScriptTag'] = Array.from(options.parsed['addScriptTag']).map(tag => omitEmptyProps(tag));
+		}
+
 	} catch(e) {
 		// do nothing
 	}
@@ -191,6 +196,19 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 	const options = {} as any;
 	for(const item of array) {
 		options[item[key]] = item[value];
+	}
+	return options;
+}
+
+/**
+ * compose key - value to object
+ */
+ export function omitEmptyProps(obj: any) {
+	const options = {} as any;
+	for(const [key, value] of Object.entries(obj)) {
+		if(!!value) {
+			options[key] = value;
+		}
 	}
 	return options;
 }
