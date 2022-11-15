@@ -3,4 +3,4 @@ package_path=$(pwd)
 
 cd "${npm_root}/n8n/"
 
-npm install n8n-nodes-browserless
+npm install $package_path

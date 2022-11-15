@@ -87,6 +87,8 @@ export async function browserlessApiRequestScrape(
 		...options.options,
 	};
 	const {error, value} = schems.scrape.validate(body);
+	console.log(error, value);
+
 	if(error) {
 		throw error;
 	}

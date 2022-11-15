@@ -26,6 +26,7 @@ import {
 	browserlessApiRequestScreenshot,
 	flaternScrapedResults,
 	getCommonOptions,
+	parseFixedCollectionOptions,
 } from './GenericFunctions';
 import { browserlessFields, browserlessOperations } from './BrowserlessDescriptions';
 
@@ -137,6 +138,7 @@ export class Browserless implements INodeType {
 						options: {
 							url,
 							elements,
+							...inputs.parsed
 						},
 					};
 					const responseJson = await browserlessApiRequestScrape.call(this, options);
@@ -172,6 +174,7 @@ export class Browserless implements INodeType {
 					const options: BrowserlessApiRequestScreenshotOptions = {
 						options: {
 							url,
+							...inputs.parsed,
 						},
 					};
 					const responseScreenshot = await browserlessApiRequestScreenshot.call(this, options);
@@ -188,6 +191,7 @@ export class Browserless implements INodeType {
 					const options: BrowserlessApiRequestPdfOptions = {
 						options: {
 							url,
+							...inputs.parsed,
 						},
 					};
 					const responsePdf = await browserlessApiRequestPdf.call(this, options);
