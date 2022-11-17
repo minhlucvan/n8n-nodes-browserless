@@ -6,7 +6,7 @@
 </p>
 
 
-This is an n8n community node. It lets you interact with [browserless](https://github.com/browserless/chrome) íntance in your `n8n` workflows.
+This is an n8n community node. It lets you interact with [browserless](https://github.com/browserless/chrome) instance in your `n8n` workflows.
 
 browserless is a web-service that allows for remote clients to connect, drive, and execute headless work; all inside of docker. It offers first-class integrations for puppeteer, playwright, selenium's webdriver, and a slew of handy REST APIs for doing more common work. On top of all that it takes care of other common issues such as missing system-fonts, missing external libraries, and performance improvements. We even handle edge-cases like downloading files, managing sessions, and have a fully-fledged documentation site.
 
