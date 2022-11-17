@@ -77,7 +77,7 @@ This node require a browserless `url` and `token` in order to connect to your `b
 
 ## Compatibility
 
-I am develop the node on `n8n@0.200.1`. I don't have the change to test on other versions yet.
+I develop the node on `n8n@0.200.1`. I don't have the change to test on other versions yet.
 
 ## Usage
 
