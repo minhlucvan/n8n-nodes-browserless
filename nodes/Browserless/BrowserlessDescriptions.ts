@@ -103,6 +103,501 @@ export const browserlessOperations: INodeProperties[] = [
 	},
 ];
 
+export const browserlessPageOptionsFileds: INodeProperties = 	{
+	displayName: 'Additional Options',
+	name: 'addition',
+	type: 'collection',
+	placeholder: 'Add options',
+	default: {},
+	options: [
+		{
+			displayName: 'Http Headers',
+			name: 'setExtraHTTPHeaders',
+			placeholder: 'Add Header',
+			type: 'fixedCollection',
+			default: {},
+			typeOptions: {
+				multipleValues: true,
+			},
+			description: 'Additional http header to be sent along request',
+			options: [
+				{
+					name: 'header',
+					displayName: 'Header',
+					values: [
+						{
+							displayName: 'Name',
+							name: 'name',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Value',
+							name: 'value',
+							type: 'string',
+							default: '',
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'Inject Script',
+			name: 'addScriptTag',
+			placeholder: 'Add Script',
+			type: 'fixedCollection',
+			default: {},
+			typeOptions: {
+				multipleValues: true,
+			},
+			description: 'Additional script tag',
+			options: [
+				{
+					name: 'script',
+					displayName: 'Script',
+					values: [
+						{
+							displayName: 'Url',
+							name: 'url',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Content',
+							name: 'content',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Type',
+							name: 'type',
+							type: 'string',
+							default: 'application/javascript',
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'Inject Style',
+			name: 'addStyleTag',
+			placeholder: 'Add style',
+			type: 'fixedCollection',
+			default: {},
+			typeOptions: {
+				multipleValues: true,
+			},
+			description: 'Additional style tag',
+			options: [
+				{
+					name: 'style',
+					displayName: 'Style',
+					values: [
+						{
+							displayName: 'Url',
+							name: 'url',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Content',
+							name: 'content',
+							type: 'string',
+							default: '',
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'Authentication',
+			name: 'authenticate',
+			placeholder: 'Add authentication',
+			type: 'fixedCollection',
+			default: {},
+			typeOptions: {
+				multipleValues: false,
+			},
+			description: 'Http basic authentication',
+			options: [
+				{
+					name: 'authentication',
+					displayName: 'Authentication',
+					values: [
+						{
+							displayName: 'Username',
+							name: 'username',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Password',
+							name: 'password',
+							type: 'string',
+							typeOptions: { password: true },
+							default: '',
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'Cookies',
+			name: 'cookies',
+			placeholder: 'Add cookie',
+			type: 'fixedCollection',
+			default: {},
+			typeOptions: {
+				multipleValues: true,
+			},
+			description: 'Add http cookies',
+			options: [
+				{
+					name: 'cookies',
+					displayName: 'Cookie',
+					values: [
+						{
+							displayName: 'Domain',
+							name: 'domain',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Expires',
+							name: 'expires',
+							type: 'number',
+							default: 0,
+						},
+						{
+							displayName: 'HttpOnly',
+							name: 'httpOnly',
+							type: 'boolean',
+							default: true,
+						},
+						{
+							displayName: 'Name',
+							name: 'name',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Path',
+							name: 'path',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'sameSite',
+							name: 'sameSite',
+							type: 'options',
+							options: [
+								{
+									name: 'Strict',
+									value: 'Strict',
+								},
+								{
+									name: 'Lax',
+									value: 'Lax',
+								},
+							],
+							default: 'Strict',
+						},
+						{
+							displayName: 'Secure',
+							name: 'secure',
+							type: 'boolean',
+							default: true,
+						},
+						{
+							displayName: 'Url',
+							name: 'url',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Value',
+							name: 'value',
+							type: 'string',
+							default: '',
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'Goto Options',
+			name: 'gotoOptions',
+			placeholder: 'Add goto Options',
+			type: 'fixedCollection',
+			default: {},
+			typeOptions: {
+				multipleValues: false,
+			},
+			options: [
+				{
+					name: 'goto',
+					displayName: 'Goto',
+					values: [
+						{
+							displayName: 'Timeout',
+							name: 'timeout',
+							type: 'number',
+							default: 0,
+						},
+						{
+							displayName: 'WaitUntil',
+							name: 'waitUntil',
+							type: 'options',
+							options: [
+								{
+									name: 'Load',
+									value: 'load',
+								},
+								{
+									name: 'Domcontentloaded',
+									value: 'domcontentloaded',
+								},
+								{
+									name: 'Networkidle0',
+									value: 'networkidle0',
+								},
+								{
+									name: 'Networkidle2',
+									value: 'networkidle2',
+								},
+							],
+							default: 'load',
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'Reject Request Pattern',
+			name: 'rejectRequestPattern',
+			placeholder: '',
+			type: 'string',
+			default: '',
+			typeOptions: {
+				multipleValues: true,
+			},
+		},
+		{
+			displayName: 'Reject Resource Types',
+			name: 'rejectResourceTypes',
+			placeholder: '',
+			type: 'multiOptions',
+			options: [
+				{
+					name: 'Document',
+					value: 'document',
+				},
+				{
+					name: 'Eventsource',
+					value: 'eventsource',
+				},
+				{
+					name: 'Fetch',
+					value: 'fetch',
+				},
+				{
+					name: 'Font',
+					value: 'font',
+				},
+				{
+					name: 'Image',
+					value: 'image',
+				},
+				{
+					name: 'Manifest',
+					value: 'manifest',
+				},
+				{
+					name: 'Media',
+					value: 'media',
+				},
+				{
+					name: 'Other',
+					value: 'other',
+				},
+				{
+					name: 'Script',
+					value: 'script',
+				},
+				{
+					name: 'Stylesheet',
+					value: 'stylesheet',
+				},
+				{
+					name: 'Texttrack',
+					value: 'texttrack',
+				},
+				{
+					name: 'Websocket',
+					value: 'websocket',
+				},
+				{
+					name: 'Xhr',
+					value: 'xhr',
+				},
+			],
+			default: [],
+			typeOptions: {
+				multipleValues: false,
+			},
+		},
+		{
+			displayName: 'Request Interceptors',
+			name: 'requestInterceptors',
+			placeholder: '',
+			type: 'fixedCollection',
+			typeOptions: {
+				multipleValues: true,
+			},
+			default: {},
+			description: 'Add interceptor',
+			options: [
+				{
+					name: 'interceptor',
+					displayName: 'Interceptor',
+					values: [
+						{
+							displayName: 'Pattern',
+							name: 'pattern',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Body',
+							name: 'body',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'contentType',
+							name: 'contentType',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Headers',
+							name: 'headers',
+							type: 'json',
+							default: '',
+						},
+						{
+							displayName: 'Status',
+							name: 'status',
+							type: 'number',
+							default: 200,
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'userAgent',
+			name: 'userAgent',
+			placeholder: '',
+			type: 'string',
+			default: '',
+			typeOptions: {
+				multipleValues: false,
+			},
+			description: 'Http basic authentication',
+		},
+		{
+			displayName: 'userAgent',
+			name: 'userAgent',
+			placeholder: '',
+			type: 'string',
+			default: '',
+			typeOptions: {
+				multipleValues: false,
+			},
+			description: 'Http basic authentication',
+		},
+		{
+			displayName: 'Wait For',
+			name: 'waitFor',
+			placeholder: '',
+			type: 'string',
+			default: '',
+			description: 'Http basic authentication',
+		},
+		{
+			displayName: 'Set JavaScript Enabled',
+			name: 'setJavaScriptEnabled',
+			placeholder: '',
+			type: 'boolean',
+			default: true,
+			description: 'Whether enable javascript',
+		},
+		{
+			displayName: 'Viewport',
+			name: 'viewport',
+			placeholder: '',
+			type: 'fixedCollection',
+			typeOptions: {
+				multipleValues: true,
+			},
+			default: {},
+			description: 'Add interceptor',
+			options: [
+				{
+					name: 'interceptor',
+					displayName: 'Interceptor',
+					values: [
+						{
+							displayName: 'deviceScaleFactor',
+							name: 'deviceScaleFactor',
+							type: 'number',
+							default: 1,
+						},
+						{
+							displayName: 'hasTouch',
+							name: 'hasTouch',
+							type: 'boolean',
+							default: false,
+						},
+						{
+							displayName: 'Height',
+							name: 'height',
+							type: 'number',
+							default: 1900,
+						},
+						{
+							displayName: 'Width',
+							name: 'width',
+							type: 'number',
+							default: 1280,
+						},
+						{
+							displayName: 'isLandscape',
+							name: 'isLandscape',
+							type: 'boolean',
+							default: true,
+						},
+						{
+							displayName: 'isMobile',
+							name: 'isMobile',
+							type: 'boolean',
+							default: false,
+						},
+					],
+				},
+			],
+		},
+	],
+	displayOptions: {
+		// the resources and operations to display this element with
+		show: {
+			operation: ['get', 'render', 'capture', 'scrape'],
+			resource: ['content', 'json', 'pdf', 'screenshot'],
+		},
+	},
+};
+
 export const browserlessFields: INodeProperties[] = [
 	{
 		displayName: 'URL',
@@ -341,498 +836,5 @@ export const browserlessFields: INodeProperties[] = [
 		},
 		default: false,
 	},
-	{
-		displayName: 'Additional Options',
-		name: 'addition',
-		type: 'collection',
-		placeholder: 'Add options',
-		default: {},
-		options: [
-			{
-				displayName: 'Http Headers',
-				name: 'setExtraHTTPHeaders',
-				placeholder: 'Add Header',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: true,
-				},
-				description: 'Additional http header to be sent along request',
-				options: [
-					{
-						name: 'header',
-						displayName: 'Header',
-						values: [
-							{
-								displayName: 'Name',
-								name: 'name',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Value',
-								name: 'value',
-								type: 'string',
-								default: '',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'Inject Script',
-				name: 'addScriptTag',
-				placeholder: 'Add Script',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: true,
-				},
-				description: 'Additional script tag',
-				options: [
-					{
-						name: 'script',
-						displayName: 'Script',
-						values: [
-							{
-								displayName: 'Url',
-								name: 'url',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Content',
-								name: 'content',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Type',
-								name: 'type',
-								type: 'string',
-								default: 'application/javascript',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'Inject Style',
-				name: 'addStyleTag',
-				placeholder: 'Add style',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: true,
-				},
-				description: 'Additional style tag',
-				options: [
-					{
-						name: 'style',
-						displayName: 'Style',
-						values: [
-							{
-								displayName: 'Url',
-								name: 'url',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Content',
-								name: 'content',
-								type: 'string',
-								default: '',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'Authentication',
-				name: 'authenticate',
-				placeholder: 'Add authentication',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: false,
-				},
-				description: 'Http basic authentication',
-				options: [
-					{
-						name: 'authentication',
-						displayName: 'Authentication',
-						values: [
-							{
-								displayName: 'Username',
-								name: 'usename',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Password',
-								name: 'password',
-								type: 'string',
-								typeOptions: { password: true },
-								default: '',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'Cookies',
-				name: 'cookies',
-				placeholder: 'Add cookie',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: false,
-				},
-				description: 'Add http cookies',
-				options: [
-					{
-						name: 'authentication',
-						displayName: 'Authentication',
-						values: [
-							{
-								displayName: 'Domain',
-								name: 'domain',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Expires',
-								name: 'expires',
-								type: 'number',
-								default: '',
-							},
-							{
-								displayName: 'HttpOnly',
-								name: 'httpOnly',
-								type: 'boolean',
-								default: true,
-							},
-							{
-								displayName: 'Name',
-								name: 'name',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Path',
-								name: 'path',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'sameSite',
-								name: 'sameSite',
-								type: 'options',
-								options: [
-									{
-										name: 'Strict',
-										value: 'Strict',
-									},
-									{
-										name: 'Lax',
-										value: 'Lax',
-									},
-								],
-								default: 'Strict',
-							},
-							{
-								displayName: 'Secure',
-								name: 'secure',
-								type: 'boolean',
-								default: true,
-							},
-							{
-								displayName: 'Url',
-								name: 'url',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Value',
-								name: 'value',
-								type: 'string',
-								default: '',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'Goto Options',
-				name: 'gotoOptions',
-				placeholder: 'Add goto Options',
-				type: 'fixedCollection',
-				default: {},
-				typeOptions: {
-					multipleValues: false,
-				},
-				options: [
-					{
-						name: 'goto',
-						displayName: 'Goto',
-						values: [
-							{
-								displayName: 'Timeout',
-								name: 'timeout',
-								type: 'number',
-								default: 0,
-							},
-							{
-								displayName: 'WaitUntil',
-								name: 'waitUntil',
-								type: 'options',
-								options: [
-									{
-										name: 'Load',
-										value: 'load',
-									},
-									{
-										name: 'Domcontentloaded',
-										value: 'domcontentloaded',
-									},
-									{
-										name: 'Networkidle0',
-										value: 'networkidle0',
-									},
-									{
-										name: 'Networkidle2',
-										value: 'networkidle2',
-									},
-								],
-								default: 'load',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'Reject Request Pattern',
-				name: 'rejectRequestPattern',
-				placeholder: '',
-				type: 'string',
-				default: '',
-				typeOptions: {
-					multipleValues: true,
-				},
-			},
-			{
-				displayName: 'Reject Resource Types',
-				name: 'rejectResourceTypes',
-				placeholder: '',
-				type: 'multiOptions',
-				options: [
-					{
-						name: 'Document',
-						value: 'document',
-					},
-					{
-						name: 'Eventsource',
-						value: 'eventsource',
-					},
-					{
-						name: 'Fetch',
-						value: 'fetch',
-					},
-					{
-						name: 'Font',
-						value: 'font',
-					},
-					{
-						name: 'Image',
-						value: 'image',
-					},
-					{
-						name: 'Manifest',
-						value: 'manifest',
-					},
-					{
-						name: 'Media',
-						value: 'media',
-					},
-					{
-						name: 'Other',
-						value: 'other',
-					},
-					{
-						name: 'Script',
-						value: 'script',
-					},
-					{
-						name: 'Stylesheet',
-						value: 'stylesheet',
-					},
-					{
-						name: 'Texttrack',
-						value: 'texttrack',
-					},
-					{
-						name: 'Websocket',
-						value: 'websocket',
-					},
-					{
-						name: 'Xhr',
-						value: 'xhr',
-					},
-				],
-				default: [],
-				typeOptions: {
-					multipleValues: false,
-				},
-			},
-			{
-				displayName: 'Request Interceptors',
-				name: 'requestInterceptors',
-				placeholder: '',
-				type: 'fixedCollection',
-				typeOptions: {
-					multipleValues: true,
-				},
-				default: {},
-				description: 'Add interceptor',
-				options: [
-					{
-						name: 'interceptor',
-						displayName: 'Interceptor',
-						values: [
-							{
-								displayName: 'Pattern',
-								name: 'pattern',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Body',
-								name: 'body',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'contentType',
-								name: 'contentType',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Headers',
-								name: 'headers',
-								type: 'json',
-								default: '',
-							},
-							{
-								displayName: 'Status',
-								name: 'status',
-								type: 'number',
-								default: 200,
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'userAgent',
-				name: 'userAgent',
-				placeholder: '',
-				type: 'string',
-				default: '',
-				typeOptions: {
-					multipleValues: false,
-				},
-				description: 'Http basic authentication',
-			},
-			{
-				displayName: 'userAgent',
-				name: 'userAgent',
-				placeholder: '',
-				type: 'string',
-				default: '',
-				typeOptions: {
-					multipleValues: false,
-				},
-				description: 'Http basic authentication',
-			},
-			{
-				displayName: 'Wait For',
-				name: 'waitFor',
-				placeholder: '',
-				type: 'string',
-				default: '',
-				description: 'Http basic authentication',
-			},
-			{
-				displayName: 'Set JavaScript Enabled',
-				name: 'setJavaScriptEnabled',
-				placeholder: '',
-				type: 'boolean',
-				default: true,
-				description: 'Whether enable javascript',
-			},
-			{
-				displayName: 'Viewport',
-				name: 'viewport',
-				placeholder: '',
-				type: 'fixedCollection',
-				typeOptions: {
-					multipleValues: true,
-				},
-				default: {},
-				description: 'Add interceptor',
-				options: [
-					{
-						name: 'interceptor',
-						displayName: 'Interceptor',
-						values: [
-							{
-								displayName: 'deviceScaleFactor',
-								name: 'deviceScaleFactor',
-								type: 'number',
-								default: 1,
-							},
-							{
-								displayName: 'hasTouch',
-								name: 'hasTouch',
-								type: 'boolean',
-								default: false,
-							},
-							{
-								displayName: 'Height',
-								name: 'height',
-								type: 'number',
-								default: 1900,
-							},
-							{
-								displayName: 'Width',
-								name: 'width',
-								type: 'number',
-								default: 1280,
-							},
-							{
-								displayName: 'isLandscape',
-								name: 'isLandscape',
-								type: 'boolean',
-								default: true,
-							},
-							{
-								displayName: 'isMobile',
-								name: 'isMobile',
-								type: 'boolean',
-								default: false,
-							},
-						],
-					},
-				],
-			},
-		],
-		displayOptions: {
-			// the resources and operations to display this element with
-			show: {
-				operation: ['get', 'render', 'capture', 'scrape'],
-				resource: ['content', 'json', 'pdf', 'screenshot'],
-			},
-		},
-	},
+	browserlessPageOptionsFileds
 ];

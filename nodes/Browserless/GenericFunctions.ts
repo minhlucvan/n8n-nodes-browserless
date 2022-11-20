@@ -1,5 +1,5 @@
 import { Response } from 'request';
-
+import { inspect } from 'util'
 import {
 	IAllExecuteFunctions,
 	IDataObject,
@@ -9,12 +9,16 @@ import {
 	ILoadOptionsFunctions,
 	IN8nHttpFullResponse,
 	IN8nHttpResponse,
+	INodeProperties,
+	INodePropertyCollection,
+	INodePropertyOptions,
 	NodeApiError,
 } from 'n8n-workflow';
 
 import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessApiResponseScrape, BrowserlessApiResponseScrapeData, BrowserlessApiResponseScrapeDataFlat, BrowserlessApiResponseScrapeResultFlat, BrowserlessCredentials } from './types';
 import { content, fn, pdf, scrape, screenshot } from './interfaces';
 import * as schems from './chemas/browserless-api.schema';
+import { browserlessPageOptionsFileds } from './BrowserlessDescriptions';
 
 /**
  * Make a request to Browserless API.
@@ -48,11 +52,24 @@ export async function browserlessApiRequest(
 	if (Object.keys(body).length === 0) {
 		delete options.body;
 	}
-	console.log(options);
+
 	try {
 		return await this.helpers.httpRequestWithAuthentication.call(this, 'browserlessApi', options) as IN8nHttpFullResponse;
 	} catch (error) {
-		throw new NodeApiError(this.getNode(), error);
+		const errorDetails = {
+			...error,
+			consig: error?.cause?.config,
+			request: error?.cause?.request ? {
+				path:  error?.cause?.request?.path,
+				_headers: error?.cause?.request?._headers,
+				data: error?.cause?.request?.config?.data
+			} : null,
+			response: error?.cause?.request ? {
+				data: error?.cause?.response?.data,
+				status: error?.cause?.response?.status,
+			} : null,
+		};
+		throw new NodeApiError(this.getNode(), errorDetails);
 	}
 }
 
@@ -76,7 +93,7 @@ export async function browserlessApiRequestContent(
 }
 
 /**
- * Make a content request to Browserless API.
+ * Make a scrape request to Browserless API.
  * @see: https://docs.browserless.io/docs/scrape.html
  */
 export async function browserlessApiRequestScrape(
@@ -87,7 +104,6 @@ export async function browserlessApiRequestScrape(
 		...options.options,
 	};
 	const {error, value} = schems.scrape.validate(body);
-	console.log(error, value);
 
 	if(error) {
 		throw error;
@@ -117,7 +133,7 @@ export async function browserlessApiRequestScrape(
 
 
 /**
- * Make a content request to Browserless API.
+ * Make a pdf request to Browserless API.
  * @see: https://docs.browserless.io/docs/pdf.html
  */
  export async function browserlessApiRequestPdf(
@@ -141,8 +157,8 @@ export async function browserlessApiRequestScrape(
 }
 
 /**
- * Make a content request to Browserless API.
- * @see: https://docs.browserless.io/docs/pdf.html
+ * Make a screenshot request to Browserless API.
+ * @see: https://docs.browserless.io/docs/screenshot.html
  */
  export async function browserlessApiRequestScreenshot(
 	this: IExecuteFunctions,
@@ -169,21 +185,21 @@ export async function browserlessApiRequestScrape(
  * Get common node inputs
  */
 export function getCommonOptions(this: IExecuteFunctions, i: number) {
-	const options = {} as any;
+	let options = {} as any;
 	try {
-		options.addition = this.getNodeParameter('addition', i) as any;
-		options.parsed = parseFixedCollectionOptions(options.addition);
+		const addition = this.getNodeParameter('addition', i) as any;
+		options = parseCollectionOptions(browserlessPageOptionsFileds, addition);
 
-		if(options.parsed['setExtraHTTPHeaders']) {
-			options.parsed['setExtraHTTPHeaders'] = composeArrayToMap(options.parsed['setExtraHTTPHeaders'], 'name', 'value');
+		if(options['setExtraHTTPHeaders']) {
+			options['setExtraHTTPHeaders'] = composeArrayToMap(options['setExtraHTTPHeaders'], 'name', 'value');
 		}
 
-		if(options.parsed['addScriptTag']) {
-			options.parsed['addScriptTag'] = Array.from(options.parsed['addScriptTag']).map(tag => omitEmptyProps(tag));
+		if(options['addScriptTag']) {
+			options['addScriptTag'] = Array.from(options['addScriptTag']).map(tag => omitEmptyProps(tag));
 		}
 
-		if(options.parsed['waitFor']) {
-			options.parsed['waitFor'] = Number.isNaN(+options.parsed['waitFor']) ? options.parsed['waitFor'] :+options.parsed['waitFor'];
+		if(options['waitFor']) {
+			options['waitFor'] = Number.isNaN(+options['waitFor']) ? options['waitFor'] :+options['waitFor'];
 		}
 
 	} catch(e) {
@@ -230,20 +246,47 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 /**
  * Parse fixed collection options
  */
- export function parseFixedCollectionOptions(rawOption: object) {
-	const option = {} as any;
-	for(const [key, value] of Object.entries(rawOption)) {
-		if(typeof value === 'object') {
-			const [subValue] = Object.values(value);
-			option[key] = subValue;
-		} else {
-			option[key] = value;
-		}
-
+ export function parseFixedCollectionOptions(descriptor: INodeProperties,rawOption: any) {
+	if(descriptor.type !== 'fixedCollection') {
+		return rawOption;
 	}
-	return option;
+	if(descriptor.typeOptions && descriptor.typeOptions.multipleValues) {
+		const [firstValue] = Object.values(rawOption);
+		return firstValue;
+	}
+
+	if(descriptor.typeOptions && !descriptor.typeOptions.multipleValues) {
+		return rawOption[descriptor.name];
+	}
+
+	return rawOption;
 }
 
+/**
+ * Parse collection options
+ */
+ export function parseCollectionOptions(descriptor: INodeProperties, rawOption: any) {
+	const results = {} as any;
+	if(descriptor.type !== 'collection') {
+		return rawOption;
+	}
+	for(const option of descriptor?.options ?? []) {
+		if(!option.name || typeof rawOption[option.name] === 'undefined') {
+			continue;
+		}
+		if(isINodeProperties(option) && option?.type === 'fixedCollection') {
+			results[option.name] = parseFixedCollectionOptions(option, rawOption[option.name]);
+		} else {
+			results[option.name] = rawOption[option.name];
+		}
+	}
+	return results;
+}
+
+//
+export function isINodeProperties(descriptor: INodeProperties | INodePropertyOptions | INodePropertyCollection): descriptor is INodeProperties {
+	return (descriptor as INodeProperties).type !== undefined;
+}
 /**
  * flaterned scrape results
  */

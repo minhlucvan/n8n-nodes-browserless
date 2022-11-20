@@ -1,9 +1,7 @@
 import { OptionsWithUri } from 'request';
 
 import {
-	IDataObject,
 	IExecuteFunctions,
-	IExecuteSingleFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
@@ -118,7 +116,7 @@ export class Browserless implements INodeType {
 					const options: BrowserlessApiRequestContentOptions = {
 						options: {
 							url,
-							...inputs.parsed,
+							...inputs,
 						},
 					};
 					const responseContent = await browserlessApiRequestContent.call(this, options);
@@ -138,7 +136,7 @@ export class Browserless implements INodeType {
 						options: {
 							url,
 							elements,
-							...inputs.parsed,
+							...inputs,
 						},
 					};
 					const responseJson = await browserlessApiRequestScrape.call(this, options);
@@ -173,7 +171,7 @@ export class Browserless implements INodeType {
 					const options: BrowserlessApiRequestScreenshotOptions = {
 						options: {
 							url,
-							...inputs.parsed,
+							...inputs,
 						},
 					};
 					const responseScreenshot = await browserlessApiRequestScreenshot.call(this, options);
@@ -190,7 +188,7 @@ export class Browserless implements INodeType {
 					const options: BrowserlessApiRequestPdfOptions = {
 						options: {
 							url,
-							...inputs.parsed,
+							...inputs,
 						},
 					};
 					const responsePdf = await browserlessApiRequestPdf.call(this, options);
@@ -217,6 +215,7 @@ export class Browserless implements INodeType {
 					returnData.push(...executionErrorData);
 					continue;
 				}
+
 				throw error;
 			}
 		}
