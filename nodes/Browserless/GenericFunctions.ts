@@ -1,5 +1,5 @@
 import { Response } from 'request';
-import { inspect } from 'util'
+import { inspect } from 'util';
 import {
 	IAllExecuteFunctions,
 	IDataObject,
@@ -62,7 +62,7 @@ export async function browserlessApiRequest(
 			request: error?.cause?.request ? {
 				path:  error?.cause?.request?.path,
 				_headers: error?.cause?.request?._headers,
-				data: error?.cause?.request?.config?.data
+				data: error?.cause?.request?.config?.data,
 			} : null,
 			response: error?.cause?.request ? {
 				data: error?.cause?.response?.data,

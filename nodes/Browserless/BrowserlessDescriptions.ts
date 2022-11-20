@@ -836,5 +836,5 @@ export const browserlessFields: INodeProperties[] = [
 		},
 		default: false,
 	},
-	browserlessPageOptionsFileds
+	browserlessPageOptionsFileds,
 ];
