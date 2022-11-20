@@ -1,5 +1,9 @@
-on: push
+name: Publish NPM Package 
 
+on:
+  release:
+    types: [published]
+    
 jobs:
   publish:
     runs-on: ubuntu-latest
