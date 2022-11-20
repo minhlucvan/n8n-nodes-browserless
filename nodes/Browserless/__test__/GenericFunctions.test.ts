@@ -33,7 +33,7 @@ describe('parseFixedCollectionOptions', () => {
 	})
 	it('should parse authenticate properly', () => {
 		const collectionOptions = {
-			authenticate: { authenticate: { usename: 'Test', password: 'test' } },
+			authenticate: { authenticate: { username: 'Test', password: 'test' } },
 		};
 		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
 		console.log('----', parsedFixedCollectionOptions);

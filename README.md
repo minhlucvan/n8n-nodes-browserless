@@ -96,8 +96,8 @@ I develop the node on `n8n@0.200.1`. I don't have the change to test on other ve
 
 ## Version history
 
-- `0.0.1` initital release
-- `0.2.0` fixed common issues
-
+- `0.0.1` Initital release
+- `0.2.0` Fixed common issues
+- `0.3.0` Fixed #[1](https://github.com/minhlucvan/n8n-nodes-browserless/issues/1), implement tests
 
 
