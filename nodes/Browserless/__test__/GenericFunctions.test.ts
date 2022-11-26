@@ -49,9 +49,9 @@ describe('parseFixedCollectionOptions', () => {
 			"gotoOptions": {
 				"gotoOptions": {
 					"timeout": 0,
-					"waitUntil": "load"
-				}
-			}
+					"waitUntil": "load",
+				},
+			},
 		};
 
 		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
@@ -65,8 +65,8 @@ describe('parseFixedCollectionOptions', () => {
 		expect(results.value).toMatchSnapshot({
 			gotoOptions: {
 				"timeout": 0,
-				"waitUntil": "load"
-			}
-		})
+				"waitUntil": "load",
+			},
+		});
 	});
 });

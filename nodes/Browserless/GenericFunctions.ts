@@ -150,7 +150,7 @@ export async function browserlessApiRequestScrape(
 		encoding: 'arraybuffer',
 		json: false,
 		returnFullResponse: true,
-		timeout
+		timeout,
 	}) as IN8nHttpFullResponse;
 	const binaryData = await prepareBinaryResponse.call(this, response, 'data.pdf');
 	return binaryData;
@@ -196,7 +196,7 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 
 		options['setExtraHTTPHeaders'].push({
 			name: 'Cache-Control',
-			value: 'no-cache'
+			value: 'no-cache',
 		});
 
 		if(options['addScriptTag']) {
@@ -221,7 +221,7 @@ export function getNodeCommoonOptions(this: IExecuteFunctions): BrowserlessCommo
 	const browserOptionsRaw = this.getNodeParameter('browserOptions', 0) as any;
 	const browserOptions = parseBrowserOptions(browserOptionsRaw);
 	return {
-		browserOptions
+		browserOptions,
 	};
 }
 

@@ -26,11 +26,11 @@ export type BrowserlessBrowserOptions = {
 	trackingId?: string;
 	keepalive?: number;
 	flags?: string;
-}
+};
 
 export type BrowserlessCommonOptions =  {
 	browserOptions: BrowserlessBrowserOptions;
-}
+};
 
 export type browserlessApiRequestOptions<T> = {
 	common: BrowserlessCommonOptions;

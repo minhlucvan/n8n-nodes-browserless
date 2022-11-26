@@ -165,9 +165,9 @@ export const browserlessBrowserOptionsFields: INodeProperties = {
 			description: 'Any parameter that starts with "--" is treated as a command-line flag and is passed directly to chrome when it starts. See https://peter.sh/experiments/chromium-command-line-switches/ for a list of possible parameters.',
 			type: 'string',
 			default: '',
-		}
-	]
-}
+		},
+	],
+};
 
 export const browserlessPageOptionsFileds: INodeProperties = 	{
 	displayName: 'Additional Options',
@@ -399,7 +399,7 @@ export const browserlessPageOptionsFileds: INodeProperties = 	{
 				gotoOptions: {
 					'timeout': 0,
 					'waitUntil': 'load',
-				}
+				},
 			},
 			typeOptions: {
 				multipleValues: false,
