@@ -25,9 +25,10 @@ import {
 	flaternScrapedResults,
 	getCommonOptions,
 	getNodeCommoonOptions,
+	parseCollectionOptions,
 	parseFixedCollectionOptions,
 } from './GenericFunctions';
-import { browserlessFields, browserlessOperations } from './BrowserlessDescriptions';
+import { browserlessFields, browserlessImageOptionsFields, browserlessOperations } from './BrowserlessDescriptions';
 
 export class Browserless implements INodeType {
 	description: INodeTypeDescription = {
@@ -173,10 +174,14 @@ export class Browserless implements INodeType {
 
 				if (resource === 'screenshot') {
 					const url = this.getNodeParameter('url', i) as string;
+					const imageOptionsRaw = this.getNodeParameter('imageOptions', i);
+					const imageOptions = parseCollectionOptions(browserlessImageOptionsFields, imageOptionsRaw);
+
 					const options: BrowserlessApiRequestScreenshotOptions = {
 						common,
 						options: {
 							url,
+							options: imageOptions,
 							...inputs,
 						},
 					};

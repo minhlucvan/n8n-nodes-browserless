@@ -103,6 +103,111 @@ export const browserlessOperations: INodeProperties[] = [
 	},
 ];
 
+export const browserlessImageOptionsFields: INodeProperties = 	{
+	displayName: 'Image Options',
+	name: 'imageOptions',
+	type: 'collection',
+	default: {},
+	displayOptions: {
+		show: {
+			resource: ['screenshot', 'pdf'],
+		},
+	},
+	options: [
+		{
+			displayName: 'Clip',
+			name: 'clip',
+			type: 'fixedCollection',
+			default: {},
+			typeOptions: {
+				multipleValues: false,
+			},
+			options: [
+				{
+					name: 'clip',
+					displayName: 'Clip',
+					values: [
+						{
+							displayName: 'Height',
+							name: 'width',
+							type: 'number',
+							default: 1900,
+						},
+						{
+							displayName: 'Height',
+							name: 'height',
+							type: 'number',
+							default: 1280,
+						},
+						{
+							displayName: 'X',
+							name: 'x',
+							type: 'number',
+							default: 0,
+						},
+						{
+							displayName: 'Y',
+							name: 'y',
+							type: 'number',
+							default: 0,
+						},
+					],
+				},
+			],
+		},
+		{
+			displayName: 'Encoding',
+			name: 'encoding',
+			type: 'options',
+			default: 'binary',
+			options: [
+				{
+					name: 'Base64',
+					value: 'base64',
+				},
+				{
+					name: 'Binary',
+					value: 'binary',
+				},
+			],
+		},
+		{
+			displayName: 'Full Page',
+			name: 'fullPage',
+			type: 'boolean',
+			default: true,
+		},
+		{
+			displayName: 'Omit Backgroud',
+			name: 'omitBackground',
+			type: 'boolean',
+			default: false,
+		},
+		{
+			displayName: 'Quatity',
+			name: 'quality',
+			type: 'number',
+			default: 100,
+		},
+		{
+			displayName: 'Type',
+			name: 'type',
+			type: 'options',
+			default: 'png',
+			options: [
+				{
+					name: 'Jpeg',
+					value: 'jpeg',
+				},
+				{
+					name: 'Png',
+					value: 'png',
+				},
+			],
+		},
+	],
+};
+
 export const browserlessBrowserOptionsFields: INodeProperties = {
 	displayName: 'Browser Options',
 	name: 'browserOptions',
@@ -127,7 +232,8 @@ export const browserlessBrowserOptionsFields: INodeProperties = {
 		{
 			displayName: 'Ignore HTTPS Errors',
 			name: 'ignoreHTTPSErrors',
-			description: 'Whether or not the browser should ignore HTTPS errors in pages and network calls',
+			description:
+				'Whether or not the browser should ignore HTTPS errors in pages and network calls',
 			type: 'boolean',
 			default: false,
 		},
@@ -141,7 +247,8 @@ export const browserlessBrowserOptionsFields: INodeProperties = {
 		{
 			displayName: 'User Data Dir',
 			name: 'userDataDir',
-			description: 'A path to get/set a previous sessions cookies, local-storage and more. Use with caution.',
+			description:
+				'A path to get/set a previous sessions cookies, local-storage and more. Use with caution.',
 			type: 'string',
 			default: '',
 		},
@@ -155,21 +262,23 @@ export const browserlessBrowserOptionsFields: INodeProperties = {
 		{
 			displayName: 'Keep Alive',
 			name: 'keepalive',
-			description: 'A value, in milliseconds, in which to keep the browser running after the session. Useful for re-connecting later or allowing the browser to run without keeping an open connection.',
+			description:
+				'A value, in milliseconds, in which to keep the browser running after the session. Useful for re-connecting later or allowing the browser to run without keeping an open connection.',
 			type: 'string',
 			default: '',
 		},
 		{
 			displayName: 'Flags',
 			name: 'flags',
-			description: 'Any parameter that starts with "--" is treated as a command-line flag and is passed directly to chrome when it starts. See https://peter.sh/experiments/chromium-command-line-switches/ for a list of possible parameters.',
+			description:
+				'Any parameter that starts with "--" is treated as a command-line flag and is passed directly to chrome when it starts. See https://peter.sh/experiments/chromium-command-line-switches/ for a list of possible parameters.',
 			type: 'string',
 			default: '',
 		},
 	],
 };
 
-export const browserlessPageOptionsFileds: INodeProperties = 	{
+export const browserlessPageOptionsFileds: INodeProperties = {
 	displayName: 'Additional Options',
 	name: 'addition',
 	type: 'collection',
@@ -397,8 +506,8 @@ export const browserlessPageOptionsFileds: INodeProperties = 	{
 			type: 'fixedCollection',
 			default: {
 				gotoOptions: {
-					'timeout': 0,
-					'waitUntil': 'load',
+					timeout: 0,
+					waitUntil: 'load',
 				},
 			},
 			typeOptions: {
@@ -599,7 +708,7 @@ export const browserlessPageOptionsFileds: INodeProperties = 	{
 			placeholder: '',
 			type: 'fixedCollection',
 			typeOptions: {
-				multipleValues: true,
+				multipleValues: false,
 			},
 			default: {},
 			description: 'Add interceptor',
@@ -745,19 +854,19 @@ export const browserlessFields: INodeProperties[] = [
 					{
 						displayName: 'Flip',
 						name: 'flip',
-						type:  "boolean",
+						type: 'boolean',
 						default: false,
 					},
 					{
 						displayName: 'Flop',
 						name: 'flop',
-						type:  "boolean",
+						type: 'boolean',
 						default: false,
 					},
 					{
 						displayName: 'Rotate',
 						name: 'rotate',
-						type:  "number",
+						type: 'number',
 						default: 0,
 					},
 					{
@@ -847,19 +956,7 @@ export const browserlessFields: INodeProperties[] = [
 		placeholder: '',
 		description: 'Elements to scrap',
 	},
-	// options?: {
-	//   clip?: {
-	//     height?: number;
-	//     width?: number;
-	//     x?: number;
-	//     y?: number;
-	//   };
-	//   encoding?: 'binary' | 'base64';
-	//   fullPage?: boolean;
-	//   omitBackground?: boolean;
-	//   quality?: number;
-	//   type?: 'jpeg' | 'png';
-	// };
+	browserlessImageOptionsFields,
 	{
 		displayName: 'Code',
 		name: 'code',

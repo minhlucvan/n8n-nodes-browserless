@@ -87,6 +87,16 @@ I develop the node on `n8n@0.200.1`. I don't have the change to test on other ve
 ![](./assets/browserless-content.png)
 ![](./assets/browserless-screenshot.png)
 ![image](https://user-images.githubusercontent.com/11575076/202370828-c8e3896e-1fc5-4f08-b147-688e55c90c74.png)
+
+## Anti-bot-detector
+
+With strong support form `browserless` we can have greate `anti-bot-detector` by following setup
+
+-  `Browser Options` > `Steath` On
+-  `Browser Options` > `Headless` Off
+
+![](./assets/anti-bot-detector.png)
+
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
@@ -100,5 +110,5 @@ I develop the node on `n8n@0.200.1`. I don't have the change to test on other ve
 - `0.2.0` Fixed common issues
 - `0.3.0` Fixed [#1](https://github.com/minhlucvan/n8n-nodes-browserless/issues/1), implement tests
 - `0.4.0` Adding browser options, adding no-cache as default header
-
+- `0.5.0` Implement anti-bot-detector
 
