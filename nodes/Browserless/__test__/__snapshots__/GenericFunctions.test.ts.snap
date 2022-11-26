@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseFixedCollectionOptions should parse goto options properly 1`] = `
+{
+  "addScriptTag": [],
+  "addStyleTag": [],
+  "cookies": [],
+  "gotoOptions": {
+    "timeout": 0,
+    "waitUntil": "load",
+  },
+  "rejectRequestPattern": [],
+  "rejectResourceTypes": [],
+  "requestInterceptors": [],
+  "url": "https://google.com",
+}
+`;

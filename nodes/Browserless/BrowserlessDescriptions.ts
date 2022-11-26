@@ -103,6 +103,72 @@ export const browserlessOperations: INodeProperties[] = [
 	},
 ];
 
+export const browserlessBrowserOptionsFields: INodeProperties = {
+	displayName: 'Browser Options',
+	name: 'browserOptions',
+	type: 'collection',
+	placeholder: 'Add options',
+	default: {},
+	options: [
+		{
+			displayName: 'BlockAds',
+			name: 'blockAds',
+			description: 'Whether or not the browser should block advertisement network traffic',
+			type: 'boolean',
+			default: false,
+		},
+		{
+			displayName: 'Headless',
+			name: 'headless',
+			description: 'Whether or not the browser should run in headless mode or not',
+			type: 'boolean',
+			default: false,
+		},
+		{
+			displayName: 'Ignore HTTPS Errors',
+			name: 'ignoreHTTPSErrors',
+			description: 'Whether or not the browser should ignore HTTPS errors in pages and network calls',
+			type: 'boolean',
+			default: false,
+		},
+		{
+			displayName: 'Stealth',
+			name: 'stealth',
+			description: 'Whether or not to run in stealth mode. Helpful in avoiding bot detection.',
+			type: 'boolean',
+			default: false,
+		},
+		{
+			displayName: 'User Data Dir',
+			name: 'userDataDir',
+			description: 'A path to get/set a previous sessions cookies, local-storage and more. Use with caution.',
+			type: 'string',
+			default: '',
+		},
+		{
+			displayName: 'TrackingId',
+			name: 'trackingId',
+			description: 'An arbitrary tracking-ID to use for other APIs like /session and more',
+			type: 'string',
+			default: '',
+		},
+		{
+			displayName: 'Keep Alive',
+			name: 'keepalive',
+			description: 'A value, in milliseconds, in which to keep the browser running after the session. Useful for re-connecting later or allowing the browser to run without keeping an open connection.',
+			type: 'string',
+			default: '',
+		},
+		{
+			displayName: 'Flags',
+			name: 'flags',
+			description: 'Any parameter that starts with "--" is treated as a command-line flag and is passed directly to chrome when it starts. See https://peter.sh/experiments/chromium-command-line-switches/ for a list of possible parameters.',
+			type: 'string',
+			default: '',
+		}
+	]
+}
+
 export const browserlessPageOptionsFileds: INodeProperties = 	{
 	displayName: 'Additional Options',
 	name: 'addition',
@@ -115,7 +181,7 @@ export const browserlessPageOptionsFileds: INodeProperties = 	{
 			name: 'setExtraHTTPHeaders',
 			placeholder: 'Add Header',
 			type: 'fixedCollection',
-			default: {},
+			default: [],
 			typeOptions: {
 				multipleValues: true,
 			},
@@ -329,14 +395,19 @@ export const browserlessPageOptionsFileds: INodeProperties = 	{
 			name: 'gotoOptions',
 			placeholder: 'Add goto Options',
 			type: 'fixedCollection',
-			default: {},
+			default: {
+				gotoOptions: {
+					'timeout': 0,
+					'waitUntil': 'load',
+				}
+			},
 			typeOptions: {
 				multipleValues: false,
 			},
 			options: [
 				{
-					name: 'goto',
-					displayName: 'Goto',
+					displayName: '',
+					name: 'gotoOptions',
 					values: [
 						{
 							displayName: 'Timeout',
@@ -494,17 +565,6 @@ export const browserlessPageOptionsFileds: INodeProperties = 	{
 					],
 				},
 			],
-		},
-		{
-			displayName: 'userAgent',
-			name: 'userAgent',
-			placeholder: '',
-			type: 'string',
-			default: '',
-			typeOptions: {
-				multipleValues: false,
-			},
-			description: 'Http basic authentication',
 		},
 		{
 			displayName: 'userAgent',
@@ -836,5 +896,6 @@ export const browserlessFields: INodeProperties[] = [
 		},
 		default: false,
 	},
+	browserlessBrowserOptionsFields,
 	browserlessPageOptionsFileds,
 ];

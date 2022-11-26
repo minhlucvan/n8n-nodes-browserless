@@ -11,7 +11,7 @@ describe('parseFixedCollectionOptions', () => {
 		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
 		console.log('----', parsedFixedCollectionOptions);
 		const results = content.validate({
-			url:	'https://google.com',
+			url: 'https://google.com',
 			...parsedFixedCollectionOptions,
 		});
 		// console.log(results);
@@ -25,7 +25,7 @@ describe('parseFixedCollectionOptions', () => {
 		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
 		console.log('----', parsedFixedCollectionOptions);
 		const results = content.validate({
-			url:	'https://google.com',
+			url: 'https://google.com',
 			...parsedFixedCollectionOptions,
 		});
 		// console.log(results);
@@ -38,10 +38,35 @@ describe('parseFixedCollectionOptions', () => {
 		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
 		console.log('----', parsedFixedCollectionOptions);
 		const results = content.validate({
-			url:	'https://google.com',
+			url: 'https://google.com',
 			...parsedFixedCollectionOptions,
 		});
 		// console.log(results);
 		expect(results.error).toBeUndefined();
+	});
+	it('should parse goto options properly', () => {
+		const collectionOptions = {
+			"gotoOptions": {
+				"gotoOptions": {
+					"timeout": 0,
+					"waitUntil": "load"
+				}
+			}
+		};
+
+		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
+		console.log('----', parsedFixedCollectionOptions);
+		const results = content.validate({
+			url: 'https://google.com',
+			...parsedFixedCollectionOptions,
+		});
+		// console.log(results);
+		expect(results.error).toBeUndefined();
+		expect(results.value).toMatchSnapshot({
+			gotoOptions: {
+				"timeout": 0,
+				"waitUntil": "load"
+			}
+		})
 	});
 });

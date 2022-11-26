@@ -24,6 +24,7 @@ import {
 	browserlessApiRequestScreenshot,
 	flaternScrapedResults,
 	getCommonOptions,
+	getNodeCommoonOptions,
 	parseFixedCollectionOptions,
 } from './GenericFunctions';
 import { browserlessFields, browserlessOperations } from './BrowserlessDescriptions';
@@ -108,12 +109,14 @@ export class Browserless implements INodeType {
 		const length = items.length;
 		let responseData;
 		const resource = this.getNodeParameter('resource', 0) as BrowserlessResource;
+		const common = getNodeCommoonOptions.call(this);
 		for (let i = 0; i < length; i++) {
 			try {
 				const inputs = getCommonOptions.call(this, i);
 				if (resource === 'content') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestContentOptions = {
+						common,
 						options: {
 							url,
 							...inputs,
@@ -133,6 +136,7 @@ export class Browserless implements INodeType {
 					const elements = elementInputs.elements;
 
 					const options: BrowserlessApiRequestScrapeOptions = {
+						common,
 						options: {
 							url,
 							elements,
@@ -154,6 +158,7 @@ export class Browserless implements INodeType {
 					const context = this.getNodeParameter('context', i) as object;
 					const detached = !!this.getNodeParameter('detached', i) as boolean;
 					const options: BrowserlessApiRequestFnOptions = {
+						common,
 						options: {
 							code,
 							context,
@@ -169,6 +174,7 @@ export class Browserless implements INodeType {
 				if (resource === 'screenshot') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestScreenshotOptions = {
+						common,
 						options: {
 							url,
 							...inputs,
@@ -186,6 +192,7 @@ export class Browserless implements INodeType {
 				if (resource === 'pdf') {
 					const url = this.getNodeParameter('url', i) as string;
 					const options: BrowserlessApiRequestPdfOptions = {
+						common,
 						options: {
 							url,
 							...inputs,

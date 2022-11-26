@@ -1,5 +1,3 @@
-import { Response } from 'request';
-import { inspect } from 'util';
 import {
 	IAllExecuteFunctions,
 	IDataObject,
@@ -15,10 +13,10 @@ import {
 	NodeApiError,
 } from 'n8n-workflow';
 
-import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessApiResponseScrape, BrowserlessApiResponseScrapeData, BrowserlessApiResponseScrapeDataFlat, BrowserlessApiResponseScrapeResultFlat, BrowserlessCredentials } from './types';
+import { BrowserlessApiRequestContentOptions, BrowserlessApiRequestFnOptions, BrowserlessApiRequestPdfOptions, BrowserlessApiRequestScrapeOptions, BrowserlessApiRequestScreenshotOptions, BrowserlessApiResponseScrape, BrowserlessApiResponseScrapeData, BrowserlessApiResponseScrapeDataFlat, BrowserlessApiResponseScrapeResultFlat, BrowserlessCommonOptions, BrowserlessCredentials } from './types';
 import { content, fn, pdf, scrape, screenshot } from './interfaces';
 import * as schems from './chemas/browserless-api.schema';
-import { browserlessPageOptionsFileds } from './BrowserlessDescriptions';
+import { browserlessBrowserOptionsFields, browserlessPageOptionsFileds } from './BrowserlessDescriptions';
 
 /**
  * Make a request to Browserless API.
@@ -88,7 +86,7 @@ export async function browserlessApiRequestContent(
 	if(error) {
 		throw error;
 	}
-	const response = await browserlessApiRequest.call(this, 'POST', '/content', value) as IN8nHttpFullResponse;
+	const response = await browserlessApiRequest.call(this, 'POST', '/content', value, options.common.browserOptions) as IN8nHttpFullResponse;
 	return response;
 }
 
@@ -108,7 +106,7 @@ export async function browserlessApiRequestScrape(
 	if(error) {
 		throw error;
 	}
-	const response = await browserlessApiRequest.call(this, 'POST', '/scrape', value);
+	const response = await browserlessApiRequest.call(this, 'POST', '/scrape', value, options.common.browserOptions);
 	return response as BrowserlessApiResponseScrape;
 }
 
@@ -127,7 +125,7 @@ export async function browserlessApiRequestScrape(
 	if(error) {
 		throw error;
 	}
-	const response = await browserlessApiRequest.call(this, 'POST', '/function', value);
+	const response = await browserlessApiRequest.call(this, 'POST', '/function', value, options.common.browserOptions);
 	return response;
 }
 
@@ -147,10 +145,12 @@ export async function browserlessApiRequestScrape(
 	if(error) {
 		throw error;
 	}
-	const response = await browserlessApiRequest.call(this, 'POST', '/pdf', value, {}, {
+	const timeout = options.common.browserOptions.keepalive ? options.common.browserOptions.keepalive : 60000;
+	const response = await browserlessApiRequest.call(this, 'POST', '/pdf', value, options.common.browserOptions, {
 		encoding: 'arraybuffer',
 		json: false,
 		returnFullResponse: true,
+		timeout
 	}) as IN8nHttpFullResponse;
 	const binaryData = await prepareBinaryResponse.call(this, response, 'data.pdf');
 	return binaryData;
@@ -171,7 +171,7 @@ export async function browserlessApiRequestScrape(
 	if(error) {
 		throw error;
 	}
-	const response = await browserlessApiRequest.call(this, 'POST', '/screenshot', value, {}, {
+	const response = await browserlessApiRequest.call(this, 'POST', '/screenshot', value, options.common.browserOptions, {
 		encoding: 'arraybuffer',
 		json: false,
 		returnFullResponse: true,
@@ -194,6 +194,11 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 			options['setExtraHTTPHeaders'] = composeArrayToMap(options['setExtraHTTPHeaders'], 'name', 'value');
 		}
 
+		options['setExtraHTTPHeaders'].push({
+			name: 'Cache-Control',
+			value: 'no-cache'
+		});
+
 		if(options['addScriptTag']) {
 			options['addScriptTag'] = Array.from(options['addScriptTag']).map(tag => omitEmptyProps(tag));
 		}
@@ -207,6 +212,17 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 	}
 
 	return options;
+}
+
+/**
+ * Get common node inputs
+ */
+export function getNodeCommoonOptions(this: IExecuteFunctions): BrowserlessCommonOptions {
+	const browserOptionsRaw = this.getNodeParameter('browserOptions', 0) as any;
+	const browserOptions = parseBrowserOptions(browserOptionsRaw);
+	return {
+		browserOptions
+	};
 }
 
 /**
@@ -242,6 +258,19 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 	);
 	return binaryData;
 }
+
+/**
+ * Parse browser options
+ */
+ export function parseBrowserOptions(rawOption: any) {
+	const options = {} as any;
+	for(const option of browserlessBrowserOptionsFields?.options ?? []) {
+		if(rawOption[option.name]) {
+			options[option.name] = rawOption[option.name];
+		}
+	}
+	return options;
+ }
 
 /**
  * Parse fixed collection options

@@ -17,7 +17,23 @@ export type ElementGroupInputs = {
 
 export type BrowserlessResource = 'content' | 'function' | 'json' | 'pdf' | 'screenshot' | 'download';
 
+export type BrowserlessBrowserOptions = {
+	blockAds?: boolean;
+	headless?: boolean;
+	ignoreHTTPSErrors?:  boolean;
+	stealth?: boolean;
+	userDataDir?: string;
+	trackingId?: string;
+	keepalive?: number;
+	flags?: string;
+}
+
+export type BrowserlessCommonOptions =  {
+	browserOptions: BrowserlessBrowserOptions;
+}
+
 export type browserlessApiRequestOptions<T> = {
+	common: BrowserlessCommonOptions;
 	options: T;
 };
 
