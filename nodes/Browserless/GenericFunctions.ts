@@ -254,10 +254,10 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 			);
 		}
 
-		options['setExtraHTTPHeaders'].push({
-			name: 'cache-control',
-			value: 'no-cache',
-		});
+		options['setExtraHTTPHeaders'] = {
+			...options['setExtraHTTPHeaders'],
+			'cache-control': 'no-cache',
+		};
 
 		if (options['addScriptTag']) {
 			options['addScriptTag'] = Array.from(options['addScriptTag']).map((tag) =>
