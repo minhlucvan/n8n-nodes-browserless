@@ -156,7 +156,8 @@ export class Browserless implements INodeType {
 
 				if (resource === 'function') {
 					const code = this.getNodeParameter('code', i) as string;
-					const context = this.getNodeParameter('context', i) as object;
+					const contextStr = this.getNodeParameter('context', i) as string;
+					const context = JSON.parse(contextStr);
 					const detached = !!this.getNodeParameter('detached', i) as boolean;
 					const options: BrowserlessApiRequestFnOptions = {
 						common,
