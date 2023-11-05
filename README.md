@@ -51,7 +51,7 @@ $ docker run \
   browserless/chrome:latest
 ```
 
-- Visit your n8n running instance > setttings > community nodes > install `n8n-node-browserless`
+- Visit your n8n running instance > setttings > community nodes > install `n8n-nodes-browserless`
 - Setup borserless credentials url `http://localhost:3000` token `YOUR-SECURE-TOKEN`
 - Adding browserless to your workflow by typing `browserless` into node search
 - Start using your browserless
