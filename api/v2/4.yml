@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: PDF Generation API
+  version: v2
+servers:
+  - url: https://production-sfo.browserless.io
+  - url: https://production-lon.browserless.io
+paths:
+  /pdf:
+    post:
+      description: Converts a webpage to pdf.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              oneOf:
+                - properties:
+                    url:
+                      type: string
+                      description: The URL to navigate page to. The url should include scheme, e.g. https://.
+                    options:
+                      $ref: '#/components/schemas/Options'
+                  required:
+                    - url
+                - properties:
+                    html:
+                      type: string
+                      description: HTML content to render.
+                    options:
+                      $ref: '#/components/schemas/Options'
+                  required:
+                    - html
+      responses:
+        '200':
+          content:
+            application/pdf:
+          description: Successfully generated pdf.
+components:
+  schemas:
+    Options:
+      type: object
+      properties:
+        displayHeaderFooter:
+          type: boolean
+          description: Display header and footer.
+        printBackground:
+          type: boolean
+          description: Print background graphics.
+        format:
+          type: string
+          description: Paper format. If set, takes priority over width or height options. Defaults to 'Letter'.
+        gotoOptions:
+          type: object
+          description: A set of key-value pairs to modify the default navigation behavior.
+        bestAttempt:
+          type: boolean
+          description: When async events fail or timeout, attempt to proceed.
+        waitForSelector:
+          type: object
+          description: An object describing desired selector and timeout attributes for waiting before proceed.
+        waitForEvent:
+          type: object
+          description: An object describing desired event and timeout attributes for waiting before proceed.
+        waitForFunction:
+          type: object
+          description: An object with js function and timeout attributes to be executed before proceed.
+        rejectResourceTypes:
+          type: array
+          items:
+            type: string
+          description: Block undesired content, resources.
+        rejectRequestPattern:
+          type: array
+          items:
+            type: string
+          description: Block undesired requests.
+        addScriptTag:
+          type: array
+          items: 
+            type: object
+            properties: 
+              url: { type: string }
+              content: { type: string }
+          description: Load additional script tags.
+        addStyleTag:
+          type: array
+          items: 
+            type: object
+            properties: 
+              url: { type: string }
+              content: { type: string }
+          description: Load additional style tags.

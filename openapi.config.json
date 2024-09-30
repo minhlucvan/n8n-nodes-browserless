@@ -1,0 +1,35 @@
+{
+	"inputs": [
+		{
+			"inputFile": "./api/v2/2.yml"
+		},
+		{
+			"inputFile": "./api/v2/3.yml"
+		},
+		{
+			"inputFile": "./api/v2/4.yml"
+		},
+		{
+			"inputFile": "./api/v2/5.yml"
+		},
+		{
+			"inputFile": "./api/v2/6.yml"
+		},
+		{
+			"inputFile": "./api/v2/7.yml"
+		},
+		{
+			"inputFile": "./api/v2/8.yml"
+		},
+		{
+			"inputFile": "./api/v2/9.yml"
+		},
+		{
+			"inputFile": "./api/v2/10.yml"
+		},
+		{
+			"inputFile": "./api/v2/11.yml"
+		}
+	],
+	"output": "./openapi.yml"
+}

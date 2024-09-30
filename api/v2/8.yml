@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Browserless V2 API
+  description: A performance API to gather key metrics about a website's accessibility, best practices, performance, PWA information, and SEO.
+  version: 2.0.0
+servers:
+  - url: https://production-sfo.browserless.io
+    description: Browserless Production API SFO
+  - url: https://production-lon.browserless.io
+    description: Browserless Production API LON
+paths:
+  /performance:
+    post:
+      description: Gather performance data of a site
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: A valid URL to gather performance data from.
+                config:
+                  type: object
+                  description: Configurable settings for performance data gathering.
+            example:
+              url: https://example.com/
+      responses:
+        "200":
+          description: Performance data successfully gathered
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  audits:
+                    type: object
+                example: 
+                  audits:
+                    "is-on-https":
+                      title: "Uses HTTPS"
+                      score: 1
+                    "viewport":
+                      title: "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`"
+                      score: 1
+                    "first-contentful-paint":
+                      score: 1
+                      displayValue: "0.8 s"
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error

@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: Browserless.io screenshot API
+  version: 2.0.0
+servers:
+  - url: https://production-sfo.browserless.io
+  - url: https://production-lon.browserless.io
+paths:
+  /screenshot:
+    post:
+      operationId: getScreenshot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                options:
+                  type: object
+                  properties:
+                    fullPage:
+                      type: boolean
+                    type:
+                      type: string
+                      enum: ["png", "jpg", "webp"]
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      content:
+                        type: string
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      content:
+                        type: string
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                gotoOptions:
+                  type: object
+                  properties:
+                    waitUntil:
+                      type: string
+                      default: 'networkidle2'
+                bestAttempt:
+                  type: boolean
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    timeout:
+                      type: number
+                waitForEvent:
+                  type: object
+                  properties:
+                    event:
+                      type: string
+                    timeout:
+                      type: number
+                waitForFunction:
+                  type: object
+                  properties:
+                    fn:
+                      type: string
+                    timeout:
+                      type: number
+      responses:
+        200:
+          description: Returns a screenshot of a webpage as a binary or base64 encoded image (png or jpg)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  screenshot:
+                    type: string
+                example:
+                  screenshot: "Base64EncodedScreenshotData"
+        default:
+          description: An error occurred

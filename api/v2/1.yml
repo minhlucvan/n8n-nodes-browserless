@@ -1,0 +1,73 @@
+openapi: 3.0.2
+info:
+  title: Content API
+  version: 2.0.0
+servers:
+  - url: https://production-sfo.browserless.io
+paths:
+  /content:
+    post:
+      summary: Fetches the page's content
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+          description: API token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL to navigate to
+                gotoOptions:
+                  type: object
+                  description: Modifies the default navigation behavior for the requested URL.
+                bestAttempt:
+                  type: boolean
+                  description: Causes Browserless to continue when async events fail or timeout.
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of resource types to block
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of regex patterns to block certain requests
+                waitForEvent:
+                  type: object
+                  description: Waits for an event to happen on the page before continuing
+                waitForFunction:
+                  type: object
+                  description: Waits for the provided function to return before continuing
+                waitForSelector:
+                  type: object
+                  description: Wait for a selector to appear in the page
+                waitForTimeout:
+                  type: integer
+                  description: Maximum number of milliseconds to wait
+            examples:
+              example1:
+                summary: Basic Request
+                value:
+                  url: "https://example.com/"
+              example2:
+                summary: Request with Navigation Options
+                value:
+                  url: "https://example.com/"
+                  gotoOptions: { "waitUntil": "networkidle2" }
+      responses:
+        '200':
+          description: Success
+          content:
+            text/html:
+              schema:
+                type: string
+                description: The site's HTML after it has been rendered and evaluated inside the browser.

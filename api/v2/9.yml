@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Browserless API
+  version: v2
+paths:
+  /sessions:
+    get:
+      summary: Gather information about the currently running sessions
+      description: "This API is available only for dedicated and self-hosted accounts. Issue a `GET` request to `/sessions` to gather information regarding the running sessions."
+      servers:
+      - url: https://production-sfo.browserless.io
+      - url: https://production-lon.browserless.io
+      parameters:
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+          description: API token
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    initialConnectURL:
+                      type: string
+                    isTempDataDir:
+                      type: boolean
+                    launchOptions:
+                      type: object
+                    numbConnected:
+                      type: integer
+                    routePath:
+                      type: array
+                      items:
+                        type: string
+                    startedOn:
+                      type: integer
+                    ttl:
+                      type: integer
+                    userDataDir:
+                      type: string
+                    browser:
+                      type: string
+                    browserId:
+                      type: string
+                    killURL:
+                      type: string
+                    running:
+                      type: boolean
+                    timeAliveMs:
+                      type: integer
+                    type:
+                      type: string
+              examples:
+                sessionInfo:
+                  summary: Example of session info
+                  value: 
+                    [
+                      {
+                        "id": null,
+                        "initialConnectURL": "http://production-sfo.browserless.io/firefox/playwright/?token=GOES-HERE",
+                        "isTempDataDir": true,
+                        "launchOptions": {},
+                        "numbConnected": 1,
+                        "routePath": ["/firefox/playwright", "/firefox/playwright"],
+                        "startedOn": 1709584439748,
+                        "ttl": 0,
+                        "userDataDir": null,
+                        "browser": "FirefoxPlaywright",
+                        "browserId": "d9a8570a73666d79d79ac23f07cf8966",
+                        "killURL": null,
+                        "running": true,
+                        "timeAliveMs": 10118,
+                        "type": "browser"
+                      }
+                    ]
+        401:
+          description: Unauthorized. API key is missing or invalid.

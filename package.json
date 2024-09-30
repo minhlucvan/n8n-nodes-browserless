@@ -30,7 +30,10 @@
     "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint nodes credentials package.json --fix",
     "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
     "gen:types": "ts-node ./scripts/gen-types.ts",
-    "test": "jest"
+    "test": "jest",
+    "merge:api": "npx openapi-merge-cli --config ./openapi.config.json",
+    "p2o": "p2o ./collection.json -f ./openapi.yml",
+    "codegen": "node ../../cli.js -o . -c nodes.config.js ./openapi.yml ../templates/n8n-nodes && pnpm lintfix && pnpm format --log-level=error"
   },
   "files": [
     "dist"
