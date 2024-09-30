@@ -1,0 +1,966 @@
+openapi: 3.0.3
+info:
+  title: Browserless.io API
+  version: v2
+servers:
+  - url: https://production-sfo.browserless.io
+    description: Server in production at SFO
+  - url: https://production-lon.browserless.io
+    description: Server in production at LON
+components:
+  securitySchemes:
+    ApiKeyAuth: 
+      type: apiKey
+      in: query
+      name: token
+security:
+  - ApiKeyAuth: []
+paths:
+  /content:
+    post:
+      summary: Content API
+      description: >-
+        Allows for simple navigation to a site and capturing the page's content
+        (including the `<head>` section).
+      parameters:
+        - in: query
+          name: token
+          schema:
+            type: string
+          description: API token
+          required: true
+      requestBody:
+        description: URL should be given in request body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: URL to navigate to
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                  description: Types to be rejected
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: Patterns to reject
+                gotoOptions:
+                  type: object
+                  properties:
+                    waitUntil:
+                      type: string
+                      description: Puppeteer's GoToOptions interface
+                bestAttempt:
+                  type: boolean
+                  description: >-
+                    Make Browserless attempt to proceed when async events fail
+                    or timeout
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                      description: Valid CSS selector
+                    timeout:
+                      type: integer
+                      description: Maximum number of milliseconds to wait for the selector
+                    hidden:
+                      type: string
+                      description: >-
+                        Wait for the selected element to not be found in the DOM
+                        or to be hidden
+                    visible:
+                      type: string
+                      description: >-
+                        Wait for the selected element to be present in DOM and
+                        to be visible
+                waitForEvent:
+                  type: object
+                  properties:
+                    event:
+                      type: string
+                      description: Event to wait for
+                    timeout:
+                      type: integer
+                      description: Maximum number of milliseconds to wait for the event
+                waitForFunction:
+                  type: object
+                  properties:
+                    fn:
+                      type: string
+                      description: >-
+                        Wait for the function to return. Can be any valid
+                        JavaScript or EcmaScript function.
+                    timeout:
+                      type: integer
+                      description: Maximum number of milliseconds to wait for the function
+      responses:
+        '200':
+          description: >-
+            Page's HTML after it has been rendered and evaluated inside the
+            browser
+          content:
+            text/html:
+              schema:
+                type: string
+  /download:
+    post:
+      summary: Download a file created in the browser.
+      description: >-
+        The /download API is used for returning files Chrome has downloaded
+        during the execution of puppeteer code, which is ran inside context of
+        the browser.
+      requestBody:
+        content:
+          application/javascript:
+            schema:
+              type: string
+              example: |-
+                export default function ({ page }){
+                  await page.evaluate(() => {
+                    const json = {
+                      ping: "pong",
+                      rnd: [...Array(5)].map(() => Math.random())
+                    }
+                    const jsonContent = `data:application/json,${JSON.stringify(json)}`;
+                    const encodedUri = encodeURI(jsonContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", "data.json");
+                    document.body.appendChild(link);
+                    return link.click();
+                  });
+                }
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: The custom download code.
+                context:
+                  type: object
+                  description: >-
+                    Value used to pass context values and arguments to the
+                    `code`.
+              example:
+                code: >-
+                  export default async function({page:t,context:a}){await
+                  t.evaluate(t=>{let
+                  a={url:t.url,ping:`pong`,rnd:[...Array(t.arrayLen)].map(()=>Math.random())},e=`data:application/json,${JSON.stringify(a)}`,n=encodeURI(e),r=document.createElement(`a`);return
+                  r.setAttribute(`href`,n),r.setAttribute(`download`,`data.json`),document.body.appendChild(r),r.click()},a)};
+                context:
+                  url: https://browserless.io/
+                  arrayLen: 10
+      responses:
+        '200':
+          description: >-
+            File downloaded successfully. Response will contain the appropriate
+            content-type header.
+        '400':
+          description: >-
+            Bad Request. This usually happens when the download request doesn't
+            result in a file being downloaded.
+  /function:
+    post:
+      summary: Executes custom puppeteer code
+      description: Allows for `POST`ing of custom code and context to run them.
+      requestBody:
+        required: true
+        content:
+          application/javascript:
+            schema:
+              type: string
+              description: JavaScript code to be executed, exporting an async function.
+              example: |
+                export default async function ({ page }) {
+                  const rndNumber = () => {
+                    return Math.floor(Math.random() * (10**6 - 0));
+                  };
+
+                  await page.goto("https://example.com/");
+                  const url = await page.title();
+                  const numbers = [...Array(5)].map(() => rndNumber());
+
+                  return {
+                    data: {
+                      url,
+                      numbers,
+                    },
+                    type: "application/json",
+                  };
+                }
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: JavaScript code to be executed, exporting an async function.
+                  example: >
+                    import{faker as
+                    a}from\"https://esm.sh/@faker-js/faker\";export default
+                    async function({context:o}){let
+                    t=a.internet,e=[...Array(o.len)].map(()=>({domain:t.domainName(),ip:t.ip(),mac:t.mac(),protocol:t.protocol()}));return{data:{domains:e,length:o.len},type:`application/json`}};
+                context:
+                  type: object
+                  description: Context values and arguments used in the code
+                  example:
+                    len: 10
+      responses:
+        '200':
+          description: Successful execution
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: Whatever data returned by the function
+                    example:
+                      url: Example Domain
+                      numbers:
+                        - 854246
+                        - 114512
+                        - 212580
+                        - 482122
+                        - 107878
+                  type:
+                    type: string
+                    description: Content type of the data
+                    example: application/json
+  /pdf:
+    post:
+      parameters:
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+            example: MY_API_TOKEN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  example: https://example.com/
+                html:
+                  type: string
+                  example: <h1>Hello World!</h1>
+                options:
+                  type: object
+                  properties:
+                    displayHeaderFooter:
+                      type: boolean
+                      example: true
+                    printBackground:
+                      type: boolean
+                      example: false
+                    format:
+                      type: string
+                      example: A0
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        example: https://code.jquery.com/jquery-3.7.1.min.js
+                      content:
+                        type: string
+                        example: document.querySelector(`h1`).innerText = `Hello Word!`
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                        example: >-
+                          body { height: 100vh;  background:
+                          linear-gradient(45deg, #da5a44, #a32784);}
+                      url:
+                        type: string
+                        example: >-
+                          https://interactive-examples.mdn.mozilla.net/live-examples/css-examples/text-decoration/text-decoration-color.css
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    example: image
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                    example: /^.*\.(css)
+                gotoOptions:
+                  type: object
+                  properties:
+                    waitUntil:
+                      type: string
+                      example: networkidle2
+                bestAttempt:
+                  type: boolean
+                  example: true
+                waitForEvent:
+                  type: object
+                  properties:
+                    event:
+                      type: string
+                      example: fullscreenchange
+                    timeout:
+                      type: number
+                      example: 5000
+                waitForFunction:
+                  type: object
+                  properties:
+                    fn:
+                      type: string
+                      example: >-
+                        async()=>{let t=await
+                        fetch('https://jsonplaceholder.typicode.com/todos/1'),e=await
+                        t.json();document.querySelector('h1').innerText=e.title}
+                    timeout:
+                      type: number
+                      example: 5000
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                      example: h1
+                    timeout:
+                      type: number
+                      example: 5000
+      responses:
+        '200':
+          description: Operation successful
+          content:
+            application/pdf: {}
+  /screenshot:
+    post:
+      summary: Takes a screenshot of specified URL.
+      description: >-
+        The screenshot API allows for simple navigation to a site and capturing
+        a screenshot. This API exposes most of puppeteer's screenshot API
+        through the posted JSON payload.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL to navigate to and capture a screenshot
+                options:
+                  type: object
+                  description: Options available via puppeteer's Page.screenshot() method
+                  properties:
+                    fullPage:
+                      type: boolean
+                      description: >-
+                        When true, takes a screenshot of the full scrollable
+                        page
+                    type:
+                      type: string
+                      description: Specifies the image format of the output
+                      enum:
+                        - jpeg
+                        - png
+                        - webp
+                addScriptTag:
+                  type: array
+                  description: Additional scripts to load
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      content:
+                        type: string
+                addStyleTag:
+                  type: array
+                  description: Additional styles to load
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      content:
+                        type: string
+                rejectResourceTypes:
+                  type: array
+                  description: Block undesired resource types
+                  items:
+                    type: string
+            examples:
+              example-1:
+                value:
+                  url: https://example.com/
+                  options:
+                    fullPage: true
+                    type: png
+      responses:
+        '200':
+          description: Successfully Captured Screenshot.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Screenshot captured successfully.
+        '400':
+          description: Invalid Request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid payload schema.
+  /unblock:
+    post:
+      summary: Unblock a webpage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  example: https://example.com
+                browserWSEndpoint:
+                  type: boolean
+                  example: true
+                cookies:
+                  type: boolean
+                  example: true
+                content:
+                  type: boolean
+                  example: false
+                screenshot:
+                  type: boolean
+                  example: false
+                ttl:
+                  type: integer
+                  example: 30000
+                waitForEvent:
+                  type: object
+                  properties:
+                    event:
+                      type: string
+                      example: fullscreenchange
+                    timeout:
+                      type: integer
+                      example: 5000
+                waitForFunction:
+                  type: object
+                  properties:
+                    fn:
+                      type: string
+                      example: async() => {...}
+                    timeout:
+                      type: integer
+                      example: 5000
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                      example: h1
+                    timeout:
+                      type: integer
+                      example: 5000
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  browserWSEndpoint:
+                    type: string
+                    example: wss://production-sfo.browserless.io/...
+                  content:
+                    type: string
+                  cookies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type: string
+                        domain:
+                          type: string
+                        path:
+                          type: string
+                        secure:
+                          type: boolean
+                        httpOnly:
+                          type: boolean
+                  screenshot:
+                    type: string
+                  ttl:
+                    type: integer
+                    example: 30000
+  /scrape:
+    post:
+      operationId: scrapePage
+      parameters:
+        - in: query
+          name: token
+          schema:
+            type: string
+          required: true
+          description: API Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: webpage URL
+                elements:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      selector:
+                        type: string
+                  description: HTML element selector
+                gotoOptions:
+                  type: object
+                  properties:
+                    timeout:
+                      type: integer
+                      description: navigation timeout in milliseconds
+                    waitUntil:
+                      type: string
+                      description: wait until event (optional)
+                waitForTimeout:
+                  type: integer
+                  description: >-
+                    wait for a given number of milliseconds before continue
+                    execution. (optional)
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    timeout:
+                      type: integer
+                  description: wait for a selector to appear in page. (optional)
+                waitForFunction:
+                  type: object
+                  properties:
+                    fn:
+                      type: string
+                    timeout:
+                      type: integer
+                  description: >-
+                    waits for the provided function to return before continue.
+                    (optional)
+                waitForEvent:
+                  type: object
+                  properties:
+                    event:
+                      type: string
+                    timeout:
+                      type: integer
+                  description: >-
+                    waits for an event to happen on the page before continue.
+                    (optional)
+      responses:
+        '200':
+          description: The content of webpage based on the specified selectors.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        selector:
+                          type: string
+                        results:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              attributes:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      type: string
+                              height:
+                                type: integer
+                              html:
+                                type: string
+                              left:
+                                type: integer
+                              text:
+                                type: string
+                              top:
+                                type: integer
+                              width:
+                                type: integer
+      x-codeSamples:
+        - lang: cURL
+          source: |
+            curl -X POST \
+              https://production-sfo.browserless.io/scrape?token=MY_API_TOKEN \
+              -H 'Cache-Control: no-cache' \
+              -H 'Content-Type: application/json' \
+              -d '{
+              "url": "https://example.com/",
+              "elements": [
+                { "selector": "h1" }
+              ],
+              "gotoOptions": {
+                "timeout": 10000,
+                "waitUntil": "networkidle2"
+              }
+            }'
+  /performance:
+    post:
+      summary: Gather site performance data
+      description: >-
+        This API is used to gather performance metrics about a website. It is
+        powered by Google's Lighthouse project and is compatible with its CLI
+        options. Due to the number of checks gathered, it can take from several
+        seconds to minutes depending on the site and size of the worker.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL of the website to gather performance metrics from
+                config:
+                  type: object
+                  description: Specifies the options for the performance data gathering
+                  properties:
+                    extends:
+                      type: string
+                      default: lighthouse:default
+                    settings:
+                      type: object
+                      properties:
+                        onlyCategories:
+                          type: array
+                          items:
+                            type: string
+                            description: Categories to gather metrics from
+                        onlyAudits:
+                          type: string
+                          description: A specific audit to gather metrics from
+      responses:
+        '200':
+          description: Successfully gathered the performance metrics.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  audits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        score:
+                          type: number
+                        displayValue:
+                          type: string
+  /sessions:
+    get:
+      summary: Gather information about currently running sessions
+      description: >-
+        This API is only available for dedicated and self-hosted accounts. It
+        will show information of the current running sessions
+      parameters:
+        - in: query
+          name: token
+          schema:
+            type: string
+          description: API token
+          required: true
+      responses:
+        '200':
+          description: List of sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    initialConnectURL:
+                      type: string
+                    isTempDataDir:
+                      type: boolean
+                    launchOptions:
+                      type: object
+                    numbConnected:
+                      type: number
+                    routePath:
+                      type: array
+                      items:
+                        type: string
+                    startedOn:
+                      type: number
+                    ttl:
+                      type: number
+                    userDataDir:
+                      type: string
+                    browser:
+                      type: string
+                    browserId:
+                      type: string
+                    killURL:
+                      type: string
+                    running:
+                      type: boolean
+                    timeAliveMs:
+                      type: number
+                    type:
+                      type: string
+              examples:
+                sessionInfo:
+                  value:
+                    - id: null
+                      initialConnectURL: >-
+                        http://production-sfo.browserless.io/firefox/playwright/?token=GOES-HERE
+                      isTempDataDir: true
+                      launchOptions: {}
+                      numbConnected: 1
+                      routePath:
+                        - /firefox/playwright
+                        - /firefox/playwright
+                      startedOn: 1709584439748
+                      ttl: 0
+                      userDataDir: null
+                      browser: FirefoxPlaywright
+                      browserId: d9a8570a73666d79d79ac23f07cf8966
+                      killURL: null
+                      running: true
+                      timeAliveMs: 10118
+                      type: browser
+  /config:
+    get:
+      summary: Get your worker's configuration
+      description: >-
+        The `/config` API will give you information about your worker's
+        configuration, **and is only available for dedicated and self-hosted
+        accounts**
+      parameters:
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+            example: MY_API_TOKEN
+      responses:
+        '200':
+          description: Worker's configuration
+          content:
+            application/json:
+              schema:
+                properties:
+                  allowCORS:
+                    type: boolean
+                    example: true
+                  allowFileProtocol:
+                    type: boolean
+                    example: false
+                  allowGetCalls:
+                    type: boolean
+                    example: false
+                  concurrent:
+                    type: integer
+                    example: 10
+                  data:
+                    type: string
+                    example: /tmp/browserless-data-dirs
+                  debug:
+                    type: string
+                    example: browserless*,-**:verbose
+                  errorAlertURL:
+                    type: string
+                    example: null
+                  healthFailureURL:
+                    type: string
+                    example: null
+                  host:
+                    type: string
+                    example: localhost
+                  maxCPU:
+                    type: integer
+                    example: 99
+                  maxMemory:
+                    type: integer
+                    example: 99
+                  metricsJSONPath:
+                    type: string
+                    example: /tmp/browserless-metrics.json
+                  port:
+                    type: integer
+                    example: 3001
+                  queued:
+                    type: integer
+                    example: 10
+                  queuedAlertURL:
+                    type: string
+                    example: null
+                  rejectAlertURL:
+                    type: string
+                    example: null
+                  retries:
+                    type: integer
+                    example: 5
+                  timeout:
+                    type: integer
+                    example: 30000
+                  timeoutAlertURL:
+                    type: string
+                    example: null
+                  token:
+                    type: string
+                    example: 6R0W53R135510
+  /metrics:
+    get:
+      summary: Get metrics of the session
+      parameters:
+        - name: token
+          in: query
+          required: false
+          schema:
+            type: string
+            default: MY_API_TOKEN
+          description: API token to authenticate the request
+      responses:
+        default:
+          description: A list of session statistics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    error:
+                      type: integer
+                      example: 3
+                    maxConcurrent:
+                      type: integer
+                      example: 4
+                    queued:
+                      type: integer
+                      example: 0
+                    rejected:
+                      type: integer
+                      example: 0
+                    running:
+                      type: integer
+                      example: 3
+                    sessionTimes:
+                      type: array
+                      items:
+                        type: integer
+                      example:
+                        - 992
+                        - 1041
+                        - 802
+                    successful:
+                      type: integer
+                      example: 0
+                    timedout:
+                      type: integer
+                      example: 0
+                    unauthorized:
+                      type: integer
+                      example: 0
+                    unhealthy:
+                      type: integer
+                      example: 0
+                    maxTime:
+                      type: integer
+                      example: 1041
+                    meanTime:
+                      type: integer
+                      example: 945
+                    minTime:
+                      type: integer
+                      example: 802
+                    totalTime:
+                      type: integer
+                      example: 2835
+                    units:
+                      type: integer
+                      example: 3
+                    date:
+                      type: integer
+                      example: 1709134233732
+                    cpu:
+                      type: number
+                      format: double
+                      example: 0.024877870173220466
+                    memory:
+                      type: number
+                      format: double
+                      example: 0.7784158564199399
+  /metrics/total:
+    get:
+      summary: Get total metrics of all the sessions
+      parameters:
+        - name: token
+          in: query
+          required: false
+          schema:
+            type: string
+            default: MY_API_TOKEN
+          description: API token to authenticate the request
+      responses:
+        default:
+          description: Total session statistics
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/paths/~1metrics/get/responses/default/content/application~1json/schema
+                  

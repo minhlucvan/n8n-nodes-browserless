@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-base.browserless",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development", "Developer Tools"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://www.browserless.io/docs/token"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://www.browserless.io/docs/api"
+			}
+		]
+	}
+}
