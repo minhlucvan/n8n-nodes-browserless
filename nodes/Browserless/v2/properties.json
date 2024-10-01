@@ -61,20 +61,28 @@
     }
   },
   {
-    "displayName": "Block Ads",
-    "name": "blockAds",
-    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
-    "default": true,
-    "type": "boolean",
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"debugOpts\": {\n    \"console\": true,\n    \"cookies\": true,\n    \"html\": true,\n    \"network\": true,\n    \"screenshot\": true\n  },\n  \"elements\": [\n    {\n      \"selector\": \"string\",\n      \"timeout\": 0\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
     "routing": {
       "request": {
-        "qs": {
-          "blockAds": "={{ $value }}"
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
         }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
       }
     },
     "displayOptions": {
       "show": {
+        "useCustomBody": [
+          true
+        ],
         "resource": [
           "Browser Rest Apis"
         ],
@@ -85,18 +93,23 @@
     }
   },
   {
-    "displayName": "Launch",
-    "name": "launch",
-    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
-    "type": "json",
+    "displayName": "Url",
+    "name": "url",
+    "type": "string",
+    "default": "",
     "routing": {
       "request": {
-        "qs": {
-          "launch": "={{ $value }}"
+        "body": {
+          "url": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Browser Rest Apis"
@@ -132,10 +145,460 @@
     }
   },
   {
-    "displayName": "POST /chrome/scrape<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
-    "name": "operation",
-    "type": "notice",
+    "displayName": "User Agent",
+    "name": "userAgent",
+    "type": "string",
     "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "userAgent": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor.\nSee {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "deviceScaleFactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "isMobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "isLandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "hasTouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Emulate Media Type",
+    "name": "emulateMediaType",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "emulateMediaType": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Java Script Enabled",
+    "name": "setJavaScriptEnabled",
+    "type": "boolean",
+    "default": true,
+    "routing": {
+      "request": {
+        "body": {
+          "setJavaScriptEnabled": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Extra HTTP Headers",
+    "name": "setExtraHTTPHeaders",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Set extra HTTP headers",
+    "routing": {
+      "request": {
+        "body": {
+          "setExtraHTTPHeaders": "={{$value.headers}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    },
+    "placeholder": "Add Header",
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "options": [
+      {
+        "displayName": "Set Extra HTTP Headers",
+        "name": "headers",
+        "values": [
+          {
+            "displayName": "Name",
+            "name": "name",
+            "type": "string",
+            "default": "",
+            "description": "Name of the header"
+          },
+          {
+            "displayName": "Value",
+            "name": "value",
+            "type": "string",
+            "default": "",
+            "description": "Value of the header"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "enableCookies",
+    "displayName": "Enable Cookies",
+    "type": "boolean",
+    "default": false,
+    "description": "Enable cookies",
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Cookies",
+    "name": "cookies",
+    "type": "json",
+    "default": "[]",
+    "typeOptions": {},
+    "description": "Array of cookie objects expected by cookie-editor extension",
+    "placeholder": "Add item",
+    "options": [],
+    "routing": {
+      "request": {
+        "body": {
+          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ],
+        "enableCookies": [
+          true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authenticate",
+    "name": "authenticate",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "username",
+            "displayName": "username"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "password",
+            "displayName": "password"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "authenticate": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Goto Options",
+    "name": "gotoOptions",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+            "name": "referer",
+            "displayName": "referer"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+            "name": "referrerPolicy",
+            "displayName": "referrerPolicy"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods",
+            "name": "timeout",
+            "displayName": "timeout"
+          },
+          {
+            "type": "multiOptions",
+            "default": [],
+            "description": "When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired",
+            "options": [
+              {
+                "name": "domcontentloaded",
+                "value": "domcontentloaded"
+              },
+              {
+                "name": "load",
+                "value": "load"
+              },
+              {
+                "name": "networkidle0",
+                "value": "networkidle0"
+              },
+              {
+                "name": "networkidle2",
+                "value": "networkidle2"
+              }
+            ],
+            "name": "waitUntil",
+            "displayName": "waitUntil"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "A signal object that allows you to cancel the call",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "",
+                    "name": "aborted",
+                    "displayName": "aborted"
+                  },
+                  {
+                    "type": "json",
+                    "default": "{}",
+                    "description": "",
+                    "name": "onabort",
+                    "displayName": "onabort"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "",
+                    "name": "reason",
+                    "displayName": "reason"
+                  }
+                ]
+              }
+            ],
+            "name": "signal",
+            "displayName": "signal"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "gotoOptions": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
     "displayOptions": {
       "show": {
         "resource": [
@@ -148,23 +611,849 @@
     }
   },
   {
-    "displayName": "Custom Body",
-    "name": "customBody",
-    "type": "json",
-    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"debugOpts\": {\n    \"console\": true,\n    \"cookies\": true,\n    \"html\": true,\n    \"network\": true,\n    \"screenshot\": true\n  },\n  \"elements\": [\n    {\n      \"selector\": \"string\",\n      \"timeout\": 0\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
-    "description": "Custom body to send",
-    "routing": {
-      "send": {
-        "preSend": [
-          "${helpers.hooks.preSendActionCustonBody}"
+    "displayName": "Reject Request Pattern",
+    "name": "rejectRequestPattern",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
         ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectRequestPattern": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Reject Resource Types",
+    "name": "rejectResourceTypes",
+    "type": "multiOptions",
+    "default": [],
+    "options": [
+      {
+        "name": "cspviolationreport",
+        "value": "cspviolationreport"
+      },
+      {
+        "name": "document",
+        "value": "document"
+      },
+      {
+        "name": "eventsource",
+        "value": "eventsource"
+      },
+      {
+        "name": "fetch",
+        "value": "fetch"
+      },
+      {
+        "name": "font",
+        "value": "font"
+      },
+      {
+        "name": "image",
+        "value": "image"
+      },
+      {
+        "name": "manifest",
+        "value": "manifest"
+      },
+      {
+        "name": "media",
+        "value": "media"
+      },
+      {
+        "name": "other",
+        "value": "other"
+      },
+      {
+        "name": "ping",
+        "value": "ping"
+      },
+      {
+        "name": "prefetch",
+        "value": "prefetch"
+      },
+      {
+        "name": "preflight",
+        "value": "preflight"
+      },
+      {
+        "name": "script",
+        "value": "script"
+      },
+      {
+        "name": "signedexchange",
+        "value": "signedexchange"
+      },
+      {
+        "name": "stylesheet",
+        "value": "stylesheet"
+      },
+      {
+        "name": "texttrack",
+        "value": "texttrack"
+      },
+      {
+        "name": "websocket",
+        "value": "websocket"
+      },
+      {
+        "name": "xhr",
+        "value": "xhr"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectResourceTypes": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Request Interceptors",
+    "name": "requestInterceptors",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their\ncorresponding responses to use in order to fulfill those requests",
+            "name": "pattern",
+            "displayName": "pattern"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "number",
+                    "default": 0,
+                    "description": "",
+                    "name": "status",
+                    "displayName": "status"
+                  },
+                  {
+                    "type": "json",
+                    "default": "{}",
+                    "description": "Optional response headers. All values are converted to strings",
+                    "name": "headers",
+                    "displayName": "headers"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "",
+                    "name": "contentType",
+                    "displayName": "contentType"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "BYTES_PER_ELEMENT",
+                            "displayName": "BYTES_PER_ELEMENT"
+                          },
+                          {
+                            "type": "string",
+                            "default": {},
+                            "description": "",
+                            "name": "buffer",
+                            "displayName": "buffer"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteLength",
+                            "displayName": "byteLength"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteOffset",
+                            "displayName": "byteOffset"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "length",
+                            "displayName": "length"
+                          },
+                          {
+                            "type": "string",
+                            "default": "",
+                            "description": "",
+                            "name": "__@toStringTag@42114",
+                            "displayName": "__@toStringTag@42114"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "body",
+                    "displayName": "body"
+                  }
+                ]
+              }
+            ],
+            "name": "response",
+            "displayName": "response"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "requestInterceptors": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "visible"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForSelector": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "waitForTimeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Function",
+    "name": "waitForFunction",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "The function, or statement, to be evaluated in browser context",
+            "name": "fn",
+            "displayName": "fn"
+          },
+          {
+            "type": "string",
+            "description": "An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: \"raf\" or \"mutation\"",
+            "name": "polling",
+            "displayName": "polling"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout",
+            "name": "timeout",
+            "displayName": "timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForFunction": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "event",
+            "displayName": "event"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForEvent": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Html",
+    "name": "html",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "html": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Elements",
+    "name": "elements",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "elements": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Script Tag",
+    "name": "addScriptTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "URL of the script to be added",
+            "name": "url",
+            "displayName": "url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Path to a JavaScript file to be injected into the frame",
+            "name": "path",
+            "displayName": "path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "JavaScript to be injected into the frame",
+            "name": "content",
+            "displayName": "content"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
+            "name": "type",
+            "displayName": "type"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `id` of the script",
+            "name": "id",
+            "displayName": "id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addScriptTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Style Tag",
+    "name": "addStyleTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "the URL of the CSS file to be added",
+            "name": "url",
+            "displayName": "url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "The path to a CSS file to be injected into the frame",
+            "name": "path",
+            "displayName": "path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Raw CSS content to be injected into the frame",
+            "name": "content",
+            "displayName": "content"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addStyleTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Best Attempt",
+    "name": "bestAttempt",
+    "type": "boolean",
+    "default": true,
+    "description": "When bestAttempt is set to true, browserless attempt to proceed\nwhen \"awaited\" events fail or timeout. This includes things like\ngoto, waitForSelector, and more",
+    "routing": {
+      "request": {
+        "body": {
+          "bestAttempt": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "name": "enableLaunch",
+    "displayName": "Enable Launch",
+    "type": "boolean",
+    "default": false,
+    "description": "Launch a new browser instance",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "",
+    "default": "{\"args\":[\"string\"],\"defaultViewport\":{\"deviceScaleFactor\":0,\"hasTouch\":true,\"height\":0,\"isLandscape\":true,\"isMobile\":true,\"width\":0},\"devtools\":true,\"dumpio\":true,\"headless\":false,\"ignoreDefaultArgs\":[\"string\"],\"ignoreHTTPSErrors\":true,\"slowMo\":0,\"stealth\":true,\"timeout\":0,\"userDataDir\":\"string\",\"waitForInitialPage\":true}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
       }
     },
     "displayOptions": {
       "show": {
-        "/options.useCustomBody": [
-          true
+        "resource": [
+          "Browser Rest Apis"
         ],
+        "operation": [
+          "Chrome Scrape"
+        ],
+        "enableLaunch": [
+          true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Debug Opts",
+    "name": "debugOpts",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "console",
+            "displayName": "console"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "cookies",
+            "displayName": "cookies"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "html",
+            "displayName": "html"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "network",
+            "displayName": "network"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "screenshot",
+            "displayName": "screenshot"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "debugOpts": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
         "resource": [
           "Browser Rest Apis"
         ],
