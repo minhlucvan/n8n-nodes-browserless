@@ -17,8 +17,9 @@ export const name = 'Chrome Screenshot'
 const rawOption: INodePropertyOptions = {
   name: 'Chrome Screenshot',
   value: 'Chrome Screenshot',
-  action: 'Chrome Screenshot Browser Rest Apis',
-  description: '/chrome/screenshot',
+  action: 'Chrome Screenshot',
+  description:
+    'A JSON-based API for getting a screenshot binary from either a supplied\n"url" or "html" payload in your request. Many options exist including\ncookies, user-agents, setting timers and network mocks',
   routing: {
     request: {
       method: 'POST',

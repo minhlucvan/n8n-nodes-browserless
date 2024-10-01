@@ -17,8 +17,9 @@ export const name = 'Chromium Function'
 const rawOption: INodePropertyOptions = {
   name: 'Chromium Function',
   value: 'Chromium Function',
-  action: 'Chromium Function Browser Rest Apis',
-  description: '/function /chromium/function',
+  action: 'Chromium Function',
+  description:
+    'A JSON or JavaScript content-type API for running puppeteer code in the browser\'s context.\nBrowserless sets up a blank page, injects your puppeteer code, and runs it.\nYou can optionally load external libraries via the "import" module that are meant for browser usage.\nValues returned from the function are checked and an appropriate content-type and response is sent back\nto your HTTP call',
   routing: {
     request: {
       method: 'POST',

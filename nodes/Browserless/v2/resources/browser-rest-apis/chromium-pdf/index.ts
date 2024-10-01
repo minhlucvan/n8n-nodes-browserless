@@ -17,8 +17,9 @@ export const name = 'Chromium Pdf'
 const rawOption: INodePropertyOptions = {
   name: 'Chromium Pdf',
   value: 'Chromium Pdf',
-  action: 'Chromium Pdf Browser Rest Apis',
-  description: '/pdf /chromium/pdf',
+  action: 'Chromium Pdf',
+  description:
+    'A JSON-based API for getting a PDF binary from either a supplied\n"url" or "html" payload in your request. Many options exist for\ninjecting cookies, request interceptors, user-agents and waiting for\nselectors, timers and more',
   routing: {
     request: {
       method: 'POST',

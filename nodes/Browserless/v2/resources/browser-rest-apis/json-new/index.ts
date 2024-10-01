@@ -17,8 +17,9 @@ export const name = 'Json New'
 const rawOption: INodePropertyOptions = {
   name: 'Json New',
   value: 'Json New',
-  action: 'Json New Browser Rest Apis',
-  description: '/json/new',
+  action: 'Json New',
+  description:
+    'Returns a JSON payload that acts as a pass-through to the DevTools /json/new HTTP API in Chromium.\nBrowserless mocks this payload so that remote clients can connect to the underlying "webSocketDebuggerUrl"\nwhich will cause Browserless to start the browser and proxy that request into a blank page',
   routing: {
     request: {
       method: 'PUT',

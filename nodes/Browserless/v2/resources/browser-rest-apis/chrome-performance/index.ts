@@ -17,8 +17,9 @@ export const name = 'Chrome Performance'
 const rawOption: INodePropertyOptions = {
   name: 'Chrome Performance',
   value: 'Chrome Performance',
-  action: 'Chrome Performance Browser Rest Apis',
-  description: '/chrome/performance',
+  action: 'Chrome Performance',
+  description:
+    'Run lighthouse performance audits with a supplied "url" in your JSON payload',
   routing: {
     request: {
       method: 'POST',

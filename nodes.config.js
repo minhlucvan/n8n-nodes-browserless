@@ -21,6 +21,9 @@ module.exports = {
       targetDir: path.resolve(__dirname, 'nodes/Browserless/v2'),
       version: 2,
 			tags: ['Browser REST APIs'],
+      operations: [{
+        summary: '/chrome/scrape',
+      }],
       credentials: [{
         displayName: 'Browserless API',
         name: 'browserlessApi',
@@ -50,6 +53,10 @@ module.exports = {
 		}
 
 		return s;
-	}
+	},
+  normalizeActionFn: (_, opName) => {
+    // /a /b => /b
+    return opName;
+  }
 };
 

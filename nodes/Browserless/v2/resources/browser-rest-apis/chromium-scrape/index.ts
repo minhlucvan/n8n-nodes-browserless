@@ -17,8 +17,9 @@ export const name = 'Chromium Scrape'
 const rawOption: INodePropertyOptions = {
   name: 'Chromium Scrape',
   value: 'Chromium Scrape',
-  action: 'Chromium Scrape Browser Rest Apis',
-  description: '/scrape /chromium/scrape',
+  action: 'Chromium Scrape',
+  description:
+    'A JSON-based API that returns text, html, and meta-data from a given list of selectors.\nDebugging information is available by sending in the appropriate flags in the "debugOpts"\nproperty. Responds with an array of JSON objects',
   routing: {
     request: {
       method: 'POST',

@@ -29,8 +29,8 @@
       {
         "name": "Chrome Unblock",
         "value": "Chrome Unblock",
-        "action": "Chrome Unblock Browser Rest Apis",
-        "description": "/chrome/unblock",
+        "action": "Chrome Unblock",
+        "description": "> This API is only available for Enterprise and Cloud-unit plans. [Contact us for more information here.](https://www.browserless.io/contact/), or [sign-up here](https://www.browserless.io/pricing/).\n\nUnblocks the provided URL from being blocked due to bot detection.\nReturns a payload of Cookies, HTML, a base64 encoded screenshot,\nand a \"browserWSEndpoint\" to allow connecting to the browser when\nspecified in the JSON Payload. Only supports CDP or Puppeteer\nlike libraries when connecting to the \"browserWSEndpoint\"",
         "routing": {
           "request": {
             "method": "POST",
@@ -41,8 +41,8 @@
       {
         "name": "Chromium Unblock",
         "value": "Chromium Unblock",
-        "action": "Chromium Unblock Browser Rest Apis",
-        "description": "/unblock /chromium/unblock",
+        "action": "Chromium Unblock",
+        "description": "> This API is only available for Enterprise and Cloud-unit plans. [Contact us for more information here.](https://www.browserless.io/contact/), or [sign-up here](https://www.browserless.io/pricing/).\n\nUnblocks the provided URL from being blocked due to bot detection.\nReturns a payload of Cookies, HTML, a base64 encoded screenshot,\nand a \"browserWSEndpoint\" to allow connecting to the browser when\nspecified in the JSON Payload. Only supports CDP or Puppeteer\nlike libraries when connecting to the \"browserWSEndpoint\"",
         "routing": {
           "request": {
             "method": "POST",
@@ -53,8 +53,8 @@
       {
         "name": "Chromium Pdf",
         "value": "Chromium Pdf",
-        "action": "Chromium Pdf Browser Rest Apis",
-        "description": "/pdf /chromium/pdf",
+        "action": "Chromium Pdf",
+        "description": "A JSON-based API for getting a PDF binary from either a supplied\n\"url\" or \"html\" payload in your request. Many options exist for\ninjecting cookies, request interceptors, user-agents and waiting for\nselectors, timers and more",
         "routing": {
           "request": {
             "method": "POST",
@@ -65,8 +65,8 @@
       {
         "name": "Chromium Screenshot",
         "value": "Chromium Screenshot",
-        "action": "Chromium Screenshot Browser Rest Apis",
-        "description": "/screenshot /chromium/screenshot",
+        "action": "Chromium Screenshot",
+        "description": "A JSON-based API for getting a screenshot binary from either a supplied\n\"url\" or \"html\" payload in your request. Many options exist including\ncookies, user-agents, setting timers and network mocks",
         "routing": {
           "request": {
             "method": "POST",
@@ -77,8 +77,8 @@
       {
         "name": "Chrome Content",
         "value": "Chrome Content",
-        "action": "Chrome Content Browser Rest Apis",
-        "description": "/chrome/content",
+        "action": "Chrome Content",
+        "description": "A JSON-based API. Given a \"url\" or \"html\" field, runs and returns HTML content after the page has loaded and JavaScript has parsed",
         "routing": {
           "request": {
             "method": "POST",
@@ -89,8 +89,8 @@
       {
         "name": "Chrome Download",
         "value": "Chrome Download",
-        "action": "Chrome Download Browser Rest Apis",
-        "description": "/chrome/download",
+        "action": "Chrome Download",
+        "description": "A JSON or JavaScript content-type API for returning files Chrome has downloaded during\nthe execution of puppeteer code, which is ran inside context of the browser.\nBrowserless sets up a blank page, a fresh download directory, injects your puppeteer code, and then executes it.\nYou can load external libraries via the \"import\" syntax, and import ESM-style modules\nthat are written for execution inside of the browser. Once your script is finished, any\ndownloaded files from Chromium are returned back with the appropriate content-type header",
         "routing": {
           "request": {
             "method": "POST",
@@ -101,8 +101,8 @@
       {
         "name": "Chrome Function",
         "value": "Chrome Function",
-        "action": "Chrome Function Browser Rest Apis",
-        "description": "/chrome/function",
+        "action": "Chrome Function",
+        "description": "A JSON or JavaScript content-type API for running puppeteer code in the browser's context.\nBrowserless sets up a blank page, injects your puppeteer code, and runs it.\nYou can optionally load external libraries via the \"import\" module that are meant for browser usage.\nValues returned from the function are checked and an appropriate content-type and response is sent back\nto your HTTP call",
         "routing": {
           "request": {
             "method": "POST",
@@ -113,8 +113,8 @@
       {
         "name": "Json List",
         "value": "Json List",
-        "action": "Json List Browser Rest Apis",
-        "description": "/json/list",
+        "action": "Json List",
+        "description": "Returns a JSON payload that acts as a pass-through to the DevTools /json/list HTTP API in Chromium and Chrome.\nBrowserless crafts this payload so that remote clients can connect to the underlying \"webSocketDebuggerUrl\"\nproperly, excluding any API tokens in that URL. If under authentication be sure to include your authorization",
         "routing": {
           "request": {
             "method": "GET",
@@ -125,8 +125,8 @@
       {
         "name": "Json New",
         "value": "Json New",
-        "action": "Json New Browser Rest Apis",
-        "description": "/json/new",
+        "action": "Json New",
+        "description": "Returns a JSON payload that acts as a pass-through to the DevTools /json/new HTTP API in Chromium.\nBrowserless mocks this payload so that remote clients can connect to the underlying \"webSocketDebuggerUrl\"\nwhich will cause Browserless to start the browser and proxy that request into a blank page",
         "routing": {
           "request": {
             "method": "PUT",
@@ -137,8 +137,8 @@
       {
         "name": "Json Protocol",
         "value": "Json Protocol",
-        "action": "Json Protocol Browser Rest Apis",
-        "description": "/json/protocol",
+        "action": "Json Protocol",
+        "description": "Returns Protocol JSON meta-data that Chrome and Chromium come with",
         "routing": {
           "request": {
             "method": "GET",
@@ -149,8 +149,8 @@
       {
         "name": "Json Version",
         "value": "Json Version",
-        "action": "Json Version Browser Rest Apis",
-        "description": "/json/version",
+        "action": "Json Version",
+        "description": "Returns a JSON payload that acts as a pass-through to the DevTools /json/version protocol in Chrome and Chromium",
         "routing": {
           "request": {
             "method": "GET",
@@ -161,8 +161,8 @@
       {
         "name": "Chrome Pdf",
         "value": "Chrome Pdf",
-        "action": "Chrome Pdf Browser Rest Apis",
-        "description": "/chrome/pdf",
+        "action": "Chrome Pdf",
+        "description": "A JSON-based API for getting a PDF binary from either a supplied\n\"url\" or \"html\" payload in your request. Many options exist for\ninjecting cookies, request interceptors, user-agents and waiting for\nselectors, timers and more",
         "routing": {
           "request": {
             "method": "POST",
@@ -173,8 +173,8 @@
       {
         "name": "Chrome Performance",
         "value": "Chrome Performance",
-        "action": "Chrome Performance Browser Rest Apis",
-        "description": "/chrome/performance",
+        "action": "Chrome Performance",
+        "description": "Run lighthouse performance audits with a supplied \"url\" in your JSON payload",
         "routing": {
           "request": {
             "method": "POST",
@@ -185,8 +185,8 @@
       {
         "name": "Chrome Scrape",
         "value": "Chrome Scrape",
-        "action": "Chrome Scrape Browser Rest Apis",
-        "description": "/chrome/scrape",
+        "action": "Chrome Scrape",
+        "description": "A JSON-based API that returns text, html, and meta-data from a given list of selectors.\nDebugging information is available by sending in the appropriate flags in the \"debugOpts\"\nproperty. Responds with an array of JSON objects",
         "routing": {
           "request": {
             "method": "POST",
@@ -197,8 +197,8 @@
       {
         "name": "Chrome Screenshot",
         "value": "Chrome Screenshot",
-        "action": "Chrome Screenshot Browser Rest Apis",
-        "description": "/chrome/screenshot",
+        "action": "Chrome Screenshot",
+        "description": "A JSON-based API for getting a screenshot binary from either a supplied\n\"url\" or \"html\" payload in your request. Many options exist including\ncookies, user-agents, setting timers and network mocks",
         "routing": {
           "request": {
             "method": "POST",
@@ -209,8 +209,8 @@
       {
         "name": "Chromium Content",
         "value": "Chromium Content",
-        "action": "Chromium Content Browser Rest Apis",
-        "description": "/content /chromium/content",
+        "action": "Chromium Content",
+        "description": "A JSON-based API. Given a \"url\" or \"html\" field, runs and returns HTML content after the page has loaded and JavaScript has parsed",
         "routing": {
           "request": {
             "method": "POST",
@@ -221,8 +221,8 @@
       {
         "name": "Chromium Download",
         "value": "Chromium Download",
-        "action": "Chromium Download Browser Rest Apis",
-        "description": "/download /chromium/download",
+        "action": "Chromium Download",
+        "description": "A JSON or JavaScript content-type API for returning files Chrome has downloaded during\nthe execution of puppeteer code, which is ran inside context of the browser.\nBrowserless sets up a blank page, a fresh download directory, injects your puppeteer code, and then executes it.\nYou can load external libraries via the \"import\" syntax, and import ESM-style modules\nthat are written for execution inside of the browser. Once your script is finished, any\ndownloaded files from Chromium are returned back with the appropriate content-type header",
         "routing": {
           "request": {
             "method": "POST",
@@ -233,8 +233,8 @@
       {
         "name": "Chromium Function",
         "value": "Chromium Function",
-        "action": "Chromium Function Browser Rest Apis",
-        "description": "/function /chromium/function",
+        "action": "Chromium Function",
+        "description": "A JSON or JavaScript content-type API for running puppeteer code in the browser's context.\nBrowserless sets up a blank page, injects your puppeteer code, and runs it.\nYou can optionally load external libraries via the \"import\" module that are meant for browser usage.\nValues returned from the function are checked and an appropriate content-type and response is sent back\nto your HTTP call",
         "routing": {
           "request": {
             "method": "POST",
@@ -245,8 +245,8 @@
       {
         "name": "Chromium Performance",
         "value": "Chromium Performance",
-        "action": "Chromium Performance Browser Rest Apis",
-        "description": "/performance /chromium/performance",
+        "action": "Chromium Performance",
+        "description": "Run lighthouse performance audits with a supplied \"url\" in your JSON payload",
         "routing": {
           "request": {
             "method": "POST",
@@ -257,8 +257,8 @@
       {
         "name": "Chromium Scrape",
         "value": "Chromium Scrape",
-        "action": "Chromium Scrape Browser Rest Apis",
-        "description": "/scrape /chromium/scrape",
+        "action": "Chromium Scrape",
+        "description": "A JSON-based API that returns text, html, and meta-data from a given list of selectors.\nDebugging information is available by sending in the appropriate flags in the \"debugOpts\"\nproperty. Responds with an array of JSON objects",
         "routing": {
           "request": {
             "method": "POST",

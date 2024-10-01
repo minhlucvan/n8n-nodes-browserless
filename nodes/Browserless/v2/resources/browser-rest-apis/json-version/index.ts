@@ -17,8 +17,9 @@ export const name = 'Json Version'
 const rawOption: INodePropertyOptions = {
   name: 'Json Version',
   value: 'Json Version',
-  action: 'Json Version Browser Rest Apis',
-  description: '/json/version',
+  action: 'Json Version',
+  description:
+    'Returns a JSON payload that acts as a pass-through to the DevTools /json/version protocol in Chrome and Chromium',
   routing: {
     request: {
       method: 'GET',

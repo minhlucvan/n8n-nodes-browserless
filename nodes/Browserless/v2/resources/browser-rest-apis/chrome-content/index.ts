@@ -17,8 +17,9 @@ export const name = 'Chrome Content'
 const rawOption: INodePropertyOptions = {
   name: 'Chrome Content',
   value: 'Chrome Content',
-  action: 'Chrome Content Browser Rest Apis',
-  description: '/chrome/content',
+  action: 'Chrome Content',
+  description:
+    'A JSON-based API. Given a "url" or "html" field, runs and returns HTML content after the page has loaded and JavaScript has parsed',
   routing: {
     request: {
       method: 'POST',

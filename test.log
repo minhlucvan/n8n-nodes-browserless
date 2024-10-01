@@ -1,0 +1,942 @@
+
+> n8n-nodes-browserless@0.5.2 codegen D:\oneflow\create-n8n-nodes\packages\n8n-nodes-browserless
+> create-n8n-nodes generate -o . -c nodes.config.js -a ./openapi.yml -t ../../templates/n8n-nodes
+
+[33mGenerating nodes[0m ../../templates/n8n-nodes
+[33mGenerating Node[0m Browserless
+Generating code skeleton
+Filtering tags: [ 'Browser REST APIs' ]
+Generating code skeleton
+OpenAPI file: Browserless
+Base directory: D:\oneflow\create-n8n-nodes\packages\n8n-nodes-browserless
+Templates directory: D:\oneflow\create-n8n-nodes\templates\n8n-nodes
+Target directory: D:\oneflow\create-n8n-nodes\packages\n8n-nodes-browserless\nodes\Browserless\v2
+Deleting: D:\oneflow\create-n8n-nodes\packages\n8n-nodes-browserless\nodes\Browserless\v2
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    description: 'When bestAttempt is set to true, browserless attempt to proceed\n' +
+      'when "awaited" events fail or timeout. This includes things like\n' +
+      'goto, waitForSelector, and more.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'The URL of the site you want to unblock.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to keep the underlying browser alive and around for\n' +
+      'future reconnects. Defaults to false.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to to return cookies for the site, defaults to true.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to to return content for the site, defaults to true.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to to return a full-page screenshot for the site, defaults to true.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'When the browserWSEndpoint is requested this tells\n' +
+      'browserless how long to keep this browser alive for\n' +
+      're-connection until shutting it down completely.\n' +
+      'Maximum of 30000 for 30 seconds (30,000ms).',
+    type: 'number'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'An optional goto parameter object for considering when the page is done loading.',
+    type: 'object',
+    properties: {
+      referer: [Object],
+      referrerPolicy: [Object],
+      timeout: [Object],
+      waitUntil: [Object],
+      signal: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/GoToOptions' ]
+  }
+}
+fromSchema object schema {
+  schema: {
+    referer: {
+      description: 'If provided, it will take preference over the referer header value set by\n' +
+        '{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}.',
+      type: 'string'
+    },
+    referrerPolicy: {
+      description: 'If provided, it will take preference over the referer-policy header value\n' +
+        'set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}.',
+      type: 'string'
+    },
+    timeout: {
+      description: 'Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n' +
+        '\n' +
+        'The default value can be changed by using the\n' +
+        '{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\n' +
+        'methods.',
+      type: 'number'
+    },
+    waitUntil: {
+      description: 'When to consider waiting succeeds. Given an array of event strings, waiting\n' +
+        'is considered to be successful after all events have been fired.',
+      anyOf: [Array]
+    },
+    signal: {
+      description: 'A signal object that allows you to cancel the call.',
+      type: 'object',
+      properties: [Object],
+      additionalProperties: false,
+      required: [Array],
+      'x-original-ref': [Array]
+    }
+  }
+}
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: { event: [Object], timeout: [Object] },
+    additionalProperties: false,
+    required: [ 'event' ]
+  }
+}
+fromSchema { schema: { type: 'string' } }
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    description: 'When bestAttempt is set to true, browserless attempt to proceed\n' +
+      'when "awaited" events fail or timeout. This includes things like\n' +
+      'goto, waitForSelector, and more.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'The URL of the site you want to unblock.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to keep the underlying browser alive and around for\n' +
+      'future reconnects. Defaults to false.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to to return cookies for the site, defaults to true.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to to return content for the site, defaults to true.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or not to to return a full-page screenshot for the site, defaults to true.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'When the browserWSEndpoint is requested this tells\n' +
+      'browserless how long to keep this browser alive for\n' +
+      're-connection until shutting it down completely.\n' +
+      'Maximum of 30000 for 30 seconds (30,000ms).',
+    type: 'number'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'An optional goto parameter object for considering when the page is done loading.',
+    type: 'object',
+    properties: {
+      referer: [Object],
+      referrerPolicy: [Object],
+      timeout: [Object],
+      waitUntil: [Object],
+      signal: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/GoToOptions' ]
+  }
+}
+fromSchema object schema {
+  schema: {
+    referer: {
+      description: 'If provided, it will take preference over the referer header value set by\n' +
+        '{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}.',
+      type: 'string'
+    },
+    referrerPolicy: {
+      description: 'If provided, it will take preference over the referer-policy header value\n' +
+        'set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}.',
+      type: 'string'
+    },
+    timeout: {
+      description: 'Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n' +
+        '\n' +
+        'The default value can be changed by using the\n' +
+        '{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\n' +
+        'methods.',
+      type: 'number'
+    },
+    waitUntil: {
+      description: 'When to consider waiting succeeds. Given an array of event strings, waiting\n' +
+        'is considered to be successful after all events have been fired.',
+      anyOf: [Array]
+    },
+    signal: {
+      description: 'A signal object that allows you to cancel the call.',
+      type: 'object',
+      properties: [Object],
+      additionalProperties: false,
+      required: [Array],
+      'x-original-ref': [Array]
+    }
+  }
+}
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: { event: [Object], timeout: [Object] },
+    additionalProperties: false,
+    required: [ 'event' ]
+  }
+}
+fromSchema { schema: { type: 'string' } }
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema { schema: { anyOf: [ [Object], [Object] ] } }
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema { schema: { type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/Record<string,string|number>' ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema { schema: { type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/Record<string,string|number>' ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: { type: 'object', properties: {}, additionalProperties: true }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema { schema: { anyOf: [ [Object], [Object] ] } }
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema { schema: { anyOf: [ [Object], [Object] ] } }
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema { schema: { type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/Record<string,string|number>' ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema { schema: { type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/Record<string,string|number>' ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Launch options, which can be either an object\n' +
+      'of puppeteer.launch options or playwright.launchServer\n' +
+      'options, depending on the API. Must be either JSON\n' +
+      'object, or a base64-encoded JSON object.',
+    anyOf: [ [Object], [Object] ]
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: { type: 'object', properties: {}, additionalProperties: true }
+}
+fromSchema {
+  schema: {
+    description: 'Whether or nor to load ad-blocking extensions for the session.\n' +
+      'This currently uses uBlock Origin and may cause certain sites\n' +
+      'to not load properly.',
+    type: 'boolean'
+  }
+}
+fromSchema { schema: { anyOf: [ [Object], [Object] ] } }
+fromSchema {
+  schema: {
+    description: 'Override the system-level timeout for this request.\n' +
+      'Accepts a value in milliseconds.',
+    type: 'number'
+  }
+}
+fromSchema { schema: { description: 'The authorization token', type: 'string' } }
+fromSchema {
+  schema: {
+    type: 'object',
+    properties: {
+      url: [Object],
+      path: [Object],
+      content: [Object],
+      type: [Object],
+      id: [Object]
+    },
+    additionalProperties: false,
+    'x-original-ref': [ '#/definitions/FrameAddScriptTagOptions' ]
+  }
+}
+fromSchema {
+  schema: { description: 'URL of the script to be added.', type: 'string' }
+}
+fromSchema {
+  schema: {
+    description: 'Path to a JavaScript file to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'JavaScript to be injected into the frame.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: {
+    description: 'Sets the `type` of the script. Use `module` in order to load an ES2015 module.',
+    type: 'string'
+  }
+}
+fromSchema {
+  schema: { description: 'Sets the `id` of the script.', type: 'string' }
+}
+Generating directory structure
+Directory structure generated
+Copying node icons
+[32mDone! ✨[0m

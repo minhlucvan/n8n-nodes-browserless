@@ -17,8 +17,9 @@ export const name = 'Chrome Download'
 const rawOption: INodePropertyOptions = {
   name: 'Chrome Download',
   value: 'Chrome Download',
-  action: 'Chrome Download Browser Rest Apis',
-  description: '/chrome/download',
+  action: 'Chrome Download',
+  description:
+    'A JSON or JavaScript content-type API for returning files Chrome has downloaded during\nthe execution of puppeteer code, which is ran inside context of the browser.\nBrowserless sets up a blank page, a fresh download directory, injects your puppeteer code, and then executes it.\nYou can load external libraries via the "import" syntax, and import ESM-style modules\nthat are written for execution inside of the browser. Once your script is finished, any\ndownloaded files from Chromium are returned back with the appropriate content-type header',
   routing: {
     request: {
       method: 'POST',

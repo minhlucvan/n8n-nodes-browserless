@@ -17,8 +17,9 @@ export const name = 'Json Protocol'
 const rawOption: INodePropertyOptions = {
   name: 'Json Protocol',
   value: 'Json Protocol',
-  action: 'Json Protocol Browser Rest Apis',
-  description: '/json/protocol',
+  action: 'Json Protocol',
+  description:
+    'Returns Protocol JSON meta-data that Chrome and Chromium come with',
   routing: {
     request: {
       method: 'GET',

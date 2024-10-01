@@ -17,8 +17,9 @@ export const name = 'Json List'
 const rawOption: INodePropertyOptions = {
   name: 'Json List',
   value: 'Json List',
-  action: 'Json List Browser Rest Apis',
-  description: '/json/list',
+  action: 'Json List',
+  description:
+    'Returns a JSON payload that acts as a pass-through to the DevTools /json/list HTTP API in Chromium and Chrome.\nBrowserless crafts this payload so that remote clients can connect to the underlying "webSocketDebuggerUrl"\nproperly, excluding any API tokens in that URL. If under authentication be sure to include your authorization',
   routing: {
     request: {
       method: 'GET',
