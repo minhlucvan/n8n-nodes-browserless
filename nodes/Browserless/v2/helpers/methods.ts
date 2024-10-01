@@ -1,6 +1,6 @@
-import { INodeType } from 'n8n-workflow';
+import { INodeType } from 'n8n-workflow'
 
-type IMethodModule = INodeType['methods'];
+type IMethodModule = INodeType['methods']
 
 /**
  * Merge all methods from all modules into one object
@@ -8,12 +8,12 @@ type IMethodModule = INodeType['methods'];
  * @returns methods: INodeType['methods']
  */
 export function aggregateNodeMethods (
-	modules: IMethodModule[],
+  modules: IMethodModule[]
 ): INodeType['methods'] {
-	return modules.reduce((methods, module) => {
-		return {
-			...methods,
-			...module,
-		};
-	}, {});
+  return modules.reduce((methods, module) => {
+    return {
+      ...methods,
+      ...module,
+    }
+  }, {})
 }

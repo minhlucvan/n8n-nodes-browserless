@@ -6,8 +6,8 @@
     "noDataExpression": true,
     "options": [
       {
-        "name": "Default",
-        "value": "Default",
+        "name": "Browser Rest Apis",
+        "value": "Browser Rest Apis",
         "description": ""
       }
     ],
@@ -21,140 +21,248 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ]
       }
     },
     "options": [
       {
-        "name": "Content Api",
-        "value": "Content Api",
-        "action": "Content API",
-        "description": "Allows for simple navigation to a site and capturing the page's content (including the `<head>` section).",
+        "name": "Chrome Unblock",
+        "value": "Chrome Unblock",
+        "action": "Chrome Unblock Browser Rest Apis",
+        "description": "/chrome/unblock",
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/content"
+            "url": "=/chrome/unblock"
           }
         }
       },
       {
-        "name": "Download A File Created In The Browser",
-        "value": "Download A File Created In The Browser",
-        "action": "Download a file created in the browser.",
-        "description": "The /download API is used for returning files Chrome has downloaded during the execution of puppeteer code, which is ran inside context of the browser.",
+        "name": "Chromium Unblock",
+        "value": "Chromium Unblock",
+        "action": "Chromium Unblock Browser Rest Apis",
+        "description": "/unblock /chromium/unblock",
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/download"
+            "url": "=/unblock /chromium/unblock"
           }
         }
       },
       {
-        "name": "Executes Custom Puppeteer Code",
-        "value": "Executes Custom Puppeteer Code",
-        "action": "Executes custom puppeteer code",
-        "description": "Allows for `POST`ing of custom code and context to run them.",
+        "name": "Chromium Pdf",
+        "value": "Chromium Pdf",
+        "action": "Chromium Pdf Browser Rest Apis",
+        "description": "/pdf /chromium/pdf",
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/function"
+            "url": "=/pdf /chromium/pdf"
           }
         }
       },
       {
-        "name": "Takes A Screenshot Of Specified Url",
-        "value": "Takes A Screenshot Of Specified Url",
-        "action": "Takes a screenshot of specified URL.",
-        "description": "The screenshot API allows for simple navigation to a site and capturing a screenshot. This API exposes most of puppeteer's screenshot API through the posted JSON payload.",
+        "name": "Chromium Screenshot",
+        "value": "Chromium Screenshot",
+        "action": "Chromium Screenshot Browser Rest Apis",
+        "description": "/screenshot /chromium/screenshot",
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/screenshot"
+            "url": "=/screenshot /chromium/screenshot"
           }
         }
       },
       {
-        "name": "Unblock A Webpage",
-        "value": "Unblock A Webpage",
-        "action": "Unblock a webpage",
-        "description": "Unblock a webpage",
+        "name": "Chrome Content",
+        "value": "Chrome Content",
+        "action": "Chrome Content Browser Rest Apis",
+        "description": "/chrome/content",
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/unblock"
+            "url": "=/chrome/content"
           }
         }
       },
       {
-        "name": "Scrapepage",
-        "value": "Scrapepage",
-        "action": "Scrapepage",
-        "description": "",
+        "name": "Chrome Download",
+        "value": "Chrome Download",
+        "action": "Chrome Download Browser Rest Apis",
+        "description": "/chrome/download",
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/scrape"
+            "url": "=/chrome/download"
           }
         }
       },
       {
-        "name": "Gather Site Performance Data",
-        "value": "Gather Site Performance Data",
-        "action": "Gather site performance data",
-        "description": "This API is used to gather performance metrics about a website. It is powered by Google's Lighthouse project and is compatible with its CLI options. Due to the number of checks gathered, it can take from several seconds to minutes depending on the site and size of the worker.",
+        "name": "Chrome Function",
+        "value": "Chrome Function",
+        "action": "Chrome Function Browser Rest Apis",
+        "description": "/chrome/function",
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/performance"
+            "url": "=/chrome/function"
           }
         }
       },
       {
-        "name": "Gather Information About Currently Running Sessions",
-        "value": "Gather Information About Currently Running Sessions",
-        "action": "Gather information about currently running sessions",
-        "description": "This API is only available for dedicated and self-hosted accounts. It will show information of the current running sessions",
+        "name": "Json List",
+        "value": "Json List",
+        "action": "Json List Browser Rest Apis",
+        "description": "/json/list",
         "routing": {
           "request": {
             "method": "GET",
-            "url": "=/sessions"
+            "url": "=/json/list"
           }
         }
       },
       {
-        "name": "Get Your Workers Configuration",
-        "value": "Get Your Workers Configuration",
-        "action": "Get your worker's configuration",
-        "description": "The `/config` API will give you information about your worker's configuration, **and is only available for dedicated and self-hosted accounts**",
+        "name": "Json New",
+        "value": "Json New",
+        "action": "Json New Browser Rest Apis",
+        "description": "/json/new",
         "routing": {
           "request": {
-            "method": "GET",
-            "url": "=/config"
+            "method": "PUT",
+            "url": "=/json/new"
           }
         }
       },
       {
-        "name": "Get Metrics Of The Session",
-        "value": "Get Metrics Of The Session",
-        "action": "Get metrics of the session",
-        "description": "Get metrics of the session",
+        "name": "Json Protocol",
+        "value": "Json Protocol",
+        "action": "Json Protocol Browser Rest Apis",
+        "description": "/json/protocol",
         "routing": {
           "request": {
             "method": "GET",
-            "url": "=/metrics"
+            "url": "=/json/protocol"
           }
         }
       },
       {
-        "name": "Get Total Metrics Of All The Sessions",
-        "value": "Get Total Metrics Of All The Sessions",
-        "action": "Get total metrics of all the sessions",
-        "description": "Get total metrics of all the sessions",
+        "name": "Json Version",
+        "value": "Json Version",
+        "action": "Json Version Browser Rest Apis",
+        "description": "/json/version",
         "routing": {
           "request": {
             "method": "GET",
-            "url": "=/metrics/total"
+            "url": "=/json/version"
+          }
+        }
+      },
+      {
+        "name": "Chrome Pdf",
+        "value": "Chrome Pdf",
+        "action": "Chrome Pdf Browser Rest Apis",
+        "description": "/chrome/pdf",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/chrome/pdf"
+          }
+        }
+      },
+      {
+        "name": "Chrome Performance",
+        "value": "Chrome Performance",
+        "action": "Chrome Performance Browser Rest Apis",
+        "description": "/chrome/performance",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/chrome/performance"
+          }
+        }
+      },
+      {
+        "name": "Chrome Scrape",
+        "value": "Chrome Scrape",
+        "action": "Chrome Scrape Browser Rest Apis",
+        "description": "/chrome/scrape",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/chrome/scrape"
+          }
+        }
+      },
+      {
+        "name": "Chrome Screenshot",
+        "value": "Chrome Screenshot",
+        "action": "Chrome Screenshot Browser Rest Apis",
+        "description": "/chrome/screenshot",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/chrome/screenshot"
+          }
+        }
+      },
+      {
+        "name": "Chromium Content",
+        "value": "Chromium Content",
+        "action": "Chromium Content Browser Rest Apis",
+        "description": "/content /chromium/content",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/content /chromium/content"
+          }
+        }
+      },
+      {
+        "name": "Chromium Download",
+        "value": "Chromium Download",
+        "action": "Chromium Download Browser Rest Apis",
+        "description": "/download /chromium/download",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/download /chromium/download"
+          }
+        }
+      },
+      {
+        "name": "Chromium Function",
+        "value": "Chromium Function",
+        "action": "Chromium Function Browser Rest Apis",
+        "description": "/function /chromium/function",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/function /chromium/function"
+          }
+        }
+      },
+      {
+        "name": "Chromium Performance",
+        "value": "Chromium Performance",
+        "action": "Chromium Performance Browser Rest Apis",
+        "description": "/performance /chromium/performance",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/performance /chromium/performance"
+          }
+        }
+      },
+      {
+        "name": "Chromium Scrape",
+        "value": "Chromium Scrape",
+        "action": "Chromium Scrape Browser Rest Apis",
+        "description": "/scrape /chromium/scrape",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/scrape /chromium/scrape"
           }
         }
       }
@@ -162,7 +270,7 @@
     "default": ""
   },
   {
-    "displayName": "POST /content",
+    "displayName": "POST /chrome/unblock",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -172,394 +280,98 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Content Api"
+          "Chrome Unblock"
         ]
       }
     }
   },
   {
-    "displayName": "Token",
-    "name": "token",
-    "required": true,
-    "description": "API token",
-    "default": "",
-    "type": "string",
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
     "routing": {
       "request": {
         "qs": {
-          "token": "={{ $value }}"
+          "blockAds": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Content Api"
+          "Chrome Unblock"
         ]
       }
     }
   },
   {
-    "displayName": "Url",
-    "name": "url",
-    "type": "string",
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/unblock<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
     "default": "",
-    "description": "URL to navigate to",
-    "routing": {
-      "request": {
-        "body": {
-          "url": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Content Api"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Reject Resource Types",
-    "name": "rejectResourceTypes",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "Types to be rejected",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "name": "Item",
-            "displayName": "Item",
-            "type": "string",
-            "default": ""
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectResourceTypes": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Content Api"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Reject Request Pattern",
-    "name": "rejectRequestPattern",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "Patterns to reject",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "name": "Item",
-            "displayName": "Item",
-            "type": "string",
-            "default": ""
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectRequestPattern": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Content Api"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Goto Options",
-    "name": "gotoOptions",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "Puppeteer's GoToOptions interface",
-            "name": "waitUntil",
-            "displayName": "waitUntil"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "gotoOptions": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Content Api"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Best Attempt",
-    "name": "bestAttempt",
-    "type": "boolean",
-    "default": true,
-    "description": "Make Browserless attempt to proceed when async events fail or timeout",
-    "routing": {
-      "request": {
-        "body": {
-          "bestAttempt": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Content Api"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "Valid CSS selector",
-            "name": "selector",
-            "displayName": "selector"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Maximum number of milliseconds to wait for the selector",
-            "name": "timeout",
-            "displayName": "timeout"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Wait for the selected element to not be found in the DOM or to be hidden",
-            "name": "hidden",
-            "displayName": "hidden"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Wait for the selected element to be present in DOM and to be visible",
-            "name": "visible",
-            "displayName": "visible"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Content Api"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "Event to wait for",
-            "name": "event",
-            "displayName": "event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Maximum number of milliseconds to wait for the event",
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Content Api"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Function",
-    "name": "waitForFunction",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "Wait for the function to return. Can be any valid JavaScript or EcmaScript function.",
-            "name": "fn",
-            "displayName": "fn"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Maximum number of milliseconds to wait for the function",
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Content Api"
+          "Chrome Unblock"
         ]
       }
     }
@@ -568,8 +380,8 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"url\": \"string\",\n  \"rejectResourceTypes\": [\n    \"string\"\n  ],\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"gotoOptions\": {\n    \"waitUntil\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"waitForSelector\": {\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"hidden\": \"string\",\n    \"visible\": \"string\"\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"timeout\": 0\n  }\n}",
-    "description": "Custom body to send.",
+    "default": "{\n  \"bestAttempt\": true,\n  \"url\": \"string\",\n  \"browserWSEndpoint\": true,\n  \"cookies\": true,\n  \"content\": true,\n  \"screenshot\": true,\n  \"ttl\": 0,\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
     "routing": {
       "send": {
         "preSend": [
@@ -583,16 +395,16 @@
           true
         ],
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Content Api"
+          "Chrome Unblock"
         ]
       }
     }
   },
   {
-    "displayName": "POST /download",
+    "displayName": "POST /unblock /chromium/unblock",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -602,20 +414,627 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Download A File Created In The Browser"
+          "Chromium Unblock"
         ]
       }
     }
   },
   {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /unblock /chromium/unblock<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"bestAttempt\": true,\n  \"url\": \"string\",\n  \"browserWSEndpoint\": true,\n  \"cookies\": true,\n  \"content\": true,\n  \"screenshot\": true,\n  \"ttl\": 0,\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /pdf /chromium/pdf",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /pdf /chromium/pdf<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"options\": {\n    \"scale\": 0,\n    \"displayHeaderFooter\": true,\n    \"headerTemplate\": \"string\",\n    \"footerTemplate\": \"string\",\n    \"printBackground\": true,\n    \"landscape\": true,\n    \"pageRanges\": \"string\",\n    \"format\": \"A0\",\n    \"width\": {},\n    \"height\": {},\n    \"preferCSSPageSize\": true,\n    \"margin\": {\n      \"top\": {},\n      \"bottom\": {},\n      \"left\": {},\n      \"right\": {}\n    },\n    \"path\": \"string\",\n    \"omitBackground\": true,\n    \"tagged\": true,\n    \"outline\": true,\n    \"timeout\": 0,\n    \"waitForFonts\": true\n  },\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /screenshot /chromium/screenshot",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /screenshot /chromium/screenshot<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"options\": {\n    \"optimizeForSpeed\": true,\n    \"type\": \"jpeg\",\n    \"quality\": 0,\n    \"fromSurface\": true,\n    \"fullPage\": true,\n    \"omitBackground\": true,\n    \"path\": \"string\",\n    \"clip\": {\n      \"scale\": 0,\n      \"width\": 0,\n      \"height\": 0,\n      \"x\": 0,\n      \"y\": 0\n    },\n    \"encoding\": \"base64\",\n    \"captureBeyondViewport\": true\n  },\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"scrollPage\": true,\n  \"selector\": \"string\",\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/content",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/content<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/download",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Download"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
     "displayName": "Code",
     "name": "code",
     "type": "string",
     "default": "",
-    "description": "The custom download code.",
     "routing": {
       "request": {
         "body": {
@@ -631,10 +1050,10 @@
       },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Download A File Created In The Browser"
+          "Chrome Download"
         ]
       }
     }
@@ -644,7 +1063,6 @@
     "name": "context",
     "type": "json",
     "default": "{}",
-    "description": "Value used to pass context values and arguments to the `code`.",
     "routing": {
       "request": {
         "body": {
@@ -660,10 +1078,10 @@
       },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Download A File Created In The Browser"
+          "Chrome Download"
         ]
       }
     }
@@ -672,8 +1090,8 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"code\": \"export default async function({page:t,context:a}){await t.evaluate(t=>{let a={url:t.url,ping:`pong`,rnd:[...Array(t.arrayLen)].map(()=>Math.random())},e=`data:application/json,${JSON.stringify(a)}`,n=encodeURI(e),r=document.createElement(`a`);return r.setAttribute(`href`,n),r.setAttribute(`download`,`data.json`),document.body.appendChild(r),r.click()},a)};\",\n  \"context\": {\n    \"url\": \"https://browserless.io/\",\n    \"arrayLen\": 10\n  }\n}",
-    "description": "Custom body to send.",
+    "default": "{\n  \"code\": \"string\",\n  \"context\": {}\n}",
+    "description": "Custom body to send",
     "routing": {
       "send": {
         "preSend": [
@@ -687,16 +1105,16 @@
           true
         ],
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Download A File Created In The Browser"
+          "Chrome Download"
         ]
       }
     }
   },
   {
-    "displayName": "POST /function",
+    "displayName": "POST /chrome/function",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -706,20 +1124,92 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Executes Custom Puppeteer Code"
+          "Chrome Function"
         ]
       }
     }
   },
   {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Function"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Function"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Function"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
     "displayName": "Code",
     "name": "code",
     "type": "string",
-    "default": "import{faker as a}from\\\"https://esm.sh/@faker-js/faker\\\";export default async function({context:o}){let t=a.internet,e=[...Array(o.len)].map(()=>({domain:t.domainName(),ip:t.ip(),mac:t.mac(),protocol:t.protocol()}));return{data:{domains:e,length:o.len},type:`application/json`}};\n",
-    "description": "JavaScript code to be executed, exporting an async function.",
+    "default": "",
     "routing": {
       "request": {
         "body": {
@@ -735,10 +1225,10 @@
       },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Executes Custom Puppeteer Code"
+          "Chrome Function"
         ]
       }
     }
@@ -746,26 +1236,12 @@
   {
     "displayName": "Context",
     "name": "context",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "name": "len",
-            "displayName": "len"
-          }
-        ]
-      }
-    ],
+    "type": "json",
+    "default": "{}",
     "routing": {
       "request": {
         "body": {
-          "context": "={{$value.items}}"
+          "context": "={{ JSON.parse($value) }}"
         }
       }
     },
@@ -777,10 +1253,10 @@
       },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Executes Custom Puppeteer Code"
+          "Chrome Function"
         ]
       }
     }
@@ -789,8 +1265,8 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"code\": \"import{faker as a}from\\\\\\\"https://esm.sh/@faker-js/faker\\\\\\\";export default async function({context:o}){let t=a.internet,e=[...Array(o.len)].map(()=>({domain:t.domainName(),ip:t.ip(),mac:t.mac(),protocol:t.protocol()}));return{data:{domains:e,length:o.len},type:`application/json`}};\\n\",\n  \"context\": {\n    \"len\": 10\n  }\n}",
-    "description": "Custom body to send.",
+    "default": "{\n  \"code\": \"string\",\n  \"context\": {}\n}",
+    "description": "Custom body to send",
     "routing": {
       "send": {
         "preSend": [
@@ -804,16 +1280,16 @@
           true
         ],
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Executes Custom Puppeteer Code"
+          "Chrome Function"
         ]
       }
     }
   },
   {
-    "displayName": "POST /screenshot",
+    "displayName": "GET /json/list",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -823,257 +1299,26 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Takes A Screenshot Of Specified Url"
+          "Json List"
         ]
       }
     }
   },
   {
-    "displayName": "Url",
-    "name": "url",
-    "type": "string",
+    "displayName": "GET /json/list<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
     "default": "",
-    "description": "The URL to navigate to and capture a screenshot",
-    "routing": {
-      "request": {
-        "body": {
-          "url": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Takes A Screenshot Of Specified Url"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Options",
-    "name": "options",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "Options available via puppeteer's Page.screenshot() method",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "When true, takes a screenshot of the full scrollable page",
-            "name": "fullPage",
-            "displayName": "fullPage"
-          },
-          {
-            "type": "options",
-            "default": "jpeg",
-            "description": "Specifies the image format of the output",
-            "options": [
-              {
-                "name": "jpeg",
-                "value": "jpeg"
-              },
-              {
-                "name": "png",
-                "value": "png"
-              },
-              {
-                "name": "webp",
-                "value": "webp"
-              }
-            ],
-            "name": "type",
-            "displayName": "type"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "options": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Takes A Screenshot Of Specified Url"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Script Tag",
-    "name": "addScriptTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "Additional scripts to load",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "name": "url",
-            "displayName": "url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "name": "content",
-            "displayName": "content"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addScriptTag": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Takes A Screenshot Of Specified Url"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Style Tag",
-    "name": "addStyleTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "Additional styles to load",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "name": "url",
-            "displayName": "url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "name": "content",
-            "displayName": "content"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addStyleTag": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Takes A Screenshot Of Specified Url"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Reject Resource Types",
-    "name": "rejectResourceTypes",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "Block undesired resource types",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "name": "Item",
-            "displayName": "Item",
-            "type": "string",
-            "default": ""
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectResourceTypes": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Takes A Screenshot Of Specified Url"
+          "Json List"
         ]
       }
     }
@@ -1082,8 +1327,8 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"url\": \"string\",\n  \"options\": {\n    \"fullPage\": true,\n    \"type\": \"jpeg\"\n  },\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"rejectResourceTypes\": [\n    \"string\"\n  ]\n}",
-    "description": "Custom body to send.",
+    "default": "{}",
+    "description": "Custom body to send",
     "routing": {
       "send": {
         "preSend": [
@@ -1097,16 +1342,16 @@
           true
         ],
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Takes A Screenshot Of Specified Url"
+          "Json List"
         ]
       }
     }
   },
   {
-    "displayName": "POST /unblock",
+    "displayName": "PUT /json/new",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -1116,695 +1361,284 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Unblock A Webpage"
+          "Json New"
         ]
       }
     }
   },
   {
-    "displayName": "Url",
-    "name": "url",
-    "type": "string",
-    "default": "https://example.com",
+    "displayName": "PUT /json/new<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Json New"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{}",
+    "description": "Custom body to send",
     "routing": {
-      "request": {
-        "body": {
-          "url": "={{ $value }}"
-        }
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
       }
     },
     "displayOptions": {
-      "hide": {
+      "show": {
         "/options.useCustomBody": [
           true
-        ]
-      },
-      "show": {
+        ],
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Unblock A Webpage"
+          "Json New"
         ]
       }
     }
   },
   {
-    "displayName": "Browser WS Endpoint",
-    "name": "browserWSEndpoint",
-    "type": "boolean",
+    "displayName": "GET /json/protocol",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Json Protocol"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /json/protocol<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Json Protocol"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Json Protocol"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /json/version",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Json Version"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /json/version<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Json Version"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Json Version"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/pdf",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
     "default": true,
-    "routing": {
-      "request": {
-        "body": {
-          "browserWSEndpoint": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Cookies",
-    "name": "cookies",
     "type": "boolean",
-    "default": true,
-    "routing": {
-      "request": {
-        "body": {
-          "cookies": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Content",
-    "name": "content",
-    "type": "boolean",
-    "default": false,
-    "routing": {
-      "request": {
-        "body": {
-          "content": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Screenshot",
-    "name": "screenshot",
-    "type": "boolean",
-    "default": false,
-    "routing": {
-      "request": {
-        "body": {
-          "screenshot": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Ttl",
-    "name": "ttl",
-    "type": "number",
-    "default": 30000,
-    "routing": {
-      "request": {
-        "body": {
-          "ttl": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "fullscreenchange",
-            "name": "event",
-            "displayName": "event"
-          },
-          {
-            "type": "number",
-            "default": 5000,
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Function",
-    "name": "waitForFunction",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "async() => {...}",
-            "name": "fn",
-            "displayName": "fn"
-          },
-          {
-            "type": "number",
-            "default": 5000,
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "h1",
-            "name": "selector",
-            "displayName": "selector"
-          },
-          {
-            "type": "number",
-            "default": 5000,
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Custom Body",
-    "name": "customBody",
-    "type": "json",
-    "default": "{\n  \"url\": \"https://example.com\",\n  \"browserWSEndpoint\": true,\n  \"cookies\": true,\n  \"content\": false,\n  \"screenshot\": false,\n  \"ttl\": 30000,\n  \"waitForEvent\": {\n    \"event\": \"fullscreenchange\",\n    \"timeout\": 5000\n  },\n  \"waitForFunction\": {\n    \"fn\": \"async() => {...}\",\n    \"timeout\": 5000\n  },\n  \"waitForSelector\": {\n    \"selector\": \"h1\",\n    \"timeout\": 5000\n  }\n}",
-    "description": "Custom body to send.",
-    "routing": {
-      "send": {
-        "preSend": [
-          "${helpers.hooks.preSendActionCustonBody}"
-        ]
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "/options.useCustomBody": [
-          true
-        ],
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Unblock A Webpage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "POST /scrape",
-    "name": "operation",
-    "type": "notice",
-    "typeOptions": {
-      "theme": "info"
-    },
-    "default": "",
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Scrapepage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Token",
-    "name": "token",
-    "required": true,
-    "description": "API Token",
-    "default": "",
-    "type": "string",
     "routing": {
       "request": {
         "qs": {
-          "token": "={{ $value }}"
+          "blockAds": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Scrapepage"
+          "Chrome Pdf"
         ]
       }
     }
   },
   {
-    "displayName": "Url",
-    "name": "url",
-    "type": "string",
-    "default": "",
-    "description": "webpage URL",
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
     "routing": {
       "request": {
-        "body": {
-          "url": "={{ $value }}"
+        "qs": {
+          "launch": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Scrapepage"
+          "Chrome Pdf"
         ]
       }
     }
   },
   {
-    "displayName": "Elements",
-    "name": "elements",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "HTML element selector",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "name": "selector",
-            "displayName": "selector"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "elements": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Scrapepage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Goto Options",
-    "name": "gotoOptions",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "description": "navigation timeout in milliseconds",
-            "name": "timeout",
-            "displayName": "timeout"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "wait until event (optional)",
-            "name": "waitUntil",
-            "displayName": "waitUntil"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "gotoOptions": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Scrapepage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
     "default": 0,
-    "description": "wait for a given number of milliseconds before continue execution. (optional)",
+    "type": "number",
     "routing": {
       "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
+        "qs": {
+          "timeout": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Scrapepage"
+          "Chrome Pdf"
         ]
       }
     }
   },
   {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "wait for a selector to appear in page. (optional)",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "name": "selector",
-            "displayName": "selector"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
+    "displayName": "POST /chrome/pdf<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
     "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Scrapepage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Function",
-    "name": "waitForFunction",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "waits for the provided function to return before continue. (optional)",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "name": "fn",
-            "displayName": "fn"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Scrapepage"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "waits for an event to happen on the page before continue. (optional)",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "name": "event",
-            "displayName": "event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "name": "timeout",
-            "displayName": "timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Scrapepage"
+          "Chrome Pdf"
         ]
       }
     }
@@ -1813,8 +1647,8 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"url\": \"string\",\n  \"elements\": [\n    {\n      \"selector\": \"string\"\n    }\n  ],\n  \"gotoOptions\": {\n    \"timeout\": 0,\n    \"waitUntil\": \"string\"\n  },\n  \"waitForTimeout\": 0,\n  \"waitForSelector\": {\n    \"selector\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  }\n}",
-    "description": "Custom body to send.",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"options\": {\n    \"scale\": 0,\n    \"displayHeaderFooter\": true,\n    \"headerTemplate\": \"string\",\n    \"footerTemplate\": \"string\",\n    \"printBackground\": true,\n    \"landscape\": true,\n    \"pageRanges\": \"string\",\n    \"format\": \"A0\",\n    \"width\": {},\n    \"height\": {},\n    \"preferCSSPageSize\": true,\n    \"margin\": {\n      \"top\": {},\n      \"bottom\": {},\n      \"left\": {},\n      \"right\": {}\n    },\n    \"path\": \"string\",\n    \"omitBackground\": true,\n    \"tagged\": true,\n    \"outline\": true,\n    \"timeout\": 0,\n    \"waitForFonts\": true\n  },\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
     "routing": {
       "send": {
         "preSend": [
@@ -1828,16 +1662,16 @@
           true
         ],
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Scrapepage"
+          "Chrome Pdf"
         ]
       }
     }
   },
   {
-    "displayName": "POST /performance",
+    "displayName": "POST /chrome/performance",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -1847,68 +1681,98 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Gather Site Performance Data"
+          "Chrome Performance"
         ]
       }
     }
   },
   {
-    "displayName": "Url",
-    "name": "url",
-    "type": "string",
-    "default": "",
-    "description": "The URL of the website to gather performance metrics from",
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
     "routing": {
       "request": {
-        "body": {
-          "url": "={{ $value }}"
+        "qs": {
+          "blockAds": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Gather Site Performance Data"
+          "Chrome Performance"
         ]
       }
     }
   },
   {
-    "displayName": "Config",
-    "name": "config",
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
     "type": "json",
-    "default": "{\n  \"extends\": \"lighthouse:default\",\n  \"settings\": {\n    \"onlyCategories\": [\n      null\n    ]\n  }\n}",
-    "description": "Specifies the options for the performance data gathering",
     "routing": {
       "request": {
-        "body": {
-          "config": "={{ JSON.parse($value) }}"
+        "qs": {
+          "launch": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
-      "hide": {
-        "/options.useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Gather Site Performance Data"
+          "Chrome Performance"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Performance"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/performance<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Performance"
         ]
       }
     }
@@ -1917,8 +1781,8 @@
     "displayName": "Custom Body",
     "name": "customBody",
     "type": "json",
-    "default": "{\n  \"url\": \"string\",\n  \"config\": {\n    \"extends\": \"lighthouse:default\",\n    \"settings\": {\n      \"onlyCategories\": [\n        \"string\"\n      ],\n      \"onlyAudits\": \"string\"\n    }\n  }\n}",
-    "description": "Custom body to send.",
+    "default": "{\n  \"budgets\": [\n    {}\n  ],\n  \"config\": {},\n  \"url\": \"string\"\n}",
+    "description": "Custom body to send",
     "routing": {
       "send": {
         "preSend": [
@@ -1932,16 +1796,16 @@
           true
         ],
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Gather Site Performance Data"
+          "Chrome Performance"
         ]
       }
     }
   },
   {
-    "displayName": "GET /sessions",
+    "displayName": "POST /chrome/scrape",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -1951,41 +1815,572 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Gather Information About Currently Running Sessions"
+          "Chrome Scrape"
         ]
       }
     }
   },
   {
-    "displayName": "Token",
-    "name": "token",
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/scrape<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"debugOpts\": {\n    \"console\": true,\n    \"cookies\": true,\n    \"html\": true,\n    \"network\": true,\n    \"screenshot\": true\n  },\n  \"elements\": [\n    {\n      \"selector\": \"string\",\n      \"timeout\": 0\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/screenshot",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /chrome/screenshot<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"options\": {\n    \"optimizeForSpeed\": true,\n    \"type\": \"jpeg\",\n    \"quality\": 0,\n    \"fromSurface\": true,\n    \"fullPage\": true,\n    \"omitBackground\": true,\n    \"path\": \"string\",\n    \"clip\": {\n      \"scale\": 0,\n      \"width\": 0,\n      \"height\": 0,\n      \"x\": 0,\n      \"y\": 0\n    },\n    \"encoding\": \"base64\",\n    \"captureBeyondViewport\": true\n  },\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"scrollPage\": true,\n  \"selector\": \"string\",\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chrome Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /content /chromium/content",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /content /chromium/content<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /download /chromium/download",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Download"
+        ]
+      }
+    }
+  },
+  {
     "required": true,
-    "description": "API token",
-    "default": "",
+    "displayName": "Code",
+    "name": "code",
     "type": "string",
+    "default": "",
     "routing": {
       "request": {
-        "qs": {
-          "token": "={{ $value }}"
+        "body": {
+          "code": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Gather Information About Currently Running Sessions"
+          "Chromium Download"
         ]
       }
     }
   },
   {
-    "displayName": "GET /config",
+    "displayName": "Context",
+    "name": "context",
+    "type": "json",
+    "default": "{}",
+    "routing": {
+      "request": {
+        "body": {
+          "context": "={{ JSON.parse($value) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"code\": \"string\",\n  \"context\": {}\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Download"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /function /chromium/function",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -1995,40 +2390,172 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Get Your Workers Configuration"
+          "Chromium Function"
         ]
       }
     }
   },
   {
-    "displayName": "Token",
-    "name": "token",
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
+    "routing": {
+      "request": {
+        "qs": {
+          "blockAds": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Function"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Function"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Function"
+        ]
+      }
+    }
+  },
+  {
     "required": true,
-    "default": "MY_API_TOKEN",
+    "displayName": "Code",
+    "name": "code",
     "type": "string",
+    "default": "",
     "routing": {
       "request": {
-        "qs": {
-          "token": "={{ $value }}"
+        "body": {
+          "code": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Get Your Workers Configuration"
+          "Chromium Function"
         ]
       }
     }
   },
   {
-    "displayName": "GET /metrics",
+    "displayName": "Context",
+    "name": "context",
+    "type": "json",
+    "default": "{}",
+    "routing": {
+      "request": {
+        "body": {
+          "context": "={{ JSON.parse($value) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "/options.useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Function"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"code\": \"string\",\n  \"context\": {}\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Function"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /performance /chromium/performance",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -2038,40 +2565,131 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Get Metrics Of The Session"
+          "Chromium Performance"
         ]
       }
     }
   },
   {
-    "displayName": "Token",
-    "name": "token",
-    "description": "API token to authenticate the request",
-    "default": "MY_API_TOKEN",
-    "type": "string",
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
     "routing": {
       "request": {
         "qs": {
-          "token": "={{ $value }}"
+          "blockAds": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Get Metrics Of The Session"
+          "Chromium Performance"
         ]
       }
     }
   },
   {
-    "displayName": "GET /metrics/total",
+    "displayName": "Launch",
+    "name": "launch",
+    "description": "Launch options, which can be either an object\nof puppeteer.launch options or playwright.launchServer\noptions, depending on the API. Must be either JSON\nobject, or a base64-encoded JSON object",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Performance"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Performance"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /performance /chromium/performance<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Performance"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"budgets\": [\n    {}\n  ],\n  \"config\": {},\n  \"url\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Performance"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /scrape /chromium/scrape",
     "name": "operation",
     "type": "notice",
     "typeOptions": {
@@ -2081,34 +2699,124 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Get Total Metrics Of All The Sessions"
+          "Chromium Scrape"
         ]
       }
     }
   },
   {
-    "displayName": "Token",
-    "name": "token",
-    "description": "API token to authenticate the request",
-    "default": "MY_API_TOKEN",
-    "type": "string",
+    "displayName": "Block Ads",
+    "name": "blockAds",
+    "description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+    "default": true,
+    "type": "boolean",
     "routing": {
       "request": {
         "qs": {
-          "token": "={{ $value }}"
+          "blockAds": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
       "show": {
         "resource": [
-          "Default"
+          "Browser Rest Apis"
         ],
         "operation": [
-          "Get Total Metrics Of All The Sessions"
+          "Chromium Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Launch",
+    "name": "launch",
+    "default": "{\n  \"args\": [\n    null\n  ],\n  \"defaultViewport\": {},\n  \"ignoreDefaultArgs\": [\n    null\n  ]\n}",
+    "type": "json",
+    "routing": {
+      "request": {
+        "qs": {
+          "launch": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /scrape /chromium/scrape<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"addScriptTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\",\n      \"type\": \"string\",\n      \"id\": \"string\"\n    }\n  ],\n  \"addStyleTag\": [\n    {\n      \"url\": \"string\",\n      \"path\": \"string\",\n      \"content\": \"string\"\n    }\n  ],\n  \"authenticate\": {\n    \"username\": \"string\",\n    \"password\": \"string\"\n  },\n  \"bestAttempt\": true,\n  \"cookies\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\",\n      \"url\": \"string\",\n      \"domain\": \"string\",\n      \"path\": \"string\",\n      \"secure\": true,\n      \"httpOnly\": true,\n      \"sameSite\": \"Lax\",\n      \"expires\": 0,\n      \"priority\": \"High\",\n      \"sameParty\": true,\n      \"sourceScheme\": \"NonSecure\",\n      \"partitionKey\": \"string\"\n    }\n  ],\n  \"debugOpts\": {\n    \"console\": true,\n    \"cookies\": true,\n    \"html\": true,\n    \"network\": true,\n    \"screenshot\": true\n  },\n  \"elements\": [\n    {\n      \"selector\": \"string\",\n      \"timeout\": 0\n    }\n  ],\n  \"emulateMediaType\": \"string\",\n  \"gotoOptions\": {\n    \"referer\": \"string\",\n    \"referrerPolicy\": \"string\",\n    \"timeout\": 0,\n    \"waitUntil\": [\n      \"domcontentloaded\"\n    ],\n    \"signal\": {\n      \"aborted\": true,\n      \"onabort\": {},\n      \"reason\": {}\n    }\n  },\n  \"html\": \"string\",\n  \"rejectRequestPattern\": [\n    \"string\"\n  ],\n  \"rejectResourceTypes\": [\n    \"cspviolationreport\"\n  ],\n  \"requestInterceptors\": [\n    {\n      \"pattern\": \"string\",\n      \"response\": {}\n    }\n  ],\n  \"setExtraHTTPHeaders\": {},\n  \"setJavaScriptEnabled\": true,\n  \"url\": \"string\",\n  \"userAgent\": \"string\",\n  \"viewport\": {\n    \"width\": 0,\n    \"height\": 0,\n    \"deviceScaleFactor\": 0,\n    \"isMobile\": true,\n    \"isLandscape\": true,\n    \"hasTouch\": true\n  },\n  \"waitForEvent\": {\n    \"event\": \"string\",\n    \"timeout\": 0\n  },\n  \"waitForFunction\": {\n    \"fn\": \"string\",\n    \"polling\": {},\n    \"timeout\": 0\n  },\n  \"waitForSelector\": {\n    \"hidden\": true,\n    \"selector\": \"string\",\n    \"timeout\": 0,\n    \"visible\": true\n  },\n  \"waitForTimeout\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "/options.useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Chromium Scrape"
         ]
       }
     }

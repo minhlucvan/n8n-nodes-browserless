@@ -8,12 +8,14 @@ export class Browserless extends VersionedNodeType {
 	constructor() {
 		const baseDescription: INodeTypeBaseDescription = {
 			displayName: 'Browserless',
-			name: 'Browserless',
-			icon: 'file:Browserless.svg',
+			name: 'browserless',
+			icon: 'file:browserless.svg',
 			group: ['transform'],
 			subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 			description: 'Interact with Browserless API',
-			defaultVersion: 1,
+			// @ts-ignore
+			version: [1, 2, 3],
+			defaultVersion: 2,
 		};
 
 		const nodeVersions: IVersionedNodeType['nodeVersions'] = {

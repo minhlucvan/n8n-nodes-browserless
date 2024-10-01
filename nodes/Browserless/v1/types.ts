@@ -1,4 +1,4 @@
-import { content, fn, pdf, scrape, screenshot, } from "./V1/interfaces";
+import { content, fn, pdf, scrape, screenshot, } from "./interfaces";
 
 export type BrowserlessCredentials = {
 	token?: string;
@@ -68,11 +68,11 @@ export type BrowserlessApiResponseScrapeResultFlat = BrowserlessApiResponseScrap
 export type BrowserlessApiResponseScrapeDataFlat = BrowserlessApiResponseScrapeResultFlat[];
 
 export type BrowserlessApiResponseScrapeDebug = {
-	screenshot?: any,
-	console?: any,
-	network?: any,
-	cookies?: any,
-	html?: any
+	screenshot?: unknown,
+	console?: unknown,
+	network?: unknown,
+	cookies?: unknown,
+	html?: unknown
 };
 
 export type BrowserlessApiResponseScrape = {

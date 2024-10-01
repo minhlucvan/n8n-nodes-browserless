@@ -5,6 +5,8 @@
   <img src="https://user-images.githubusercontent.com/11575076/202373912-a90e5cc0-9dd2-4873-b782-6f86c78f00eb.png" />
 </p>
 
+#### New Updates: 🎉 **Browserless** API V2 is now supported.
+
 
 This is an n8n community node. It lets you interact with [browserless](https://github.com/browserless/chrome) instance in your `n8n` workflows.
 
@@ -46,9 +48,9 @@ You've  been tried to do browser related tasks with `n8n` for example `web scrap
 $ docker run \
   --rm \
   -p 3000:3000 \
-  -e "MAX_CONCURRENT_SESSIONS=10" \
-	-e "TOKEN=YOUR-SECURE-TOKEN" \
-  browserless/chrome:latest
+  -e "CONCURRENT=10" \
+  -e "TOKEN=6R0W53R135510" \
+  ghcr.io/browserless/chromium
 ```
 
 - Visit your n8n running instance > setttings > community nodes > install `n8n-nodes-browserless`
@@ -111,4 +113,4 @@ With strong support form `browserless` we can have greate `anti-bot-detector` by
 - `0.3.0` Fixed [#1](https://github.com/minhlucvan/n8n-nodes-browserless/issues/1), implement tests
 - `0.4.0` Adding browser options, adding no-cache as default header
 - `0.5.0` Implement anti-bot-detector
-
+- `1.0.0` Support for `browserless` API v2

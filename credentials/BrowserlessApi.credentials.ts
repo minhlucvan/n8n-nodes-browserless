@@ -1,6 +1,4 @@
 import {
-	IAuthenticate,
-	IAuthenticateBase,
 	IAuthenticateGeneric,
 	ICredentialTestRequest,
 	ICredentialType,

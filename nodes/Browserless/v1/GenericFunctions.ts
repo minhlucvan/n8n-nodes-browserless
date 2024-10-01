@@ -4,7 +4,6 @@ import {
 	IExecuteFunctions,
 	IHttpRequestMethods,
 	IHttpRequestOptions,
-	ILoadOptionsFunctions,
 	IN8nHttpFullResponse,
 	IN8nHttpResponse,
 	INodeProperties,
@@ -26,8 +25,8 @@ import {
 	BrowserlessCommonOptions,
 	BrowserlessCredentials,
 } from './types';
-import { content, fn, pdf, scrape, screenshot } from './V1/interfaces';
-import * as schems from './V1/chemas/browserless-api.schema';
+import { content, fn, pdf, scrape, screenshot } from './interfaces';
+import * as schems from './chemas/browserless-api.schema';
 import {
 	browserlessBrowserOptionsFields,
 	browserlessPageOptionsFileds,
@@ -40,7 +39,7 @@ export async function browserlessApiRequest(
 	this: IAllExecuteFunctions,
 	method: IHttpRequestMethods,
 	endpoint: string,
-	body: any = {},
+	body: IDataObject = {},
 	qs: IDataObject = {},
 	extradOptions: Partial<IHttpRequestOptions> = {},
 ): Promise<IN8nHttpFullResponse | IN8nHttpResponse> {
@@ -241,27 +240,27 @@ export async function browserlessApiRequestScreenshot(
  * Get common node inputs
  */
 export function getCommonOptions(this: IExecuteFunctions, i: number) {
-	let options = {} as any;
+	let options = {} as IDataObject;
 	try {
-		const addition = this.getNodeParameter('addition', i) as any;
+		const addition = this.getNodeParameter('addition', i) as IDataObject;
 		options = parseCollectionOptions(browserlessPageOptionsFileds, addition);
 
 		if (options['setExtraHTTPHeaders']) {
 			options['setExtraHTTPHeaders'] = composeArrayToMap(
-				options['setExtraHTTPHeaders'],
+				options['setExtraHTTPHeaders'] as IDataObject[],
 				'name',
 				'value',
 			);
 		}
 
 		options['setExtraHTTPHeaders'] = {
-			...options['setExtraHTTPHeaders'],
+			...options['setExtraHTTPHeaders'] as IDataObject,
 			'cache-control': 'no-cache',
 		};
 
 		if (options['addScriptTag']) {
-			options['addScriptTag'] = Array.from(options['addScriptTag']).map((tag) =>
-				omitEmptyProps(tag),
+			options['addScriptTag'] = Array.from(options['addScriptTag'] as string[]).map((tag) =>
+				omitEmptyProps(tag as unknown as IDataObject),
 			);
 		}
 
@@ -281,7 +280,7 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
  * Get common node inputs
  */
 export function getNodeCommoonOptions(this: IExecuteFunctions): BrowserlessCommonOptions {
-	const browserOptionsRaw = this.getNodeParameter('browserOptions', 0) as any;
+	const browserOptionsRaw = this.getNodeParameter('browserOptions', 0) as IDataObject;
 	const browserOptions = parseBrowserOptions(browserOptionsRaw);
 	return {
 		browserOptions,
@@ -291,10 +290,12 @@ export function getNodeCommoonOptions(this: IExecuteFunctions): BrowserlessCommo
 /**
  * compose key - value to object
  */
-export function composeArrayToMap(array: any[], key: string, value: string) {
-	const options = {} as any;
+export function composeArrayToMap(array: IDataObject[], key: string, value: string) {
+	const options: IDataObject = {};
 	for (const item of array) {
-		options[item[key]] = item[value];
+		if (typeof item[key] === 'string') {
+			options[item[key]] = item[value];
+		}
 	}
 	return options;
 }
@@ -302,8 +303,8 @@ export function composeArrayToMap(array: any[], key: string, value: string) {
 /**
  * compose key - value to object
  */
-export function omitEmptyProps(obj: any) {
-	const options = {} as any;
+export function omitEmptyProps(obj: IDataObject) {
+	const options = {} as IDataObject;
 	for (const [key, value] of Object.entries(obj)) {
 		if (!!value) {
 			options[key] = value;
@@ -320,15 +321,15 @@ export async function prepareBinaryResponse(
 	res: IN8nHttpFullResponse,
 	key: string,
 ) {
-	const binaryData = await this.helpers.prepareBinaryData(res.body as unknown as ArrayBuffer);
+	const binaryData = await this.helpers.prepareBinaryData(Buffer.from(res.body as ArrayBuffer));
 	return binaryData;
 }
 
 /**
  * Parse browser options
  */
-export function parseBrowserOptions(rawOption: any) {
-	const options = {} as any;
+export function parseBrowserOptions(rawOption: IDataObject) {
+	const options = {} as IDataObject;
 	for (const option of browserlessBrowserOptionsFields?.options ?? []) {
 		if (typeof rawOption[option.name] === 'boolean') {
 			options[option.name] = rawOption[option.name] ? 'true' : 'false';
@@ -342,7 +343,7 @@ export function parseBrowserOptions(rawOption: any) {
 /**
  * Parse fixed collection options
  */
-export function parseFixedCollectionOptions(descriptor: INodeProperties, rawOption: any) {
+export function parseFixedCollectionOptions(descriptor: INodeProperties, rawOption: IDataObject) {
 	if (descriptor.type !== 'fixedCollection') {
 		return rawOption;
 	}
@@ -352,7 +353,7 @@ export function parseFixedCollectionOptions(descriptor: INodeProperties, rawOpti
 	}
 
 	if (descriptor.typeOptions && !descriptor.typeOptions.multipleValues) {
-		return rawOption[descriptor.name];
+		return rawOption[descriptor.name] || {};
 	}
 
 	return rawOption;
@@ -361,8 +362,8 @@ export function parseFixedCollectionOptions(descriptor: INodeProperties, rawOpti
 /**
  * Parse collection options
  */
-export function parseCollectionOptions(descriptor: INodeProperties, rawOption: any) {
-	const results = {} as any;
+export function parseCollectionOptions(descriptor: INodeProperties, rawOption: IDataObject) {
+	const results = {} as IDataObject;
 	if (descriptor.type !== 'collection') {
 		return rawOption;
 	}
@@ -371,7 +372,7 @@ export function parseCollectionOptions(descriptor: INodeProperties, rawOption: a
 			continue;
 		}
 		if (isINodeProperties(option) && option?.type === 'fixedCollection') {
-			results[option.name] = parseFixedCollectionOptions(option, rawOption[option.name]);
+			results[option.name] = parseFixedCollectionOptions(option, rawOption[option.name] as IDataObject);
 		} else {
 			results[option.name] = rawOption[option.name];
 		}

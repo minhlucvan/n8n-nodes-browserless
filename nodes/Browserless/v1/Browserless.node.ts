@@ -1,4 +1,5 @@
 import {
+	IDataObject,
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
@@ -25,7 +26,6 @@ import {
 	getCommonOptions,
 	getNodeCommoonOptions,
 	parseCollectionOptions,
-	parseFixedCollectionOptions,
 } from './GenericFunctions';
 import { browserlessFields, browserlessImageOptionsFields, browserlessOperations } from './BrowserlessDescriptions';
 
@@ -36,8 +36,8 @@ export class Browserless implements INodeType {
 		this.description = {
 			...baseDescription,
 			displayName: 'Browserless',
-			name: 'Browserless',
-			icon: 'file:Browserless.svg',
+			name: 'browserless',
+			icon: 'file:browserless.svg',
 			group: ['transform'],
 			version: 1,
 			subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -180,7 +180,7 @@ export class Browserless implements INodeType {
 				if (resource === 'screenshot') {
 					const url = this.getNodeParameter('url', i) as string;
 					const imageOptionsRaw = this.getNodeParameter('imageOptions', i);
-					const imageOptions = parseCollectionOptions(browserlessImageOptionsFields, imageOptionsRaw);
+					const imageOptions = parseCollectionOptions(browserlessImageOptionsFields, imageOptionsRaw as IDataObject);
 
 					const options: BrowserlessApiRequestScreenshotOptions = {
 						common,
@@ -218,7 +218,7 @@ export class Browserless implements INodeType {
 				}
 
 				const executionData = this.helpers.constructExecutionMetaData(
-					this.helpers.returnJsonArray(responseData),
+					this.helpers.returnJsonArray(responseData as IDataObject[]),
 					{ itemData: { item: i } },
 				);
 

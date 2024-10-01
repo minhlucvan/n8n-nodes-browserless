@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
-import { browserlessPageOptionsFileds } from '../../BrowserlessDescriptions';
+import { browserlessPageOptionsFileds } from '../BrowserlessDescriptions';
 import { content } from '../chemas/browserless-api.schema';
-import { parseCollectionOptions } from '../../GenericFunctions';
+import { parseCollectionOptions } from '../GenericFunctions';
 
 describe('parseFixedCollectionOptions', () => {
 	it('should parse cookies as an array', () => {
