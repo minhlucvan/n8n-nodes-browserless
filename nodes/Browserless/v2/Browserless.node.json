@@ -1,13 +1,10 @@
 {
-    "node": "n8n-nodes-<name>",
-    "nodeVersion": "1.0",
-    "codexVersion": "1.0",
-    "categories": [
-        "Development",
-        "Developer Tools"
-    ],
-    "resources": {
-        "credentialDocumentation": [],
-        "primaryDocumentation": []
-    }
+	"node": "n8n-nodes-<name>",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development", "Developer Tools"],
+	"resources": {
+		"credentialDocumentation": [],
+		"primaryDocumentation": []
+	}
 }

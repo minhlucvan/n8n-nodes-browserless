@@ -27,7 +27,11 @@ import {
 	getNodeCommoonOptions,
 	parseCollectionOptions,
 } from './GenericFunctions';
-import { browserlessFields, browserlessImageOptionsFields, browserlessOperations } from './BrowserlessDescriptions';
+import {
+	browserlessFields,
+	browserlessImageOptionsFields,
+	browserlessOperations,
+} from './BrowserlessDescriptions';
 
 export class Browserless implements INodeType {
 	description: INodeTypeDescription;
@@ -128,9 +132,11 @@ export class Browserless implements INodeType {
 						},
 					};
 					const responseContent = await browserlessApiRequestContent.call(this, options);
-					responseData = [{
-						data: responseContent,
-					}];
+					responseData = [
+						{
+							data: responseContent,
+						},
+					];
 				}
 
 				if (resource === 'json') {
@@ -152,9 +158,11 @@ export class Browserless implements INodeType {
 					if (flattenedOutput) {
 						responseData = flaternScrapedResults.call(this, options, responseJson.data);
 					} else {
-						responseData = [{
-							data: responseJson.data,
-						}];
+						responseData = [
+							{
+								data: responseJson.data,
+							},
+						];
 					}
 				}
 
@@ -172,15 +180,20 @@ export class Browserless implements INodeType {
 						},
 					};
 					const reponseFunction = await browserlessApiRequestFuction.call(this, options);
-					responseData = [{
-						data: reponseFunction,
-					}];
+					responseData = [
+						{
+							data: reponseFunction,
+						},
+					];
 				}
 
 				if (resource === 'screenshot') {
 					const url = this.getNodeParameter('url', i) as string;
 					const imageOptionsRaw = this.getNodeParameter('imageOptions', i);
-					const imageOptions = parseCollectionOptions(browserlessImageOptionsFields, imageOptionsRaw as IDataObject);
+					const imageOptions = parseCollectionOptions(
+						browserlessImageOptionsFields,
+						imageOptionsRaw as IDataObject,
+					);
 
 					const options: BrowserlessApiRequestScreenshotOptions = {
 						common,

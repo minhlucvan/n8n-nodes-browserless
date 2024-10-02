@@ -8,7 +8,10 @@ describe('parseFixedCollectionOptions', () => {
 		const collectionOptions = {
 			cookies: { cookies: [{ name: 'Test', value: 'test' }] },
 		};
-		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
+		const parsedFixedCollectionOptions = parseCollectionOptions(
+			browserlessPageOptionsFileds,
+			collectionOptions,
+		);
 		console.log('----', parsedFixedCollectionOptions);
 		const results = content.validate({
 			url: 'https://google.com',
@@ -22,7 +25,10 @@ describe('parseFixedCollectionOptions', () => {
 		const collectionOptions = {
 			setExtraHTTPHeaders: { header: { name: 'Test', value: 'test' } },
 		};
-		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
+		const parsedFixedCollectionOptions = parseCollectionOptions(
+			browserlessPageOptionsFileds,
+			collectionOptions,
+		);
 		console.log('----', parsedFixedCollectionOptions);
 		const results = content.validate({
 			url: 'https://google.com',
@@ -35,7 +41,10 @@ describe('parseFixedCollectionOptions', () => {
 		const collectionOptions = {
 			authenticate: { authenticate: { username: 'Test', password: 'test' } },
 		};
-		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
+		const parsedFixedCollectionOptions = parseCollectionOptions(
+			browserlessPageOptionsFileds,
+			collectionOptions,
+		);
 		console.log('----', parsedFixedCollectionOptions);
 		const results = content.validate({
 			url: 'https://google.com',
@@ -46,15 +55,18 @@ describe('parseFixedCollectionOptions', () => {
 	});
 	it('should parse goto options properly', () => {
 		const collectionOptions = {
-			"gotoOptions": {
-				"gotoOptions": {
-					"timeout": 0,
-					"waitUntil": "load",
+			gotoOptions: {
+				gotoOptions: {
+					timeout: 0,
+					waitUntil: 'load',
 				},
 			},
 		};
 
-		const parsedFixedCollectionOptions = parseCollectionOptions(browserlessPageOptionsFileds, collectionOptions);
+		const parsedFixedCollectionOptions = parseCollectionOptions(
+			browserlessPageOptionsFileds,
+			collectionOptions,
+		);
 		console.log('----', parsedFixedCollectionOptions);
 		const results = content.validate({
 			url: 'https://google.com',
@@ -64,8 +76,8 @@ describe('parseFixedCollectionOptions', () => {
 		expect(results.error).toBeUndefined();
 		expect(results.value).toMatchSnapshot({
 			gotoOptions: {
-				"timeout": 0,
-				"waitUntil": "load",
+				timeout: 0,
+				waitUntil: 'load',
 			},
 		});
 	});

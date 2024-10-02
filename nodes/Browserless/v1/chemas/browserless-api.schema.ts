@@ -1,4 +1,3 @@
-
 // https://github.com/browserless/chrome/blob/master/src/schemas.ts#L19
 
 import Joi from 'joi';
@@ -8,12 +7,7 @@ const userAgent = Joi.string();
 
 const gotoOptions = Joi.object().keys({
 	timeout: Joi.number(),
-	waitUntil: Joi.string().valid(
-		'load',
-		'domcontentloaded',
-		'networkidle0',
-		'networkidle2',
-	),
+	waitUntil: Joi.string().valid('load', 'domcontentloaded', 'networkidle0', 'networkidle2'),
 });
 
 const authenticate = Joi.object().keys({
@@ -119,13 +113,7 @@ export const screenshot = Joi.object()
 			resize: Joi.object().keys({
 				width: Joi.number().integer().positive(),
 				height: Joi.number().integer().positive(),
-				fit: Joi.string().valid(
-					'cover',
-					'contain',
-					'fill',
-					'inside',
-					'outside',
-				),
+				fit: Joi.string().valid('cover', 'contain', 'fill', 'inside', 'outside'),
 				position: Joi.string().valid(
 					'top',
 					'right top',

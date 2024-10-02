@@ -36,7 +36,21 @@ export interface content {
 		waitUntil?: 'load' | 'domcontentloaded' | 'networkidle0' | 'networkidle2';
 	};
 	rejectRequestPattern?: string[];
-	rejectResourceTypes?: Array<'document' | 'stylesheet' | 'image' | 'media' | 'font' | 'script' | 'texttrack' | 'xhr' | 'fetch' | 'eventsource' | 'websocket' | 'manifest' | 'other'>;
+	rejectResourceTypes?: Array<
+		| 'document'
+		| 'stylesheet'
+		| 'image'
+		| 'media'
+		| 'font'
+		| 'script'
+		| 'texttrack'
+		| 'xhr'
+		| 'fetch'
+		| 'eventsource'
+		| 'websocket'
+		| 'manifest'
+		| 'other'
+	>;
 	requestInterceptors?: Array<{
 		pattern: string;
 		response?: {
@@ -48,8 +62,8 @@ export interface content {
 	}>;
 	setExtraHTTPHeaders?: {
 		/**
-     * Unknown Property
-     */
+		 * Unknown Property
+		 */
 		[x: string]: unknown;
 	};
 	setJavaScriptEnabled?: boolean;
@@ -106,7 +120,18 @@ export interface pdf {
 	options?: {
 		displayHeaderFooter?: boolean;
 		footerTemplate?: string;
-		format?: 'Letter' | 'Legal' | 'Tabloid' | 'Ledger' | 'A0' | 'A1' | 'A2' | 'A3' | 'A4' | 'A5' | 'A6';
+		format?:
+			| 'Letter'
+			| 'Legal'
+			| 'Tabloid'
+			| 'Ledger'
+			| 'A0'
+			| 'A1'
+			| 'A2'
+			| 'A3'
+			| 'A4'
+			| 'A5'
+			| 'A6';
 		headerTemplate?: string;
 		height?: any;
 		landscape?: boolean;
@@ -125,7 +150,21 @@ export interface pdf {
 		width?: any;
 	};
 	rejectRequestPattern?: string[];
-	rejectResourceTypes?: Array<'document' | 'stylesheet' | 'image' | 'media' | 'font' | 'script' | 'texttrack' | 'xhr' | 'fetch' | 'eventsource' | 'websocket' | 'manifest' | 'other'>;
+	rejectResourceTypes?: Array<
+		| 'document'
+		| 'stylesheet'
+		| 'image'
+		| 'media'
+		| 'font'
+		| 'script'
+		| 'texttrack'
+		| 'xhr'
+		| 'fetch'
+		| 'eventsource'
+		| 'websocket'
+		| 'manifest'
+		| 'other'
+	>;
 	requestInterceptors?: Array<{
 		pattern: string;
 		response?: {
@@ -139,8 +178,8 @@ export interface pdf {
 	safeMode?: boolean;
 	setExtraHTTPHeaders?: {
 		/**
-     * Unknown Property
-     */
+		 * Unknown Property
+		 */
 		[x: string]: unknown;
 	};
 	setJavaScriptEnabled?: boolean;
@@ -198,7 +237,21 @@ export interface scrape {
 		waitUntil?: 'load' | 'domcontentloaded' | 'networkidle0' | 'networkidle2';
 	};
 	rejectRequestPattern?: string[];
-	rejectResourceTypes?: Array<'document' | 'stylesheet' | 'image' | 'media' | 'font' | 'script' | 'texttrack' | 'xhr' | 'fetch' | 'eventsource' | 'websocket' | 'manifest' | 'other'>;
+	rejectResourceTypes?: Array<
+		| 'document'
+		| 'stylesheet'
+		| 'image'
+		| 'media'
+		| 'font'
+		| 'script'
+		| 'texttrack'
+		| 'xhr'
+		| 'fetch'
+		| 'eventsource'
+		| 'websocket'
+		| 'manifest'
+		| 'other'
+	>;
 	requestInterceptors?: Array<{
 		pattern: string;
 		response?: {
@@ -210,8 +263,8 @@ export interface scrape {
 	}>;
 	setExtraHTTPHeaders?: {
 		/**
-     * Unknown Property
-     */
+		 * Unknown Property
+		 */
 		[x: string]: unknown;
 	};
 	url: string;
@@ -255,7 +308,15 @@ export interface screenshot {
 		resize?: {
 			fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside';
 			height?: number;
-			position?: 'top' | 'right top' | 'right' | 'right bottom' | 'bottom' | 'left bottom' | 'left' | 'left top';
+			position?:
+				| 'top'
+				| 'right top'
+				| 'right'
+				| 'right bottom'
+				| 'bottom'
+				| 'left bottom'
+				| 'left'
+				| 'left top';
 			width?: number;
 		};
 		rotate?: number;
@@ -274,7 +335,21 @@ export interface screenshot {
 		type?: 'jpeg' | 'png';
 	};
 	rejectRequestPattern?: string[];
-	rejectResourceTypes?: Array<'document' | 'stylesheet' | 'image' | 'media' | 'font' | 'script' | 'texttrack' | 'xhr' | 'fetch' | 'eventsource' | 'websocket' | 'manifest' | 'other'>;
+	rejectResourceTypes?: Array<
+		| 'document'
+		| 'stylesheet'
+		| 'image'
+		| 'media'
+		| 'font'
+		| 'script'
+		| 'texttrack'
+		| 'xhr'
+		| 'fetch'
+		| 'eventsource'
+		| 'websocket'
+		| 'manifest'
+		| 'other'
+	>;
 	requestInterceptors?: Array<{
 		pattern: string;
 		response?: {
@@ -288,8 +363,8 @@ export interface screenshot {
 	selector?: string;
 	setExtraHTTPHeaders?: {
 		/**
-     * Unknown Property
-     */
+		 * Unknown Property
+		 */
 		[x: string]: unknown;
 	};
 	setJavaScriptEnabled?: boolean;

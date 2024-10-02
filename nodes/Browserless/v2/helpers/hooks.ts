@@ -1,100 +1,97 @@
 import {
-  BinaryFileType,
-  IBinaryData,
-  IDataObject,
-  IExecuteSingleFunctions,
-  IHttpRequestOptions,
-  IN8nHttpFullResponse,
-  INodeExecutionData,
-  IPostReceiveBinaryData,
-  IPostReceiveFilter,
-  IPostReceiveLimit,
-  IPostReceiveRootProperty,
-  IPostReceiveSet,
-  IPostReceiveSetKeyValue,
-  IPostReceiveSort,
-} from 'n8n-workflow'
+	BinaryFileType,
+	IBinaryData,
+	IDataObject,
+	IExecuteSingleFunctions,
+	IHttpRequestOptions,
+	IN8nHttpFullResponse,
+	INodeExecutionData,
+	IPostReceiveBinaryData,
+	IPostReceiveFilter,
+	IPostReceiveLimit,
+	IPostReceiveRootProperty,
+	IPostReceiveSet,
+	IPostReceiveSetKeyValue,
+	IPostReceiveSort,
+} from 'n8n-workflow';
 
-export async function preSendActionCustonBody (
-  this: IExecuteSingleFunctions,
-  requestOptions: IHttpRequestOptions
+export async function preSendActionCustonBody(
+	this: IExecuteSingleFunctions,
+	requestOptions: IHttpRequestOptions,
 ): Promise<IHttpRequestOptions> {
-  const { customBody } = requestOptions.body as IDataObject
+	const { customBody } = requestOptions.body as IDataObject;
 
-  if (
-    typeof requestOptions.body === 'object' &&
-    typeof customBody === 'object'
-  ) {
-    // @ts-ignore
-    requestOptions.body = {
-      ...requestOptions.body,
-      ...customBody,
-    }
-    // @ts-ignore
-    delete requestOptions.body.customBody
-  }
+	if (typeof requestOptions.body === 'object' && typeof customBody === 'object') {
+		// @ts-ignore
+		requestOptions.body = {
+			...requestOptions.body,
+			...customBody,
+		};
+		// @ts-ignore
+		delete requestOptions.body.customBody;
+	}
 
-  return Promise.resolve(requestOptions)
+	return Promise.resolve(requestOptions);
 }
 
 export type PostReceiveAction =
-  | ((
-      this: IExecuteSingleFunctions,
-      items: INodeExecutionData[],
-      response: IN8nHttpFullResponse
-    ) => Promise<INodeExecutionData[]>)
-  | IPostReceiveBinaryData
-  | IPostReceiveFilter
-  | IPostReceiveLimit
-  | IPostReceiveRootProperty
-  | IPostReceiveSet
-  | IPostReceiveSetKeyValue
-  | IPostReceiveSort
+	| ((
+			this: IExecuteSingleFunctions,
+			items: INodeExecutionData[],
+			response: IN8nHttpFullResponse,
+	  ) => Promise<INodeExecutionData[]>)
+	| IPostReceiveBinaryData
+	| IPostReceiveFilter
+	| IPostReceiveLimit
+	| IPostReceiveRootProperty
+	| IPostReceiveSet
+	| IPostReceiveSetKeyValue
+	| IPostReceiveSort;
 
-function getresponseContentType (response: IN8nHttpFullResponse): string {
-  return response.headers['content-type'] as string
+function getresponseContentType(response: IN8nHttpFullResponse): string {
+	return response.headers['content-type'] as string;
 }
 
-function getFileTypeFromContentType (contentType: string): string {
-  // application/pdf -> pdf
-  // image/jpeg -> jpeg
-  const type = contentType.split(';')[0].trim()
+function getFileTypeFromContentType(contentType: string): string {
+	// application/pdf -> pdf
+	// image/jpeg -> jpeg
+	const type = contentType.split(';')[0].trim();
 
-  // any/thing -> any
-  if (type.includes('/')) {
-    return type.split('/')[0]
-  }
+	// any/thing -> any
+	if (type.includes('/')) {
+		return type.split('/')[0];
+	}
 
-  return type
+	return type;
 }
 
-function getFileExtensionFromContentType (contentType: string): string {
-  const type = contentType.split(';')[0].trim()
+function getFileExtensionFromContentType(contentType: string): string {
+	const type = contentType.split(';')[0].trim();
 
-  // any/thing -> thing
-  if (typeof type === 'string' && type.includes('/')) {
-    return type.split('/')[1]
-  }
+	// any/thing -> thing
+	if (typeof type === 'string' && type.includes('/')) {
+		return type.split('/')[1];
+	}
 
-  return type
+	return type;
 }
 
 export const postReceiveActionBinaryData: PostReceiveAction =
-  async function postReceiveActionBinaryData (
-    this: IExecuteSingleFunctions,
-    items: INodeExecutionData[],
-    response: IN8nHttpFullResponse
-  ): Promise<INodeExecutionData[]> {
-    const contentType = getresponseContentType(response)
+	async function postReceiveActionBinaryData(
+		this: IExecuteSingleFunctions,
+		items: INodeExecutionData[],
+		response: IN8nHttpFullResponse,
+	): Promise<INodeExecutionData[]> {
+		const contentType = getresponseContentType(response);
 
-    const { binary } = items[0]
+		const { binary } = items[0];
 
-    if (binary && binary.data && binary.data.mimeType === 'text/plain') {
-      const data = binary.data as IBinaryData
-      data.mimeType = contentType
-      data.fileType = getFileTypeFromContentType(contentType) as BinaryFileType
-      data.fileExtension = getFileExtensionFromContentType(contentType)
-    }
+		if (binary && binary.data && binary.data.mimeType === 'text/plain') {
+			const data = binary.data as IBinaryData;
+			data.mimeType = contentType;
+			data.fileType = getFileTypeFromContentType(contentType) as BinaryFileType;
+			data.fileExtension = getFileExtensionFromContentType(contentType);
+		}
 
-    return items
-  }
+		return items;
+	};

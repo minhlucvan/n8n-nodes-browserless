@@ -103,7 +103,7 @@ export const browserlessOperations: INodeProperties[] = [
 	},
 ];
 
-export const browserlessImageOptionsFields: INodeProperties = 	{
+export const browserlessImageOptionsFields: INodeProperties = {
 	displayName: 'Image Options',
 	name: 'imageOptions',
 	type: 'collection',

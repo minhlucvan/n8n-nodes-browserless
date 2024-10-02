@@ -77,16 +77,16 @@ export async function browserlessApiRequest(
 			consig: error?.cause?.config,
 			request: error?.cause?.request
 				? {
-					path: error?.cause?.request?.path,
-					_headers: error?.cause?.request?._headers,
-					data: error?.cause?.request?.config?.data,
-				}
+						path: error?.cause?.request?.path,
+						_headers: error?.cause?.request?._headers,
+						data: error?.cause?.request?.config?.data,
+					}
 				: null,
 			response: error?.cause?.request
 				? {
-					data: error?.cause?.response?.data,
-					status: error?.cause?.response?.status,
-				}
+						data: error?.cause?.response?.data,
+						status: error?.cause?.response?.status,
+					}
 				: null,
 		};
 		throw new NodeApiError(this.getNode(), errorDetails);
@@ -254,7 +254,7 @@ export function getCommonOptions(this: IExecuteFunctions, i: number) {
 		}
 
 		options['setExtraHTTPHeaders'] = {
-			...options['setExtraHTTPHeaders'] as IDataObject,
+			...(options['setExtraHTTPHeaders'] as IDataObject),
 			'cache-control': 'no-cache',
 		};
 
@@ -372,7 +372,10 @@ export function parseCollectionOptions(descriptor: INodeProperties, rawOption: I
 			continue;
 		}
 		if (isINodeProperties(option) && option?.type === 'fixedCollection') {
-			results[option.name] = parseFixedCollectionOptions(option, rawOption[option.name] as IDataObject);
+			results[option.name] = parseFixedCollectionOptions(
+				option,
+				rawOption[option.name] as IDataObject,
+			);
 		} else {
 			results[option.name] = rawOption[option.name];
 		}

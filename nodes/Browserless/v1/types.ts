@@ -1,4 +1,4 @@
-import { content, fn, pdf, scrape, screenshot, } from "./interfaces";
+import { content, fn, pdf, scrape, screenshot } from './interfaces';
 
 export type BrowserlessCredentials = {
 	token?: string;
@@ -11,16 +11,21 @@ export type ElementInput = {
 };
 
 export type ElementGroupInputs = {
-	elements: ElementInput[]
+	elements: ElementInput[];
 };
 
-
-export type BrowserlessResource = 'content' | 'function' | 'json' | 'pdf' | 'screenshot' | 'download';
+export type BrowserlessResource =
+	| 'content'
+	| 'function'
+	| 'json'
+	| 'pdf'
+	| 'screenshot'
+	| 'download';
 
 export type BrowserlessBrowserOptions = {
 	blockAds?: boolean;
 	headless?: boolean;
-	ignoreHTTPSErrors?:  boolean;
+	ignoreHTTPSErrors?: boolean;
 	stealth?: boolean;
 	userDataDir?: string;
 	trackingId?: string;
@@ -28,7 +33,7 @@ export type BrowserlessBrowserOptions = {
 	flags?: string;
 };
 
-export type BrowserlessCommonOptions =  {
+export type BrowserlessCommonOptions = {
 	browserOptions: BrowserlessBrowserOptions;
 };
 
@@ -68,11 +73,11 @@ export type BrowserlessApiResponseScrapeResultFlat = BrowserlessApiResponseScrap
 export type BrowserlessApiResponseScrapeDataFlat = BrowserlessApiResponseScrapeResultFlat[];
 
 export type BrowserlessApiResponseScrapeDebug = {
-	screenshot?: unknown,
-	console?: unknown,
-	network?: unknown,
-	cookies?: unknown,
-	html?: unknown
+	screenshot?: unknown;
+	console?: unknown;
+	network?: unknown;
+	cookies?: unknown;
+	html?: unknown;
 };
 
 export type BrowserlessApiResponseScrape = {

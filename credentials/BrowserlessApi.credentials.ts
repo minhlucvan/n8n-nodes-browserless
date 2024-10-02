@@ -48,7 +48,7 @@ export class BrowserlessApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{ $credentials.url }}',
-			encoding: "json",
+			encoding: 'json',
 			url: '/content',
 			method: 'POST',
 			qs: {
@@ -56,7 +56,7 @@ export class BrowserlessApi implements ICredentialType {
 				token: '={{ $credentials.token }}',
 			},
 			body: {
-				"url": "https://example.com/",
+				url: 'https://example.com/',
 			},
 		},
 	};
