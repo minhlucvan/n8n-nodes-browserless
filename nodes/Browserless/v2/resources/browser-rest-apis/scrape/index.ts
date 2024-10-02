@@ -19,7 +19,7 @@ const rawOption: INodePropertyOptions = {
 	value: 'Scrape',
 	action: 'Scrape',
 	description:
-		'A JSON-based API that returns text, html, and meta-data from a given list of selectors.\nDebugging information is available by sending in the appropriate flags in the "debugOpts"\nproperty. Responds with an array of JSON objects',
+		'A JSON-based API that returns text, html, and meta-data from a given list of selectors. Debugging information is available by sending in the appropriate flags in the "debugOpts" property. Responds with an array of JSON objects',
 	routing: {
 		request: {
 			method: 'POST',

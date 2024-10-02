@@ -12,14 +12,14 @@ import * as helpers from '../../../helpers';
 import { properties as rawProperties } from './properties';
 import { runHooks } from './hooks';
 
-export const name = 'Execute Function';
+export const name = 'Execute';
 
 const rawOption: INodePropertyOptions = {
-	name: 'Execute Function',
-	value: 'Execute Function',
-	action: 'Execute Function',
+	name: 'Execute',
+	value: 'Execute',
+	action: 'Execute',
 	description:
-		'A JSON or JavaScript content-type API for running puppeteer code in the browser\'s context.\nBrowserless sets up a blank page, injects your puppeteer code, and runs it.\nYou can optionally load external libraries via the "import" module that are meant for browser usage.\nValues returned from the function are checked and an appropriate content-type and response is sent back\nto your HTTP call',
+		'A JSON or JavaScript content-type API for running puppeteer code in the browser\'s context. Browserless sets up a blank page, injects your puppeteer code, and runs it. You can optionally load external libraries via the "import" module that are meant for browser usage. Values returned from the function are checked and an appropriate content-type and response is sent back to your HTTP call',
 	routing: {
 		request: {
 			method: 'POST',

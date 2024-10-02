@@ -21,7 +21,7 @@ export const properties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 			},
 		},
 	},
@@ -46,7 +46,7 @@ export const properties: INodeProperties[] = [
 			},
 			show: {
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 			},
 		},
 		typeOptions: {
@@ -72,7 +72,7 @@ export const properties: INodeProperties[] = [
 			},
 			show: {
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 			},
 		},
 	},
@@ -80,7 +80,7 @@ export const properties: INodeProperties[] = [
 		displayName: 'Timeout',
 		name: 'timeout',
 		description:
-			'Override the system-level timeout for this request.\nAccepts a value in milliseconds',
+			'Override the system-level timeout for this request. Accepts a value in milliseconds',
 		default: 0,
 		type: 'number',
 		routing: {
@@ -93,7 +93,7 @@ export const properties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 			},
 		},
 	},
@@ -101,7 +101,7 @@ export const properties: INodeProperties[] = [
 		displayName: 'Block Ads',
 		name: 'blockAds',
 		description:
-			'Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly',
+			'Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly',
 		default: true,
 		type: 'boolean',
 		routing: {
@@ -114,7 +114,7 @@ export const properties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 			},
 		},
 	},
@@ -127,7 +127,7 @@ export const properties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 			},
 		},
 	},
@@ -141,7 +141,7 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Add item',
 		options: [
 			{
-				displayName: 'args',
+				displayName: 'Args',
 				type: 'fixedCollection',
 				default: [],
 				typeOptions: {
@@ -166,7 +166,7 @@ export const properties: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'defaultViewport',
+				displayName: 'Defaultviewport',
 				type: 'fixedCollection',
 				default: {},
 				description: '',
@@ -176,42 +176,42 @@ export const properties: INodeProperties[] = [
 						name: 'items',
 						values: [
 							{
-								displayName: 'deviceScaleFactor',
+								displayName: 'Devicescalefactor',
 								type: 'number',
 								default: 0,
 								description: '',
 								name: 'deviceScaleFactor',
 							},
 							{
-								displayName: 'hasTouch',
+								displayName: 'Hastouch',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'hasTouch',
 							},
 							{
-								displayName: 'height',
+								displayName: 'Height',
 								type: 'number',
 								default: 0,
 								description: '',
 								name: 'height',
 							},
 							{
-								displayName: 'isLandscape',
+								displayName: 'Islandscape',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'isLandscape',
 							},
 							{
-								displayName: 'isMobile',
+								displayName: 'Ismobile',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'isMobile',
 							},
 							{
-								displayName: 'width',
+								displayName: 'Width',
 								type: 'number',
 								default: 0,
 								description: '',
@@ -223,21 +223,21 @@ export const properties: INodeProperties[] = [
 				name: 'defaultViewport',
 			},
 			{
-				displayName: 'devtools',
+				displayName: 'Devtools',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'devtools',
 			},
 			{
-				displayName: 'dumpio',
+				displayName: 'Dumpio',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'dumpio',
 			},
 			{
-				displayName: 'headless',
+				displayName: 'Headless',
 				type: 'options',
 				default: false,
 				description: '',
@@ -258,7 +258,7 @@ export const properties: INodeProperties[] = [
 				name: 'headless',
 			},
 			{
-				displayName: 'ignoreDefaultArgs',
+				displayName: 'Ignoredefaultargs',
 				type: 'fixedCollection',
 				default: [],
 				typeOptions: {
@@ -283,42 +283,42 @@ export const properties: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'ignoreHTTPSErrors',
+				displayName: 'Ignorehttpserrors',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'ignoreHTTPSErrors',
 			},
 			{
-				displayName: 'slowMo',
+				displayName: 'Slowmo',
 				type: 'number',
 				default: 0,
 				description: '',
 				name: 'slowMo',
 			},
 			{
-				displayName: 'stealth',
+				displayName: 'Stealth',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'stealth',
 			},
 			{
-				displayName: 'timeout',
+				displayName: 'Timeout',
 				type: 'number',
 				default: 0,
 				description: '',
 				name: 'timeout',
 			},
 			{
-				displayName: 'userDataDir',
+				displayName: 'Userdatadir',
 				type: 'string',
 				default: '',
 				description: '',
 				name: 'userDataDir',
 			},
 			{
-				displayName: 'waitForInitialPage',
+				displayName: 'Waitforinitialpage',
 				type: 'boolean',
 				default: true,
 				description: '',
@@ -335,7 +335,7 @@ export const properties: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 				enableLaunch: [true],
 			},
 		},

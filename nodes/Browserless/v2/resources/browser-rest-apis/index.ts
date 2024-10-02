@@ -12,7 +12,7 @@ import * as pdf from './pdf';
 import * as screenshot from './screenshot';
 import * as content from './content';
 import * as download from './download';
-import * as executeFunction from './execute-function';
+import * as execute from './execute';
 import * as performance from './performance';
 import * as scrape from './scrape';
 
@@ -22,7 +22,7 @@ const operations: INodePropertyOptions[] = [
 	screenshot.option,
 	content.option,
 	download.option,
-	executeFunction.option,
+	execute.option,
 	performance.option,
 	scrape.option,
 ];
@@ -55,7 +55,7 @@ export const rawProperties: INodeProperties[] = [
 	...screenshot.properties,
 	...content.properties,
 	...download.properties,
-	...executeFunction.properties,
+	...execute.properties,
 	...performance.properties,
 	...scrape.properties,
 ];

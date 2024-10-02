@@ -19,7 +19,7 @@ const rawOption: INodePropertyOptions = {
 	value: 'Pdf',
 	action: 'Pdf',
 	description:
-		'A JSON-based API for getting a PDF binary from either a supplied\n"url" or "html" payload in your request. Many options exist for\ninjecting cookies, request interceptors, user-agents and waiting for\nselectors, timers and more',
+		'A JSON-based API for getting a PDF binary from either a supplied "url" or "html" payload in your request. Many options exist for injecting cookies, request interceptors, user-agents and waiting for selectors, timers and more',
 	routing: {
 		request: {
 			method: 'POST',

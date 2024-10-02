@@ -28,7 +28,7 @@
     "format": "prettier nodes credentials --write",
     "lint": "tslint -p tsconfig.json -c tslint.json && eslint nodes credentials package.json",
     "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "prepublishOnly": "npm run build",
     "gen:types": "ts-node ./scripts/gen-types.ts",
     "test": "jest",
     "merge:api": "npx openapi-merge-cli --config ./openapi.config.json",

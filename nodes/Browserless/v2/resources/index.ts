@@ -186,7 +186,7 @@ const extraProperties: INodeProperties[] = [
 			show: {
 				useCustomBody: [true],
 				resource: ['Browser Rest Apis'],
-				operation: ['Execute Function'],
+				operation: ['Execute'],
 			},
 		},
 	},

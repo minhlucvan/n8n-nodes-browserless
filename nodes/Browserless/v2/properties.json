@@ -28,7 +28,7 @@
 				"name": "Unblock",
 				"value": "Unblock",
 				"action": "Unblock",
-				"description": "> This API is only available for Enterprise and Cloud-unit plans. [Contact us for more information here.](https://www.browserless.io/contact/), or [sign-up here](https://www.browserless.io/pricing/).\n\nUnblocks the provided URL from being blocked due to bot detection.\nReturns a payload of Cookies, HTML, a base64 encoded screenshot,\nand a \"browserWSEndpoint\" to allow connecting to the browser when\nspecified in the JSON Payload. Only supports CDP or Puppeteer\nlike libraries when connecting to the \"browserWSEndpoint\"",
+				"description": "> This API is only available for Enterprise and Cloud-unit plans. [Contact us for more information here.](https://www.browserless.io/contact/), or [sign-up here](https://www.browserless.io/pricing/). Unblocks the provided URL from being blocked due to bot detection. Returns a payload of Cookies, HTML, a base64 encoded screenshot, and a \"browserWSEndpoint\" to allow connecting to the browser when specified in the JSON Payload. Only supports CDP or Puppeteer like libraries when connecting to the \"browserWSEndpoint\"",
 				"routing": {
 					"request": {
 						"method": "POST",
@@ -40,7 +40,7 @@
 				"name": "Pdf",
 				"value": "Pdf",
 				"action": "Pdf",
-				"description": "A JSON-based API for getting a PDF binary from either a supplied\n\"url\" or \"html\" payload in your request. Many options exist for\ninjecting cookies, request interceptors, user-agents and waiting for\nselectors, timers and more",
+				"description": "A JSON-based API for getting a PDF binary from either a supplied \"url\" or \"html\" payload in your request. Many options exist for injecting cookies, request interceptors, user-agents and waiting for selectors, timers and more",
 				"routing": {
 					"request": {
 						"method": "POST",
@@ -62,7 +62,7 @@
 				"name": "Screenshot",
 				"value": "Screenshot",
 				"action": "Screenshot",
-				"description": "A JSON-based API for getting a screenshot binary from either a supplied\n\"url\" or \"html\" payload in your request. Many options exist including\ncookies, user-agents, setting timers and network mocks",
+				"description": "A JSON-based API for getting a screenshot binary from either a supplied \"url\" or \"html\" payload in your request. Many options exist including cookies, user-agents, setting timers and network mocks",
 				"routing": {
 					"request": {
 						"method": "POST",
@@ -106,7 +106,7 @@
 				"name": "Download",
 				"value": "Download",
 				"action": "Download",
-				"description": "A JSON or JavaScript content-type API for returning files Chrome has downloaded during\nthe execution of puppeteer code, which is ran inside context of the browser.\nBrowserless sets up a blank page, a fresh download directory, injects your puppeteer code, and then executes it.\nYou can load external libraries via the \"import\" syntax, and import ESM-style modules\nthat are written for execution inside of the browser. Once your script is finished, any\ndownloaded files from Chromium are returned back with the appropriate content-type header",
+				"description": "A JSON or JavaScript content-type API for returning files Chrome has downloaded during the execution of puppeteer code, which is ran inside context of the browser. Browserless sets up a blank page, a fresh download directory, injects your puppeteer code, and then executes it. You can load external libraries via the \"import\" syntax, and import ESM-style modules that are written for execution inside of the browser. Once your script is finished, any downloaded files from Chromium are returned back with the appropriate content-type header",
 				"routing": {
 					"request": {
 						"method": "POST",
@@ -125,10 +125,10 @@
 				}
 			},
 			{
-				"name": "Execute Function",
-				"value": "Execute Function",
-				"action": "Execute Function",
-				"description": "A JSON or JavaScript content-type API for running puppeteer code in the browser's context.\nBrowserless sets up a blank page, injects your puppeteer code, and runs it.\nYou can optionally load external libraries via the \"import\" module that are meant for browser usage.\nValues returned from the function are checked and an appropriate content-type and response is sent back\nto your HTTP call",
+				"name": "Execute",
+				"value": "Execute",
+				"action": "Execute",
+				"description": "A JSON or JavaScript content-type API for running puppeteer code in the browser's context. Browserless sets up a blank page, injects your puppeteer code, and runs it. You can optionally load external libraries via the \"import\" module that are meant for browser usage. Values returned from the function are checked and an appropriate content-type and response is sent back to your HTTP call",
 				"routing": {
 					"request": {
 						"method": "POST",
@@ -162,7 +162,7 @@
 				"name": "Scrape",
 				"value": "Scrape",
 				"action": "Scrape",
-				"description": "A JSON-based API that returns text, html, and meta-data from a given list of selectors.\nDebugging information is available by sending in the appropriate flags in the \"debugOpts\"\nproperty. Responds with an array of JSON objects",
+				"description": "A JSON-based API that returns text, html, and meta-data from a given list of selectors. Debugging information is available by sending in the appropriate flags in the \"debugOpts\" property. Responds with an array of JSON objects",
 				"routing": {
 					"request": {
 						"method": "POST",
@@ -193,7 +193,7 @@
 		"name": "browserWSEndpoint",
 		"type": "boolean",
 		"default": true,
-		"description": "Whether or not to keep the underlying browser alive and around for\nfuture reconnects. Defaults to false",
+		"description": "Whether or not to keep the underlying browser alive and around for future reconnects. Defaults to false",
 		"routing": {
 			"request": {
 				"body": {
@@ -262,7 +262,7 @@
 		"name": "ttl",
 		"type": "number",
 		"default": 0,
-		"description": "When the browserWSEndpoint is requested this tells\nbrowserless how long to keep this browser alive for\nre-connection until shutting it down completely.\nMaximum of 30000 for 30 seconds (30,000ms)",
+		"description": "When the browserWSEndpoint is requested this tells browserless how long to keep this browser alive for re-connection until shutting it down completely. Maximum of 30000 for 30 seconds (30,000ms)",
 		"routing": {
 			"request": {
 				"body": {
@@ -331,7 +331,7 @@
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -404,28 +404,28 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referer",
-						"displayName": "referer"
+						"displayName": "Referer"
 					},
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer-policy header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referrerPolicy",
-						"displayName": "referrerPolicy"
+						"displayName": "Referrerpolicy"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods",
+						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout. The default value can be changed by using the {@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout} methods",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "multiOptions",
 						"default": [],
-						"description": "When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired",
+						"description": "When to consider waiting succeeds. Given an array of event strings, waiting is considered to be successful after all events have been fired",
 						"options": [
 							{
 								"name": "domcontentloaded",
@@ -445,7 +445,7 @@
 							}
 						],
 						"name": "waitUntil",
-						"displayName": "waitUntil"
+						"displayName": "Waituntil"
 					},
 					{
 						"type": "fixedCollection",
@@ -461,27 +461,27 @@
 										"default": true,
 										"description": "",
 										"name": "aborted",
-										"displayName": "aborted"
+										"displayName": "Aborted"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "",
 										"name": "onabort",
-										"displayName": "onabort"
+										"displayName": "Onabort"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "reason",
-										"displayName": "reason"
+										"displayName": "Reason"
 									}
 								]
 							}
 						],
 						"name": "signal",
-						"displayName": "signal"
+						"displayName": "Signal"
 					}
 				]
 			}
@@ -506,7 +506,7 @@
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -538,28 +538,28 @@
 						"default": true,
 						"description": "",
 						"name": "hidden",
-						"displayName": "hidden"
+						"displayName": "Hidden"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "selector",
-						"displayName": "selector"
+						"displayName": "Selector"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "visible",
-						"displayName": "visible"
+						"displayName": "Visible"
 					}
 				]
 			}
@@ -618,20 +618,20 @@
 						"default": "",
 						"description": "The function, or statement, to be evaluated in browser context",
 						"name": "fn",
-						"displayName": "fn"
+						"displayName": "Fn"
 					},
 					{
 						"type": "string",
-						"description": "An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: \"raf\" or \"mutation\"",
+						"description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
 						"name": "polling",
-						"displayName": "polling"
+						"displayName": "Polling"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout",
+						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -668,14 +668,14 @@
 						"default": "",
 						"description": "",
 						"name": "event",
-						"displayName": "event"
+						"displayName": "Event"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -702,7 +702,7 @@
 		"name": "bestAttempt",
 		"type": "boolean",
 		"default": true,
-		"description": "When bestAttempt is set to true, browserless attempt to proceed\nwhen \"awaited\" events fail or timeout. This includes things like\ngoto, waitForSelector, and more",
+		"description": "When bestAttempt is set to true, browserless attempt to proceed when \"awaited\" events fail or timeout. This includes things like goto, waitForSelector, and more",
 		"routing": {
 			"request": {
 				"body": {
@@ -748,7 +748,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -781,62 +781,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -857,7 +857,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -865,7 +865,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -889,42 +889,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -1007,7 +1007,7 @@
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -1061,42 +1061,42 @@
 						"default": 0,
 						"description": "The page width in CSS pixels",
 						"name": "width",
-						"displayName": "width"
+						"displayName": "Width"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "The page height in CSS pixels",
 						"name": "height",
-						"displayName": "height"
+						"displayName": "Height"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Specify device scale factor.\nSee {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+						"description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
 						"name": "deviceScaleFactor",
-						"displayName": "deviceScaleFactor"
+						"displayName": "Devicescalefactor"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Whether the `meta viewport` tag is taken into account",
 						"name": "isMobile",
-						"displayName": "isMobile"
+						"displayName": "Ismobile"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specifies if the viewport is in landscape mode",
 						"name": "isLandscape",
-						"displayName": "isLandscape"
+						"displayName": "Islandscape"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specify if the viewport supports touch events",
 						"name": "hasTouch",
-						"displayName": "hasTouch"
+						"displayName": "Hastouch"
 					}
 				]
 			}
@@ -1269,14 +1269,14 @@
 						"default": "",
 						"description": "",
 						"name": "username",
-						"displayName": "username"
+						"displayName": "Username"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "password",
-						"displayName": "password"
+						"displayName": "Password"
 					}
 				]
 			}
@@ -1312,49 +1312,49 @@
 				"default": 0,
 				"description": "Scales the rendering of the web page. Amount must be between `0.1` and `2`",
 				"name": "scale",
-				"displayName": "scale"
+				"displayName": "Scale"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Whether to show the header and footer",
 				"name": "displayHeaderFooter",
-				"displayName": "displayHeaderFooter"
+				"displayName": "Displayheaderfooter"
 			},
 			{
 				"type": "string",
 				"default": "",
-				"description": "HTML template for the print header. Should be valid HTML with the following\nclasses used to inject values into them:\n\n- `date` formatted print date\n\n- `title` document title\n\n- `url` document location\n\n- `pageNumber` current page number\n\n- `totalPages` total pages in the document",
+				"description": "HTML template for the print header. Should be valid HTML with the following classes used to inject values into them: - `date` formatted print date - `title` document title - `url` document location - `pageNumber` current page number - `totalPages` total pages in the document",
 				"name": "headerTemplate",
-				"displayName": "headerTemplate"
+				"displayName": "Headertemplate"
 			},
 			{
 				"type": "string",
 				"default": "",
-				"description": "HTML template for the print footer. Has the same constraints and support\nfor special classes as {@link PDFOptions.headerTemplate}",
+				"description": "HTML template for the print footer. Has the same constraints and support for special classes as {@link PDFOptions.headerTemplate}",
 				"name": "footerTemplate",
-				"displayName": "footerTemplate"
+				"displayName": "Footertemplate"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Set to `true` to print background graphics",
 				"name": "printBackground",
-				"displayName": "printBackground"
+				"displayName": "Printbackground"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Whether to print in landscape orientation",
 				"name": "landscape",
-				"displayName": "landscape"
+				"displayName": "Landscape"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "Paper ranges to print, e.g. `1-5, 8, 11-13`",
 				"name": "pageRanges",
-				"displayName": "pageRanges"
+				"displayName": "Pageranges"
 			},
 			{
 				"type": "options",
@@ -1467,26 +1467,26 @@
 					}
 				],
 				"name": "format",
-				"displayName": "format"
+				"displayName": "Format"
 			},
 			{
 				"type": "string",
 				"description": "Sets the width of paper. You can pass in a number or a string with a unit",
 				"name": "width",
-				"displayName": "width"
+				"displayName": "Width"
 			},
 			{
 				"type": "string",
 				"description": "Sets the height of paper. You can pass in a number or a string with a unit",
 				"name": "height",
-				"displayName": "height"
+				"displayName": "Height"
 			},
 			{
 				"type": "boolean",
 				"default": true,
-				"description": "Give any CSS `@page` size declared in the page priority over what is\ndeclared in the `width` or `height` or `format` option",
+				"description": "Give any CSS `@page` size declared in the page priority over what is declared in the `width` or `height` or `format` option",
 				"name": "preferCSSPageSize",
-				"displayName": "preferCSSPageSize"
+				"displayName": "Prefercsspagesize"
 			},
 			{
 				"type": "fixedCollection",
@@ -1501,73 +1501,73 @@
 								"type": "string",
 								"description": "",
 								"name": "top",
-								"displayName": "top"
+								"displayName": "Top"
 							},
 							{
 								"type": "string",
 								"description": "",
 								"name": "bottom",
-								"displayName": "bottom"
+								"displayName": "Bottom"
 							},
 							{
 								"type": "string",
 								"description": "",
 								"name": "left",
-								"displayName": "left"
+								"displayName": "Left"
 							},
 							{
 								"type": "string",
 								"description": "",
 								"name": "right",
-								"displayName": "right"
+								"displayName": "Right"
 							}
 						]
 					}
 				],
 				"name": "margin",
-				"displayName": "margin"
+				"displayName": "Margin"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "The path to save the file to",
 				"name": "path",
-				"displayName": "path"
+				"displayName": "Path"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Hides default white background and allows generating pdfs with transparency",
 				"name": "omitBackground",
-				"displayName": "omitBackground"
+				"displayName": "Omitbackground"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Generate tagged (accessible) PDF",
 				"name": "tagged",
-				"displayName": "tagged"
+				"displayName": "Tagged"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Generate document outline",
 				"name": "outline",
-				"displayName": "outline"
+				"displayName": "Outline"
 			},
 			{
 				"type": "number",
 				"default": 0,
-				"description": "Timeout in milliseconds. Pass `0` to disable timeout.\n\nThe default value can be changed by using {@link Page.setDefaultTimeout}",
+				"description": "Timeout in milliseconds. Pass `0` to disable timeout. The default value can be changed by using {@link Page.setDefaultTimeout}",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "boolean",
 				"default": true,
-				"description": "If true, waits for `document.fonts.ready` to resolve. This might require\nactivating the page using {@link Page.bringToFront} if the page is in the\nbackground",
+				"description": "If true, waits for `document.fonts.ready` to resolve. This might require activating the page using {@link Page.bringToFront} if the page is in the background",
 				"name": "waitForFonts",
-				"displayName": "waitForFonts"
+				"displayName": "Waitforfonts"
 			}
 		],
 		"routing": {
@@ -1600,28 +1600,28 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referer",
-						"displayName": "referer"
+						"displayName": "Referer"
 					},
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer-policy header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referrerPolicy",
-						"displayName": "referrerPolicy"
+						"displayName": "Referrerpolicy"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods",
+						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout. The default value can be changed by using the {@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout} methods",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "multiOptions",
 						"default": [],
-						"description": "When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired",
+						"description": "When to consider waiting succeeds. Given an array of event strings, waiting is considered to be successful after all events have been fired",
 						"options": [
 							{
 								"name": "domcontentloaded",
@@ -1641,7 +1641,7 @@
 							}
 						],
 						"name": "waitUntil",
-						"displayName": "waitUntil"
+						"displayName": "Waituntil"
 					},
 					{
 						"type": "fixedCollection",
@@ -1657,27 +1657,27 @@
 										"default": true,
 										"description": "",
 										"name": "aborted",
-										"displayName": "aborted"
+										"displayName": "Aborted"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "",
 										"name": "onabort",
-										"displayName": "onabort"
+										"displayName": "Onabort"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "reason",
-										"displayName": "reason"
+										"displayName": "Reason"
 									}
 								]
 							}
 						],
 						"name": "signal",
-						"displayName": "signal"
+						"displayName": "Signal"
 					}
 				]
 			}
@@ -1702,7 +1702,7 @@
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -1874,9 +1874,9 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their\ncorresponding responses to use in order to fulfill those requests",
+						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
 						"name": "pattern",
-						"displayName": "pattern"
+						"displayName": "Pattern"
 					},
 					{
 						"type": "fixedCollection",
@@ -1892,21 +1892,21 @@
 										"default": 0,
 										"description": "",
 										"name": "status",
-										"displayName": "status"
+										"displayName": "Status"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "Optional response headers. All values are converted to strings",
 										"name": "headers",
-										"displayName": "headers"
+										"displayName": "Headers"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "contentType",
-										"displayName": "contentType"
+										"displayName": "Contenttype"
 									},
 									{
 										"type": "fixedCollection",
@@ -1922,54 +1922,54 @@
 														"default": 0,
 														"description": "",
 														"name": "BYTES_PER_ELEMENT",
-														"displayName": "BYTES_PER_ELEMENT"
+														"displayName": "Bytes Per Element"
 													},
 													{
 														"type": "string",
 														"default": {},
 														"description": "",
 														"name": "buffer",
-														"displayName": "buffer"
+														"displayName": "Buffer"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteLength",
-														"displayName": "byteLength"
+														"displayName": "Bytelength"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteOffset",
-														"displayName": "byteOffset"
+														"displayName": "Byteoffset"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "length",
-														"displayName": "length"
+														"displayName": "Length"
 													},
 													{
 														"type": "string",
 														"default": "",
 														"description": "",
 														"name": "__@toStringTag@42114",
-														"displayName": "__@toStringTag@42114"
+														"displayName": "Tostringtag 42114"
 													}
 												]
 											}
 										],
 										"name": "body",
-										"displayName": "body"
+										"displayName": "Body"
 									}
 								]
 							}
 						],
 						"name": "response",
-						"displayName": "response"
+						"displayName": "Response"
 					}
 				]
 			}
@@ -2006,28 +2006,28 @@
 						"default": true,
 						"description": "",
 						"name": "hidden",
-						"displayName": "hidden"
+						"displayName": "Hidden"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "selector",
-						"displayName": "selector"
+						"displayName": "Selector"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "visible",
-						"displayName": "visible"
+						"displayName": "Visible"
 					}
 				]
 			}
@@ -2086,20 +2086,20 @@
 						"default": "",
 						"description": "The function, or statement, to be evaluated in browser context",
 						"name": "fn",
-						"displayName": "fn"
+						"displayName": "Fn"
 					},
 					{
 						"type": "string",
-						"description": "An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: \"raf\" or \"mutation\"",
+						"description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
 						"name": "polling",
-						"displayName": "polling"
+						"displayName": "Polling"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout",
+						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -2136,14 +2136,14 @@
 						"default": "",
 						"description": "",
 						"name": "event",
-						"displayName": "event"
+						"displayName": "Event"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -2207,35 +2207,35 @@
 						"default": "",
 						"description": "URL of the script to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Path to a JavaScript file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "JavaScript to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
 						"name": "type",
-						"displayName": "type"
+						"displayName": "Type"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `id` of the script",
 						"name": "id",
-						"displayName": "id"
+						"displayName": "Id"
 					}
 				]
 			}
@@ -2277,21 +2277,21 @@
 						"default": "",
 						"description": "the URL of the CSS file to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "The path to a CSS file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Raw CSS content to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					}
 				]
 			}
@@ -2318,7 +2318,7 @@
 		"name": "bestAttempt",
 		"type": "boolean",
 		"default": true,
-		"description": "When bestAttempt is set to true, browserless attempt to proceed\nwhen \"awaited\" events fail or timeout. This includes things like\ngoto, waitForSelector, and more",
+		"description": "When bestAttempt is set to true, browserless attempt to proceed when \"awaited\" events fail or timeout. This includes things like goto, waitForSelector, and more",
 		"routing": {
 			"request": {
 				"body": {
@@ -2364,7 +2364,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -2397,62 +2397,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -2473,7 +2473,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -2481,7 +2481,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -2505,42 +2505,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -2667,7 +2667,7 @@
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -2721,42 +2721,42 @@
 						"default": 0,
 						"description": "The page width in CSS pixels",
 						"name": "width",
-						"displayName": "width"
+						"displayName": "Width"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "The page height in CSS pixels",
 						"name": "height",
-						"displayName": "height"
+						"displayName": "Height"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Specify device scale factor.\nSee {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+						"description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
 						"name": "deviceScaleFactor",
-						"displayName": "deviceScaleFactor"
+						"displayName": "Devicescalefactor"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Whether the `meta viewport` tag is taken into account",
 						"name": "isMobile",
-						"displayName": "isMobile"
+						"displayName": "Ismobile"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specifies if the viewport is in landscape mode",
 						"name": "isLandscape",
-						"displayName": "isLandscape"
+						"displayName": "Islandscape"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specify if the viewport supports touch events",
 						"name": "hasTouch",
-						"displayName": "hasTouch"
+						"displayName": "Hastouch"
 					}
 				]
 			}
@@ -2929,14 +2929,14 @@
 						"default": "",
 						"description": "",
 						"name": "username",
-						"displayName": "username"
+						"displayName": "Username"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "password",
-						"displayName": "password"
+						"displayName": "Password"
 					}
 				]
 			}
@@ -2972,7 +2972,7 @@
 				"default": true,
 				"description": "",
 				"name": "optimizeForSpeed",
-				"displayName": "optimizeForSpeed"
+				"displayName": "Optimizeforspeed"
 			},
 			{
 				"type": "options",
@@ -2993,42 +2993,42 @@
 					}
 				],
 				"name": "type",
-				"displayName": "type"
+				"displayName": "Type"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "Quality of the image, between 0-100. Not applicable to `png` images",
 				"name": "quality",
-				"displayName": "quality"
+				"displayName": "Quality"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Capture the screenshot from the surface, rather than the view",
 				"name": "fromSurface",
-				"displayName": "fromSurface"
+				"displayName": "Fromsurface"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "When `true`, takes a screenshot of the full page",
 				"name": "fullPage",
-				"displayName": "fullPage"
+				"displayName": "Fullpage"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Hides default white background and allows capturing screenshots with transparency",
 				"name": "omitBackground",
-				"displayName": "omitBackground"
+				"displayName": "Omitbackground"
 			},
 			{
 				"type": "string",
 				"default": "",
-				"description": "The file path to save the image to. The screenshot type will be inferred\nfrom file extension. If path is a relative path, then it is resolved\nrelative to current working directory. If no path is provided, the image\nwon't be saved to the disk",
+				"description": "The file path to save the image to. The screenshot type will be inferred from file extension. If path is a relative path, then it is resolved relative to current working directory. If no path is provided, the image won't be saved to the disk",
 				"name": "path",
-				"displayName": "path"
+				"displayName": "Path"
 			},
 			{
 				"type": "fixedCollection",
@@ -3044,41 +3044,41 @@
 								"default": 0,
 								"description": "",
 								"name": "scale",
-								"displayName": "scale"
+								"displayName": "Scale"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "the width of the element in pixels",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "the height of the element in pixels",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "x",
-								"displayName": "x"
+								"displayName": "X"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "y",
-								"displayName": "y"
+								"displayName": "Y"
 							}
 						]
 					}
 				],
 				"name": "clip",
-				"displayName": "clip"
+				"displayName": "Clip"
 			},
 			{
 				"type": "options",
@@ -3095,14 +3095,14 @@
 					}
 				],
 				"name": "encoding",
-				"displayName": "encoding"
+				"displayName": "Encoding"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "Capture the screenshot beyond the viewport",
 				"name": "captureBeyondViewport",
-				"displayName": "captureBeyondViewport"
+				"displayName": "Capturebeyondviewport"
 			}
 		],
 		"routing": {
@@ -3135,28 +3135,28 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referer",
-						"displayName": "referer"
+						"displayName": "Referer"
 					},
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer-policy header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referrerPolicy",
-						"displayName": "referrerPolicy"
+						"displayName": "Referrerpolicy"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods",
+						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout. The default value can be changed by using the {@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout} methods",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "multiOptions",
 						"default": [],
-						"description": "When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired",
+						"description": "When to consider waiting succeeds. Given an array of event strings, waiting is considered to be successful after all events have been fired",
 						"options": [
 							{
 								"name": "domcontentloaded",
@@ -3176,7 +3176,7 @@
 							}
 						],
 						"name": "waitUntil",
-						"displayName": "waitUntil"
+						"displayName": "Waituntil"
 					},
 					{
 						"type": "fixedCollection",
@@ -3192,27 +3192,27 @@
 										"default": true,
 										"description": "",
 										"name": "aborted",
-										"displayName": "aborted"
+										"displayName": "Aborted"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "",
 										"name": "onabort",
-										"displayName": "onabort"
+										"displayName": "Onabort"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "reason",
-										"displayName": "reason"
+										"displayName": "Reason"
 									}
 								]
 							}
 						],
 						"name": "signal",
-						"displayName": "signal"
+						"displayName": "Signal"
 					}
 				]
 			}
@@ -3237,7 +3237,7 @@
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -3409,9 +3409,9 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their\ncorresponding responses to use in order to fulfill those requests",
+						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
 						"name": "pattern",
-						"displayName": "pattern"
+						"displayName": "Pattern"
 					},
 					{
 						"type": "fixedCollection",
@@ -3427,21 +3427,21 @@
 										"default": 0,
 										"description": "",
 										"name": "status",
-										"displayName": "status"
+										"displayName": "Status"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "Optional response headers. All values are converted to strings",
 										"name": "headers",
-										"displayName": "headers"
+										"displayName": "Headers"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "contentType",
-										"displayName": "contentType"
+										"displayName": "Contenttype"
 									},
 									{
 										"type": "fixedCollection",
@@ -3457,54 +3457,54 @@
 														"default": 0,
 														"description": "",
 														"name": "BYTES_PER_ELEMENT",
-														"displayName": "BYTES_PER_ELEMENT"
+														"displayName": "Bytes Per Element"
 													},
 													{
 														"type": "string",
 														"default": {},
 														"description": "",
 														"name": "buffer",
-														"displayName": "buffer"
+														"displayName": "Buffer"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteLength",
-														"displayName": "byteLength"
+														"displayName": "Bytelength"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteOffset",
-														"displayName": "byteOffset"
+														"displayName": "Byteoffset"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "length",
-														"displayName": "length"
+														"displayName": "Length"
 													},
 													{
 														"type": "string",
 														"default": "",
 														"description": "",
 														"name": "__@toStringTag@42114",
-														"displayName": "__@toStringTag@42114"
+														"displayName": "Tostringtag 42114"
 													}
 												]
 											}
 										],
 										"name": "body",
-										"displayName": "body"
+										"displayName": "Body"
 									}
 								]
 							}
 						],
 						"name": "response",
-						"displayName": "response"
+						"displayName": "Response"
 					}
 				]
 			}
@@ -3541,28 +3541,28 @@
 						"default": true,
 						"description": "",
 						"name": "hidden",
-						"displayName": "hidden"
+						"displayName": "Hidden"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "selector",
-						"displayName": "selector"
+						"displayName": "Selector"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "visible",
-						"displayName": "visible"
+						"displayName": "Visible"
 					}
 				]
 			}
@@ -3621,20 +3621,20 @@
 						"default": "",
 						"description": "The function, or statement, to be evaluated in browser context",
 						"name": "fn",
-						"displayName": "fn"
+						"displayName": "Fn"
 					},
 					{
 						"type": "string",
-						"description": "An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: \"raf\" or \"mutation\"",
+						"description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
 						"name": "polling",
-						"displayName": "polling"
+						"displayName": "Polling"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout",
+						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -3671,14 +3671,14 @@
 						"default": "",
 						"description": "",
 						"name": "event",
-						"displayName": "event"
+						"displayName": "Event"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -3742,35 +3742,35 @@
 						"default": "",
 						"description": "URL of the script to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Path to a JavaScript file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "JavaScript to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
 						"name": "type",
-						"displayName": "type"
+						"displayName": "Type"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `id` of the script",
 						"name": "id",
-						"displayName": "id"
+						"displayName": "Id"
 					}
 				]
 			}
@@ -3812,21 +3812,21 @@
 						"default": "",
 						"description": "the URL of the CSS file to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "The path to a CSS file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Raw CSS content to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					}
 				]
 			}
@@ -3853,7 +3853,7 @@
 		"name": "bestAttempt",
 		"type": "boolean",
 		"default": true,
-		"description": "When bestAttempt is set to true, browserless attempt to proceed\nwhen \"awaited\" events fail or timeout. This includes things like\ngoto, waitForSelector, and more",
+		"description": "When bestAttempt is set to true, browserless attempt to proceed when \"awaited\" events fail or timeout. This includes things like goto, waitForSelector, and more",
 		"routing": {
 			"request": {
 				"body": {
@@ -3899,7 +3899,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -3932,62 +3932,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -4008,7 +4008,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -4016,7 +4016,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -4040,42 +4040,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -4158,7 +4158,7 @@
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -4212,42 +4212,42 @@
 						"default": 0,
 						"description": "The page width in CSS pixels",
 						"name": "width",
-						"displayName": "width"
+						"displayName": "Width"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "The page height in CSS pixels",
 						"name": "height",
-						"displayName": "height"
+						"displayName": "Height"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Specify device scale factor.\nSee {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+						"description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
 						"name": "deviceScaleFactor",
-						"displayName": "deviceScaleFactor"
+						"displayName": "Devicescalefactor"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Whether the `meta viewport` tag is taken into account",
 						"name": "isMobile",
-						"displayName": "isMobile"
+						"displayName": "Ismobile"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specifies if the viewport is in landscape mode",
 						"name": "isLandscape",
-						"displayName": "isLandscape"
+						"displayName": "Islandscape"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specify if the viewport supports touch events",
 						"name": "hasTouch",
-						"displayName": "hasTouch"
+						"displayName": "Hastouch"
 					}
 				]
 			}
@@ -4421,14 +4421,14 @@
 						"default": "",
 						"description": "",
 						"name": "username",
-						"displayName": "username"
+						"displayName": "Username"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "password",
-						"displayName": "password"
+						"displayName": "Password"
 					}
 				]
 			}
@@ -4463,28 +4463,28 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referer",
-						"displayName": "referer"
+						"displayName": "Referer"
 					},
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer-policy header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referrerPolicy",
-						"displayName": "referrerPolicy"
+						"displayName": "Referrerpolicy"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods",
+						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout. The default value can be changed by using the {@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout} methods",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "multiOptions",
 						"default": [],
-						"description": "When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired",
+						"description": "When to consider waiting succeeds. Given an array of event strings, waiting is considered to be successful after all events have been fired",
 						"options": [
 							{
 								"name": "domcontentloaded",
@@ -4504,7 +4504,7 @@
 							}
 						],
 						"name": "waitUntil",
-						"displayName": "waitUntil"
+						"displayName": "Waituntil"
 					},
 					{
 						"type": "fixedCollection",
@@ -4520,27 +4520,27 @@
 										"default": true,
 										"description": "",
 										"name": "aborted",
-										"displayName": "aborted"
+										"displayName": "Aborted"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "",
 										"name": "onabort",
-										"displayName": "onabort"
+										"displayName": "Onabort"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "reason",
-										"displayName": "reason"
+										"displayName": "Reason"
 									}
 								]
 							}
 						],
 						"name": "signal",
-						"displayName": "signal"
+						"displayName": "Signal"
 					}
 				]
 			}
@@ -4565,7 +4565,7 @@
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -4737,9 +4737,9 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their\ncorresponding responses to use in order to fulfill those requests",
+						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
 						"name": "pattern",
-						"displayName": "pattern"
+						"displayName": "Pattern"
 					},
 					{
 						"type": "fixedCollection",
@@ -4755,21 +4755,21 @@
 										"default": 0,
 										"description": "",
 										"name": "status",
-										"displayName": "status"
+										"displayName": "Status"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "Optional response headers. All values are converted to strings",
 										"name": "headers",
-										"displayName": "headers"
+										"displayName": "Headers"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "contentType",
-										"displayName": "contentType"
+										"displayName": "Contenttype"
 									},
 									{
 										"type": "fixedCollection",
@@ -4785,54 +4785,54 @@
 														"default": 0,
 														"description": "",
 														"name": "BYTES_PER_ELEMENT",
-														"displayName": "BYTES_PER_ELEMENT"
+														"displayName": "Bytes Per Element"
 													},
 													{
 														"type": "string",
 														"default": {},
 														"description": "",
 														"name": "buffer",
-														"displayName": "buffer"
+														"displayName": "Buffer"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteLength",
-														"displayName": "byteLength"
+														"displayName": "Bytelength"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteOffset",
-														"displayName": "byteOffset"
+														"displayName": "Byteoffset"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "length",
-														"displayName": "length"
+														"displayName": "Length"
 													},
 													{
 														"type": "string",
 														"default": "",
 														"description": "",
 														"name": "__@toStringTag@42114",
-														"displayName": "__@toStringTag@42114"
+														"displayName": "Tostringtag 42114"
 													}
 												]
 											}
 										],
 										"name": "body",
-										"displayName": "body"
+										"displayName": "Body"
 									}
 								]
 							}
 						],
 						"name": "response",
-						"displayName": "response"
+						"displayName": "Response"
 					}
 				]
 			}
@@ -4869,28 +4869,28 @@
 						"default": true,
 						"description": "",
 						"name": "hidden",
-						"displayName": "hidden"
+						"displayName": "Hidden"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "selector",
-						"displayName": "selector"
+						"displayName": "Selector"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "visible",
-						"displayName": "visible"
+						"displayName": "Visible"
 					}
 				]
 			}
@@ -4949,20 +4949,20 @@
 						"default": "",
 						"description": "The function, or statement, to be evaluated in browser context",
 						"name": "fn",
-						"displayName": "fn"
+						"displayName": "Fn"
 					},
 					{
 						"type": "string",
-						"description": "An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: \"raf\" or \"mutation\"",
+						"description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
 						"name": "polling",
-						"displayName": "polling"
+						"displayName": "Polling"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout",
+						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -4999,14 +4999,14 @@
 						"default": "",
 						"description": "",
 						"name": "event",
-						"displayName": "event"
+						"displayName": "Event"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -5070,35 +5070,35 @@
 						"default": "",
 						"description": "URL of the script to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Path to a JavaScript file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "JavaScript to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
 						"name": "type",
-						"displayName": "type"
+						"displayName": "Type"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `id` of the script",
 						"name": "id",
-						"displayName": "id"
+						"displayName": "Id"
 					}
 				]
 			}
@@ -5140,21 +5140,21 @@
 						"default": "",
 						"description": "the URL of the CSS file to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "The path to a CSS file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Raw CSS content to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					}
 				]
 			}
@@ -5181,7 +5181,7 @@
 		"name": "bestAttempt",
 		"type": "boolean",
 		"default": true,
-		"description": "When bestAttempt is set to true, browserless attempt to proceed\nwhen \"awaited\" events fail or timeout. This includes things like\ngoto, waitForSelector, and more",
+		"description": "When bestAttempt is set to true, browserless attempt to proceed when \"awaited\" events fail or timeout. This includes things like goto, waitForSelector, and more",
 		"routing": {
 			"request": {
 				"body": {
@@ -5227,7 +5227,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -5260,62 +5260,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -5336,7 +5336,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -5344,7 +5344,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -5368,42 +5368,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -5511,7 +5511,7 @@
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -5531,7 +5531,7 @@
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -5576,7 +5576,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -5609,62 +5609,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -5685,7 +5685,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -5693,7 +5693,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -5717,42 +5717,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -5781,7 +5781,7 @@
 		"displayOptions": {
 			"show": {
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"]
+				"operation": ["Execute"]
 			}
 		}
 	},
@@ -5804,7 +5804,7 @@
 			},
 			"show": {
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"]
+				"operation": ["Execute"]
 			}
 		},
 		"typeOptions": {
@@ -5829,7 +5829,7 @@
 			},
 			"show": {
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"]
+				"operation": ["Execute"]
 			}
 		}
 	},
@@ -5853,14 +5853,14 @@
 			"show": {
 				"useCustomBody": [true],
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"]
+				"operation": ["Execute"]
 			}
 		}
 	},
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -5873,14 +5873,14 @@
 		"displayOptions": {
 			"show": {
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"]
+				"operation": ["Execute"]
 			}
 		}
 	},
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -5893,7 +5893,7 @@
 		"displayOptions": {
 			"show": {
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"]
+				"operation": ["Execute"]
 			}
 		}
 	},
@@ -5906,7 +5906,7 @@
 		"displayOptions": {
 			"show": {
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"]
+				"operation": ["Execute"]
 			}
 		}
 	},
@@ -5925,7 +5925,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -5958,62 +5958,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -6034,7 +6034,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -6042,7 +6042,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -6066,42 +6066,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -6114,7 +6114,7 @@
 		"displayOptions": {
 			"show": {
 				"resource": ["Browser Rest Apis"],
-				"operation": ["Execute Function"],
+				"operation": ["Execute"],
 				"enableLaunch": [true]
 			}
 		}
@@ -6247,7 +6247,7 @@
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -6267,7 +6267,7 @@
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -6312,7 +6312,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -6345,62 +6345,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -6421,7 +6421,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -6429,7 +6429,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -6453,42 +6453,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -6571,7 +6571,7 @@
 	{
 		"displayName": "Timeout",
 		"name": "timeout",
-		"description": "Override the system-level timeout for this request.\nAccepts a value in milliseconds",
+		"description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
 		"default": 0,
 		"type": "number",
 		"routing": {
@@ -6625,42 +6625,42 @@
 						"default": 0,
 						"description": "The page width in CSS pixels",
 						"name": "width",
-						"displayName": "width"
+						"displayName": "Width"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "The page height in CSS pixels",
 						"name": "height",
-						"displayName": "height"
+						"displayName": "Height"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Specify device scale factor.\nSee {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+						"description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
 						"name": "deviceScaleFactor",
-						"displayName": "deviceScaleFactor"
+						"displayName": "Devicescalefactor"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Whether the `meta viewport` tag is taken into account",
 						"name": "isMobile",
-						"displayName": "isMobile"
+						"displayName": "Ismobile"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specifies if the viewport is in landscape mode",
 						"name": "isLandscape",
-						"displayName": "isLandscape"
+						"displayName": "Islandscape"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "Specify if the viewport supports touch events",
 						"name": "hasTouch",
-						"displayName": "hasTouch"
+						"displayName": "Hastouch"
 					}
 				]
 			}
@@ -6833,14 +6833,14 @@
 						"default": "",
 						"description": "",
 						"name": "username",
-						"displayName": "username"
+						"displayName": "Username"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "password",
-						"displayName": "password"
+						"displayName": "Password"
 					}
 				]
 			}
@@ -6875,28 +6875,28 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referer",
-						"displayName": "referer"
+						"displayName": "Referer"
 					},
 					{
 						"type": "string",
 						"default": "",
-						"description": "If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
+						"description": "If provided, it will take preference over the referer-policy header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}",
 						"name": "referrerPolicy",
-						"displayName": "referrerPolicy"
+						"displayName": "Referrerpolicy"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods",
+						"description": "Maximum wait time in milliseconds. Pass 0 to disable the timeout. The default value can be changed by using the {@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout} methods",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "multiOptions",
 						"default": [],
-						"description": "When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired",
+						"description": "When to consider waiting succeeds. Given an array of event strings, waiting is considered to be successful after all events have been fired",
 						"options": [
 							{
 								"name": "domcontentloaded",
@@ -6916,7 +6916,7 @@
 							}
 						],
 						"name": "waitUntil",
-						"displayName": "waitUntil"
+						"displayName": "Waituntil"
 					},
 					{
 						"type": "fixedCollection",
@@ -6932,27 +6932,27 @@
 										"default": true,
 										"description": "",
 										"name": "aborted",
-										"displayName": "aborted"
+										"displayName": "Aborted"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "",
 										"name": "onabort",
-										"displayName": "onabort"
+										"displayName": "Onabort"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "reason",
-										"displayName": "reason"
+										"displayName": "Reason"
 									}
 								]
 							}
 						],
 						"name": "signal",
-						"displayName": "signal"
+						"displayName": "Signal"
 					}
 				]
 			}
@@ -6977,7 +6977,7 @@
 	{
 		"displayName": "Block Ads",
 		"name": "blockAds",
-		"description": "Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly",
+		"description": "Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly",
 		"default": true,
 		"type": "boolean",
 		"routing": {
@@ -7149,9 +7149,9 @@
 					{
 						"type": "string",
 						"default": "",
-						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their\ncorresponding responses to use in order to fulfill those requests",
+						"description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
 						"name": "pattern",
-						"displayName": "pattern"
+						"displayName": "Pattern"
 					},
 					{
 						"type": "fixedCollection",
@@ -7167,21 +7167,21 @@
 										"default": 0,
 										"description": "",
 										"name": "status",
-										"displayName": "status"
+										"displayName": "Status"
 									},
 									{
 										"type": "json",
 										"default": "{}",
 										"description": "Optional response headers. All values are converted to strings",
 										"name": "headers",
-										"displayName": "headers"
+										"displayName": "Headers"
 									},
 									{
 										"type": "string",
 										"default": "",
 										"description": "",
 										"name": "contentType",
-										"displayName": "contentType"
+										"displayName": "Contenttype"
 									},
 									{
 										"type": "fixedCollection",
@@ -7197,54 +7197,54 @@
 														"default": 0,
 														"description": "",
 														"name": "BYTES_PER_ELEMENT",
-														"displayName": "BYTES_PER_ELEMENT"
+														"displayName": "Bytes Per Element"
 													},
 													{
 														"type": "string",
 														"default": {},
 														"description": "",
 														"name": "buffer",
-														"displayName": "buffer"
+														"displayName": "Buffer"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteLength",
-														"displayName": "byteLength"
+														"displayName": "Bytelength"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "byteOffset",
-														"displayName": "byteOffset"
+														"displayName": "Byteoffset"
 													},
 													{
 														"type": "number",
 														"default": 0,
 														"description": "",
 														"name": "length",
-														"displayName": "length"
+														"displayName": "Length"
 													},
 													{
 														"type": "string",
 														"default": "",
 														"description": "",
 														"name": "__@toStringTag@42114",
-														"displayName": "__@toStringTag@42114"
+														"displayName": "Tostringtag 42114"
 													}
 												]
 											}
 										],
 										"name": "body",
-										"displayName": "body"
+										"displayName": "Body"
 									}
 								]
 							}
 						],
 						"name": "response",
-						"displayName": "response"
+						"displayName": "Response"
 					}
 				]
 			}
@@ -7281,28 +7281,28 @@
 						"default": true,
 						"description": "",
 						"name": "hidden",
-						"displayName": "hidden"
+						"displayName": "Hidden"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "",
 						"name": "selector",
-						"displayName": "selector"
+						"displayName": "Selector"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "visible",
-						"displayName": "visible"
+						"displayName": "Visible"
 					}
 				]
 			}
@@ -7361,20 +7361,20 @@
 						"default": "",
 						"description": "The function, or statement, to be evaluated in browser context",
 						"name": "fn",
-						"displayName": "fn"
+						"displayName": "Fn"
 					},
 					{
 						"type": "string",
-						"description": "An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: \"raf\" or \"mutation\"",
+						"description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
 						"name": "polling",
-						"displayName": "polling"
+						"displayName": "Polling"
 					},
 					{
 						"type": "number",
 						"default": 0,
-						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout",
+						"description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -7411,14 +7411,14 @@
 						"default": "",
 						"description": "",
 						"name": "event",
-						"displayName": "event"
+						"displayName": "Event"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -7482,14 +7482,14 @@
 						"default": "",
 						"description": "",
 						"name": "selector",
-						"displayName": "selector"
+						"displayName": "Selector"
 					},
 					{
 						"type": "number",
 						"default": 0,
 						"description": "",
 						"name": "timeout",
-						"displayName": "timeout"
+						"displayName": "Timeout"
 					}
 				]
 			}
@@ -7531,35 +7531,35 @@
 						"default": "",
 						"description": "URL of the script to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Path to a JavaScript file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "JavaScript to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
 						"name": "type",
-						"displayName": "type"
+						"displayName": "Type"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Sets the `id` of the script",
 						"name": "id",
-						"displayName": "id"
+						"displayName": "Id"
 					}
 				]
 			}
@@ -7601,21 +7601,21 @@
 						"default": "",
 						"description": "the URL of the CSS file to be added",
 						"name": "url",
-						"displayName": "url"
+						"displayName": "Url"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "The path to a CSS file to be injected into the frame",
 						"name": "path",
-						"displayName": "path"
+						"displayName": "Path"
 					},
 					{
 						"type": "string",
 						"default": "",
 						"description": "Raw CSS content to be injected into the frame",
 						"name": "content",
-						"displayName": "content"
+						"displayName": "Content"
 					}
 				]
 			}
@@ -7642,7 +7642,7 @@
 		"name": "bestAttempt",
 		"type": "boolean",
 		"default": true,
-		"description": "When bestAttempt is set to true, browserless attempt to proceed\nwhen \"awaited\" events fail or timeout. This includes things like\ngoto, waitForSelector, and more",
+		"description": "When bestAttempt is set to true, browserless attempt to proceed when \"awaited\" events fail or timeout. This includes things like goto, waitForSelector, and more",
 		"routing": {
 			"request": {
 				"body": {
@@ -7688,7 +7688,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "args",
+				"displayName": "Args",
 				"name": "args",
 				"description": "",
 				"placeholder": "Add item",
@@ -7721,62 +7721,62 @@
 								"default": 0,
 								"description": "",
 								"name": "deviceScaleFactor",
-								"displayName": "deviceScaleFactor"
+								"displayName": "Devicescalefactor"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "hasTouch",
-								"displayName": "hasTouch"
+								"displayName": "Hastouch"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "height",
-								"displayName": "height"
+								"displayName": "Height"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isLandscape",
-								"displayName": "isLandscape"
+								"displayName": "Islandscape"
 							},
 							{
 								"type": "boolean",
 								"default": true,
 								"description": "",
 								"name": "isMobile",
-								"displayName": "isMobile"
+								"displayName": "Ismobile"
 							},
 							{
 								"type": "number",
 								"default": 0,
 								"description": "",
 								"name": "width",
-								"displayName": "width"
+								"displayName": "Width"
 							}
 						]
 					}
 				],
 				"name": "defaultViewport",
-				"displayName": "defaultViewport"
+				"displayName": "Defaultviewport"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "devtools",
-				"displayName": "devtools"
+				"displayName": "Devtools"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "dumpio",
-				"displayName": "dumpio"
+				"displayName": "Dumpio"
 			},
 			{
 				"type": "options",
@@ -7797,7 +7797,7 @@
 					}
 				],
 				"name": "headless",
-				"displayName": "headless"
+				"displayName": "Headless"
 			},
 			{
 				"type": "fixedCollection",
@@ -7805,7 +7805,7 @@
 				"typeOptions": {
 					"multipleValues": true
 				},
-				"displayName": "ignoreDefaultArgs",
+				"displayName": "Ignoredefaultargs",
 				"name": "ignoreDefaultArgs",
 				"description": "",
 				"placeholder": "Add item",
@@ -7829,42 +7829,42 @@
 				"default": true,
 				"description": "",
 				"name": "ignoreHTTPSErrors",
-				"displayName": "ignoreHTTPSErrors"
+				"displayName": "Ignorehttpserrors"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "slowMo",
-				"displayName": "slowMo"
+				"displayName": "Slowmo"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "stealth",
-				"displayName": "stealth"
+				"displayName": "Stealth"
 			},
 			{
 				"type": "number",
 				"default": 0,
 				"description": "",
 				"name": "timeout",
-				"displayName": "timeout"
+				"displayName": "Timeout"
 			},
 			{
 				"type": "string",
 				"default": "",
 				"description": "",
 				"name": "userDataDir",
-				"displayName": "userDataDir"
+				"displayName": "Userdatadir"
 			},
 			{
 				"type": "boolean",
 				"default": true,
 				"description": "",
 				"name": "waitForInitialPage",
-				"displayName": "waitForInitialPage"
+				"displayName": "Waitforinitialpage"
 			}
 		],
 		"routing": {
@@ -7897,35 +7897,35 @@
 						"default": true,
 						"description": "",
 						"name": "console",
-						"displayName": "console"
+						"displayName": "Console"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "cookies",
-						"displayName": "cookies"
+						"displayName": "Cookies"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "html",
-						"displayName": "html"
+						"displayName": "Html"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "network",
-						"displayName": "network"
+						"displayName": "Network"
 					},
 					{
 						"type": "boolean",
 						"default": true,
 						"description": "",
 						"name": "screenshot",
-						"displayName": "screenshot"
+						"displayName": "Screenshot"
 					}
 				]
 			}

@@ -19,7 +19,7 @@ const rawOption: INodePropertyOptions = {
 	value: 'Screenshot',
 	action: 'Screenshot',
 	description:
-		'A JSON-based API for getting a screenshot binary from either a supplied\n"url" or "html" payload in your request. Many options exist including\ncookies, user-agents, setting timers and network mocks',
+		'A JSON-based API for getting a screenshot binary from either a supplied "url" or "html" payload in your request. Many options exist including cookies, user-agents, setting timers and network mocks',
 	routing: {
 		request: {
 			method: 'POST',

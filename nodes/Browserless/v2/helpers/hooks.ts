@@ -34,6 +34,8 @@ export async function preSendActionCustonBody(
 	return Promise.resolve(requestOptions);
 }
 
+/* eslint-disable indent */
+/* tslint:disable:indent */
 export type PostReceiveAction =
 	| ((
 			this: IExecuteSingleFunctions,
@@ -47,17 +49,16 @@ export type PostReceiveAction =
 	| IPostReceiveSet
 	| IPostReceiveSetKeyValue
 	| IPostReceiveSort;
+/* eslint-enable indent */
+/* tslint:enable:indent */
 
 function getresponseContentType(response: IN8nHttpFullResponse): string {
 	return response.headers['content-type'] as string;
 }
 
 function getFileTypeFromContentType(contentType: string): string {
-	// application/pdf -> pdf
-	// image/jpeg -> jpeg
 	const type = contentType.split(';')[0].trim();
 
-	// any/thing -> any
 	if (type.includes('/')) {
 		return type.split('/')[0];
 	}

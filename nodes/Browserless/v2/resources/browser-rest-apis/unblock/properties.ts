@@ -31,7 +31,7 @@ export const properties: INodeProperties[] = [
 		type: 'boolean',
 		default: true,
 		description:
-			'Whether or not to keep the underlying browser alive and around for\nfuture reconnects. Defaults to false',
+			'Whether or not to keep the underlying browser alive and around for future reconnects. Defaults to false',
 		routing: {
 			request: {
 				body: {
@@ -102,7 +102,7 @@ export const properties: INodeProperties[] = [
 		type: 'number',
 		default: 0,
 		description:
-			'When the browserWSEndpoint is requested this tells\nbrowserless how long to keep this browser alive for\nre-connection until shutting it down completely.\nMaximum of 30000 for 30 seconds (30,000ms)',
+			'When the browserWSEndpoint is requested this tells browserless how long to keep this browser alive for re-connection until shutting it down completely. Maximum of 30000 for 30 seconds (30,000ms)',
 		routing: {
 			request: {
 				body: {
@@ -148,7 +148,7 @@ export const properties: INodeProperties[] = [
 		displayName: 'Timeout',
 		name: 'timeout',
 		description:
-			'Override the system-level timeout for this request.\nAccepts a value in milliseconds',
+			'Override the system-level timeout for this request. Accepts a value in milliseconds',
 		default: 0,
 		type: 'number',
 		routing: {
@@ -220,35 +220,35 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'referer',
+						displayName: 'Referer',
 						type: 'string',
 						default: '',
 						description:
-							'If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
+							'If provided, it will take preference over the referer header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
 						name: 'referer',
 					},
 					{
-						displayName: 'referrerPolicy',
+						displayName: 'Referrerpolicy',
 						type: 'string',
 						default: '',
 						description:
-							'If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
+							'If provided, it will take preference over the referer-policy header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
 						name: 'referrerPolicy',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description:
-							'Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods',
+							'Maximum wait time in milliseconds. Pass 0 to disable the timeout. The default value can be changed by using the {@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout} methods',
 						name: 'timeout',
 					},
 					{
-						displayName: 'waitUntil',
+						displayName: 'Waituntil',
 						type: 'multiOptions',
 						default: [],
 						description:
-							'When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired',
+							'When to consider waiting succeeds. Given an array of event strings, waiting is considered to be successful after all events have been fired',
 						options: [
 							{
 								name: 'domcontentloaded',
@@ -270,7 +270,7 @@ export const properties: INodeProperties[] = [
 						name: 'waitUntil',
 					},
 					{
-						displayName: 'signal',
+						displayName: 'Signal',
 						type: 'fixedCollection',
 						default: {},
 						description: 'A signal object that allows you to cancel the call',
@@ -280,21 +280,21 @@ export const properties: INodeProperties[] = [
 								name: 'items',
 								values: [
 									{
-										displayName: 'aborted',
+										displayName: 'Aborted',
 										type: 'boolean',
 										default: true,
 										description: '',
 										name: 'aborted',
 									},
 									{
-										displayName: 'onabort',
+										displayName: 'Onabort',
 										type: 'json',
 										default: '{}',
 										description: '',
 										name: 'onabort',
 									},
 									{
-										displayName: 'reason',
+										displayName: 'Reason',
 										type: 'string',
 										default: '',
 										description: '',
@@ -329,7 +329,7 @@ export const properties: INodeProperties[] = [
 		displayName: 'Block Ads',
 		name: 'blockAds',
 		description:
-			'Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly',
+			'Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly',
 		default: true,
 		type: 'boolean',
 		routing: {
@@ -358,28 +358,28 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'hidden',
+						displayName: 'Hidden',
 						type: 'boolean',
 						default: true,
 						description: '',
 						name: 'hidden',
 					},
 					{
-						displayName: 'selector',
+						displayName: 'Selector',
 						type: 'string',
 						default: '',
 						description: '',
 						name: 'selector',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description: '',
 						name: 'timeout',
 					},
 					{
-						displayName: 'visible',
+						displayName: 'Visible',
 						type: 'boolean',
 						default: true,
 						description: '',
@@ -440,26 +440,26 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'fn',
+						displayName: 'Fn',
 						type: 'string',
 						default: '',
 						description: 'The function, or statement, to be evaluated in browser context',
 						name: 'fn',
 					},
 					{
-						displayName: 'polling',
+						displayName: 'Polling',
 						type: 'string',
 						default: undefined,
 						description:
-							'An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: "raf" or "mutation"',
+							'An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: "raf" or "mutation"',
 						name: 'polling',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description:
-							'Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout',
+							'Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout',
 						name: 'timeout',
 					},
 				],
@@ -494,14 +494,14 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'event',
+						displayName: 'Event',
 						type: 'string',
 						default: '',
 						description: '',
 						name: 'event',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description: '',
@@ -533,7 +533,7 @@ export const properties: INodeProperties[] = [
 		type: 'boolean',
 		default: true,
 		description:
-			'When bestAttempt is set to true, browserless attempt to proceed\nwhen "awaited" events fail or timeout. This includes things like\ngoto, waitForSelector, and more',
+			'When bestAttempt is set to true, browserless attempt to proceed when "awaited" events fail or timeout. This includes things like goto, waitForSelector, and more',
 		routing: {
 			request: {
 				body: {
@@ -574,7 +574,7 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Add item',
 		options: [
 			{
-				displayName: 'args',
+				displayName: 'Args',
 				type: 'fixedCollection',
 				default: [],
 				typeOptions: {
@@ -599,7 +599,7 @@ export const properties: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'defaultViewport',
+				displayName: 'Defaultviewport',
 				type: 'fixedCollection',
 				default: {},
 				description: '',
@@ -609,42 +609,42 @@ export const properties: INodeProperties[] = [
 						name: 'items',
 						values: [
 							{
-								displayName: 'deviceScaleFactor',
+								displayName: 'Devicescalefactor',
 								type: 'number',
 								default: 0,
 								description: '',
 								name: 'deviceScaleFactor',
 							},
 							{
-								displayName: 'hasTouch',
+								displayName: 'Hastouch',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'hasTouch',
 							},
 							{
-								displayName: 'height',
+								displayName: 'Height',
 								type: 'number',
 								default: 0,
 								description: '',
 								name: 'height',
 							},
 							{
-								displayName: 'isLandscape',
+								displayName: 'Islandscape',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'isLandscape',
 							},
 							{
-								displayName: 'isMobile',
+								displayName: 'Ismobile',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'isMobile',
 							},
 							{
-								displayName: 'width',
+								displayName: 'Width',
 								type: 'number',
 								default: 0,
 								description: '',
@@ -656,21 +656,21 @@ export const properties: INodeProperties[] = [
 				name: 'defaultViewport',
 			},
 			{
-				displayName: 'devtools',
+				displayName: 'Devtools',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'devtools',
 			},
 			{
-				displayName: 'dumpio',
+				displayName: 'Dumpio',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'dumpio',
 			},
 			{
-				displayName: 'headless',
+				displayName: 'Headless',
 				type: 'options',
 				default: false,
 				description: '',
@@ -691,7 +691,7 @@ export const properties: INodeProperties[] = [
 				name: 'headless',
 			},
 			{
-				displayName: 'ignoreDefaultArgs',
+				displayName: 'Ignoredefaultargs',
 				type: 'fixedCollection',
 				default: [],
 				typeOptions: {
@@ -716,42 +716,42 @@ export const properties: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'ignoreHTTPSErrors',
+				displayName: 'Ignorehttpserrors',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'ignoreHTTPSErrors',
 			},
 			{
-				displayName: 'slowMo',
+				displayName: 'Slowmo',
 				type: 'number',
 				default: 0,
 				description: '',
 				name: 'slowMo',
 			},
 			{
-				displayName: 'stealth',
+				displayName: 'Stealth',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'stealth',
 			},
 			{
-				displayName: 'timeout',
+				displayName: 'Timeout',
 				type: 'number',
 				default: 0,
 				description: '',
 				name: 'timeout',
 			},
 			{
-				displayName: 'userDataDir',
+				displayName: 'Userdatadir',
 				type: 'string',
 				default: '',
 				description: '',
 				name: 'userDataDir',
 			},
 			{
-				displayName: 'waitForInitialPage',
+				displayName: 'Waitforinitialpage',
 				type: 'boolean',
 				default: true,
 				description: '',

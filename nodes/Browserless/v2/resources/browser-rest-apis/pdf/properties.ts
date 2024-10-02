@@ -53,7 +53,7 @@ export const properties: INodeProperties[] = [
 		displayName: 'Timeout',
 		name: 'timeout',
 		description:
-			'Override the system-level timeout for this request.\nAccepts a value in milliseconds',
+			'Override the system-level timeout for this request. Accepts a value in milliseconds',
 		default: 0,
 		type: 'number',
 		routing: {
@@ -105,43 +105,43 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'width',
+						displayName: 'Width',
 						type: 'number',
 						default: 0,
 						description: 'The page width in CSS pixels',
 						name: 'width',
 					},
 					{
-						displayName: 'height',
+						displayName: 'Height',
 						type: 'number',
 						default: 0,
 						description: 'The page height in CSS pixels',
 						name: 'height',
 					},
 					{
-						displayName: 'deviceScaleFactor',
+						displayName: 'Devicescalefactor',
 						type: 'number',
 						default: 0,
 						description:
-							'Specify device scale factor.\nSee {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
+							'Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
 						name: 'deviceScaleFactor',
 					},
 					{
-						displayName: 'isMobile',
+						displayName: 'Ismobile',
 						type: 'boolean',
 						default: true,
 						description: 'Whether the `meta viewport` tag is taken into account',
 						name: 'isMobile',
 					},
 					{
-						displayName: 'isLandscape',
+						displayName: 'Islandscape',
 						type: 'boolean',
 						default: true,
 						description: 'Specifies if the viewport is in landscape mode',
 						name: 'isLandscape',
 					},
 					{
-						displayName: 'hasTouch',
+						displayName: 'Hastouch',
 						type: 'boolean',
 						default: true,
 						description: 'Specify if the viewport supports touch events',
@@ -318,14 +318,14 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'username',
+						displayName: 'Username',
 						type: 'string',
 						default: '',
 						description: '',
 						name: 'username',
 					},
 					{
-						displayName: 'password',
+						displayName: 'Password',
 						type: 'string',
 						default: '',
 						description: '',
@@ -361,58 +361,58 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Add item',
 		options: [
 			{
-				displayName: 'scale',
+				displayName: 'Scale',
 				type: 'number',
 				default: 0,
 				description: 'Scales the rendering of the web page. Amount must be between `0.1` and `2`',
 				name: 'scale',
 			},
 			{
-				displayName: 'displayHeaderFooter',
+				displayName: 'Displayheaderfooter',
 				type: 'boolean',
 				default: true,
 				description: 'Whether to show the header and footer',
 				name: 'displayHeaderFooter',
 			},
 			{
-				displayName: 'headerTemplate',
+				displayName: 'Headertemplate',
 				type: 'string',
 				default: '',
 				description:
-					'HTML template for the print header. Should be valid HTML with the following\nclasses used to inject values into them:\n\n- `date` formatted print date\n\n- `title` document title\n\n- `url` document location\n\n- `pageNumber` current page number\n\n- `totalPages` total pages in the document',
+					'HTML template for the print header. Should be valid HTML with the following classes used to inject values into them: - `date` formatted print date - `title` document title - `url` document location - `pageNumber` current page number - `totalPages` total pages in the document',
 				name: 'headerTemplate',
 			},
 			{
-				displayName: 'footerTemplate',
+				displayName: 'Footertemplate',
 				type: 'string',
 				default: '',
 				description:
-					'HTML template for the print footer. Has the same constraints and support\nfor special classes as {@link PDFOptions.headerTemplate}',
+					'HTML template for the print footer. Has the same constraints and support for special classes as {@link PDFOptions.headerTemplate}',
 				name: 'footerTemplate',
 			},
 			{
-				displayName: 'printBackground',
+				displayName: 'Printbackground',
 				type: 'boolean',
 				default: true,
 				description: 'Set to `true` to print background graphics',
 				name: 'printBackground',
 			},
 			{
-				displayName: 'landscape',
+				displayName: 'Landscape',
 				type: 'boolean',
 				default: true,
 				description: 'Whether to print in landscape orientation',
 				name: 'landscape',
 			},
 			{
-				displayName: 'pageRanges',
+				displayName: 'Pageranges',
 				type: 'string',
 				default: '',
 				description: 'Paper ranges to print, e.g. `1-5, 8, 11-13`',
 				name: 'pageRanges',
 			},
 			{
-				displayName: 'format',
+				displayName: 'Format',
 				type: 'options',
 				default: 'A0',
 				description: 'All the valid paper format types when printing a PDF',
@@ -525,29 +525,29 @@ export const properties: INodeProperties[] = [
 				name: 'format',
 			},
 			{
-				displayName: 'width',
+				displayName: 'Width',
 				type: 'string',
 				default: undefined,
 				description: 'Sets the width of paper. You can pass in a number or a string with a unit',
 				name: 'width',
 			},
 			{
-				displayName: 'height',
+				displayName: 'Height',
 				type: 'string',
 				default: undefined,
 				description: 'Sets the height of paper. You can pass in a number or a string with a unit',
 				name: 'height',
 			},
 			{
-				displayName: 'preferCSSPageSize',
+				displayName: 'Prefercsspagesize',
 				type: 'boolean',
 				default: true,
 				description:
-					'Give any CSS `@page` size declared in the page priority over what is\ndeclared in the `width` or `height` or `format` option',
+					'Give any CSS `@page` size declared in the page priority over what is declared in the `width` or `height` or `format` option',
 				name: 'preferCSSPageSize',
 			},
 			{
-				displayName: 'margin',
+				displayName: 'Margin',
 				type: 'fixedCollection',
 				default: {},
 				description: 'Set the PDF margins',
@@ -557,28 +557,28 @@ export const properties: INodeProperties[] = [
 						name: 'items',
 						values: [
 							{
-								displayName: 'top',
+								displayName: 'Top',
 								type: 'string',
 								default: undefined,
 								description: '',
 								name: 'top',
 							},
 							{
-								displayName: 'bottom',
+								displayName: 'Bottom',
 								type: 'string',
 								default: undefined,
 								description: '',
 								name: 'bottom',
 							},
 							{
-								displayName: 'left',
+								displayName: 'Left',
 								type: 'string',
 								default: undefined,
 								description: '',
 								name: 'left',
 							},
 							{
-								displayName: 'right',
+								displayName: 'Right',
 								type: 'string',
 								default: undefined,
 								description: '',
@@ -590,47 +590,47 @@ export const properties: INodeProperties[] = [
 				name: 'margin',
 			},
 			{
-				displayName: 'path',
+				displayName: 'Path',
 				type: 'string',
 				default: '',
 				description: 'The path to save the file to',
 				name: 'path',
 			},
 			{
-				displayName: 'omitBackground',
+				displayName: 'Omitbackground',
 				type: 'boolean',
 				default: true,
 				description: 'Hides default white background and allows generating pdfs with transparency',
 				name: 'omitBackground',
 			},
 			{
-				displayName: 'tagged',
+				displayName: 'Tagged',
 				type: 'boolean',
 				default: true,
 				description: 'Generate tagged (accessible) PDF',
 				name: 'tagged',
 			},
 			{
-				displayName: 'outline',
+				displayName: 'Outline',
 				type: 'boolean',
 				default: true,
 				description: 'Generate document outline',
 				name: 'outline',
 			},
 			{
-				displayName: 'timeout',
+				displayName: 'Timeout',
 				type: 'number',
 				default: 0,
 				description:
-					'Timeout in milliseconds. Pass `0` to disable timeout.\n\nThe default value can be changed by using {@link Page.setDefaultTimeout}',
+					'Timeout in milliseconds. Pass `0` to disable timeout. The default value can be changed by using {@link Page.setDefaultTimeout}',
 				name: 'timeout',
 			},
 			{
-				displayName: 'waitForFonts',
+				displayName: 'Waitforfonts',
 				type: 'boolean',
 				default: true,
 				description:
-					'If true, waits for `document.fonts.ready` to resolve. This might require\nactivating the page using {@link Page.bringToFront} if the page is in the\nbackground',
+					'If true, waits for `document.fonts.ready` to resolve. This might require activating the page using {@link Page.bringToFront} if the page is in the background',
 				name: 'waitForFonts',
 			},
 		],
@@ -663,35 +663,35 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'referer',
+						displayName: 'Referer',
 						type: 'string',
 						default: '',
 						description:
-							'If provided, it will take preference over the referer header value set by\n{@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
+							'If provided, it will take preference over the referer header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
 						name: 'referer',
 					},
 					{
-						displayName: 'referrerPolicy',
+						displayName: 'Referrerpolicy',
 						type: 'string',
 						default: '',
 						description:
-							'If provided, it will take preference over the referer-policy header value\nset by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
+							'If provided, it will take preference over the referer-policy header value set by {@link Page.setExtraHTTPHeaderspage.setExtraHTTPHeaders()}',
 						name: 'referrerPolicy',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description:
-							'Maximum wait time in milliseconds. Pass 0 to disable the timeout.\n\nThe default value can be changed by using the\n{@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout}\nmethods',
+							'Maximum wait time in milliseconds. Pass 0 to disable the timeout. The default value can be changed by using the {@link Page.setDefaultTimeout} or {@link Page.setDefaultNavigationTimeout} methods',
 						name: 'timeout',
 					},
 					{
-						displayName: 'waitUntil',
+						displayName: 'Waituntil',
 						type: 'multiOptions',
 						default: [],
 						description:
-							'When to consider waiting succeeds. Given an array of event strings, waiting\nis considered to be successful after all events have been fired',
+							'When to consider waiting succeeds. Given an array of event strings, waiting is considered to be successful after all events have been fired',
 						options: [
 							{
 								name: 'domcontentloaded',
@@ -713,7 +713,7 @@ export const properties: INodeProperties[] = [
 						name: 'waitUntil',
 					},
 					{
-						displayName: 'signal',
+						displayName: 'Signal',
 						type: 'fixedCollection',
 						default: {},
 						description: 'A signal object that allows you to cancel the call',
@@ -723,21 +723,21 @@ export const properties: INodeProperties[] = [
 								name: 'items',
 								values: [
 									{
-										displayName: 'aborted',
+										displayName: 'Aborted',
 										type: 'boolean',
 										default: true,
 										description: '',
 										name: 'aborted',
 									},
 									{
-										displayName: 'onabort',
+										displayName: 'Onabort',
 										type: 'json',
 										default: '{}',
 										description: '',
 										name: 'onabort',
 									},
 									{
-										displayName: 'reason',
+										displayName: 'Reason',
 										type: 'string',
 										default: '',
 										description: '',
@@ -772,7 +772,7 @@ export const properties: INodeProperties[] = [
 		displayName: 'Block Ads',
 		name: 'blockAds',
 		description:
-			'Whether or nor to load ad-blocking extensions for the session.\nThis currently uses uBlock Origin and may cause certain sites\nto not load properly',
+			'Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly',
 		default: true,
 		type: 'boolean',
 		routing: {
@@ -943,15 +943,15 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'pattern',
+						displayName: 'Pattern',
 						type: 'string',
 						default: '',
 						description:
-							'An array of patterns (using `req.url().match(r.pattern)` to match) and their\ncorresponding responses to use in order to fulfill those requests',
+							'An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests',
 						name: 'pattern',
 					},
 					{
-						displayName: 'response',
+						displayName: 'Response',
 						type: 'fixedCollection',
 						default: {},
 						description: '',
@@ -961,28 +961,28 @@ export const properties: INodeProperties[] = [
 								name: 'items',
 								values: [
 									{
-										displayName: 'status',
+										displayName: 'Status',
 										type: 'number',
 										default: 0,
 										description: '',
 										name: 'status',
 									},
 									{
-										displayName: 'headers',
+										displayName: 'Headers',
 										type: 'json',
 										default: '{}',
 										description: 'Optional response headers. All values are converted to strings',
 										name: 'headers',
 									},
 									{
-										displayName: 'contentType',
+										displayName: 'Contenttype',
 										type: 'string',
 										default: '',
 										description: '',
 										name: 'contentType',
 									},
 									{
-										displayName: 'body',
+										displayName: 'Body',
 										type: 'fixedCollection',
 										default: {},
 										description: '',
@@ -992,14 +992,14 @@ export const properties: INodeProperties[] = [
 												name: 'items',
 												values: [
 													{
-														displayName: 'BYTES_PER_ELEMENT',
+														displayName: 'Bytes Per Element',
 														type: 'number',
 														default: 0,
 														description: '',
 														name: 'BYTES_PER_ELEMENT',
 													},
 													{
-														displayName: 'buffer',
+														displayName: 'Buffer',
 														type: 'string',
 														default: {
 															byteLength: undefined,
@@ -1009,28 +1009,28 @@ export const properties: INodeProperties[] = [
 														name: 'buffer',
 													},
 													{
-														displayName: 'byteLength',
+														displayName: 'Bytelength',
 														type: 'number',
 														default: 0,
 														description: '',
 														name: 'byteLength',
 													},
 													{
-														displayName: 'byteOffset',
+														displayName: 'Byteoffset',
 														type: 'number',
 														default: 0,
 														description: '',
 														name: 'byteOffset',
 													},
 													{
-														displayName: 'length',
+														displayName: 'Length',
 														type: 'number',
 														default: 0,
 														description: '',
 														name: 'length',
 													},
 													{
-														displayName: '__@toStringTag@42114',
+														displayName: 'Tostringtag 42114',
 														type: 'string',
 														default: '',
 														description: '',
@@ -1078,28 +1078,28 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'hidden',
+						displayName: 'Hidden',
 						type: 'boolean',
 						default: true,
 						description: '',
 						name: 'hidden',
 					},
 					{
-						displayName: 'selector',
+						displayName: 'Selector',
 						type: 'string',
 						default: '',
 						description: '',
 						name: 'selector',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description: '',
 						name: 'timeout',
 					},
 					{
-						displayName: 'visible',
+						displayName: 'Visible',
 						type: 'boolean',
 						default: true,
 						description: '',
@@ -1160,26 +1160,26 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'fn',
+						displayName: 'Fn',
 						type: 'string',
 						default: '',
 						description: 'The function, or statement, to be evaluated in browser context',
 						name: 'fn',
 					},
 					{
-						displayName: 'polling',
+						displayName: 'Polling',
 						type: 'string',
 						default: undefined,
 						description:
-							'An interval at which the pageFunction is executed, defaults to raf.\nIf polling is a number, then it is treated as an interval in milliseconds\nat which the function would be executed. If polling is a string,\nthen it can be one of the following values: "raf" or "mutation"',
+							'An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: "raf" or "mutation"',
 						name: 'polling',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description:
-							'Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds).\nPass 0 to disable timeout',
+							'Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout',
 						name: 'timeout',
 					},
 				],
@@ -1214,14 +1214,14 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'event',
+						displayName: 'Event',
 						type: 'string',
 						default: '',
 						description: '',
 						name: 'event',
 					},
 					{
-						displayName: 'timeout',
+						displayName: 'Timeout',
 						type: 'number',
 						default: 0,
 						description: '',
@@ -1286,28 +1286,28 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'url',
+						displayName: 'Url',
 						type: 'string',
 						default: '',
 						description: 'URL of the script to be added',
 						name: 'url',
 					},
 					{
-						displayName: 'path',
+						displayName: 'Path',
 						type: 'string',
 						default: '',
 						description: 'Path to a JavaScript file to be injected into the frame',
 						name: 'path',
 					},
 					{
-						displayName: 'content',
+						displayName: 'Content',
 						type: 'string',
 						default: '',
 						description: 'JavaScript to be injected into the frame',
 						name: 'content',
 					},
 					{
-						displayName: 'type',
+						displayName: 'Type',
 						type: 'string',
 						default: '',
 						description:
@@ -1315,7 +1315,7 @@ export const properties: INodeProperties[] = [
 						name: 'type',
 					},
 					{
-						displayName: 'id',
+						displayName: 'Id',
 						type: 'string',
 						default: '',
 						description: 'Sets the `id` of the script',
@@ -1357,21 +1357,21 @@ export const properties: INodeProperties[] = [
 				name: 'items',
 				values: [
 					{
-						displayName: 'url',
+						displayName: 'Url',
 						type: 'string',
 						default: '',
 						description: 'the URL of the CSS file to be added',
 						name: 'url',
 					},
 					{
-						displayName: 'path',
+						displayName: 'Path',
 						type: 'string',
 						default: '',
 						description: 'The path to a CSS file to be injected into the frame',
 						name: 'path',
 					},
 					{
-						displayName: 'content',
+						displayName: 'Content',
 						type: 'string',
 						default: '',
 						description: 'Raw CSS content to be injected into the frame',
@@ -1403,7 +1403,7 @@ export const properties: INodeProperties[] = [
 		type: 'boolean',
 		default: true,
 		description:
-			'When bestAttempt is set to true, browserless attempt to proceed\nwhen "awaited" events fail or timeout. This includes things like\ngoto, waitForSelector, and more',
+			'When bestAttempt is set to true, browserless attempt to proceed when "awaited" events fail or timeout. This includes things like goto, waitForSelector, and more',
 		routing: {
 			request: {
 				body: {
@@ -1444,7 +1444,7 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Add item',
 		options: [
 			{
-				displayName: 'args',
+				displayName: 'Args',
 				type: 'fixedCollection',
 				default: [],
 				typeOptions: {
@@ -1469,7 +1469,7 @@ export const properties: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'defaultViewport',
+				displayName: 'Defaultviewport',
 				type: 'fixedCollection',
 				default: {},
 				description: '',
@@ -1479,42 +1479,42 @@ export const properties: INodeProperties[] = [
 						name: 'items',
 						values: [
 							{
-								displayName: 'deviceScaleFactor',
+								displayName: 'Devicescalefactor',
 								type: 'number',
 								default: 0,
 								description: '',
 								name: 'deviceScaleFactor',
 							},
 							{
-								displayName: 'hasTouch',
+								displayName: 'Hastouch',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'hasTouch',
 							},
 							{
-								displayName: 'height',
+								displayName: 'Height',
 								type: 'number',
 								default: 0,
 								description: '',
 								name: 'height',
 							},
 							{
-								displayName: 'isLandscape',
+								displayName: 'Islandscape',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'isLandscape',
 							},
 							{
-								displayName: 'isMobile',
+								displayName: 'Ismobile',
 								type: 'boolean',
 								default: true,
 								description: '',
 								name: 'isMobile',
 							},
 							{
-								displayName: 'width',
+								displayName: 'Width',
 								type: 'number',
 								default: 0,
 								description: '',
@@ -1526,21 +1526,21 @@ export const properties: INodeProperties[] = [
 				name: 'defaultViewport',
 			},
 			{
-				displayName: 'devtools',
+				displayName: 'Devtools',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'devtools',
 			},
 			{
-				displayName: 'dumpio',
+				displayName: 'Dumpio',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'dumpio',
 			},
 			{
-				displayName: 'headless',
+				displayName: 'Headless',
 				type: 'options',
 				default: false,
 				description: '',
@@ -1561,7 +1561,7 @@ export const properties: INodeProperties[] = [
 				name: 'headless',
 			},
 			{
-				displayName: 'ignoreDefaultArgs',
+				displayName: 'Ignoredefaultargs',
 				type: 'fixedCollection',
 				default: [],
 				typeOptions: {
@@ -1586,42 +1586,42 @@ export const properties: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'ignoreHTTPSErrors',
+				displayName: 'Ignorehttpserrors',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'ignoreHTTPSErrors',
 			},
 			{
-				displayName: 'slowMo',
+				displayName: 'Slowmo',
 				type: 'number',
 				default: 0,
 				description: '',
 				name: 'slowMo',
 			},
 			{
-				displayName: 'stealth',
+				displayName: 'Stealth',
 				type: 'boolean',
 				default: true,
 				description: '',
 				name: 'stealth',
 			},
 			{
-				displayName: 'timeout',
+				displayName: 'Timeout',
 				type: 'number',
 				default: 0,
 				description: '',
 				name: 'timeout',
 			},
 			{
-				displayName: 'userDataDir',
+				displayName: 'Userdatadir',
 				type: 'string',
 				default: '',
 				description: '',
 				name: 'userDataDir',
 			},
 			{
-				displayName: 'waitForInitialPage',
+				displayName: 'Waitforinitialpage',
 				type: 'boolean',
 				default: true,
 				description: '',

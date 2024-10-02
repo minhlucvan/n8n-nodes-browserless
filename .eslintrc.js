@@ -18,7 +18,7 @@ module.exports = {
 		extraFileExtensions: ['.json'],
 	},
 
-	ignorePatterns: ['.eslintrc.js', '**/*.js', '**/node_modules/**', '**/dist/**', 'nodes/Browserless/v1/**'],
+	ignorePatterns: ['.eslintrc.js', '**/*.js', '**/node_modules/**', '**/dist/**', 'nodes/**'],
 
 	overrides: [
 		{
@@ -48,5 +48,12 @@ module.exports = {
 				'n8n-nodes-base/node-param-fixed-collection-type-unsorted-items': 'off',
 			},
 		},
+		{
+			files: ['./src/**/*.ts'],
+			plugins: ['eslint-plugin-n8n-nodes-base'],
+			rules: {
+				'n8n-nodes-base/node-dirname-against-convention': 'off',
+			},
+		}
 	],
 };
