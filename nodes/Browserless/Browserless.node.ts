@@ -9,7 +9,7 @@ export class Browserless extends VersionedNodeType {
 		const baseDescription: INodeTypeBaseDescription = {
 			displayName: 'Browserless',
 			name: 'browserless',
-			icon: 'file:browserless.svg',
+			icon: 'file:browserless.png',
 			group: ['transform'],
 			subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 			description: 'Interact with Browserless API',
