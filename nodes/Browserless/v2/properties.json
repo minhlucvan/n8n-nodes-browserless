@@ -397,62 +397,6 @@
     }
   },
   {
-    "name": "enableCookies",
-    "displayName": "Enable Cookies",
-    "type": "boolean",
-    "default": false,
-    "description": "Enable cookies",
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Unblock"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Cookies",
-    "name": "cookies",
-    "type": "json",
-    "default": "[]",
-    "description": "Array of cookie objects expected by cookie-editor extension",
-    "routing": {
-      "request": {
-        "body": {
-          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Unblock"
-        ],
-        "enableCookies": [
-          true
-        ]
-      }
-    },
-    "typeOptions": {},
-    "options": []
-  },
-  {
     "displayName": "Goto Options",
     "name": "gotoOptions",
     "type": "fixedCollection",
@@ -594,6 +538,62 @@
         ]
       }
     }
+  },
+  {
+    "name": "enableCookies",
+    "displayName": "Enable Cookies",
+    "type": "boolean",
+    "default": false,
+    "description": "Enable cookies",
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Cookies",
+    "name": "cookies",
+    "type": "json",
+    "default": "[]",
+    "description": "Array of cookie objects expected by cookie-editor extension",
+    "routing": {
+      "request": {
+        "body": {
+          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Unblock"
+        ],
+        "enableCookies": [
+          true
+        ]
+      }
+    },
+    "typeOptions": {},
+    "options": []
   },
   {
     "displayName": "Wait For Selector",
@@ -1159,14 +1159,14 @@
     }
   },
   {
-    "displayName": "User Agent",
-    "name": "userAgent",
+    "displayName": "Html",
+    "name": "html",
     "type": "string",
     "default": "",
     "routing": {
       "request": {
         "body": {
-          "userAgent": "={{ $value }}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -1182,252 +1182,6 @@
         ],
         "operation": [
           "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Viewport",
-    "name": "viewport",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "viewport": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Emulate Media Type",
-    "name": "emulateMediaType",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "emulateMediaType": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Java Script Enabled",
-    "name": "setJavaScriptEnabled",
-    "type": "boolean",
-    "default": true,
-    "routing": {
-      "request": {
-        "body": {
-          "setJavaScriptEnabled": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Extra HTTP Headers",
-    "name": "setExtraHTTPHeaders",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "Set extra HTTP headers",
-    "routing": {
-      "request": {
-        "body": {
-          "setExtraHTTPHeaders": "={{$value.headers}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    },
-    "placeholder": "Add Header",
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "options": [
-      {
-        "displayName": "Set Extra HTTP Headers",
-        "name": "headers",
-        "values": [
-          {
-            "displayName": "Name",
-            "name": "name",
-            "type": "string",
-            "default": "",
-            "description": "Name of the header"
-          },
-          {
-            "displayName": "Value",
-            "name": "value",
-            "type": "string",
-            "default": "",
-            "description": "Value of the header"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "enableCookies",
-    "displayName": "Enable Cookies",
-    "type": "boolean",
-    "default": false,
-    "description": "Enable cookies",
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Cookies",
-    "name": "cookies",
-    "type": "json",
-    "default": "[]",
-    "typeOptions": {},
-    "description": "Array of cookie objects expected by cookie-editor extension",
-    "placeholder": "Add item",
-    "options": [],
-    "routing": {
-      "request": {
-        "body": {
-          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ],
-        "enableCookies": [
-          true
         ]
       }
     }
@@ -1920,6 +1674,616 @@
     }
   },
   {
+    "displayName": "Add Script Tag",
+    "name": "addScriptTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "URL of the script to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Path to a JavaScript file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "JavaScript to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
+            "name": "type",
+            "displayName": "Type"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `id` of the script",
+            "name": "id",
+            "displayName": "Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addScriptTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Style Tag",
+    "name": "addStyleTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "the URL of the CSS file to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "The path to a CSS file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Raw CSS content to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addStyleTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "User Agent",
+    "name": "userAgent",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "userAgent": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "name": "enableCookies",
+    "displayName": "Enable Cookies",
+    "type": "boolean",
+    "default": false,
+    "description": "Enable cookies",
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Cookies",
+    "name": "cookies",
+    "type": "json",
+    "default": "[]",
+    "typeOptions": {},
+    "description": "Array of cookie objects expected by cookie-editor extension",
+    "placeholder": "Add item",
+    "options": [],
+    "routing": {
+      "request": {
+        "body": {
+          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ],
+        "enableCookies": [
+          true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Emulate Media Type",
+    "name": "emulateMediaType",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "emulateMediaType": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Extra HTTP Headers",
+    "name": "setExtraHTTPHeaders",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Set extra HTTP headers",
+    "routing": {
+      "request": {
+        "body": {
+          "setExtraHTTPHeaders": "={{$value.headers}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    },
+    "placeholder": "Add Header",
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "options": [
+      {
+        "displayName": "Set Extra HTTP Headers",
+        "name": "headers",
+        "values": [
+          {
+            "displayName": "Name",
+            "name": "name",
+            "type": "string",
+            "default": "",
+            "description": "Name of the header"
+          },
+          {
+            "displayName": "Value",
+            "name": "value",
+            "type": "string",
+            "default": "",
+            "description": "Value of the header"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForSelector": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "waitForTimeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Function",
+    "name": "waitForFunction",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "The function, or statement, to be evaluated in browser context",
+            "name": "fn",
+            "displayName": "Fn"
+          },
+          {
+            "type": "string",
+            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
+            "name": "polling",
+            "displayName": "Polling"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForFunction": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "event",
+            "displayName": "Event"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForEvent": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Java Script Enabled",
+    "name": "setJavaScriptEnabled",
+    "type": "boolean",
+    "default": true,
+    "routing": {
+      "request": {
+        "body": {
+          "setJavaScriptEnabled": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
     "displayName": "Reject Request Pattern",
     "name": "rejectRequestPattern",
     "type": "fixedCollection",
@@ -2190,370 +2554,6 @@
       "request": {
         "body": {
           "requestInterceptors": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "selector",
-            "displayName": "Selector"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Function",
-    "name": "waitForFunction",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "The function, or statement, to be evaluated in browser context",
-            "name": "fn",
-            "displayName": "Fn"
-          },
-          {
-            "type": "string",
-            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
-            "name": "polling",
-            "displayName": "Polling"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "html": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Script Tag",
-    "name": "addScriptTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "URL of the script to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Path to a JavaScript file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "JavaScript to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
-            "name": "type",
-            "displayName": "Type"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `id` of the script",
-            "name": "id",
-            "displayName": "Id"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addScriptTag": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Style Tag",
-    "name": "addStyleTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "the URL of the CSS file to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "The path to a CSS file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Raw CSS content to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addStyleTag": "={{$value.items}}"
         }
       }
     },
@@ -2995,14 +2995,14 @@
     }
   },
   {
-    "displayName": "User Agent",
-    "name": "userAgent",
+    "displayName": "Html",
+    "name": "html",
     "type": "string",
     "default": "",
     "routing": {
       "request": {
         "body": {
-          "userAgent": "={{ $value }}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -3018,252 +3018,6 @@
         ],
         "operation": [
           "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Viewport",
-    "name": "viewport",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "viewport": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Emulate Media Type",
-    "name": "emulateMediaType",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "emulateMediaType": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Java Script Enabled",
-    "name": "setJavaScriptEnabled",
-    "type": "boolean",
-    "default": true,
-    "routing": {
-      "request": {
-        "body": {
-          "setJavaScriptEnabled": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Extra HTTP Headers",
-    "name": "setExtraHTTPHeaders",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "Set extra HTTP headers",
-    "routing": {
-      "request": {
-        "body": {
-          "setExtraHTTPHeaders": "={{$value.headers}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    },
-    "placeholder": "Add Header",
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "options": [
-      {
-        "displayName": "Set Extra HTTP Headers",
-        "name": "headers",
-        "values": [
-          {
-            "displayName": "Name",
-            "name": "name",
-            "type": "string",
-            "default": "",
-            "description": "Name of the header"
-          },
-          {
-            "displayName": "Value",
-            "name": "value",
-            "type": "string",
-            "default": "",
-            "description": "Value of the header"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "enableCookies",
-    "displayName": "Enable Cookies",
-    "type": "boolean",
-    "default": false,
-    "description": "Enable cookies",
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Cookies",
-    "name": "cookies",
-    "type": "json",
-    "default": "[]",
-    "typeOptions": {},
-    "description": "Array of cookie objects expected by cookie-editor extension",
-    "placeholder": "Add item",
-    "options": [],
-    "routing": {
-      "request": {
-        "body": {
-          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ],
-        "enableCookies": [
-          true
         ]
       }
     }
@@ -3631,6 +3385,616 @@
     }
   },
   {
+    "displayName": "Add Script Tag",
+    "name": "addScriptTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "URL of the script to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Path to a JavaScript file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "JavaScript to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
+            "name": "type",
+            "displayName": "Type"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `id` of the script",
+            "name": "id",
+            "displayName": "Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addScriptTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Style Tag",
+    "name": "addStyleTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "the URL of the CSS file to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "The path to a CSS file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Raw CSS content to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addStyleTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "User Agent",
+    "name": "userAgent",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "userAgent": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "name": "enableCookies",
+    "displayName": "Enable Cookies",
+    "type": "boolean",
+    "default": false,
+    "description": "Enable cookies",
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Cookies",
+    "name": "cookies",
+    "type": "json",
+    "default": "[]",
+    "typeOptions": {},
+    "description": "Array of cookie objects expected by cookie-editor extension",
+    "placeholder": "Add item",
+    "options": [],
+    "routing": {
+      "request": {
+        "body": {
+          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ],
+        "enableCookies": [
+          true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Emulate Media Type",
+    "name": "emulateMediaType",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "emulateMediaType": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Extra HTTP Headers",
+    "name": "setExtraHTTPHeaders",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Set extra HTTP headers",
+    "routing": {
+      "request": {
+        "body": {
+          "setExtraHTTPHeaders": "={{$value.headers}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    },
+    "placeholder": "Add Header",
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "options": [
+      {
+        "displayName": "Set Extra HTTP Headers",
+        "name": "headers",
+        "values": [
+          {
+            "displayName": "Name",
+            "name": "name",
+            "type": "string",
+            "default": "",
+            "description": "Name of the header"
+          },
+          {
+            "displayName": "Value",
+            "name": "value",
+            "type": "string",
+            "default": "",
+            "description": "Value of the header"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForSelector": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "waitForTimeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Function",
+    "name": "waitForFunction",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "The function, or statement, to be evaluated in browser context",
+            "name": "fn",
+            "displayName": "Fn"
+          },
+          {
+            "type": "string",
+            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
+            "name": "polling",
+            "displayName": "Polling"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForFunction": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "event",
+            "displayName": "Event"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForEvent": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Java Script Enabled",
+    "name": "setJavaScriptEnabled",
+    "type": "boolean",
+    "default": true,
+    "routing": {
+      "request": {
+        "body": {
+          "setJavaScriptEnabled": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
     "displayName": "Reject Request Pattern",
     "name": "rejectRequestPattern",
     "type": "fixedCollection",
@@ -3901,370 +4265,6 @@
       "request": {
         "body": {
           "requestInterceptors": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "selector",
-            "displayName": "Selector"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Function",
-    "name": "waitForFunction",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "The function, or statement, to be evaluated in browser context",
-            "name": "fn",
-            "displayName": "Fn"
-          },
-          {
-            "type": "string",
-            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
-            "name": "polling",
-            "displayName": "Polling"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "html": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Script Tag",
-    "name": "addScriptTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "URL of the script to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Path to a JavaScript file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "JavaScript to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
-            "name": "type",
-            "displayName": "Type"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `id` of the script",
-            "name": "id",
-            "displayName": "Id"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addScriptTag": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Style Tag",
-    "name": "addStyleTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "the URL of the CSS file to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "The path to a CSS file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Raw CSS content to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addStyleTag": "={{$value.items}}"
         }
       }
     },
@@ -4650,14 +4650,14 @@
     }
   },
   {
-    "displayName": "User Agent",
-    "name": "userAgent",
+    "displayName": "Html",
+    "name": "html",
     "type": "string",
     "default": "",
     "routing": {
       "request": {
         "body": {
-          "userAgent": "={{ $value }}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -4673,253 +4673,6 @@
         ],
         "operation": [
           "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Viewport",
-    "name": "viewport",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "viewport": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Emulate Media Type",
-    "name": "emulateMediaType",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "emulateMediaType": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Java Script Enabled",
-    "name": "setJavaScriptEnabled",
-    "type": "boolean",
-    "default": true,
-    "description": "Whether or not to allow JavaScript to run on the page",
-    "routing": {
-      "request": {
-        "body": {
-          "setJavaScriptEnabled": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Extra HTTP Headers",
-    "name": "setExtraHTTPHeaders",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "Set extra HTTP headers",
-    "routing": {
-      "request": {
-        "body": {
-          "setExtraHTTPHeaders": "={{$value.headers}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    },
-    "placeholder": "Add Header",
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "options": [
-      {
-        "displayName": "Set Extra HTTP Headers",
-        "name": "headers",
-        "values": [
-          {
-            "displayName": "Name",
-            "name": "name",
-            "type": "string",
-            "default": "",
-            "description": "Name of the header"
-          },
-          {
-            "displayName": "Value",
-            "name": "value",
-            "type": "string",
-            "default": "",
-            "description": "Value of the header"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "enableCookies",
-    "displayName": "Enable Cookies",
-    "type": "boolean",
-    "default": false,
-    "description": "Enable cookies",
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Cookies",
-    "name": "cookies",
-    "type": "json",
-    "default": "[]",
-    "typeOptions": {},
-    "description": "Array of cookie objects expected by cookie-editor extension",
-    "placeholder": "Add item",
-    "options": [],
-    "routing": {
-      "request": {
-        "body": {
-          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ],
-        "enableCookies": [
-          true
         ]
       }
     }
@@ -5106,6 +4859,617 @@
       }
     },
     "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Script Tag",
+    "name": "addScriptTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "URL of the script to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Path to a JavaScript file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "JavaScript to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
+            "name": "type",
+            "displayName": "Type"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `id` of the script",
+            "name": "id",
+            "displayName": "Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addScriptTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Style Tag",
+    "name": "addStyleTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "the URL of the CSS file to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "The path to a CSS file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Raw CSS content to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addStyleTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "User Agent",
+    "name": "userAgent",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "userAgent": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "name": "enableCookies",
+    "displayName": "Enable Cookies",
+    "type": "boolean",
+    "default": false,
+    "description": "Enable cookies",
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Cookies",
+    "name": "cookies",
+    "type": "json",
+    "default": "[]",
+    "typeOptions": {},
+    "description": "Array of cookie objects expected by cookie-editor extension",
+    "placeholder": "Add item",
+    "options": [],
+    "routing": {
+      "request": {
+        "body": {
+          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ],
+        "enableCookies": [
+          true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Emulate Media Type",
+    "name": "emulateMediaType",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "emulateMediaType": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Extra HTTP Headers",
+    "name": "setExtraHTTPHeaders",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Set extra HTTP headers",
+    "routing": {
+      "request": {
+        "body": {
+          "setExtraHTTPHeaders": "={{$value.headers}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    },
+    "placeholder": "Add Header",
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "options": [
+      {
+        "displayName": "Set Extra HTTP Headers",
+        "name": "headers",
+        "values": [
+          {
+            "displayName": "Name",
+            "name": "name",
+            "type": "string",
+            "default": "",
+            "description": "Name of the header"
+          },
+          {
+            "displayName": "Value",
+            "name": "value",
+            "type": "string",
+            "default": "",
+            "description": "Value of the header"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForSelector": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "waitForTimeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Function",
+    "name": "waitForFunction",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "The function, or statement, to be evaluated in browser context",
+            "name": "fn",
+            "displayName": "Fn"
+          },
+          {
+            "type": "string",
+            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
+            "name": "polling",
+            "displayName": "Polling"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForFunction": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "event",
+            "displayName": "Event"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForEvent": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Java Script Enabled",
+    "name": "setJavaScriptEnabled",
+    "type": "boolean",
+    "default": true,
+    "description": "Whether or not to allow JavaScript to run on the page",
+    "routing": {
+      "request": {
+        "body": {
+          "setJavaScriptEnabled": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Browser Rest Apis"
@@ -5387,370 +5751,6 @@
       "request": {
         "body": {
           "requestInterceptors": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "selector",
-            "displayName": "Selector"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Function",
-    "name": "waitForFunction",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "The function, or statement, to be evaluated in browser context",
-            "name": "fn",
-            "displayName": "Fn"
-          },
-          {
-            "type": "string",
-            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
-            "name": "polling",
-            "displayName": "Polling"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "html": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Script Tag",
-    "name": "addScriptTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "URL of the script to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Path to a JavaScript file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "JavaScript to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
-            "name": "type",
-            "displayName": "Type"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `id` of the script",
-            "name": "id",
-            "displayName": "Id"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addScriptTag": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Style Tag",
-    "name": "addStyleTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "the URL of the CSS file to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "The path to a CSS file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Raw CSS content to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addStyleTag": "={{$value.items}}"
         }
       }
     },
@@ -7329,6 +7329,61 @@
     "required": true
   },
   {
+    "displayName": "Elements",
+    "name": "elements",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "elements": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
     "displayName": "Timeout",
     "name": "timeout",
     "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
@@ -7353,14 +7408,14 @@
     }
   },
   {
-    "displayName": "User Agent",
-    "name": "userAgent",
+    "displayName": "Html",
+    "name": "html",
     "type": "string",
     "default": "",
     "routing": {
       "request": {
         "body": {
-          "userAgent": "={{ $value }}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -7376,252 +7431,6 @@
         ],
         "operation": [
           "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Viewport",
-    "name": "viewport",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "viewport": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Emulate Media Type",
-    "name": "emulateMediaType",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "emulateMediaType": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Java Script Enabled",
-    "name": "setJavaScriptEnabled",
-    "type": "boolean",
-    "default": true,
-    "routing": {
-      "request": {
-        "body": {
-          "setJavaScriptEnabled": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Set Extra HTTP Headers",
-    "name": "setExtraHTTPHeaders",
-    "type": "fixedCollection",
-    "default": {},
-    "description": "Set extra HTTP headers",
-    "routing": {
-      "request": {
-        "body": {
-          "setExtraHTTPHeaders": "={{$value.headers}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    },
-    "placeholder": "Add Header",
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "options": [
-      {
-        "displayName": "Set Extra HTTP Headers",
-        "name": "headers",
-        "values": [
-          {
-            "displayName": "Name",
-            "name": "name",
-            "type": "string",
-            "default": "",
-            "description": "Name of the header"
-          },
-          {
-            "displayName": "Value",
-            "name": "value",
-            "type": "string",
-            "default": "",
-            "description": "Value of the header"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "enableCookies",
-    "displayName": "Enable Cookies",
-    "type": "boolean",
-    "default": false,
-    "description": "Enable cookies",
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Cookies",
-    "name": "cookies",
-    "type": "json",
-    "default": "[]",
-    "typeOptions": {},
-    "description": "Array of cookie objects expected by cookie-editor extension",
-    "placeholder": "Add item",
-    "options": [],
-    "routing": {
-      "request": {
-        "body": {
-          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ],
-        "enableCookies": [
-          true
         ]
       }
     }
@@ -7808,6 +7617,616 @@
       }
     },
     "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Script Tag",
+    "name": "addScriptTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "URL of the script to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Path to a JavaScript file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "JavaScript to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
+            "name": "type",
+            "displayName": "Type"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Sets the `id` of the script",
+            "name": "id",
+            "displayName": "Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addScriptTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Add Style Tag",
+    "name": "addStyleTag",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "the URL of the CSS file to be added",
+            "name": "url",
+            "displayName": "Url"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "The path to a CSS file to be injected into the frame",
+            "name": "path",
+            "displayName": "Path"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Raw CSS content to be injected into the frame",
+            "name": "content",
+            "displayName": "Content"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "addStyleTag": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "User Agent",
+    "name": "userAgent",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "userAgent": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "name": "enableCookies",
+    "displayName": "Enable Cookies",
+    "type": "boolean",
+    "default": false,
+    "description": "Enable cookies",
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Cookies",
+    "name": "cookies",
+    "type": "json",
+    "default": "[]",
+    "typeOptions": {},
+    "description": "Array of cookie objects expected by cookie-editor extension",
+    "placeholder": "Add item",
+    "options": [],
+    "routing": {
+      "request": {
+        "body": {
+          "cookies": "={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ],
+        "enableCookies": [
+          true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Emulate Media Type",
+    "name": "emulateMediaType",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "emulateMediaType": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Extra HTTP Headers",
+    "name": "setExtraHTTPHeaders",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Set extra HTTP headers",
+    "routing": {
+      "request": {
+        "body": {
+          "setExtraHTTPHeaders": "={{$value.headers}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    },
+    "placeholder": "Add Header",
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "options": [
+      {
+        "displayName": "Set Extra HTTP Headers",
+        "name": "headers",
+        "values": [
+          {
+            "displayName": "Name",
+            "name": "name",
+            "type": "string",
+            "default": "",
+            "description": "Name of the header"
+          },
+          {
+            "displayName": "Value",
+            "name": "value",
+            "type": "string",
+            "default": "",
+            "description": "Value of the header"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForSelector": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "waitForTimeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Function",
+    "name": "waitForFunction",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "The function, or statement, to be evaluated in browser context",
+            "name": "fn",
+            "displayName": "Fn"
+          },
+          {
+            "type": "string",
+            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
+            "name": "polling",
+            "displayName": "Polling"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForFunction": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "event",
+            "displayName": "Event"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForEvent": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Set Java Script Enabled",
+    "name": "setJavaScriptEnabled",
+    "type": "boolean",
+    "default": true,
+    "routing": {
+      "request": {
+        "body": {
+          "setJavaScriptEnabled": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Browser Rest Apis"
@@ -8089,425 +8508,6 @@
       "request": {
         "body": {
           "requestInterceptors": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "selector",
-            "displayName": "Selector"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Function",
-    "name": "waitForFunction",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "The function, or statement, to be evaluated in browser context",
-            "name": "fn",
-            "displayName": "Fn"
-          },
-          {
-            "type": "string",
-            "description": "An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: \"raf\" or \"mutation\"",
-            "name": "polling",
-            "displayName": "Polling"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
-    "routing": {
-      "request": {
-        "body": {
-          "html": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Elements",
-    "name": "elements",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "selector",
-            "displayName": "Selector"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "elements": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Script Tag",
-    "name": "addScriptTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "URL of the script to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Path to a JavaScript file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "JavaScript to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `type` of the script. Use `module` in order to load an ES2015 module",
-            "name": "type",
-            "displayName": "Type"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Sets the `id` of the script",
-            "name": "id",
-            "displayName": "Id"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addScriptTag": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Add Style Tag",
-    "name": "addStyleTag",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "the URL of the CSS file to be added",
-            "name": "url",
-            "displayName": "Url"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "The path to a CSS file to be injected into the frame",
-            "name": "path",
-            "displayName": "Path"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "Raw CSS content to be injected into the frame",
-            "name": "content",
-            "displayName": "Content"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "addStyleTag": "={{$value.items}}"
         }
       }
     },

@@ -167,49 +167,6 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Enable Cookies',
-    name: 'enableCookies',
-    type: 'boolean',
-    default: false,
-    description: 'Enable cookies',
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Unblock'],
-      },
-    },
-  },
-  {
-    displayName: 'Cookies',
-    name: 'cookies',
-    type: 'json',
-    default: '[]',
-    description: 'Array of cookie objects expected by cookie-editor extension',
-    routing: {
-      request: {
-        body: {
-          cookies:
-            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Unblock'],
-        enableCookies: [true],
-      },
-    },
-    typeOptions: {},
-    options: [],
-  },
-  {
     displayName: 'Goto Options',
     name: 'gotoOptions',
     type: 'fixedCollection',
@@ -347,6 +304,49 @@ export const properties: INodeProperties[] = [
         operation: ['Unblock'],
       },
     },
+  },
+  {
+    displayName: 'Enable Cookies',
+    name: 'enableCookies',
+    type: 'boolean',
+    default: false,
+    description: 'Enable cookies',
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Unblock'],
+      },
+    },
+  },
+  {
+    displayName: 'Cookies',
+    name: 'cookies',
+    type: 'json',
+    default: '[]',
+    description: 'Array of cookie objects expected by cookie-editor extension',
+    routing: {
+      request: {
+        body: {
+          cookies:
+            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Unblock'],
+        enableCookies: [true],
+      },
+    },
+    typeOptions: {},
+    options: [],
   },
   {
     displayName: 'Wait For Selector',

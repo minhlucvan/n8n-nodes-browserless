@@ -50,6 +50,55 @@ export const properties: INodeProperties[] = [
     required: true,
   },
   {
+    displayName: 'Elements',
+    name: 'elements',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Selector',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'selector',
+          },
+          {
+            displayName: 'Timeout',
+            type: 'number',
+            default: 0,
+            description: '',
+            name: 'timeout',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          elements: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
     displayName: 'Timeout',
     name: 'timeout',
     description:
@@ -71,15 +120,15 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'User Agent',
-    name: 'userAgent',
+    displayName: 'Html',
+    name: 'html',
     type: 'string',
     default: '',
     description: undefined,
     routing: {
       request: {
         body: {
-          userAgent: '={{ $value }}',
+          html: '={{ $value }}',
         },
       },
     },
@@ -90,220 +139,6 @@ export const properties: INodeProperties[] = [
       show: {
         resource: ['Browser Rest Apis'],
         operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Viewport',
-    name: 'viewport',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Width',
-            type: 'number',
-            default: 0,
-            description: 'The page width in CSS pixels',
-            name: 'width',
-          },
-          {
-            displayName: 'Height',
-            type: 'number',
-            default: 0,
-            description: 'The page height in CSS pixels',
-            name: 'height',
-          },
-          {
-            displayName: 'Devicescalefactor',
-            type: 'number',
-            default: 0,
-            description:
-              'Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
-            name: 'deviceScaleFactor',
-          },
-          {
-            displayName: 'Ismobile',
-            type: 'boolean',
-            default: true,
-            description:
-              'Whether the `meta viewport` tag is taken into account',
-            name: 'isMobile',
-          },
-          {
-            displayName: 'Islandscape',
-            type: 'boolean',
-            default: true,
-            description: 'Specifies if the viewport is in landscape mode',
-            name: 'isLandscape',
-          },
-          {
-            displayName: 'Hastouch',
-            type: 'boolean',
-            default: true,
-            description: 'Specify if the viewport supports touch events',
-            name: 'hasTouch',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          viewport: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Emulate Media Type',
-    name: 'emulateMediaType',
-    type: 'string',
-    default: '',
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          emulateMediaType: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Set Java Script Enabled',
-    name: 'setJavaScriptEnabled',
-    type: 'boolean',
-    default: true,
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          setJavaScriptEnabled: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Set Extra HTTP Headers',
-    name: 'setExtraHTTPHeaders',
-    type: 'fixedCollection',
-    default: {},
-    description: 'Set extra HTTP headers',
-    routing: {
-      request: {
-        body: {
-          setExtraHTTPHeaders: '={{$value.headers}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-    placeholder: 'Add Header',
-    typeOptions: {
-      multipleValues: true,
-    },
-    options: [
-      {
-        displayName: 'Set Extra HTTP Headers',
-        name: 'headers',
-        values: [
-          {
-            displayName: 'Name',
-            name: 'name',
-            type: 'string',
-            default: '',
-            description: 'Name of the header',
-          },
-          {
-            displayName: 'Value',
-            name: 'value',
-            type: 'string',
-            default: '',
-            description: 'Value of the header',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    displayName: 'Enable Cookies',
-    name: 'enableCookies',
-    type: 'boolean',
-    default: false,
-    description: 'Enable cookies',
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Cookies',
-    name: 'cookies',
-    type: 'json',
-    default: '[]',
-    typeOptions: {},
-    description: 'Array of cookie objects expected by cookie-editor extension',
-    placeholder: 'Add item',
-    options: [],
-    routing: {
-      request: {
-        body: {
-          cookies:
-            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-        enableCookies: [true],
       },
     },
   },
@@ -484,6 +319,553 @@ export const properties: INodeProperties[] = [
       },
     },
     displayOptions: {
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Add Script Tag',
+    name: 'addScriptTag',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Url',
+            type: 'string',
+            default: '',
+            description: 'URL of the script to be added',
+            name: 'url',
+          },
+          {
+            displayName: 'Path',
+            type: 'string',
+            default: '',
+            description:
+              'Path to a JavaScript file to be injected into the frame',
+            name: 'path',
+          },
+          {
+            displayName: 'Content',
+            type: 'string',
+            default: '',
+            description: 'JavaScript to be injected into the frame',
+            name: 'content',
+          },
+          {
+            displayName: 'Type',
+            type: 'string',
+            default: '',
+            description:
+              'Sets the `type` of the script. Use `module` in order to load an ES2015 module',
+            name: 'type',
+          },
+          {
+            displayName: 'Id',
+            type: 'string',
+            default: '',
+            description: 'Sets the `id` of the script',
+            name: 'id',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          addScriptTag: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Add Style Tag',
+    name: 'addStyleTag',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Url',
+            type: 'string',
+            default: '',
+            description: 'the URL of the CSS file to be added',
+            name: 'url',
+          },
+          {
+            displayName: 'Path',
+            type: 'string',
+            default: '',
+            description: 'The path to a CSS file to be injected into the frame',
+            name: 'path',
+          },
+          {
+            displayName: 'Content',
+            type: 'string',
+            default: '',
+            description: 'Raw CSS content to be injected into the frame',
+            name: 'content',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          addStyleTag: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'User Agent',
+    name: 'userAgent',
+    type: 'string',
+    default: '',
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          userAgent: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Viewport',
+    name: 'viewport',
+    type: 'fixedCollection',
+    default: {},
+    description: undefined,
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Width',
+            type: 'number',
+            default: 0,
+            description: 'The page width in CSS pixels',
+            name: 'width',
+          },
+          {
+            displayName: 'Height',
+            type: 'number',
+            default: 0,
+            description: 'The page height in CSS pixels',
+            name: 'height',
+          },
+          {
+            displayName: 'Devicescalefactor',
+            type: 'number',
+            default: 0,
+            description:
+              'Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
+            name: 'deviceScaleFactor',
+          },
+          {
+            displayName: 'Ismobile',
+            type: 'boolean',
+            default: true,
+            description:
+              'Whether the `meta viewport` tag is taken into account',
+            name: 'isMobile',
+          },
+          {
+            displayName: 'Islandscape',
+            type: 'boolean',
+            default: true,
+            description: 'Specifies if the viewport is in landscape mode',
+            name: 'isLandscape',
+          },
+          {
+            displayName: 'Hastouch',
+            type: 'boolean',
+            default: true,
+            description: 'Specify if the viewport supports touch events',
+            name: 'hasTouch',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          viewport: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Enable Cookies',
+    name: 'enableCookies',
+    type: 'boolean',
+    default: false,
+    description: 'Enable cookies',
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Cookies',
+    name: 'cookies',
+    type: 'json',
+    default: '[]',
+    typeOptions: {},
+    description: 'Array of cookie objects expected by cookie-editor extension',
+    placeholder: 'Add item',
+    options: [],
+    routing: {
+      request: {
+        body: {
+          cookies:
+            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+        enableCookies: [true],
+      },
+    },
+  },
+  {
+    displayName: 'Emulate Media Type',
+    name: 'emulateMediaType',
+    type: 'string',
+    default: '',
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          emulateMediaType: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Set Extra HTTP Headers',
+    name: 'setExtraHTTPHeaders',
+    type: 'fixedCollection',
+    default: {},
+    description: 'Set extra HTTP headers',
+    routing: {
+      request: {
+        body: {
+          setExtraHTTPHeaders: '={{$value.headers}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+    placeholder: 'Add Header',
+    typeOptions: {
+      multipleValues: true,
+    },
+    options: [
+      {
+        displayName: 'Set Extra HTTP Headers',
+        name: 'headers',
+        values: [
+          {
+            displayName: 'Name',
+            name: 'name',
+            type: 'string',
+            default: '',
+            description: 'Name of the header',
+          },
+          {
+            displayName: 'Value',
+            name: 'value',
+            type: 'string',
+            default: '',
+            description: 'Value of the header',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    displayName: 'Wait For Selector',
+    name: 'waitForSelector',
+    type: 'fixedCollection',
+    default: {},
+    description: undefined,
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Hidden',
+            type: 'boolean',
+            default: true,
+            description: '',
+            name: 'hidden',
+          },
+          {
+            displayName: 'Selector',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'selector',
+          },
+          {
+            displayName: 'Timeout',
+            type: 'number',
+            default: 0,
+            description: '',
+            name: 'timeout',
+          },
+          {
+            displayName: 'Visible',
+            type: 'boolean',
+            default: true,
+            description: '',
+            name: 'visible',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          waitForSelector: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Wait For Timeout',
+    name: 'waitForTimeout',
+    type: 'number',
+    default: 0,
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          waitForTimeout: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Wait For Function',
+    name: 'waitForFunction',
+    type: 'fixedCollection',
+    default: {},
+    description: undefined,
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Fn',
+            type: 'string',
+            default: '',
+            description:
+              'The function, or statement, to be evaluated in browser context',
+            name: 'fn',
+          },
+          {
+            displayName: 'Polling',
+            type: 'string',
+            default: undefined,
+            description:
+              'An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: "raf" or "mutation"',
+            name: 'polling',
+          },
+          {
+            displayName: 'Timeout',
+            type: 'number',
+            default: 0,
+            description:
+              'Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout',
+            name: 'timeout',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          waitForFunction: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Wait For Event',
+    name: 'waitForEvent',
+    type: 'fixedCollection',
+    default: {},
+    description: undefined,
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Event',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'event',
+          },
+          {
+            displayName: 'Timeout',
+            type: 'number',
+            default: 0,
+            description: '',
+            name: 'timeout',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          waitForEvent: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Set Java Script Enabled',
+    name: 'setJavaScriptEnabled',
+    type: 'boolean',
+    default: true,
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          setJavaScriptEnabled: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
       show: {
         resource: ['Browser Rest Apis'],
         operation: ['Scrape'],
@@ -755,388 +1137,6 @@ export const properties: INodeProperties[] = [
       request: {
         body: {
           requestInterceptors: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Wait For Selector',
-    name: 'waitForSelector',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Hidden',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'hidden',
-          },
-          {
-            displayName: 'Selector',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'selector',
-          },
-          {
-            displayName: 'Timeout',
-            type: 'number',
-            default: 0,
-            description: '',
-            name: 'timeout',
-          },
-          {
-            displayName: 'Visible',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'visible',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          waitForSelector: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Wait For Timeout',
-    name: 'waitForTimeout',
-    type: 'number',
-    default: 0,
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          waitForTimeout: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Wait For Function',
-    name: 'waitForFunction',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Fn',
-            type: 'string',
-            default: '',
-            description:
-              'The function, or statement, to be evaluated in browser context',
-            name: 'fn',
-          },
-          {
-            displayName: 'Polling',
-            type: 'string',
-            default: undefined,
-            description:
-              'An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values: "raf" or "mutation"',
-            name: 'polling',
-          },
-          {
-            displayName: 'Timeout',
-            type: 'number',
-            default: 0,
-            description:
-              'Maximum time to wait for in milliseconds. Defaults to 30000 (30 seconds). Pass 0 to disable timeout',
-            name: 'timeout',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          waitForFunction: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Wait For Event',
-    name: 'waitForEvent',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Event',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'event',
-          },
-          {
-            displayName: 'Timeout',
-            type: 'number',
-            default: 0,
-            description: '',
-            name: 'timeout',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          waitForEvent: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Html',
-    name: 'html',
-    type: 'string',
-    default: '',
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          html: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Elements',
-    name: 'elements',
-    type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Selector',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'selector',
-          },
-          {
-            displayName: 'Timeout',
-            type: 'number',
-            default: 0,
-            description: '',
-            name: 'timeout',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          elements: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Add Script Tag',
-    name: 'addScriptTag',
-    type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Url',
-            type: 'string',
-            default: '',
-            description: 'URL of the script to be added',
-            name: 'url',
-          },
-          {
-            displayName: 'Path',
-            type: 'string',
-            default: '',
-            description:
-              'Path to a JavaScript file to be injected into the frame',
-            name: 'path',
-          },
-          {
-            displayName: 'Content',
-            type: 'string',
-            default: '',
-            description: 'JavaScript to be injected into the frame',
-            name: 'content',
-          },
-          {
-            displayName: 'Type',
-            type: 'string',
-            default: '',
-            description:
-              'Sets the `type` of the script. Use `module` in order to load an ES2015 module',
-            name: 'type',
-          },
-          {
-            displayName: 'Id',
-            type: 'string',
-            default: '',
-            description: 'Sets the `id` of the script',
-            name: 'id',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          addScriptTag: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Add Style Tag',
-    name: 'addStyleTag',
-    type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Url',
-            type: 'string',
-            default: '',
-            description: 'the URL of the CSS file to be added',
-            name: 'url',
-          },
-          {
-            displayName: 'Path',
-            type: 'string',
-            default: '',
-            description: 'The path to a CSS file to be injected into the frame',
-            name: 'path',
-          },
-          {
-            displayName: 'Content',
-            type: 'string',
-            default: '',
-            description: 'Raw CSS content to be injected into the frame',
-            name: 'content',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          addStyleTag: '={{$value.items}}',
         },
       },
     },
