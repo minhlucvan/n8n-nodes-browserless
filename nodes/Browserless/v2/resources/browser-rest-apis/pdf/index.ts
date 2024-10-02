@@ -4,40 +4,40 @@
 /* eslint-disable n8n-nodes-base/node-param-description-boolean-without-whether */
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
 
-import { INodePropertyOptions } from 'n8n-workflow';
+import { INodePropertyOptions } from 'n8n-workflow'
 
 // @ts-ignore
-import * as helpers from '../../../helpers';
+import * as helpers from '../../../helpers'
 
-import { properties as rawProperties } from './properties';
-import { runHooks } from './hooks';
+import { properties as rawProperties } from './properties'
+import { runHooks } from './hooks'
 
-export const name = 'Pdf';
+export const name = 'Pdf'
 
 const rawOption: INodePropertyOptions = {
-	name: 'Pdf',
-	value: 'Pdf',
-	action: 'Pdf',
-	description:
-		'A JSON-based API for getting a PDF binary from either a supplied "url" or "html" payload in your request. Many options exist for injecting cookies, request interceptors, user-agents and waiting for selectors, timers and more',
-	routing: {
-		request: {
-			method: 'POST',
-			url: '=/pdf',
-		},
-		output: {
-			postReceive: [
-				{
-					type: 'setKeyValue',
-					properties: {
-						data: '={{$response.body}}',
-					},
-				},
-			],
-		},
-	},
-};
+  name: 'Pdf',
+  value: 'Pdf',
+  action: 'Pdf',
+  description:
+    'A JSON-based API for getting a PDF binary from either a supplied "url" or "html" payload in your request. Many options exist for injecting cookies, request interceptors, user-agents and waiting for selectors, timers and more',
+  routing: {
+    request: {
+      method: 'POST',
+      url: '=/pdf',
+    },
+    output: {
+      postReceive: [
+        {
+          type: 'setKeyValue',
+          properties: {
+            data: '={{$response.body}}',
+          },
+        },
+      ],
+    },
+  },
+}
 
-const { properties, option } = runHooks(rawOption, rawProperties);
+const { properties, option } = runHooks(rawOption, rawProperties)
 
-export { option, properties };
+export { option, properties }

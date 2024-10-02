@@ -41,7 +41,7 @@ export class Browserless implements INodeType {
 			...baseDescription,
 			displayName: 'Browserless',
 			name: 'browserless',
-			icon: 'file:browserless.png',
+			icon: 'file:browserless.svg',
 			group: ['transform'],
 			version: 1,
 			subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',

@@ -4,40 +4,40 @@
 /* eslint-disable n8n-nodes-base/node-param-description-boolean-without-whether */
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
 
-import { INodePropertyOptions } from 'n8n-workflow';
+import { INodePropertyOptions } from 'n8n-workflow'
 
 // @ts-ignore
-import * as helpers from '../../../helpers';
+import * as helpers from '../../../helpers'
 
-import { properties as rawProperties } from './properties';
-import { runHooks } from './hooks';
+import { properties as rawProperties } from './properties'
+import { runHooks } from './hooks'
 
-export const name = 'Execute';
+export const name = 'Execute'
 
 const rawOption: INodePropertyOptions = {
-	name: 'Execute',
-	value: 'Execute',
-	action: 'Execute',
-	description:
-		'A JSON or JavaScript content-type API for running puppeteer code in the browser\'s context. Browserless sets up a blank page, injects your puppeteer code, and runs it. You can optionally load external libraries via the "import" module that are meant for browser usage. Values returned from the function are checked and an appropriate content-type and response is sent back to your HTTP call',
-	routing: {
-		request: {
-			method: 'POST',
-			url: '=/function',
-		},
-		output: {
-			postReceive: [
-				{
-					type: 'setKeyValue',
-					properties: {
-						data: '={{$response.body}}',
-					},
-				},
-			],
-		},
-	},
-};
+  name: 'Execute',
+  value: 'Execute',
+  action: 'Execute',
+  description:
+    'A JSON or JavaScript content-type API for running puppeteer code in the browser\'s context. Browserless sets up a blank page, injects your puppeteer code, and runs it. You can optionally load external libraries via the "import" module that are meant for browser usage. Values returned from the function are checked and an appropriate content-type and response is sent back to your HTTP call',
+  routing: {
+    request: {
+      method: 'POST',
+      url: '=/function',
+    },
+    output: {
+      postReceive: [
+        {
+          type: 'setKeyValue',
+          properties: {
+            data: '={{$response.body}}',
+          },
+        },
+      ],
+    },
+  },
+}
 
-const { properties, option } = runHooks(rawOption, rawProperties);
+const { properties, option } = runHooks(rawOption, rawProperties)
 
-export { option, properties };
+export { option, properties }

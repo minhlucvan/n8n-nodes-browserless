@@ -21,7 +21,16 @@ module.exports = {
       targetDir: path.resolve(__dirname, 'nodes/Browserless/v2'),
       version: 2,
       tags: ['Browser REST APIs'],
-      // operations: ['/pdf'],
+      operations: [
+				'/scrape',
+				'/pdf',
+				'/screenshot',
+				'/content',
+				'/function',
+				'/unblock',
+				'/performance',
+				'/download'
+			],
       credentials: [{
         displayName: 'Browserless API',
         name: 'browserlessApi',

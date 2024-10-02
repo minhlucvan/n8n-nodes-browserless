@@ -4,40 +4,40 @@
 /* eslint-disable n8n-nodes-base/node-param-description-boolean-without-whether */
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
 
-import { INodePropertyOptions } from 'n8n-workflow';
+import { INodePropertyOptions } from 'n8n-workflow'
 
 // @ts-ignore
-import * as helpers from '../../../helpers';
+import * as helpers from '../../../helpers'
 
-import { properties as rawProperties } from './properties';
-import { runHooks } from './hooks';
+import { properties as rawProperties } from './properties'
+import { runHooks } from './hooks'
 
-export const name = 'Download';
+export const name = 'Download'
 
 const rawOption: INodePropertyOptions = {
-	name: 'Download',
-	value: 'Download',
-	action: 'Download',
-	description:
-		'A JSON or JavaScript content-type API for returning files Chrome has downloaded during the execution of puppeteer code, which is ran inside context of the browser. Browserless sets up a blank page, a fresh download directory, injects your puppeteer code, and then executes it. You can load external libraries via the "import" syntax, and import ESM-style modules that are written for execution inside of the browser. Once your script is finished, any downloaded files from Chromium are returned back with the appropriate content-type header',
-	routing: {
-		request: {
-			method: 'POST',
-			url: '=/download',
-		},
-		output: {
-			postReceive: [
-				{
-					type: 'setKeyValue',
-					properties: {
-						data: '={{$response.body}}',
-					},
-				},
-			],
-		},
-	},
-};
+  name: 'Download',
+  value: 'Download',
+  action: 'Download',
+  description:
+    'A JSON or JavaScript content-type API for returning files Chrome has downloaded during the execution of puppeteer code, which is ran inside context of the browser. Browserless sets up a blank page, a fresh download directory, injects your puppeteer code, and then executes it. You can load external libraries via the "import" syntax, and import ESM-style modules that are written for execution inside of the browser. Once your script is finished, any downloaded files from Chromium are returned back with the appropriate content-type header',
+  routing: {
+    request: {
+      method: 'POST',
+      url: '=/download',
+    },
+    output: {
+      postReceive: [
+        {
+          type: 'setKeyValue',
+          properties: {
+            data: '={{$response.body}}',
+          },
+        },
+      ],
+    },
+  },
+}
 
-const { properties, option } = runHooks(rawOption, rawProperties);
+const { properties, option } = runHooks(rawOption, rawProperties)
 
-export { option, properties };
+export { option, properties }

@@ -1,11 +1,11 @@
-import { INodeProperties, INodeType } from 'n8n-workflow';
+import { INodeProperties, INodeType } from 'n8n-workflow'
 
-export function runHooks(properties: INodeProperties[]): {
-	properties: INodeProperties[];
-	methods: INodeType['methods'];
+export function runHooks (properties: INodeProperties[]): {
+  properties: INodeProperties[]
+  methods: INodeType['methods']
 } {
-	return {
-		properties,
-		methods: {},
-	};
+  return {
+    properties,
+    methods: {},
+  }
 }
