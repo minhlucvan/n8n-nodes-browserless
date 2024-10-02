@@ -12,18 +12,29 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Chrome Scrape'
+export const name = 'Screenshot'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Chrome Scrape',
-  value: 'Chrome Scrape',
-  action: 'Chrome Scrape',
+  name: 'Screenshot',
+  value: 'Screenshot',
+  action: 'Screenshot',
   description:
-    'A JSON-based API that returns text, html, and meta-data from a given list of selectors.\nDebugging information is available by sending in the appropriate flags in the "debugOpts"\nproperty. Responds with an array of JSON objects',
+    'A JSON-based API for getting a screenshot binary from either a supplied\n"url" or "html" payload in your request. Many options exist including\ncookies, user-agents, setting timers and network mocks',
   routing: {
     request: {
       method: 'POST',
-      url: '=/chrome/scrape',
+      url: '=/screenshot',
+    },
+    output: {
+      postReceive: [
+        {
+          type: 'binaryData',
+          properties: {
+            destinationProperty: 'data',
+          },
+        },
+        helpers.hooks.postReceiveActionBinaryData,
+      ],
     },
   },
 }

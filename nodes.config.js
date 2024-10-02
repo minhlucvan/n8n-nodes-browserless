@@ -21,19 +21,22 @@ module.exports = {
       targetDir: path.resolve(__dirname, 'nodes/Browserless/v2'),
       version: 2,
       tags: ['Browser REST APIs'],
-      operations: [
-        {
-          summary: '/chrome/scrape',
-        }
-      ],
+			// operations: ['/pdf'],
       credentials: [{
         displayName: 'Browserless API',
         name: 'browserlessApi',
         required: true,
       }],
+			requestDefaults: {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				baseURL: '=\{\{$credentials.url\}\}',
+			},
       propertiesOrder: [
         "operation",
         "url",
+				'selector',
         "timeout",
         "userAgent",
         "viewport",
@@ -42,6 +45,7 @@ module.exports = {
         "setExtraHTTPHeaders",
         "cookies",
         "authenticate",
+				'options',
         "gotoOptions",
         "blockAds",
         "rejectRequestPattern",
@@ -70,6 +74,27 @@ module.exports = {
         },
         set: false,
       },
+			{
+				match: {
+					name: 'url',
+				},
+				set: {
+					required: true,
+				}
+			},
+			{
+				match: {
+					name: 'code',
+				},
+				set: {
+					typeOptions: {
+						rows: 10,
+					},
+					default: `export default async function () {
+  return { hello: 'world!', type: 'application/json' };
+}
+`},
+			},
       {
         match: {
           name: 'launch',
@@ -167,7 +192,13 @@ module.exports = {
     const slugs = s.split(' ');
     // only if both slugs are single words and start with a slash
     if (slugs.every(slug => slug.startsWith('/'))) {
-      return slugs[slugs.length - 1];
+      const slug = slugs[0]
+
+			if (slug === '/function') {
+				return 'Execute Function';
+			}
+
+			return slug;
     }
 
     return s;

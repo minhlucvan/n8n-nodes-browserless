@@ -11,7 +11,7 @@ import * as helpers from '../../../helpers'
 
 export const properties: INodeProperties[] = [
   {
-    displayName: 'POST /chrome/scrape',
+    displayName: 'POST /screenshot',
     name: 'operation',
     type: 'notice',
     typeOptions: {
@@ -21,7 +21,30 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
+      },
+    },
+  },
+  {
+    displayName: 'Scroll Page',
+    name: 'scrollPage',
+    type: 'boolean',
+    default: true,
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          scrollPage: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -44,7 +67,31 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
+      },
+    },
+    required: true,
+  },
+  {
+    displayName: 'Selector',
+    name: 'selector',
+    type: 'string',
+    default: '',
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          selector: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -65,7 +112,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -88,7 +135,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -163,7 +210,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -186,7 +233,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -209,7 +256,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -232,7 +279,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
     placeholder: 'Add Header',
@@ -274,7 +321,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -301,7 +348,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
         enableCookies: [true],
       },
     },
@@ -347,7 +394,175 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
+      },
+    },
+  },
+  {
+    displayName: 'Options',
+    name: 'options',
+    type: 'collection',
+    default: {},
+    typeOptions: {},
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'optimizeForSpeed',
+        type: 'boolean',
+        default: true,
+        description: '',
+        name: 'optimizeForSpeed',
+      },
+      {
+        displayName: 'type',
+        type: 'options',
+        default: 'jpeg',
+        description: '',
+        options: [
+          {
+            name: 'jpeg',
+            value: 'jpeg',
+          },
+          {
+            name: 'png',
+            value: 'png',
+          },
+          {
+            name: 'webp',
+            value: 'webp',
+          },
+        ],
+        name: 'type',
+      },
+      {
+        displayName: 'quality',
+        type: 'number',
+        default: 0,
+        description:
+          'Quality of the image, between 0-100. Not applicable to `png` images',
+        name: 'quality',
+      },
+      {
+        displayName: 'fromSurface',
+        type: 'boolean',
+        default: true,
+        description:
+          'Capture the screenshot from the surface, rather than the view',
+        name: 'fromSurface',
+      },
+      {
+        displayName: 'fullPage',
+        type: 'boolean',
+        default: true,
+        description: 'When `true`, takes a screenshot of the full page',
+        name: 'fullPage',
+      },
+      {
+        displayName: 'omitBackground',
+        type: 'boolean',
+        default: true,
+        description:
+          'Hides default white background and allows capturing screenshots with transparency',
+        name: 'omitBackground',
+      },
+      {
+        displayName: 'path',
+        type: 'string',
+        default: '',
+        description:
+          "The file path to save the image to. The screenshot type will be inferred\nfrom file extension. If path is a relative path, then it is resolved\nrelative to current working directory. If no path is provided, the image\nwon't be saved to the disk",
+        name: 'path',
+      },
+      {
+        displayName: 'clip',
+        type: 'fixedCollection',
+        default: {},
+        description: 'Specifies the region of the page/element to clip',
+        options: [
+          {
+            displayName: 'Items',
+            name: 'items',
+            values: [
+              {
+                displayName: 'scale',
+                type: 'number',
+                default: 0,
+                description: '',
+                name: 'scale',
+              },
+              {
+                displayName: 'width',
+                type: 'number',
+                default: 0,
+                description: 'the width of the element in pixels',
+                name: 'width',
+              },
+              {
+                displayName: 'height',
+                type: 'number',
+                default: 0,
+                description: 'the height of the element in pixels',
+                name: 'height',
+              },
+              {
+                displayName: 'x',
+                type: 'number',
+                default: 0,
+                description: '',
+                name: 'x',
+              },
+              {
+                displayName: 'y',
+                type: 'number',
+                default: 0,
+                description: '',
+                name: 'y',
+              },
+            ],
+          },
+        ],
+        name: 'clip',
+      },
+      {
+        displayName: 'encoding',
+        type: 'options',
+        default: 'base64',
+        description: 'Encoding of the image',
+        options: [
+          {
+            name: 'base64',
+            value: 'base64',
+          },
+          {
+            name: 'binary',
+            value: 'binary',
+          },
+        ],
+        name: 'encoding',
+      },
+      {
+        displayName: 'captureBeyondViewport',
+        type: 'boolean',
+        default: true,
+        description: 'Capture the screenshot beyond the viewport',
+        name: 'captureBeyondViewport',
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          options: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -464,7 +679,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -485,7 +700,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -526,7 +741,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -623,7 +838,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -763,7 +978,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -822,7 +1037,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -845,7 +1060,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -900,7 +1115,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -945,7 +1160,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -968,56 +1183,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Elements',
-    name: 'elements',
-    type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'selector',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'selector',
-          },
-          {
-            displayName: 'timeout',
-            type: 'number',
-            default: 0,
-            description: '',
-            name: 'timeout',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          elements: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -1089,7 +1255,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -1145,7 +1311,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -1169,7 +1335,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -1182,7 +1348,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
       },
     },
   },
@@ -1190,9 +1356,196 @@ export const properties: INodeProperties[] = [
     displayName: 'Launch',
     name: 'launch',
     description: '',
-    default:
-      '{"args":["string"],"defaultViewport":{"deviceScaleFactor":0,"hasTouch":true,"height":0,"isLandscape":true,"isMobile":true,"width":0},"devtools":true,"dumpio":true,"headless":false,"ignoreDefaultArgs":["string"],"ignoreHTTPSErrors":true,"slowMo":0,"stealth":true,"timeout":0,"userDataDir":"string","waitForInitialPage":true}',
-    type: 'json',
+    default: {},
+    type: 'collection',
+    typeOptions: {},
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'args',
+        type: 'fixedCollection',
+        default: [],
+        typeOptions: {
+          multipleValues: true,
+        },
+        name: 'args',
+        description: '',
+        placeholder: 'Add item',
+        options: [
+          {
+            displayName: 'Items',
+            name: 'items',
+            values: [
+              {
+                displayName: 'Item',
+                name: 'Item',
+                type: 'string',
+                default: '',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        displayName: 'defaultViewport',
+        type: 'fixedCollection',
+        default: {},
+        description: '',
+        options: [
+          {
+            displayName: 'Items',
+            name: 'items',
+            values: [
+              {
+                displayName: 'deviceScaleFactor',
+                type: 'number',
+                default: 0,
+                description: '',
+                name: 'deviceScaleFactor',
+              },
+              {
+                displayName: 'hasTouch',
+                type: 'boolean',
+                default: true,
+                description: '',
+                name: 'hasTouch',
+              },
+              {
+                displayName: 'height',
+                type: 'number',
+                default: 0,
+                description: '',
+                name: 'height',
+              },
+              {
+                displayName: 'isLandscape',
+                type: 'boolean',
+                default: true,
+                description: '',
+                name: 'isLandscape',
+              },
+              {
+                displayName: 'isMobile',
+                type: 'boolean',
+                default: true,
+                description: '',
+                name: 'isMobile',
+              },
+              {
+                displayName: 'width',
+                type: 'number',
+                default: 0,
+                description: '',
+                name: 'width',
+              },
+            ],
+          },
+        ],
+        name: 'defaultViewport',
+      },
+      {
+        displayName: 'devtools',
+        type: 'boolean',
+        default: true,
+        description: '',
+        name: 'devtools',
+      },
+      {
+        displayName: 'dumpio',
+        type: 'boolean',
+        default: true,
+        description: '',
+        name: 'dumpio',
+      },
+      {
+        displayName: 'headless',
+        type: 'options',
+        default: false,
+        description: '',
+        options: [
+          {
+            name: 'False',
+            value: false,
+          },
+          {
+            name: 'Shell',
+            value: 'shell',
+          },
+          {
+            name: 'True',
+            value: true,
+          },
+        ],
+        name: 'headless',
+      },
+      {
+        displayName: 'ignoreDefaultArgs',
+        type: 'fixedCollection',
+        default: [],
+        typeOptions: {
+          multipleValues: true,
+        },
+        name: 'ignoreDefaultArgs',
+        description: '',
+        placeholder: 'Add item',
+        options: [
+          {
+            displayName: 'Items',
+            name: 'items',
+            values: [
+              {
+                displayName: 'Item',
+                name: 'Item',
+                type: 'string',
+                default: '',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        displayName: 'ignoreHTTPSErrors',
+        type: 'boolean',
+        default: true,
+        description: '',
+        name: 'ignoreHTTPSErrors',
+      },
+      {
+        displayName: 'slowMo',
+        type: 'number',
+        default: 0,
+        description: '',
+        name: 'slowMo',
+      },
+      {
+        displayName: 'stealth',
+        type: 'boolean',
+        default: true,
+        description: '',
+        name: 'stealth',
+      },
+      {
+        displayName: 'timeout',
+        type: 'number',
+        default: 0,
+        description: '',
+        name: 'timeout',
+      },
+      {
+        displayName: 'userDataDir',
+        type: 'string',
+        default: '',
+        description: '',
+        name: 'userDataDir',
+      },
+      {
+        displayName: 'waitForInitialPage',
+        type: 'boolean',
+        default: true,
+        description: '',
+        name: 'waitForInitialPage',
+      },
+    ],
     routing: {
       request: {
         qs: {
@@ -1203,74 +1556,8 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
+        operation: ['Screenshot'],
         enableLaunch: [true],
-      },
-    },
-  },
-  {
-    displayName: 'Debug Opts',
-    name: 'debugOpts',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'console',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'console',
-          },
-          {
-            displayName: 'cookies',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'cookies',
-          },
-          {
-            displayName: 'html',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'html',
-          },
-          {
-            displayName: 'network',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'network',
-          },
-          {
-            displayName: 'screenshot',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'screenshot',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          debugOpts: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Chrome Scrape'],
       },
     },
   },

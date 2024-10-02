@@ -36,7 +36,6 @@ export class Browserless implements INodeType {
       ],
       requestDefaults: {
         headers: {
-          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         baseURL: '={{$credentials.url}}',
