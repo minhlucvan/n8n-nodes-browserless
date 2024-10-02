@@ -94,51 +94,6 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Authenticate',
-    name: 'authenticate',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Username',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'username',
-          },
-          {
-            displayName: 'Password',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'password',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          authenticate: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
     displayName: 'Options',
     name: 'options',
     type: 'collection',
@@ -444,6 +399,81 @@ export const properties: INodeProperties[] = [
     },
   },
   {
+    displayName: 'Viewport',
+    name: 'viewport',
+    type: 'fixedCollection',
+    default: {},
+    description: undefined,
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Width',
+            type: 'number',
+            default: 0,
+            description: 'The page width in CSS pixels',
+            name: 'width',
+          },
+          {
+            displayName: 'Height',
+            type: 'number',
+            default: 0,
+            description: 'The page height in CSS pixels',
+            name: 'height',
+          },
+          {
+            displayName: 'Devicescalefactor',
+            type: 'number',
+            default: 0,
+            description:
+              'Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
+            name: 'deviceScaleFactor',
+          },
+          {
+            displayName: 'Ismobile',
+            type: 'boolean',
+            default: true,
+            description:
+              'Whether the `meta viewport` tag is taken into account',
+            name: 'isMobile',
+          },
+          {
+            displayName: 'Islandscape',
+            type: 'boolean',
+            default: true,
+            description: 'Specifies if the viewport is in landscape mode',
+            name: 'isLandscape',
+          },
+          {
+            displayName: 'Hastouch',
+            type: 'boolean',
+            default: true,
+            description: 'Specify if the viewport supports touch events',
+            name: 'hasTouch',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          viewport: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
     displayName: 'Goto Options',
     name: 'gotoOptions',
     type: 'fixedCollection',
@@ -559,369 +589,6 @@ export const properties: INodeProperties[] = [
         operation: ['Pdf'],
       },
     },
-  },
-  {
-    displayName: 'Block Ads',
-    name: 'blockAds',
-    description:
-      'Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly',
-    default: true,
-    type: 'boolean',
-    routing: {
-      request: {
-        qs: {
-          blockAds: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
-    displayName: 'Add Script Tag',
-    name: 'addScriptTag',
-    type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Url',
-            type: 'string',
-            default: '',
-            description: 'URL of the script to be added',
-            name: 'url',
-          },
-          {
-            displayName: 'Path',
-            type: 'string',
-            default: '',
-            description:
-              'Path to a JavaScript file to be injected into the frame',
-            name: 'path',
-          },
-          {
-            displayName: 'Content',
-            type: 'string',
-            default: '',
-            description: 'JavaScript to be injected into the frame',
-            name: 'content',
-          },
-          {
-            displayName: 'Type',
-            type: 'string',
-            default: '',
-            description:
-              'Sets the `type` of the script. Use `module` in order to load an ES2015 module',
-            name: 'type',
-          },
-          {
-            displayName: 'Id',
-            type: 'string',
-            default: '',
-            description: 'Sets the `id` of the script',
-            name: 'id',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          addScriptTag: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
-    displayName: 'Add Style Tag',
-    name: 'addStyleTag',
-    type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Url',
-            type: 'string',
-            default: '',
-            description: 'the URL of the CSS file to be added',
-            name: 'url',
-          },
-          {
-            displayName: 'Path',
-            type: 'string',
-            default: '',
-            description: 'The path to a CSS file to be injected into the frame',
-            name: 'path',
-          },
-          {
-            displayName: 'Content',
-            type: 'string',
-            default: '',
-            description: 'Raw CSS content to be injected into the frame',
-            name: 'content',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          addStyleTag: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
-    displayName: 'User Agent',
-    name: 'userAgent',
-    type: 'string',
-    default: '',
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          userAgent: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
-    displayName: 'Viewport',
-    name: 'viewport',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Width',
-            type: 'number',
-            default: 0,
-            description: 'The page width in CSS pixels',
-            name: 'width',
-          },
-          {
-            displayName: 'Height',
-            type: 'number',
-            default: 0,
-            description: 'The page height in CSS pixels',
-            name: 'height',
-          },
-          {
-            displayName: 'Devicescalefactor',
-            type: 'number',
-            default: 0,
-            description:
-              'Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
-            name: 'deviceScaleFactor',
-          },
-          {
-            displayName: 'Ismobile',
-            type: 'boolean',
-            default: true,
-            description:
-              'Whether the `meta viewport` tag is taken into account',
-            name: 'isMobile',
-          },
-          {
-            displayName: 'Islandscape',
-            type: 'boolean',
-            default: true,
-            description: 'Specifies if the viewport is in landscape mode',
-            name: 'isLandscape',
-          },
-          {
-            displayName: 'Hastouch',
-            type: 'boolean',
-            default: true,
-            description: 'Specify if the viewport supports touch events',
-            name: 'hasTouch',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          viewport: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
-    displayName: 'Enable Cookies',
-    name: 'enableCookies',
-    type: 'boolean',
-    default: false,
-    description: 'Enable cookies',
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
-    displayName: 'Cookies',
-    name: 'cookies',
-    type: 'json',
-    default: '[]',
-    typeOptions: {},
-    description: 'Array of cookie objects expected by cookie-editor extension',
-    placeholder: 'Add item',
-    options: [],
-    routing: {
-      request: {
-        body: {
-          cookies:
-            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-        enableCookies: [true],
-      },
-    },
-  },
-  {
-    displayName: 'Emulate Media Type',
-    name: 'emulateMediaType',
-    type: 'string',
-    default: '',
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          emulateMediaType: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-  },
-  {
-    displayName: 'Set Extra HTTP Headers',
-    name: 'setExtraHTTPHeaders',
-    type: 'fixedCollection',
-    default: {},
-    description: 'Set extra HTTP headers',
-    routing: {
-      request: {
-        body: {
-          setExtraHTTPHeaders: '={{$value.headers}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Pdf'],
-      },
-    },
-    placeholder: 'Add Header',
-    typeOptions: {
-      multipleValues: true,
-    },
-    options: [
-      {
-        displayName: 'Set Extra HTTP Headers',
-        name: 'headers',
-        values: [
-          {
-            displayName: 'Name',
-            name: 'name',
-            type: 'string',
-            default: '',
-            description: 'Name of the header',
-          },
-          {
-            displayName: 'Value',
-            name: 'value',
-            type: 'string',
-            default: '',
-            description: 'Value of the header',
-          },
-        ],
-      },
-    ],
   },
   {
     displayName: 'Wait For Selector',
@@ -1106,15 +773,64 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Set Java Script Enabled',
-    name: 'setJavaScriptEnabled',
-    type: 'boolean',
-    default: true,
-    description: undefined,
+    displayName: 'Add Script Tag',
+    name: 'addScriptTag',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Url',
+            type: 'string',
+            default: '',
+            description: 'URL of the script to be added',
+            name: 'url',
+          },
+          {
+            displayName: 'Path',
+            type: 'string',
+            default: '',
+            description:
+              'Path to a JavaScript file to be injected into the frame',
+            name: 'path',
+          },
+          {
+            displayName: 'Content',
+            type: 'string',
+            default: '',
+            description: 'JavaScript to be injected into the frame',
+            name: 'content',
+          },
+          {
+            displayName: 'Type',
+            type: 'string',
+            default: '',
+            description:
+              'Sets the `type` of the script. Use `module` in order to load an ES2015 module',
+            name: 'type',
+          },
+          {
+            displayName: 'Id',
+            type: 'string',
+            default: '',
+            description: 'Sets the `id` of the script',
+            name: 'id',
+          },
+        ],
+      },
+    ],
     routing: {
       request: {
         body: {
-          setJavaScriptEnabled: '={{ $value }}',
+          addScriptTag: '={{$value.items}}',
         },
       },
     },
@@ -1127,6 +843,111 @@ export const properties: INodeProperties[] = [
         operation: ['Pdf'],
       },
     },
+  },
+  {
+    displayName: 'Add Style Tag',
+    name: 'addStyleTag',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Url',
+            type: 'string',
+            default: '',
+            description: 'the URL of the CSS file to be added',
+            name: 'url',
+          },
+          {
+            displayName: 'Path',
+            type: 'string',
+            default: '',
+            description: 'The path to a CSS file to be injected into the frame',
+            name: 'path',
+          },
+          {
+            displayName: 'Content',
+            type: 'string',
+            default: '',
+            description: 'Raw CSS content to be injected into the frame',
+            name: 'content',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          addStyleTag: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
+    displayName: 'Set Extra HTTP Headers',
+    name: 'setExtraHTTPHeaders',
+    type: 'fixedCollection',
+    default: {},
+    description: 'Set extra HTTP headers',
+    routing: {
+      request: {
+        body: {
+          setExtraHTTPHeaders: '={{$value.headers}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+    placeholder: 'Add Header',
+    typeOptions: {
+      multipleValues: true,
+    },
+    options: [
+      {
+        displayName: 'Set Extra HTTP Headers',
+        name: 'headers',
+        values: [
+          {
+            displayName: 'Name',
+            name: 'name',
+            type: 'string',
+            default: '',
+            description: 'Name of the header',
+          },
+          {
+            displayName: 'Value',
+            name: 'value',
+            type: 'string',
+            default: '',
+            description: 'Value of the header',
+          },
+        ],
+      },
+    ],
   },
   {
     displayName: 'Reject Request Pattern',
@@ -1407,6 +1228,97 @@ export const properties: INodeProperties[] = [
     },
   },
   {
+    displayName: 'Emulate Media Type',
+    name: 'emulateMediaType',
+    type: 'string',
+    default: '',
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          emulateMediaType: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
+    displayName: 'Authenticate',
+    name: 'authenticate',
+    type: 'fixedCollection',
+    default: {},
+    description: undefined,
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Username',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'username',
+          },
+          {
+            displayName: 'Password',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'password',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          authenticate: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
+    displayName: 'User Agent',
+    name: 'userAgent',
+    type: 'string',
+    default: '',
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          userAgent: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
     displayName: 'Best Attempt',
     name: 'bestAttempt',
     type: 'boolean',
@@ -1417,6 +1329,94 @@ export const properties: INodeProperties[] = [
       request: {
         body: {
           bestAttempt: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
+    displayName: 'Enable Cookies',
+    name: 'enableCookies',
+    type: 'boolean',
+    default: false,
+    description: 'Enable cookies',
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
+    displayName: 'Cookies',
+    name: 'cookies',
+    type: 'json',
+    default: '[]',
+    typeOptions: {},
+    description: 'Array of cookie objects expected by cookie-editor extension',
+    placeholder: 'Add item',
+    options: [],
+    routing: {
+      request: {
+        body: {
+          cookies:
+            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+        enableCookies: [true],
+      },
+    },
+  },
+  {
+    displayName: 'Block Ads',
+    name: 'blockAds',
+    description:
+      'Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly',
+    default: true,
+    type: 'boolean',
+    routing: {
+      request: {
+        qs: {
+          blockAds: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Pdf'],
+      },
+    },
+  },
+  {
+    displayName: 'Set Java Script Enabled',
+    name: 'setJavaScriptEnabled',
+    type: 'boolean',
+    default: true,
+    description: undefined,
+    routing: {
+      request: {
+        body: {
+          setJavaScriptEnabled: '={{ $value }}',
         },
       },
     },

@@ -285,70 +285,6 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Block Ads',
-    name: 'blockAds',
-    description:
-      'Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly',
-    default: true,
-    type: 'boolean',
-    routing: {
-      request: {
-        qs: {
-          blockAds: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Unblock'],
-      },
-    },
-  },
-  {
-    displayName: 'Enable Cookies',
-    name: 'enableCookies',
-    type: 'boolean',
-    default: false,
-    description: 'Enable cookies',
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Unblock'],
-      },
-    },
-  },
-  {
-    displayName: 'Cookies',
-    name: 'cookies',
-    type: 'json',
-    default: '[]',
-    description: 'Array of cookie objects expected by cookie-editor extension',
-    routing: {
-      request: {
-        body: {
-          cookies:
-            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Unblock'],
-        enableCookies: [true],
-      },
-    },
-    typeOptions: {},
-    options: [],
-  },
-  {
     displayName: 'Wait For Selector',
     name: 'waitForSelector',
     type: 'fixedCollection',
@@ -548,6 +484,70 @@ export const properties: INodeProperties[] = [
       hide: {
         useCustomBody: [true],
       },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Unblock'],
+      },
+    },
+  },
+  {
+    displayName: 'Enable Cookies',
+    name: 'enableCookies',
+    type: 'boolean',
+    default: false,
+    description: 'Enable cookies',
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Unblock'],
+      },
+    },
+  },
+  {
+    displayName: 'Cookies',
+    name: 'cookies',
+    type: 'json',
+    default: '[]',
+    description: 'Array of cookie objects expected by cookie-editor extension',
+    routing: {
+      request: {
+        body: {
+          cookies:
+            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Unblock'],
+        enableCookies: [true],
+      },
+    },
+    typeOptions: {},
+    options: [],
+  },
+  {
+    displayName: 'Block Ads',
+    name: 'blockAds',
+    description:
+      'Whether or nor to load ad-blocking extensions for the session. This currently uses uBlock Origin and may cause certain sites to not load properly',
+    default: true,
+    type: 'boolean',
+    routing: {
+      request: {
+        qs: {
+          blockAds: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
       show: {
         resource: ['Browser Rest Apis'],
         operation: ['Unblock'],
