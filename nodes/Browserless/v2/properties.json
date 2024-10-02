@@ -51,12 +51,11 @@
           "output": {
             "postReceive": [
               {
-                "type": "binaryData",
+                "type": "setKeyValue",
                 "properties": {
-                  "destinationProperty": "data"
+                  "data": "={{$response.body}}"
                 }
-              },
-              "${helpers.hooks.postReceiveActionBinaryData}"
+              }
             ]
           }
         }
@@ -74,12 +73,11 @@
           "output": {
             "postReceive": [
               {
-                "type": "binaryData",
+                "type": "setKeyValue",
                 "properties": {
-                  "destinationProperty": "data"
+                  "data": "={{$response.body}}"
                 }
-              },
-              "${helpers.hooks.postReceiveActionBinaryData}"
+              }
             ]
           }
         }
@@ -93,6 +91,16 @@
           "request": {
             "method": "POST",
             "url": "=/content"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
           }
         }
       },
@@ -105,6 +113,16 @@
           "request": {
             "method": "POST",
             "url": "=/download"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
           }
         }
       },
@@ -117,6 +135,16 @@
           "request": {
             "method": "POST",
             "url": "=/function"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
           }
         }
       },

@@ -28,12 +28,11 @@ const rawOption: INodePropertyOptions = {
     output: {
       postReceive: [
         {
-          type: 'binaryData',
+          type: 'setKeyValue',
           properties: {
-            destinationProperty: 'data',
+            data: '={{$response.body}}',
           },
         },
-        helpers.hooks.postReceiveActionBinaryData,
       ],
     },
   },

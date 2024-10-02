@@ -25,6 +25,16 @@ const rawOption: INodePropertyOptions = {
       method: 'POST',
       url: '=/function',
     },
+    output: {
+      postReceive: [
+        {
+          type: 'setKeyValue',
+          properties: {
+            data: '={{$response.body}}',
+          },
+        },
+      ],
+    },
   },
 }
 
