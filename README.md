@@ -16,6 +16,8 @@ If you’ve been trying to automate browser-related tasks like `web scraping`, `
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
+## Table of Contents
+
 [Installation](#installation)  
 [Operations](#operations)  
 [Credentials](#credentials)  
