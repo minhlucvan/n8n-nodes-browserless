@@ -4,6 +4,15 @@
 /* eslint-disable n8n-nodes-base/node-param-description-boolean-without-whether */
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
 
+/**
+ * The following code was generated create-n8n-nodes tool.
+ *
+ * This file was automatically generated and should not be edited.
+ *
+ * If changes are required, please refer to the templates and scripts in the repository.
+ * Repository: https://github.com/oneflow-vn/create-n8n-nodes
+ */
+
 import { INodeProperties } from 'n8n-workflow'
 
 // @ts-ignore
@@ -146,20 +155,81 @@ export const properties: INodeProperties[] = [
     required: true,
   },
   {
-    displayName: 'Timeout',
-    name: 'timeout',
-    description:
-      'Override the system-level timeout for this request. Accepts a value in milliseconds',
-    default: 0,
+    displayName: 'Wait For Timeout',
+    name: 'waitForTimeout',
     type: 'number',
+    default: 0,
+    description: undefined,
     routing: {
       request: {
-        qs: {
-          timeout: '={{ $value }}',
+        body: {
+          waitForTimeout: '={{ $value }}',
         },
       },
     },
     displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Unblock'],
+      },
+    },
+  },
+  {
+    displayName: 'Wait For Selector',
+    name: 'waitForSelector',
+    type: 'fixedCollection',
+    default: {},
+    description: undefined,
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Hidden',
+            type: 'boolean',
+            default: true,
+            description: '',
+            name: 'hidden',
+          },
+          {
+            displayName: 'Selector',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'selector',
+          },
+          {
+            displayName: 'Timeout',
+            type: 'number',
+            default: 0,
+            description: '',
+            name: 'timeout',
+          },
+          {
+            displayName: 'Visible',
+            type: 'boolean',
+            default: true,
+            description: '',
+            name: 'visible',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          waitForSelector: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
       show: {
         resource: ['Browser Rest Apis'],
         operation: ['Unblock'],
@@ -285,8 +355,8 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Wait For Selector',
-    name: 'waitForSelector',
+    displayName: 'Wait For Event',
+    name: 'waitForEvent',
     type: 'fixedCollection',
     default: {},
     description: undefined,
@@ -296,18 +366,11 @@ export const properties: INodeProperties[] = [
         name: 'items',
         values: [
           {
-            displayName: 'Hidden',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'hidden',
-          },
-          {
-            displayName: 'Selector',
+            displayName: 'Event',
             type: 'string',
             default: '',
             description: '',
-            name: 'selector',
+            name: 'event',
           },
           {
             displayName: 'Timeout',
@@ -316,43 +379,13 @@ export const properties: INodeProperties[] = [
             description: '',
             name: 'timeout',
           },
-          {
-            displayName: 'Visible',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'visible',
-          },
         ],
       },
     ],
     routing: {
       request: {
         body: {
-          waitForSelector: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Unblock'],
-      },
-    },
-  },
-  {
-    displayName: 'Wait For Timeout',
-    name: 'waitForTimeout',
-    type: 'number',
-    default: 0,
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          waitForTimeout: '={{ $value }}',
+          waitForEvent: '={{$value.items}}',
         },
       },
     },
@@ -422,44 +455,20 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Wait For Event',
-    name: 'waitForEvent',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Event',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'event',
-          },
-          {
-            displayName: 'Timeout',
-            type: 'number',
-            default: 0,
-            description: '',
-            name: 'timeout',
-          },
-        ],
-      },
-    ],
+    displayName: 'Timeout',
+    name: 'timeout',
+    description:
+      'Override the system-level timeout for this request. Accepts a value in milliseconds',
+    default: 0,
+    type: 'number',
     routing: {
       request: {
-        body: {
-          waitForEvent: '={{$value.items}}',
+        qs: {
+          timeout: '={{ $value }}',
         },
       },
     },
     displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
       show: {
         resource: ['Browser Rest Apis'],
         operation: ['Unblock'],

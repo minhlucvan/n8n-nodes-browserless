@@ -37,6 +37,8 @@ export async function preSendActionCustonBody (
   return Promise.resolve(requestOptions)
 }
 
+/* eslint-disable indent */
+/* tslint:disable:indent */
 export type PostReceiveAction =
   | ((
       this: IExecuteSingleFunctions,
@@ -50,6 +52,8 @@ export type PostReceiveAction =
   | IPostReceiveSet
   | IPostReceiveSetKeyValue
   | IPostReceiveSort
+/* eslint-enable indent */
+/* tslint:enable:indent */
 
 function getresponseContentType (response: IN8nHttpFullResponse): string {
   return response.headers['content-type'] as string
@@ -57,29 +61,19 @@ function getresponseContentType (response: IN8nHttpFullResponse): string {
 
 function getFileTypeFromContentType (contentType: string): string {
   const type = contentType.split(';')[0].trim()
+
+  if (type.includes('/')) {
+    return type.split('/')[0]
+  }
+
   return type
 }
 
 function getFileExtensionFromContentType (contentType: string): string {
   const type = contentType.split(';')[0].trim()
 
-  if (/^image\//.test(type)) {
-    return type.split('/')[1]
-  }
-
-  if (/^audio\//.test(type)) {
-    return type.split('/')[1]
-  }
-
-  if (/^video\//.test(type)) {
-    return type.split('/')[1]
-  }
-
-  if (/^text\//.test(type)) {
-    return type.split('/')[1]
-  }
-
-  if (/^application\//.test(type)) {
+  // any/thing -> thing
+  if (typeof type === 'string' && type.includes('/')) {
     return type.split('/')[1]
   }
 
@@ -96,7 +90,7 @@ export const postReceiveActionBinaryData: PostReceiveAction =
 
     const { binary } = items[0]
 
-    if (binary && binary.data) {
+    if (binary && binary.data && binary.data.mimeType === 'text/plain') {
       const data = binary.data as IBinaryData
       data.mimeType = contentType
       data.fileType = getFileTypeFromContentType(contentType) as BinaryFileType

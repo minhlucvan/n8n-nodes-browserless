@@ -1,4 +1,4 @@
-import { INodePropertyOptions, INodeProperties } from 'n8n-workflow'
+import { INodeProperties, INodePropertyOptions } from 'n8n-workflow'
 
 export function runHooks (
   option: INodePropertyOptions,

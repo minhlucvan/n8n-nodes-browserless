@@ -41,7 +41,7 @@ export class Browserless implements INodeType {
         baseURL: '={{$credentials.url}}',
       },
 
-      properties: properties,
+      properties,
     }
   }
 }

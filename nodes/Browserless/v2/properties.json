@@ -373,19 +373,87 @@
     "required": true
   },
   {
-    "displayName": "Timeout",
-    "name": "timeout",
-    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
-    "default": 0,
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
     "type": "number",
+    "default": 0,
     "routing": {
       "request": {
-        "qs": {
-          "timeout": "={{ $value }}"
+        "body": {
+          "waitForTimeout": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Unblock"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "waitForSelector": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Browser Rest Apis"
@@ -516,8 +584,8 @@
     }
   },
   {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
     "type": "fixedCollection",
     "default": {},
     "options": [
@@ -526,18 +594,11 @@
         "displayName": "Items",
         "values": [
           {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
             "type": "string",
             "default": "",
             "description": "",
-            "name": "selector",
-            "displayName": "Selector"
+            "name": "event",
+            "displayName": "Event"
           },
           {
             "type": "number",
@@ -545,13 +606,6 @@
             "description": "",
             "name": "timeout",
             "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
           }
         ]
       }
@@ -559,35 +613,7 @@
     "routing": {
       "request": {
         "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Unblock"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
+          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -664,45 +690,19 @@
     }
   },
   {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
     "routing": {
       "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
+        "qs": {
+          "timeout": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
       "show": {
         "resource": [
           "Browser Rest Apis"
@@ -1135,19 +1135,23 @@
     "required": true
   },
   {
-    "displayName": "Timeout",
-    "name": "timeout",
-    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
-    "default": 0,
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
     "type": "number",
+    "default": 0,
     "routing": {
       "request": {
-        "qs": {
-          "timeout": "={{ $value }}"
+        "body": {
+          "waitForTimeout": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Browser Rest Apis"
@@ -1159,14 +1163,50 @@
     }
   },
   {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
+          }
+        ]
+      }
+    ],
     "routing": {
       "request": {
         "body": {
-          "html": "={{ $value }}"
+          "waitForSelector": "={{$value.items}}"
         }
       }
     },
@@ -1482,84 +1522,6 @@
     }
   },
   {
-    "displayName": "Viewport",
-    "name": "viewport",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "viewport": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
     "displayName": "Goto Options",
     "name": "gotoOptions",
     "type": "fixedCollection",
@@ -1678,8 +1640,8 @@
     }
   },
   {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
     "type": "fixedCollection",
     "default": {},
     "options": [
@@ -1688,18 +1650,11 @@
         "displayName": "Items",
         "values": [
           {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
             "type": "string",
             "default": "",
             "description": "",
-            "name": "selector",
-            "displayName": "Selector"
+            "name": "event",
+            "displayName": "Event"
           },
           {
             "type": "number",
@@ -1707,13 +1662,6 @@
             "description": "",
             "name": "timeout",
             "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
           }
         ]
       }
@@ -1721,35 +1669,7 @@
     "routing": {
       "request": {
         "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
+          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -1806,56 +1726,6 @@
       "request": {
         "body": {
           "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -2069,164 +1939,10 @@
     ]
   },
   {
-    "displayName": "Reject Request Pattern",
-    "name": "rejectRequestPattern",
+    "displayName": "Authenticate",
+    "name": "authenticate",
     "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "name": "Item",
-            "displayName": "Item",
-            "type": "string",
-            "default": ""
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectRequestPattern": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Reject Resource Types",
-    "name": "rejectResourceTypes",
-    "type": "multiOptions",
-    "default": [],
-    "options": [
-      {
-        "name": "cspviolationreport",
-        "value": "cspviolationreport"
-      },
-      {
-        "name": "document",
-        "value": "document"
-      },
-      {
-        "name": "eventsource",
-        "value": "eventsource"
-      },
-      {
-        "name": "fetch",
-        "value": "fetch"
-      },
-      {
-        "name": "font",
-        "value": "font"
-      },
-      {
-        "name": "image",
-        "value": "image"
-      },
-      {
-        "name": "manifest",
-        "value": "manifest"
-      },
-      {
-        "name": "media",
-        "value": "media"
-      },
-      {
-        "name": "other",
-        "value": "other"
-      },
-      {
-        "name": "ping",
-        "value": "ping"
-      },
-      {
-        "name": "prefetch",
-        "value": "prefetch"
-      },
-      {
-        "name": "preflight",
-        "value": "preflight"
-      },
-      {
-        "name": "script",
-        "value": "script"
-      },
-      {
-        "name": "signedexchange",
-        "value": "signedexchange"
-      },
-      {
-        "name": "stylesheet",
-        "value": "stylesheet"
-      },
-      {
-        "name": "texttrack",
-        "value": "texttrack"
-      },
-      {
-        "name": "websocket",
-        "value": "websocket"
-      },
-      {
-        "name": "xhr",
-        "value": "xhr"
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectResourceTypes": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Pdf"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Request Interceptors",
-    "name": "requestInterceptors",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
+    "default": {},
     "options": [
       {
         "name": "items",
@@ -2235,102 +1951,16 @@
           {
             "type": "string",
             "default": "",
-            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
-            "name": "pattern",
-            "displayName": "Pattern"
+            "description": "",
+            "name": "username",
+            "displayName": "Username"
           },
           {
-            "type": "fixedCollection",
-            "default": {},
+            "type": "string",
+            "default": "",
             "description": "",
-            "options": [
-              {
-                "name": "items",
-                "displayName": "Items",
-                "values": [
-                  {
-                    "type": "number",
-                    "default": 0,
-                    "description": "",
-                    "name": "status",
-                    "displayName": "Status"
-                  },
-                  {
-                    "type": "json",
-                    "default": "{}",
-                    "description": "Optional response headers. All values are converted to strings",
-                    "name": "headers",
-                    "displayName": "Headers"
-                  },
-                  {
-                    "type": "string",
-                    "default": "",
-                    "description": "",
-                    "name": "contentType",
-                    "displayName": "Contenttype"
-                  },
-                  {
-                    "type": "fixedCollection",
-                    "default": {},
-                    "description": "",
-                    "options": [
-                      {
-                        "name": "items",
-                        "displayName": "Items",
-                        "values": [
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "BYTES_PER_ELEMENT",
-                            "displayName": "Bytes Per Element"
-                          },
-                          {
-                            "type": "string",
-                            "default": {},
-                            "description": "",
-                            "name": "buffer",
-                            "displayName": "Buffer"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteLength",
-                            "displayName": "Bytelength"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteOffset",
-                            "displayName": "Byteoffset"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "length",
-                            "displayName": "Length"
-                          },
-                          {
-                            "type": "string",
-                            "default": "",
-                            "description": "",
-                            "name": "__@toStringTag@42114",
-                            "displayName": "Tostringtag 42114"
-                          }
-                        ]
-                      }
-                    ],
-                    "name": "body",
-                    "displayName": "Body"
-                  }
-                ]
-              }
-            ],
-            "name": "response",
-            "displayName": "Response"
+            "name": "password",
+            "displayName": "Password"
           }
         ]
       }
@@ -2338,7 +1968,85 @@
     "routing": {
       "request": {
         "body": {
-          "requestInterceptors": "={{$value.items}}"
+          "authenticate": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
         }
       }
     },
@@ -2387,36 +2095,38 @@
     }
   },
   {
-    "displayName": "Authenticate",
-    "name": "authenticate",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "username",
-            "displayName": "Username"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "password",
-            "displayName": "Password"
-          }
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
         ]
       }
-    ],
+    }
+  },
+  {
+    "displayName": "Html",
+    "name": "html",
+    "type": "string",
+    "default": "",
     "routing": {
       "request": {
         "body": {
-          "authenticate": "={{$value.items}}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -2835,6 +2545,296 @@
     }
   },
   {
+    "displayName": "Reject Resource Types",
+    "name": "rejectResourceTypes",
+    "type": "multiOptions",
+    "default": [],
+    "options": [
+      {
+        "name": "cspviolationreport",
+        "value": "cspviolationreport"
+      },
+      {
+        "name": "document",
+        "value": "document"
+      },
+      {
+        "name": "eventsource",
+        "value": "eventsource"
+      },
+      {
+        "name": "fetch",
+        "value": "fetch"
+      },
+      {
+        "name": "font",
+        "value": "font"
+      },
+      {
+        "name": "image",
+        "value": "image"
+      },
+      {
+        "name": "manifest",
+        "value": "manifest"
+      },
+      {
+        "name": "media",
+        "value": "media"
+      },
+      {
+        "name": "other",
+        "value": "other"
+      },
+      {
+        "name": "ping",
+        "value": "ping"
+      },
+      {
+        "name": "prefetch",
+        "value": "prefetch"
+      },
+      {
+        "name": "preflight",
+        "value": "preflight"
+      },
+      {
+        "name": "script",
+        "value": "script"
+      },
+      {
+        "name": "signedexchange",
+        "value": "signedexchange"
+      },
+      {
+        "name": "stylesheet",
+        "value": "stylesheet"
+      },
+      {
+        "name": "texttrack",
+        "value": "texttrack"
+      },
+      {
+        "name": "websocket",
+        "value": "websocket"
+      },
+      {
+        "name": "xhr",
+        "value": "xhr"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectResourceTypes": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Reject Request Pattern",
+    "name": "rejectRequestPattern",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectRequestPattern": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Request Interceptors",
+    "name": "requestInterceptors",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
+            "name": "pattern",
+            "displayName": "Pattern"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "number",
+                    "default": 0,
+                    "description": "",
+                    "name": "status",
+                    "displayName": "Status"
+                  },
+                  {
+                    "type": "json",
+                    "default": "{}",
+                    "description": "Optional response headers. All values are converted to strings",
+                    "name": "headers",
+                    "displayName": "Headers"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "",
+                    "name": "contentType",
+                    "displayName": "Contenttype"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "BYTES_PER_ELEMENT",
+                            "displayName": "Bytes Per Element"
+                          },
+                          {
+                            "type": "string",
+                            "default": {},
+                            "description": "",
+                            "name": "buffer",
+                            "displayName": "Buffer"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteLength",
+                            "displayName": "Bytelength"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteOffset",
+                            "displayName": "Byteoffset"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "length",
+                            "displayName": "Length"
+                          },
+                          {
+                            "type": "string",
+                            "default": "",
+                            "description": "",
+                            "name": "__@toStringTag@42114",
+                            "displayName": "Tostringtag 42114"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "body",
+                    "displayName": "Body"
+                  }
+                ]
+              }
+            ],
+            "name": "response",
+            "displayName": "Response"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "requestInterceptors": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Pdf"
+        ]
+      }
+    }
+  },
+  {
     "displayName": "POST /screenshot",
     "name": "operation",
     "type": "notice",
@@ -2971,19 +2971,23 @@
     }
   },
   {
-    "displayName": "Timeout",
-    "name": "timeout",
-    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
-    "default": 0,
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
     "type": "number",
+    "default": 0,
     "routing": {
       "request": {
-        "qs": {
-          "timeout": "={{ $value }}"
+        "body": {
+          "waitForTimeout": "={{ $value }}"
         }
       }
     },
     "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
       "show": {
         "resource": [
           "Browser Rest Apis"
@@ -2995,14 +2999,50 @@
     }
   },
   {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
+          }
+        ]
+      }
+    ],
     "routing": {
       "request": {
         "body": {
-          "html": "={{ $value }}"
+          "waitForSelector": "={{$value.items}}"
         }
       }
     },
@@ -3193,84 +3233,6 @@
     }
   },
   {
-    "displayName": "Viewport",
-    "name": "viewport",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "viewport": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
     "displayName": "Goto Options",
     "name": "gotoOptions",
     "type": "fixedCollection",
@@ -3389,8 +3351,8 @@
     }
   },
   {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
     "type": "fixedCollection",
     "default": {},
     "options": [
@@ -3399,18 +3361,11 @@
         "displayName": "Items",
         "values": [
           {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
             "type": "string",
             "default": "",
             "description": "",
-            "name": "selector",
-            "displayName": "Selector"
+            "name": "event",
+            "displayName": "Event"
           },
           {
             "type": "number",
@@ -3418,13 +3373,6 @@
             "description": "",
             "name": "timeout",
             "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
           }
         ]
       }
@@ -3432,35 +3380,7 @@
     "routing": {
       "request": {
         "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
+          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -3517,56 +3437,6 @@
       "request": {
         "body": {
           "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -3780,164 +3650,10 @@
     ]
   },
   {
-    "displayName": "Reject Request Pattern",
-    "name": "rejectRequestPattern",
+    "displayName": "Authenticate",
+    "name": "authenticate",
     "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "name": "Item",
-            "displayName": "Item",
-            "type": "string",
-            "default": ""
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectRequestPattern": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Reject Resource Types",
-    "name": "rejectResourceTypes",
-    "type": "multiOptions",
-    "default": [],
-    "options": [
-      {
-        "name": "cspviolationreport",
-        "value": "cspviolationreport"
-      },
-      {
-        "name": "document",
-        "value": "document"
-      },
-      {
-        "name": "eventsource",
-        "value": "eventsource"
-      },
-      {
-        "name": "fetch",
-        "value": "fetch"
-      },
-      {
-        "name": "font",
-        "value": "font"
-      },
-      {
-        "name": "image",
-        "value": "image"
-      },
-      {
-        "name": "manifest",
-        "value": "manifest"
-      },
-      {
-        "name": "media",
-        "value": "media"
-      },
-      {
-        "name": "other",
-        "value": "other"
-      },
-      {
-        "name": "ping",
-        "value": "ping"
-      },
-      {
-        "name": "prefetch",
-        "value": "prefetch"
-      },
-      {
-        "name": "preflight",
-        "value": "preflight"
-      },
-      {
-        "name": "script",
-        "value": "script"
-      },
-      {
-        "name": "signedexchange",
-        "value": "signedexchange"
-      },
-      {
-        "name": "stylesheet",
-        "value": "stylesheet"
-      },
-      {
-        "name": "texttrack",
-        "value": "texttrack"
-      },
-      {
-        "name": "websocket",
-        "value": "websocket"
-      },
-      {
-        "name": "xhr",
-        "value": "xhr"
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectResourceTypes": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Screenshot"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Request Interceptors",
-    "name": "requestInterceptors",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
+    "default": {},
     "options": [
       {
         "name": "items",
@@ -3946,102 +3662,16 @@
           {
             "type": "string",
             "default": "",
-            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
-            "name": "pattern",
-            "displayName": "Pattern"
+            "description": "",
+            "name": "username",
+            "displayName": "Username"
           },
           {
-            "type": "fixedCollection",
-            "default": {},
+            "type": "string",
+            "default": "",
             "description": "",
-            "options": [
-              {
-                "name": "items",
-                "displayName": "Items",
-                "values": [
-                  {
-                    "type": "number",
-                    "default": 0,
-                    "description": "",
-                    "name": "status",
-                    "displayName": "Status"
-                  },
-                  {
-                    "type": "json",
-                    "default": "{}",
-                    "description": "Optional response headers. All values are converted to strings",
-                    "name": "headers",
-                    "displayName": "Headers"
-                  },
-                  {
-                    "type": "string",
-                    "default": "",
-                    "description": "",
-                    "name": "contentType",
-                    "displayName": "Contenttype"
-                  },
-                  {
-                    "type": "fixedCollection",
-                    "default": {},
-                    "description": "",
-                    "options": [
-                      {
-                        "name": "items",
-                        "displayName": "Items",
-                        "values": [
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "BYTES_PER_ELEMENT",
-                            "displayName": "Bytes Per Element"
-                          },
-                          {
-                            "type": "string",
-                            "default": {},
-                            "description": "",
-                            "name": "buffer",
-                            "displayName": "Buffer"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteLength",
-                            "displayName": "Bytelength"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteOffset",
-                            "displayName": "Byteoffset"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "length",
-                            "displayName": "Length"
-                          },
-                          {
-                            "type": "string",
-                            "default": "",
-                            "description": "",
-                            "name": "__@toStringTag@42114",
-                            "displayName": "Tostringtag 42114"
-                          }
-                        ]
-                      }
-                    ],
-                    "name": "body",
-                    "displayName": "Body"
-                  }
-                ]
-              }
-            ],
-            "name": "response",
-            "displayName": "Response"
+            "name": "password",
+            "displayName": "Password"
           }
         ]
       }
@@ -4049,7 +3679,85 @@
     "routing": {
       "request": {
         "body": {
-          "requestInterceptors": "={{$value.items}}"
+          "authenticate": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
         }
       }
     },
@@ -4098,36 +3806,38 @@
     }
   },
   {
-    "displayName": "Authenticate",
-    "name": "authenticate",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "username",
-            "displayName": "Username"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "password",
-            "displayName": "Password"
-          }
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
         ]
       }
-    ],
+    }
+  },
+  {
+    "displayName": "Html",
+    "name": "html",
+    "type": "string",
+    "default": "",
     "routing": {
       "request": {
         "body": {
-          "authenticate": "={{$value.items}}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -4546,6 +4256,296 @@
     }
   },
   {
+    "displayName": "Reject Resource Types",
+    "name": "rejectResourceTypes",
+    "type": "multiOptions",
+    "default": [],
+    "options": [
+      {
+        "name": "cspviolationreport",
+        "value": "cspviolationreport"
+      },
+      {
+        "name": "document",
+        "value": "document"
+      },
+      {
+        "name": "eventsource",
+        "value": "eventsource"
+      },
+      {
+        "name": "fetch",
+        "value": "fetch"
+      },
+      {
+        "name": "font",
+        "value": "font"
+      },
+      {
+        "name": "image",
+        "value": "image"
+      },
+      {
+        "name": "manifest",
+        "value": "manifest"
+      },
+      {
+        "name": "media",
+        "value": "media"
+      },
+      {
+        "name": "other",
+        "value": "other"
+      },
+      {
+        "name": "ping",
+        "value": "ping"
+      },
+      {
+        "name": "prefetch",
+        "value": "prefetch"
+      },
+      {
+        "name": "preflight",
+        "value": "preflight"
+      },
+      {
+        "name": "script",
+        "value": "script"
+      },
+      {
+        "name": "signedexchange",
+        "value": "signedexchange"
+      },
+      {
+        "name": "stylesheet",
+        "value": "stylesheet"
+      },
+      {
+        "name": "texttrack",
+        "value": "texttrack"
+      },
+      {
+        "name": "websocket",
+        "value": "websocket"
+      },
+      {
+        "name": "xhr",
+        "value": "xhr"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectResourceTypes": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Reject Request Pattern",
+    "name": "rejectRequestPattern",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectRequestPattern": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Request Interceptors",
+    "name": "requestInterceptors",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
+            "name": "pattern",
+            "displayName": "Pattern"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "number",
+                    "default": 0,
+                    "description": "",
+                    "name": "status",
+                    "displayName": "Status"
+                  },
+                  {
+                    "type": "json",
+                    "default": "{}",
+                    "description": "Optional response headers. All values are converted to strings",
+                    "name": "headers",
+                    "displayName": "Headers"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "",
+                    "name": "contentType",
+                    "displayName": "Contenttype"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "BYTES_PER_ELEMENT",
+                            "displayName": "Bytes Per Element"
+                          },
+                          {
+                            "type": "string",
+                            "default": {},
+                            "description": "",
+                            "name": "buffer",
+                            "displayName": "Buffer"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteLength",
+                            "displayName": "Bytelength"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteOffset",
+                            "displayName": "Byteoffset"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "length",
+                            "displayName": "Length"
+                          },
+                          {
+                            "type": "string",
+                            "default": "",
+                            "description": "",
+                            "name": "__@toStringTag@42114",
+                            "displayName": "Tostringtag 42114"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "body",
+                    "displayName": "Body"
+                  }
+                ]
+              }
+            ],
+            "name": "response",
+            "displayName": "Response"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "requestInterceptors": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Screenshot"
+        ]
+      }
+    }
+  },
+  {
     "displayName": "POST /content",
     "name": "operation",
     "type": "notice",
@@ -4626,38 +4626,14 @@
     "required": true
   },
   {
-    "displayName": "Timeout",
-    "name": "timeout",
-    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
-    "default": 0,
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
     "type": "number",
-    "routing": {
-      "request": {
-        "qs": {
-          "timeout": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
+    "default": 0,
     "routing": {
       "request": {
         "body": {
-          "html": "={{ $value }}"
+          "waitForTimeout": "={{ $value }}"
         }
       }
     },
@@ -4678,8 +4654,8 @@
     }
   },
   {
-    "displayName": "Viewport",
-    "name": "viewport",
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
     "type": "fixedCollection",
     "default": {},
     "options": [
@@ -4688,46 +4664,32 @@
         "displayName": "Items",
         "values": [
           {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
           },
           {
             "type": "number",
             "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
           },
           {
             "type": "boolean",
             "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
           }
         ]
       }
@@ -4735,7 +4697,7 @@
     "routing": {
       "request": {
         "body": {
-          "viewport": "={{$value.items}}"
+          "waitForSelector": "={{$value.items}}"
         }
       }
     },
@@ -4874,8 +4836,8 @@
     }
   },
   {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
     "type": "fixedCollection",
     "default": {},
     "options": [
@@ -4884,18 +4846,11 @@
         "displayName": "Items",
         "values": [
           {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
             "type": "string",
             "default": "",
             "description": "",
-            "name": "selector",
-            "displayName": "Selector"
+            "name": "event",
+            "displayName": "Event"
           },
           {
             "type": "number",
@@ -4903,13 +4858,6 @@
             "description": "",
             "name": "timeout",
             "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
           }
         ]
       }
@@ -4917,35 +4865,7 @@
     "routing": {
       "request": {
         "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
+          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -5002,56 +4922,6 @@
       "request": {
         "body": {
           "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -5265,164 +5135,10 @@
     ]
   },
   {
-    "displayName": "Reject Request Pattern",
-    "name": "rejectRequestPattern",
+    "displayName": "Authenticate",
+    "name": "authenticate",
     "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "name": "Item",
-            "displayName": "Item",
-            "type": "string",
-            "default": ""
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectRequestPattern": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Reject Resource Types",
-    "name": "rejectResourceTypes",
-    "type": "multiOptions",
-    "default": [],
-    "options": [
-      {
-        "name": "cspviolationreport",
-        "value": "cspviolationreport"
-      },
-      {
-        "name": "document",
-        "value": "document"
-      },
-      {
-        "name": "eventsource",
-        "value": "eventsource"
-      },
-      {
-        "name": "fetch",
-        "value": "fetch"
-      },
-      {
-        "name": "font",
-        "value": "font"
-      },
-      {
-        "name": "image",
-        "value": "image"
-      },
-      {
-        "name": "manifest",
-        "value": "manifest"
-      },
-      {
-        "name": "media",
-        "value": "media"
-      },
-      {
-        "name": "other",
-        "value": "other"
-      },
-      {
-        "name": "ping",
-        "value": "ping"
-      },
-      {
-        "name": "prefetch",
-        "value": "prefetch"
-      },
-      {
-        "name": "preflight",
-        "value": "preflight"
-      },
-      {
-        "name": "script",
-        "value": "script"
-      },
-      {
-        "name": "signedexchange",
-        "value": "signedexchange"
-      },
-      {
-        "name": "stylesheet",
-        "value": "stylesheet"
-      },
-      {
-        "name": "texttrack",
-        "value": "texttrack"
-      },
-      {
-        "name": "websocket",
-        "value": "websocket"
-      },
-      {
-        "name": "xhr",
-        "value": "xhr"
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectResourceTypes": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Content"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Request Interceptors",
-    "name": "requestInterceptors",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
+    "default": {},
     "options": [
       {
         "name": "items",
@@ -5431,102 +5147,16 @@
           {
             "type": "string",
             "default": "",
-            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
-            "name": "pattern",
-            "displayName": "Pattern"
+            "description": "",
+            "name": "username",
+            "displayName": "Username"
           },
           {
-            "type": "fixedCollection",
-            "default": {},
+            "type": "string",
+            "default": "",
             "description": "",
-            "options": [
-              {
-                "name": "items",
-                "displayName": "Items",
-                "values": [
-                  {
-                    "type": "number",
-                    "default": 0,
-                    "description": "",
-                    "name": "status",
-                    "displayName": "Status"
-                  },
-                  {
-                    "type": "json",
-                    "default": "{}",
-                    "description": "Optional response headers. All values are converted to strings",
-                    "name": "headers",
-                    "displayName": "Headers"
-                  },
-                  {
-                    "type": "string",
-                    "default": "",
-                    "description": "",
-                    "name": "contentType",
-                    "displayName": "Contenttype"
-                  },
-                  {
-                    "type": "fixedCollection",
-                    "default": {},
-                    "description": "",
-                    "options": [
-                      {
-                        "name": "items",
-                        "displayName": "Items",
-                        "values": [
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "BYTES_PER_ELEMENT",
-                            "displayName": "Bytes Per Element"
-                          },
-                          {
-                            "type": "string",
-                            "default": {},
-                            "description": "",
-                            "name": "buffer",
-                            "displayName": "Buffer"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteLength",
-                            "displayName": "Bytelength"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteOffset",
-                            "displayName": "Byteoffset"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "length",
-                            "displayName": "Length"
-                          },
-                          {
-                            "type": "string",
-                            "default": "",
-                            "description": "",
-                            "name": "__@toStringTag@42114",
-                            "displayName": "Tostringtag 42114"
-                          }
-                        ]
-                      }
-                    ],
-                    "name": "body",
-                    "displayName": "Body"
-                  }
-                ]
-              }
-            ],
-            "name": "response",
-            "displayName": "Response"
+            "name": "password",
+            "displayName": "Password"
           }
         ]
       }
@@ -5534,7 +5164,85 @@
     "routing": {
       "request": {
         "body": {
-          "requestInterceptors": "={{$value.items}}"
+          "authenticate": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
         }
       }
     },
@@ -5583,36 +5291,38 @@
     }
   },
   {
-    "displayName": "Authenticate",
-    "name": "authenticate",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "username",
-            "displayName": "Username"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "password",
-            "displayName": "Password"
-          }
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
         ]
       }
-    ],
+    }
+  },
+  {
+    "displayName": "Html",
+    "name": "html",
+    "type": "string",
+    "default": "",
     "routing": {
       "request": {
         "body": {
-          "authenticate": "={{$value.items}}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -6027,6 +5737,296 @@
         ],
         "enableLaunch": [
           true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Reject Resource Types",
+    "name": "rejectResourceTypes",
+    "type": "multiOptions",
+    "default": [],
+    "options": [
+      {
+        "name": "cspviolationreport",
+        "value": "cspviolationreport"
+      },
+      {
+        "name": "document",
+        "value": "document"
+      },
+      {
+        "name": "eventsource",
+        "value": "eventsource"
+      },
+      {
+        "name": "fetch",
+        "value": "fetch"
+      },
+      {
+        "name": "font",
+        "value": "font"
+      },
+      {
+        "name": "image",
+        "value": "image"
+      },
+      {
+        "name": "manifest",
+        "value": "manifest"
+      },
+      {
+        "name": "media",
+        "value": "media"
+      },
+      {
+        "name": "other",
+        "value": "other"
+      },
+      {
+        "name": "ping",
+        "value": "ping"
+      },
+      {
+        "name": "prefetch",
+        "value": "prefetch"
+      },
+      {
+        "name": "preflight",
+        "value": "preflight"
+      },
+      {
+        "name": "script",
+        "value": "script"
+      },
+      {
+        "name": "signedexchange",
+        "value": "signedexchange"
+      },
+      {
+        "name": "stylesheet",
+        "value": "stylesheet"
+      },
+      {
+        "name": "texttrack",
+        "value": "texttrack"
+      },
+      {
+        "name": "websocket",
+        "value": "websocket"
+      },
+      {
+        "name": "xhr",
+        "value": "xhr"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectResourceTypes": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Reject Request Pattern",
+    "name": "rejectRequestPattern",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectRequestPattern": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Request Interceptors",
+    "name": "requestInterceptors",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
+            "name": "pattern",
+            "displayName": "Pattern"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "number",
+                    "default": 0,
+                    "description": "",
+                    "name": "status",
+                    "displayName": "Status"
+                  },
+                  {
+                    "type": "json",
+                    "default": "{}",
+                    "description": "Optional response headers. All values are converted to strings",
+                    "name": "headers",
+                    "displayName": "Headers"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "",
+                    "name": "contentType",
+                    "displayName": "Contenttype"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "BYTES_PER_ELEMENT",
+                            "displayName": "Bytes Per Element"
+                          },
+                          {
+                            "type": "string",
+                            "default": {},
+                            "description": "",
+                            "name": "buffer",
+                            "displayName": "Buffer"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteLength",
+                            "displayName": "Bytelength"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteOffset",
+                            "displayName": "Byteoffset"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "length",
+                            "displayName": "Length"
+                          },
+                          {
+                            "type": "string",
+                            "default": "",
+                            "description": "",
+                            "name": "__@toStringTag@42114",
+                            "displayName": "Tostringtag 42114"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "body",
+                    "displayName": "Body"
+                  }
+                ]
+              }
+            ],
+            "name": "response",
+            "displayName": "Response"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "requestInterceptors": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Content"
         ]
       }
     }
@@ -7384,38 +7384,14 @@
     }
   },
   {
-    "displayName": "Timeout",
-    "name": "timeout",
-    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
-    "default": 0,
+    "displayName": "Wait For Timeout",
+    "name": "waitForTimeout",
     "type": "number",
-    "routing": {
-      "request": {
-        "qs": {
-          "timeout": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Html",
-    "name": "html",
-    "type": "string",
-    "default": "",
+    "default": 0,
     "routing": {
       "request": {
         "body": {
-          "html": "={{ $value }}"
+          "waitForTimeout": "={{ $value }}"
         }
       }
     },
@@ -7436,8 +7412,8 @@
     }
   },
   {
-    "displayName": "Viewport",
-    "name": "viewport",
+    "displayName": "Wait For Selector",
+    "name": "waitForSelector",
     "type": "fixedCollection",
     "default": {},
     "options": [
@@ -7446,46 +7422,32 @@
         "displayName": "Items",
         "values": [
           {
-            "type": "number",
-            "default": 0,
-            "description": "The page width in CSS pixels",
-            "name": "width",
-            "displayName": "Width"
+            "type": "boolean",
+            "default": true,
+            "description": "",
+            "name": "hidden",
+            "displayName": "Hidden"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "selector",
+            "displayName": "Selector"
           },
           {
             "type": "number",
             "default": 0,
-            "description": "The page height in CSS pixels",
-            "name": "height",
-            "displayName": "Height"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
-            "name": "deviceScaleFactor",
-            "displayName": "Devicescalefactor"
+            "description": "",
+            "name": "timeout",
+            "displayName": "Timeout"
           },
           {
             "type": "boolean",
             "default": true,
-            "description": "Whether the `meta viewport` tag is taken into account",
-            "name": "isMobile",
-            "displayName": "Ismobile"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specifies if the viewport is in landscape mode",
-            "name": "isLandscape",
-            "displayName": "Islandscape"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "Specify if the viewport supports touch events",
-            "name": "hasTouch",
-            "displayName": "Hastouch"
+            "description": "",
+            "name": "visible",
+            "displayName": "Visible"
           }
         ]
       }
@@ -7493,7 +7455,7 @@
     "routing": {
       "request": {
         "body": {
-          "viewport": "={{$value.items}}"
+          "waitForSelector": "={{$value.items}}"
         }
       }
     },
@@ -7632,8 +7594,8 @@
     }
   },
   {
-    "displayName": "Wait For Selector",
-    "name": "waitForSelector",
+    "displayName": "Wait For Event",
+    "name": "waitForEvent",
     "type": "fixedCollection",
     "default": {},
     "options": [
@@ -7642,18 +7604,11 @@
         "displayName": "Items",
         "values": [
           {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "hidden",
-            "displayName": "Hidden"
-          },
-          {
             "type": "string",
             "default": "",
             "description": "",
-            "name": "selector",
-            "displayName": "Selector"
+            "name": "event",
+            "displayName": "Event"
           },
           {
             "type": "number",
@@ -7661,13 +7616,6 @@
             "description": "",
             "name": "timeout",
             "displayName": "Timeout"
-          },
-          {
-            "type": "boolean",
-            "default": true,
-            "description": "",
-            "name": "visible",
-            "displayName": "Visible"
           }
         ]
       }
@@ -7675,35 +7623,7 @@
     "routing": {
       "request": {
         "body": {
-          "waitForSelector": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Timeout",
-    "name": "waitForTimeout",
-    "type": "number",
-    "default": 0,
-    "routing": {
-      "request": {
-        "body": {
-          "waitForTimeout": "={{ $value }}"
+          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -7760,56 +7680,6 @@
       "request": {
         "body": {
           "waitForFunction": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Wait For Event",
-    "name": "waitForEvent",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "event",
-            "displayName": "Event"
-          },
-          {
-            "type": "number",
-            "default": 0,
-            "description": "",
-            "name": "timeout",
-            "displayName": "Timeout"
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "waitForEvent": "={{$value.items}}"
         }
       }
     },
@@ -8023,164 +7893,10 @@
     ]
   },
   {
-    "displayName": "Reject Request Pattern",
-    "name": "rejectRequestPattern",
+    "displayName": "Authenticate",
+    "name": "authenticate",
     "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "name": "Item",
-            "displayName": "Item",
-            "type": "string",
-            "default": ""
-          }
-        ]
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectRequestPattern": "={{$value.items}}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Reject Resource Types",
-    "name": "rejectResourceTypes",
-    "type": "multiOptions",
-    "default": [],
-    "options": [
-      {
-        "name": "cspviolationreport",
-        "value": "cspviolationreport"
-      },
-      {
-        "name": "document",
-        "value": "document"
-      },
-      {
-        "name": "eventsource",
-        "value": "eventsource"
-      },
-      {
-        "name": "fetch",
-        "value": "fetch"
-      },
-      {
-        "name": "font",
-        "value": "font"
-      },
-      {
-        "name": "image",
-        "value": "image"
-      },
-      {
-        "name": "manifest",
-        "value": "manifest"
-      },
-      {
-        "name": "media",
-        "value": "media"
-      },
-      {
-        "name": "other",
-        "value": "other"
-      },
-      {
-        "name": "ping",
-        "value": "ping"
-      },
-      {
-        "name": "prefetch",
-        "value": "prefetch"
-      },
-      {
-        "name": "preflight",
-        "value": "preflight"
-      },
-      {
-        "name": "script",
-        "value": "script"
-      },
-      {
-        "name": "signedexchange",
-        "value": "signedexchange"
-      },
-      {
-        "name": "stylesheet",
-        "value": "stylesheet"
-      },
-      {
-        "name": "texttrack",
-        "value": "texttrack"
-      },
-      {
-        "name": "websocket",
-        "value": "websocket"
-      },
-      {
-        "name": "xhr",
-        "value": "xhr"
-      }
-    ],
-    "routing": {
-      "request": {
-        "body": {
-          "rejectResourceTypes": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "hide": {
-        "useCustomBody": [
-          true
-        ]
-      },
-      "show": {
-        "resource": [
-          "Browser Rest Apis"
-        ],
-        "operation": [
-          "Scrape"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Request Interceptors",
-    "name": "requestInterceptors",
-    "type": "fixedCollection",
-    "default": [],
-    "typeOptions": {
-      "multipleValues": true
-    },
-    "description": "",
-    "placeholder": "Add item",
+    "default": {},
     "options": [
       {
         "name": "items",
@@ -8189,102 +7905,16 @@
           {
             "type": "string",
             "default": "",
-            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
-            "name": "pattern",
-            "displayName": "Pattern"
+            "description": "",
+            "name": "username",
+            "displayName": "Username"
           },
           {
-            "type": "fixedCollection",
-            "default": {},
+            "type": "string",
+            "default": "",
             "description": "",
-            "options": [
-              {
-                "name": "items",
-                "displayName": "Items",
-                "values": [
-                  {
-                    "type": "number",
-                    "default": 0,
-                    "description": "",
-                    "name": "status",
-                    "displayName": "Status"
-                  },
-                  {
-                    "type": "json",
-                    "default": "{}",
-                    "description": "Optional response headers. All values are converted to strings",
-                    "name": "headers",
-                    "displayName": "Headers"
-                  },
-                  {
-                    "type": "string",
-                    "default": "",
-                    "description": "",
-                    "name": "contentType",
-                    "displayName": "Contenttype"
-                  },
-                  {
-                    "type": "fixedCollection",
-                    "default": {},
-                    "description": "",
-                    "options": [
-                      {
-                        "name": "items",
-                        "displayName": "Items",
-                        "values": [
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "BYTES_PER_ELEMENT",
-                            "displayName": "Bytes Per Element"
-                          },
-                          {
-                            "type": "string",
-                            "default": {},
-                            "description": "",
-                            "name": "buffer",
-                            "displayName": "Buffer"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteLength",
-                            "displayName": "Bytelength"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "byteOffset",
-                            "displayName": "Byteoffset"
-                          },
-                          {
-                            "type": "number",
-                            "default": 0,
-                            "description": "",
-                            "name": "length",
-                            "displayName": "Length"
-                          },
-                          {
-                            "type": "string",
-                            "default": "",
-                            "description": "",
-                            "name": "__@toStringTag@42114",
-                            "displayName": "Tostringtag 42114"
-                          }
-                        ]
-                      }
-                    ],
-                    "name": "body",
-                    "displayName": "Body"
-                  }
-                ]
-              }
-            ],
-            "name": "response",
-            "displayName": "Response"
+            "name": "password",
+            "displayName": "Password"
           }
         ]
       }
@@ -8292,7 +7922,85 @@
     "routing": {
       "request": {
         "body": {
-          "requestInterceptors": "={{$value.items}}"
+          "authenticate": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Viewport",
+    "name": "viewport",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page width in CSS pixels",
+            "name": "width",
+            "displayName": "Width"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The page height in CSS pixels",
+            "name": "height",
+            "displayName": "Height"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info",
+            "name": "deviceScaleFactor",
+            "displayName": "Devicescalefactor"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the `meta viewport` tag is taken into account",
+            "name": "isMobile",
+            "displayName": "Ismobile"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specifies if the viewport is in landscape mode",
+            "name": "isLandscape",
+            "displayName": "Islandscape"
+          },
+          {
+            "type": "boolean",
+            "default": true,
+            "description": "Specify if the viewport supports touch events",
+            "name": "hasTouch",
+            "displayName": "Hastouch"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "viewport": "={{$value.items}}"
         }
       }
     },
@@ -8341,36 +8049,38 @@
     }
   },
   {
-    "displayName": "Authenticate",
-    "name": "authenticate",
-    "type": "fixedCollection",
-    "default": {},
-    "options": [
-      {
-        "name": "items",
-        "displayName": "Items",
-        "values": [
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "username",
-            "displayName": "Username"
-          },
-          {
-            "type": "string",
-            "default": "",
-            "description": "",
-            "name": "password",
-            "displayName": "Password"
-          }
+    "displayName": "Timeout",
+    "name": "timeout",
+    "description": "Override the system-level timeout for this request. Accepts a value in milliseconds",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "timeout": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
         ]
       }
-    ],
+    }
+  },
+  {
+    "displayName": "Html",
+    "name": "html",
+    "type": "string",
+    "default": "",
     "routing": {
       "request": {
         "body": {
-          "authenticate": "={{$value.items}}"
+          "html": "={{ $value }}"
         }
       }
     },
@@ -8784,6 +8494,296 @@
         ],
         "enableLaunch": [
           true
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Reject Resource Types",
+    "name": "rejectResourceTypes",
+    "type": "multiOptions",
+    "default": [],
+    "options": [
+      {
+        "name": "cspviolationreport",
+        "value": "cspviolationreport"
+      },
+      {
+        "name": "document",
+        "value": "document"
+      },
+      {
+        "name": "eventsource",
+        "value": "eventsource"
+      },
+      {
+        "name": "fetch",
+        "value": "fetch"
+      },
+      {
+        "name": "font",
+        "value": "font"
+      },
+      {
+        "name": "image",
+        "value": "image"
+      },
+      {
+        "name": "manifest",
+        "value": "manifest"
+      },
+      {
+        "name": "media",
+        "value": "media"
+      },
+      {
+        "name": "other",
+        "value": "other"
+      },
+      {
+        "name": "ping",
+        "value": "ping"
+      },
+      {
+        "name": "prefetch",
+        "value": "prefetch"
+      },
+      {
+        "name": "preflight",
+        "value": "preflight"
+      },
+      {
+        "name": "script",
+        "value": "script"
+      },
+      {
+        "name": "signedexchange",
+        "value": "signedexchange"
+      },
+      {
+        "name": "stylesheet",
+        "value": "stylesheet"
+      },
+      {
+        "name": "texttrack",
+        "value": "texttrack"
+      },
+      {
+        "name": "websocket",
+        "value": "websocket"
+      },
+      {
+        "name": "xhr",
+        "value": "xhr"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectResourceTypes": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Reject Request Pattern",
+    "name": "rejectRequestPattern",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "rejectRequestPattern": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Request Interceptors",
+    "name": "requestInterceptors",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests",
+            "name": "pattern",
+            "displayName": "Pattern"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "number",
+                    "default": 0,
+                    "description": "",
+                    "name": "status",
+                    "displayName": "Status"
+                  },
+                  {
+                    "type": "json",
+                    "default": "{}",
+                    "description": "Optional response headers. All values are converted to strings",
+                    "name": "headers",
+                    "displayName": "Headers"
+                  },
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "",
+                    "name": "contentType",
+                    "displayName": "Contenttype"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "BYTES_PER_ELEMENT",
+                            "displayName": "Bytes Per Element"
+                          },
+                          {
+                            "type": "string",
+                            "default": {},
+                            "description": "",
+                            "name": "buffer",
+                            "displayName": "Buffer"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteLength",
+                            "displayName": "Bytelength"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "byteOffset",
+                            "displayName": "Byteoffset"
+                          },
+                          {
+                            "type": "number",
+                            "default": 0,
+                            "description": "",
+                            "name": "length",
+                            "displayName": "Length"
+                          },
+                          {
+                            "type": "string",
+                            "default": "",
+                            "description": "",
+                            "name": "__@toStringTag@42114",
+                            "displayName": "Tostringtag 42114"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "body",
+                    "displayName": "Body"
+                  }
+                ]
+              }
+            ],
+            "name": "response",
+            "displayName": "Response"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "requestInterceptors": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Browser Rest Apis"
+        ],
+        "operation": [
+          "Scrape"
         ]
       }
     }

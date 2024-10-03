@@ -4,6 +4,15 @@
 /* eslint-disable n8n-nodes-base/node-param-description-boolean-without-whether */
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
 
+/**
+ * The following code was generated create-n8n-nodes tool.
+ *
+ * This file was automatically generated and should not be edited.
+ *
+ * If changes are required, please refer to the templates and scripts in the repository.
+ * Repository: https://github.com/oneflow-vn/create-n8n-nodes
+ */
+
 import { INodeProperties } from 'n8n-workflow'
 
 // @ts-ignore
@@ -99,36 +108,15 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Timeout',
-    name: 'timeout',
-    description:
-      'Override the system-level timeout for this request. Accepts a value in milliseconds',
-    default: 0,
+    displayName: 'Wait For Timeout',
+    name: 'waitForTimeout',
     type: 'number',
-    routing: {
-      request: {
-        qs: {
-          timeout: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Html',
-    name: 'html',
-    type: 'string',
-    default: '',
+    default: 0,
     description: undefined,
     routing: {
       request: {
         body: {
-          html: '={{ $value }}',
+          waitForTimeout: '={{ $value }}',
         },
       },
     },
@@ -143,8 +131,8 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Viewport',
-    name: 'viewport',
+    displayName: 'Wait For Selector',
+    name: 'waitForSelector',
     type: 'fixedCollection',
     default: {},
     description: undefined,
@@ -154,48 +142,32 @@ export const properties: INodeProperties[] = [
         name: 'items',
         values: [
           {
-            displayName: 'Width',
-            type: 'number',
-            default: 0,
-            description: 'The page width in CSS pixels',
-            name: 'width',
-          },
-          {
-            displayName: 'Height',
-            type: 'number',
-            default: 0,
-            description: 'The page height in CSS pixels',
-            name: 'height',
-          },
-          {
-            displayName: 'Devicescalefactor',
-            type: 'number',
-            default: 0,
-            description:
-              'Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
-            name: 'deviceScaleFactor',
-          },
-          {
-            displayName: 'Ismobile',
+            displayName: 'Hidden',
             type: 'boolean',
             default: true,
-            description:
-              'Whether the `meta viewport` tag is taken into account',
-            name: 'isMobile',
+            description: '',
+            name: 'hidden',
           },
           {
-            displayName: 'Islandscape',
-            type: 'boolean',
-            default: true,
-            description: 'Specifies if the viewport is in landscape mode',
-            name: 'isLandscape',
+            displayName: 'Selector',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'selector',
           },
           {
-            displayName: 'Hastouch',
+            displayName: 'Timeout',
+            type: 'number',
+            default: 0,
+            description: '',
+            name: 'timeout',
+          },
+          {
+            displayName: 'Visible',
             type: 'boolean',
             default: true,
-            description: 'Specify if the viewport supports touch events',
-            name: 'hasTouch',
+            description: '',
+            name: 'visible',
           },
         ],
       },
@@ -203,7 +175,7 @@ export const properties: INodeProperties[] = [
     routing: {
       request: {
         body: {
-          viewport: '={{$value.items}}',
+          waitForSelector: '={{$value.items}}',
         },
       },
     },
@@ -335,8 +307,8 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Wait For Selector',
-    name: 'waitForSelector',
+    displayName: 'Wait For Event',
+    name: 'waitForEvent',
     type: 'fixedCollection',
     default: {},
     description: undefined,
@@ -346,18 +318,11 @@ export const properties: INodeProperties[] = [
         name: 'items',
         values: [
           {
-            displayName: 'Hidden',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'hidden',
-          },
-          {
-            displayName: 'Selector',
+            displayName: 'Event',
             type: 'string',
             default: '',
             description: '',
-            name: 'selector',
+            name: 'event',
           },
           {
             displayName: 'Timeout',
@@ -366,43 +331,13 @@ export const properties: INodeProperties[] = [
             description: '',
             name: 'timeout',
           },
-          {
-            displayName: 'Visible',
-            type: 'boolean',
-            default: true,
-            description: '',
-            name: 'visible',
-          },
         ],
       },
     ],
     routing: {
       request: {
         body: {
-          waitForSelector: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Wait For Timeout',
-    name: 'waitForTimeout',
-    type: 'number',
-    default: 0,
-    description: undefined,
-    routing: {
-      request: {
-        body: {
-          waitForTimeout: '={{ $value }}',
+          waitForEvent: '={{$value.items}}',
         },
       },
     },
@@ -458,51 +393,6 @@ export const properties: INodeProperties[] = [
       request: {
         body: {
           waitForFunction: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Wait For Event',
-    name: 'waitForEvent',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Event',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'event',
-          },
-          {
-            displayName: 'Timeout',
-            type: 'number',
-            default: 0,
-            description: '',
-            name: 'timeout',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          waitForEvent: '={{$value.items}}',
         },
       },
     },
@@ -694,130 +584,37 @@ export const properties: INodeProperties[] = [
     ],
   },
   {
-    displayName: 'Reject Request Pattern',
-    name: 'rejectRequestPattern',
+    displayName: 'Authenticate',
+    name: 'authenticate',
     type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Item',
-            name: 'Item',
-            type: 'string',
-            default: '',
-          },
-        ],
-      },
-    ],
-    routing: {
-      request: {
-        body: {
-          rejectRequestPattern: '={{$value.items}}',
-        },
-      },
-    },
-    displayOptions: {
-      hide: {
-        useCustomBody: [true],
-      },
-      show: {
-        resource: ['Browser Rest Apis'],
-        operation: ['Scrape'],
-      },
-    },
-  },
-  {
-    displayName: 'Reject Resource Types',
-    name: 'rejectResourceTypes',
-    type: 'multiOptions',
-    default: [],
+    default: {},
     description: undefined,
     options: [
       {
-        name: 'cspviolationreport',
-        value: 'cspviolationreport',
-      },
-      {
-        name: 'document',
-        value: 'document',
-      },
-      {
-        name: 'eventsource',
-        value: 'eventsource',
-      },
-      {
-        name: 'fetch',
-        value: 'fetch',
-      },
-      {
-        name: 'font',
-        value: 'font',
-      },
-      {
-        name: 'image',
-        value: 'image',
-      },
-      {
-        name: 'manifest',
-        value: 'manifest',
-      },
-      {
-        name: 'media',
-        value: 'media',
-      },
-      {
-        name: 'other',
-        value: 'other',
-      },
-      {
-        name: 'ping',
-        value: 'ping',
-      },
-      {
-        name: 'prefetch',
-        value: 'prefetch',
-      },
-      {
-        name: 'preflight',
-        value: 'preflight',
-      },
-      {
-        name: 'script',
-        value: 'script',
-      },
-      {
-        name: 'signedexchange',
-        value: 'signedexchange',
-      },
-      {
-        name: 'stylesheet',
-        value: 'stylesheet',
-      },
-      {
-        name: 'texttrack',
-        value: 'texttrack',
-      },
-      {
-        name: 'websocket',
-        value: 'websocket',
-      },
-      {
-        name: 'xhr',
-        value: 'xhr',
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Username',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'username',
+          },
+          {
+            displayName: 'Password',
+            type: 'string',
+            default: '',
+            description: '',
+            name: 'password',
+          },
+        ],
       },
     ],
     routing: {
       request: {
         body: {
-          rejectResourceTypes: '={{ $value }}',
+          authenticate: '={{$value.items}}',
         },
       },
     },
@@ -832,124 +629,59 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Request Interceptors',
-    name: 'requestInterceptors',
+    displayName: 'Viewport',
+    name: 'viewport',
     type: 'fixedCollection',
-    default: [],
-    typeOptions: {
-      multipleValues: true,
-    },
-    description: '',
-    placeholder: 'Add item',
+    default: {},
+    description: undefined,
     options: [
       {
         displayName: 'Items',
         name: 'items',
         values: [
           {
-            displayName: 'Pattern',
-            type: 'string',
-            default: '',
-            description:
-              'An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests',
-            name: 'pattern',
+            displayName: 'Width',
+            type: 'number',
+            default: 0,
+            description: 'The page width in CSS pixels',
+            name: 'width',
           },
           {
-            displayName: 'Response',
-            type: 'fixedCollection',
-            default: {},
-            description: '',
-            options: [
-              {
-                displayName: 'Items',
-                name: 'items',
-                values: [
-                  {
-                    displayName: 'Status',
-                    type: 'number',
-                    default: 0,
-                    description: '',
-                    name: 'status',
-                  },
-                  {
-                    displayName: 'Headers',
-                    type: 'json',
-                    default: '{}',
-                    description:
-                      'Optional response headers. All values are converted to strings',
-                    name: 'headers',
-                  },
-                  {
-                    displayName: 'Contenttype',
-                    type: 'string',
-                    default: '',
-                    description: '',
-                    name: 'contentType',
-                  },
-                  {
-                    displayName: 'Body',
-                    type: 'fixedCollection',
-                    default: {},
-                    description: '',
-                    options: [
-                      {
-                        displayName: 'Items',
-                        name: 'items',
-                        values: [
-                          {
-                            displayName: 'Bytes Per Element',
-                            type: 'number',
-                            default: 0,
-                            description: '',
-                            name: 'BYTES_PER_ELEMENT',
-                          },
-                          {
-                            displayName: 'Buffer',
-                            type: 'string',
-                            default: {
-                              byteLength: undefined,
-                              '__@toStringTag@42114': undefined,
-                            },
-                            description: '',
-                            name: 'buffer',
-                          },
-                          {
-                            displayName: 'Bytelength',
-                            type: 'number',
-                            default: 0,
-                            description: '',
-                            name: 'byteLength',
-                          },
-                          {
-                            displayName: 'Byteoffset',
-                            type: 'number',
-                            default: 0,
-                            description: '',
-                            name: 'byteOffset',
-                          },
-                          {
-                            displayName: 'Length',
-                            type: 'number',
-                            default: 0,
-                            description: '',
-                            name: 'length',
-                          },
-                          {
-                            displayName: 'Tostringtag 42114',
-                            type: 'string',
-                            default: '',
-                            description: '',
-                            name: '__@toStringTag@42114',
-                          },
-                        ],
-                      },
-                    ],
-                    name: 'body',
-                  },
-                ],
-              },
-            ],
-            name: 'response',
+            displayName: 'Height',
+            type: 'number',
+            default: 0,
+            description: 'The page height in CSS pixels',
+            name: 'height',
+          },
+          {
+            displayName: 'Devicescalefactor',
+            type: 'number',
+            default: 0,
+            description:
+              'Specify device scale factor. See {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio devicePixelRatio} for more info',
+            name: 'deviceScaleFactor',
+          },
+          {
+            displayName: 'Ismobile',
+            type: 'boolean',
+            default: true,
+            description:
+              'Whether the `meta viewport` tag is taken into account',
+            name: 'isMobile',
+          },
+          {
+            displayName: 'Islandscape',
+            type: 'boolean',
+            default: true,
+            description: 'Specifies if the viewport is in landscape mode',
+            name: 'isLandscape',
+          },
+          {
+            displayName: 'Hastouch',
+            type: 'boolean',
+            default: true,
+            description: 'Specify if the viewport supports touch events',
+            name: 'hasTouch',
           },
         ],
       },
@@ -957,7 +689,7 @@ export const properties: INodeProperties[] = [
     routing: {
       request: {
         body: {
-          requestInterceptors: '={{$value.items}}',
+          viewport: '={{$value.items}}',
         },
       },
     },
@@ -995,37 +727,36 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Authenticate',
-    name: 'authenticate',
-    type: 'fixedCollection',
-    default: {},
-    description: undefined,
-    options: [
-      {
-        displayName: 'Items',
-        name: 'items',
-        values: [
-          {
-            displayName: 'Username',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'username',
-          },
-          {
-            displayName: 'Password',
-            type: 'string',
-            default: '',
-            description: '',
-            name: 'password',
-          },
-        ],
+    displayName: 'Timeout',
+    name: 'timeout',
+    description:
+      'Override the system-level timeout for this request. Accepts a value in milliseconds',
+    default: 0,
+    type: 'number',
+    routing: {
+      request: {
+        qs: {
+          timeout: '={{ $value }}',
+        },
       },
-    ],
+    },
+    displayOptions: {
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Html',
+    name: 'html',
+    type: 'string',
+    default: '',
+    description: undefined,
     routing: {
       request: {
         body: {
-          authenticate: '={{$value.items}}',
+          html: '={{ $value }}',
         },
       },
     },
@@ -1393,6 +1124,284 @@ export const properties: INodeProperties[] = [
         resource: ['Browser Rest Apis'],
         operation: ['Scrape'],
         enableLaunch: [true],
+      },
+    },
+  },
+  {
+    displayName: 'Reject Resource Types',
+    name: 'rejectResourceTypes',
+    type: 'multiOptions',
+    default: [],
+    description: undefined,
+    options: [
+      {
+        name: 'cspviolationreport',
+        value: 'cspviolationreport',
+      },
+      {
+        name: 'document',
+        value: 'document',
+      },
+      {
+        name: 'eventsource',
+        value: 'eventsource',
+      },
+      {
+        name: 'fetch',
+        value: 'fetch',
+      },
+      {
+        name: 'font',
+        value: 'font',
+      },
+      {
+        name: 'image',
+        value: 'image',
+      },
+      {
+        name: 'manifest',
+        value: 'manifest',
+      },
+      {
+        name: 'media',
+        value: 'media',
+      },
+      {
+        name: 'other',
+        value: 'other',
+      },
+      {
+        name: 'ping',
+        value: 'ping',
+      },
+      {
+        name: 'prefetch',
+        value: 'prefetch',
+      },
+      {
+        name: 'preflight',
+        value: 'preflight',
+      },
+      {
+        name: 'script',
+        value: 'script',
+      },
+      {
+        name: 'signedexchange',
+        value: 'signedexchange',
+      },
+      {
+        name: 'stylesheet',
+        value: 'stylesheet',
+      },
+      {
+        name: 'texttrack',
+        value: 'texttrack',
+      },
+      {
+        name: 'websocket',
+        value: 'websocket',
+      },
+      {
+        name: 'xhr',
+        value: 'xhr',
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          rejectResourceTypes: '={{ $value }}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Reject Request Pattern',
+    name: 'rejectRequestPattern',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Item',
+            name: 'Item',
+            type: 'string',
+            default: '',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          rejectRequestPattern: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
+      },
+    },
+  },
+  {
+    displayName: 'Request Interceptors',
+    name: 'requestInterceptors',
+    type: 'fixedCollection',
+    default: [],
+    typeOptions: {
+      multipleValues: true,
+    },
+    description: '',
+    placeholder: 'Add item',
+    options: [
+      {
+        displayName: 'Items',
+        name: 'items',
+        values: [
+          {
+            displayName: 'Pattern',
+            type: 'string',
+            default: '',
+            description:
+              'An array of patterns (using `req.url().match(r.pattern)` to match) and their corresponding responses to use in order to fulfill those requests',
+            name: 'pattern',
+          },
+          {
+            displayName: 'Response',
+            type: 'fixedCollection',
+            default: {},
+            description: '',
+            options: [
+              {
+                displayName: 'Items',
+                name: 'items',
+                values: [
+                  {
+                    displayName: 'Status',
+                    type: 'number',
+                    default: 0,
+                    description: '',
+                    name: 'status',
+                  },
+                  {
+                    displayName: 'Headers',
+                    type: 'json',
+                    default: '{}',
+                    description:
+                      'Optional response headers. All values are converted to strings',
+                    name: 'headers',
+                  },
+                  {
+                    displayName: 'Contenttype',
+                    type: 'string',
+                    default: '',
+                    description: '',
+                    name: 'contentType',
+                  },
+                  {
+                    displayName: 'Body',
+                    type: 'fixedCollection',
+                    default: {},
+                    description: '',
+                    options: [
+                      {
+                        displayName: 'Items',
+                        name: 'items',
+                        values: [
+                          {
+                            displayName: 'Bytes Per Element',
+                            type: 'number',
+                            default: 0,
+                            description: '',
+                            name: 'BYTES_PER_ELEMENT',
+                          },
+                          {
+                            displayName: 'Buffer',
+                            type: 'string',
+                            default: {
+                              byteLength: undefined,
+                              '__@toStringTag@42114': undefined,
+                            },
+                            description: '',
+                            name: 'buffer',
+                          },
+                          {
+                            displayName: 'Bytelength',
+                            type: 'number',
+                            default: 0,
+                            description: '',
+                            name: 'byteLength',
+                          },
+                          {
+                            displayName: 'Byteoffset',
+                            type: 'number',
+                            default: 0,
+                            description: '',
+                            name: 'byteOffset',
+                          },
+                          {
+                            displayName: 'Length',
+                            type: 'number',
+                            default: 0,
+                            description: '',
+                            name: 'length',
+                          },
+                          {
+                            displayName: 'Tostringtag 42114',
+                            type: 'string',
+                            default: '',
+                            description: '',
+                            name: '__@toStringTag@42114',
+                          },
+                        ],
+                      },
+                    ],
+                    name: 'body',
+                  },
+                ],
+              },
+            ],
+            name: 'response',
+          },
+        ],
+      },
+    ],
+    routing: {
+      request: {
+        body: {
+          requestInterceptors: '={{$value.items}}',
+        },
+      },
+    },
+    displayOptions: {
+      hide: {
+        useCustomBody: [true],
+      },
+      show: {
+        resource: ['Browser Rest Apis'],
+        operation: ['Scrape'],
       },
     },
   },
