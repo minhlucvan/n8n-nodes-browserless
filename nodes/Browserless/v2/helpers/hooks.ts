@@ -80,6 +80,23 @@ function getFileExtensionFromContentType (contentType: string): string {
   return type
 }
 
+function isBinaryResponse (contentType: string): boolean {
+  const textContentTypes = [
+    /application\/json/,
+    /application\/xml/,
+    /application\/xhtml\+xml/,
+    /application\/atom\+xml/,
+    /application\/rss\+xml/,
+    /application\/rdf\+xml/,
+    /application\/ld\+json/,
+    /application\/pdf/,
+    /application\/ld\+json/,
+    /^text\//,
+  ]
+
+  return !textContentTypes.some((regex) => regex.test(contentType))
+}
+
 export const postReceiveActionBinaryData: PostReceiveAction =
   async function postReceiveActionBinaryData (
     this: IExecuteSingleFunctions,
@@ -87,14 +104,31 @@ export const postReceiveActionBinaryData: PostReceiveAction =
     response: IN8nHttpFullResponse
   ): Promise<INodeExecutionData[]> {
     const contentType = getresponseContentType(response)
+    const isBinary = isBinaryResponse(contentType)
 
     const { binary } = items[0]
 
-    if (binary && binary.data && binary.data.mimeType === 'text/plain') {
+    if (
+      isBinary &&
+      binary &&
+      binary.data &&
+      binary.data.mimeType === 'text/plain'
+    ) {
       const data = binary.data as IBinaryData
+
+      // convert response body base64 to binary
+      // @ts-ignore
+      data.data = Buffer.from(response.body as string, 'binary')
+
       data.mimeType = contentType
       data.fileType = getFileTypeFromContentType(contentType) as BinaryFileType
       data.fileExtension = getFileExtensionFromContentType(contentType)
+    }
+
+    if (binary && binary.data && !binary.data.fileName) {
+      binary.data.fileName = `data.${getFileExtensionFromContentType(
+        contentType
+      )}`
     }
 
     return items

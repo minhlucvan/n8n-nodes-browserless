@@ -46,7 +46,8 @@
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/pdf"
+            "url": "=/pdf",
+            "encoding": "arraybuffer"
           },
           "output": {
             "postReceive": [
@@ -55,8 +56,7 @@
                 "properties": {
                   "destinationProperty": "data"
                 }
-              },
-              "${helpers.hooks.postReceiveActionBinaryData}"
+              }
             ]
           }
         }
@@ -69,7 +69,8 @@
         "routing": {
           "request": {
             "method": "POST",
-            "url": "=/screenshot"
+            "url": "=/screenshot",
+            "encoding": "arraybuffer"
           },
           "output": {
             "postReceive": [
@@ -78,8 +79,7 @@
                 "properties": {
                   "destinationProperty": "data"
                 }
-              },
-              "${helpers.hooks.postReceiveActionBinaryData}"
+              }
             ]
           }
         }

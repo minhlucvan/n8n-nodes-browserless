@@ -33,6 +33,7 @@ const rawOption: INodePropertyOptions = {
     request: {
       method: 'POST',
       url: '=/screenshot',
+      encoding: 'arraybuffer',
     },
     output: {
       postReceive: [
@@ -42,7 +43,6 @@ const rawOption: INodePropertyOptions = {
             destinationProperty: 'data',
           },
         },
-        helpers.hooks.postReceiveActionBinaryData,
       ],
     },
   },
