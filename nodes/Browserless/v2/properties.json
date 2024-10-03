@@ -51,11 +51,12 @@
           "output": {
             "postReceive": [
               {
-                "type": "setKeyValue",
+                "type": "binaryData",
                 "properties": {
-                  "data": "={{$response.body}}"
+                  "destinationProperty": "data"
                 }
-              }
+              },
+              "${helpers.hooks.postReceiveActionBinaryData}"
             ]
           }
         }
@@ -73,11 +74,12 @@
           "output": {
             "postReceive": [
               {
-                "type": "setKeyValue",
+                "type": "binaryData",
                 "properties": {
-                  "data": "={{$response.body}}"
+                  "destinationProperty": "data"
                 }
-              }
+              },
+              "${helpers.hooks.postReceiveActionBinaryData}"
             ]
           }
         }
