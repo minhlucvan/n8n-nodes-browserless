@@ -176,7 +176,7 @@ module.exports = {
           routing: {
             request: {
               body: {
-                cookies: '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
+                cookies: '={{ (JSON.parse($value) || []) }}',
               },
             },
           },

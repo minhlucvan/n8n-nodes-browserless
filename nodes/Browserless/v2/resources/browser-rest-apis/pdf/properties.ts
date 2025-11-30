@@ -1035,7 +1035,7 @@ export const properties: INodeProperties[] = [
     routing: {
       request: {
         body: {
-          userAgent: '={{ $value }}',
+          userAgent: '={{ {"userAgent": $value } }}',
         },
       },
     },
@@ -1102,7 +1102,7 @@ export const properties: INodeProperties[] = [
       request: {
         body: {
           cookies:
-            '={{ (JSON.parse($value) || []).reduce((a, c) => ({ ...a, [c.name]: c.value }), {}) }}',
+            '={{ (JSON.parse($value) || []) }}',
         },
       },
     },
